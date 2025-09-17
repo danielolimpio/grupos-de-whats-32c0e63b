@@ -14,13 +14,179 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      admin_actions: {
+        Row: {
+          action: string
+          admin_id: string
+          created_at: string
+          group_id: string
+          id: string
+          reason: string | null
+        }
+        Insert: {
+          action: string
+          admin_id: string
+          created_at?: string
+          group_id: string
+          id?: string
+          reason?: string | null
+        }
+        Update: {
+          action?: string
+          admin_id?: string
+          created_at?: string
+          group_id?: string
+          id?: string
+          reason?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "admin_actions_group_id_fkey"
+            columns: ["group_id"]
+            isOneToOne: false
+            referencedRelation: "groups"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      group_accesses: {
+        Row: {
+          accessed_at: string
+          group_id: string
+          id: string
+          user_agent: string | null
+          user_ip: string | null
+        }
+        Insert: {
+          accessed_at?: string
+          group_id: string
+          id?: string
+          user_agent?: string | null
+          user_ip?: string | null
+        }
+        Update: {
+          accessed_at?: string
+          group_id?: string
+          id?: string
+          user_agent?: string | null
+          user_ip?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "group_accesses_group_id_fkey"
+            columns: ["group_id"]
+            isOneToOne: false
+            referencedRelation: "groups"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      groups: {
+        Row: {
+          access_count: number | null
+          approved_at: string | null
+          approved_by: string | null
+          category: string
+          created_at: string
+          description: string | null
+          expires_at: string | null
+          id: string
+          image_url: string | null
+          is_premium: boolean | null
+          name: string
+          rejection_reason: string | null
+          status: string | null
+          updated_at: string
+          user_id: string
+          whatsapp_link: string
+        }
+        Insert: {
+          access_count?: number | null
+          approved_at?: string | null
+          approved_by?: string | null
+          category: string
+          created_at?: string
+          description?: string | null
+          expires_at?: string | null
+          id?: string
+          image_url?: string | null
+          is_premium?: boolean | null
+          name: string
+          rejection_reason?: string | null
+          status?: string | null
+          updated_at?: string
+          user_id: string
+          whatsapp_link: string
+        }
+        Update: {
+          access_count?: number | null
+          approved_at?: string | null
+          approved_by?: string | null
+          category?: string
+          created_at?: string
+          description?: string | null
+          expires_at?: string | null
+          id?: string
+          image_url?: string | null
+          is_premium?: boolean | null
+          name?: string
+          rejection_reason?: string | null
+          status?: string | null
+          updated_at?: string
+          user_id?: string
+          whatsapp_link?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          display_name: string | null
+          id: string
+          phone: string | null
+          points: number | null
+          role: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          phone?: string | null
+          points?: number | null
+          role?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          phone?: string | null
+          points?: number | null
+          role?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      contains_prohibited_content: {
+        Args: { text_content: string }
+        Returns: boolean
+      }
+      increment_group_access: {
+        Args: { group_id: string; user_agent?: string; user_ip?: string }
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never
