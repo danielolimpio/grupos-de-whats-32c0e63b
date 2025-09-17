@@ -1,9 +1,13 @@
-import { MessageCircle, Plus, User, BookOpen } from "lucide-react";
+import { MessageCircle, Plus, User, BookOpen, LogOut } from "lucide-react";
 import { Button } from "./ui/button";
 import { SearchInput } from "./ui/search-input";
+import { Link } from 'react-router-dom';
+import { useAuth } from '@/hooks/useAuth';
 import whatsappLogo from "@/assets/whatsapp-logo.png";
 
 export function Header() {
+  const { user, signOut } = useAuth();
+
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-card-border">
       <div className="container mx-auto px-4">
@@ -29,23 +33,62 @@ export function Header() {
 
           {/* Navigation */}
           <nav className="flex items-center space-x-2">
-            <Button 
-              variant="outline" 
-              size="sm"
-              className="hidden sm:flex btn-whatsapp border-primary text-primary-foreground hover:bg-primary-hover"
-            >
-              <Plus className="h-4 w-4 mr-2" />
-              Enviar Grupo
-            </Button>
-            
-            <Button 
-              variant="outline" 
-              size="sm"
-              className="hidden sm:flex"
-            >
-              <User className="h-4 w-4 mr-2" />
-              Entrar
-            </Button>
+            {user ? (
+              <>
+                <Link to="/dashboard">
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    className="hidden sm:flex btn-whatsapp border-primary text-primary-foreground hover:bg-primary-hover"
+                  >
+                    <Plus className="h-4 w-4 mr-2" />
+                    Enviar Grupo
+                  </Button>
+                </Link>
+                <Link to="/dashboard">
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    className="hidden sm:flex"
+                  >
+                    <User className="h-4 w-4 mr-2" />
+                    Dashboard
+                  </Button>
+                </Link>
+                <Button 
+                  variant="ghost" 
+                  size="sm"
+                  className="hidden md:flex"
+                  onClick={signOut}
+                >
+                  <LogOut className="h-4 w-4 mr-2" />
+                  Sair
+                </Button>
+              </>
+            ) : (
+              <>
+                <Link to="/auth">
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    className="hidden sm:flex btn-whatsapp border-primary text-primary-foreground hover:bg-primary-hover"
+                  >
+                    <Plus className="h-4 w-4 mr-2" />
+                    Enviar Grupo
+                  </Button>
+                </Link>
+                <Link to="/auth">
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    className="hidden sm:flex"
+                  >
+                    <User className="h-4 w-4 mr-2" />
+                    Entrar
+                  </Button>
+                </Link>
+              </>
+            )}
 
             <Button 
               variant="ghost" 

@@ -1,0 +1,305 @@
+import { useState, useRef } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
+import { useAuth } from '@/hooks/useAuth';
+import { Upload, Plus, AlertTriangle } from 'lucide-react';
+
+const categories = [
+  'Amizade',
+  'Compras',
+  'Educação',
+  'Entretenimento',
+  'Esportes',
+  'Família',
+  'Freelancers',
+  'Jogos',
+  'Música',
+  'Negócios',
+  'Notícias',
+  'Profissional',
+  'Relacionamento',
+  'Saúde',
+  'Tecnologia',
+  'Outros'
+];
+
+interface GroupFormProps {
+  onSuccess: () => void;
+}
+
+export default function GroupForm({ onSuccess }: GroupFormProps) {
+  const { user } = useAuth();
+  const { toast } = useToast();
+  const [loading, setLoading] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [imageUrl, setImageUrl] = useState<string>('');
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!user || !event.target.files || event.target.files.length === 0) return;
+
+    setUploading(true);
+    const file = event.target.files[0];
+    const fileExt = file.name.split('.').pop();
+    const fileName = `${user.id}/${Date.now()}.${fileExt}`;
+
+    try {
+      const { error: uploadError } = await supabase.storage
+        .from('group-images')
+        .upload(fileName, file);
+
+      if (uploadError) throw uploadError;
+
+      const { data } = supabase.storage
+        .from('group-images')
+        .getPublicUrl(fileName);
+
+      setImageUrl(data.publicUrl);
+      
+      toast({
+        title: "Imagem enviada!",
+        description: "A imagem do grupo foi carregada com sucesso.",
+      });
+    } catch (error: any) {
+      toast({
+        title: "Erro ao fazer upload",
+        description: error.message,
+        variant: "destructive"
+      });
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const validateGroupName = (name: string): boolean => {
+    // Check for only letters, numbers, and spaces
+    const validPattern = /^[a-zA-Z0-9\s]+$/;
+    return validPattern.test(name);
+  };
+
+  const validateWhatsAppLink = (link: string): boolean => {
+    // Basic WhatsApp link validation
+    return link.includes('chat.whatsapp.com') || link.includes('wa.me');
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!user) return;
+
+    setLoading(true);
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get('name') as string;
+    const description = formData.get('description') as string;
+    const category = formData.get('category') as string;
+    const whatsappLink = formData.get('whatsappLink') as string;
+
+    // Validations
+    if (!validateGroupName(name)) {
+      toast({
+        title: "Nome inválido",
+        description: "O nome do grupo deve conter apenas letras, números e espaços (sem emojis ou símbolos).",
+        variant: "destructive"
+      });
+      setLoading(false);
+      return;
+    }
+
+    if (!validateWhatsAppLink(whatsappLink)) {
+      toast({
+        title: "Link inválido",
+        description: "Por favor, insira um link válido do WhatsApp.",
+        variant: "destructive"
+      });
+      setLoading(false);
+      return;
+    }
+
+    try {
+      // Check for prohibited content
+      const { data: hasProhibited, error: checkError } = await supabase
+        .rpc('contains_prohibited_content', { 
+          text_content: `${name} ${description}` 
+        });
+
+      if (checkError) throw checkError;
+
+      if (hasProhibited) {
+        toast({
+          title: "Conteúdo não permitido",
+          description: "O grupo contém palavras proibidas. Revise o nome e descrição.",
+          variant: "destructive"
+        });
+        setLoading(false);
+        return;
+      }
+
+      // Create group
+      const { error } = await supabase
+        .from('groups')
+        .insert({
+          user_id: user.id,
+          name: name.trim(),
+          description: description.trim(),
+          category,
+          image_url: imageUrl,
+          whatsapp_link: whatsappLink.trim(),
+          status: 'pending'
+        });
+
+      if (error) throw error;
+
+      toast({
+        title: "Grupo enviado!",
+        description: "Seu grupo foi enviado para análise. Você será notificado sobre a aprovação.",
+      });
+
+      onSuccess();
+    } catch (error: any) {
+      toast({
+        title: "Erro ao enviar grupo",
+        description: error.message,
+        variant: "destructive"
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2">
+          <Plus className="h-5 w-5" />
+          Enviar Novo Grupo
+        </CardTitle>
+        <CardDescription>
+          Adicione um novo grupo de WhatsApp para compartilhar com a comunidade
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        {/* Important Rules Warning */}
+        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+          <div className="flex items-start gap-3">
+            <AlertTriangle className="h-5 w-5 text-yellow-600 mt-0.5" />
+            <div className="space-y-2">
+              <h4 className="font-medium text-yellow-800">Regras Importantes</h4>
+              <ul className="text-sm text-yellow-700 space-y-1">
+                <li>• <strong>Nome:</strong> Apenas letras, números e espaços (sem emojis ou símbolos)</li>
+                <li>• <strong>Proibido:</strong> Conteúdo adulto, drogas, armas, golpes ou fraudes</li>
+                <li>• <strong>Moderação:</strong> Todos os grupos passam por análise antes da aprovação</li>
+                <li>• <strong>Qualidade:</strong> Descrições claras e links válidos do WhatsApp</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="name">Nome do Grupo *</Label>
+                <Input
+                  id="name"
+                  name="name"
+                  placeholder="Ex: Academia e Treino 2025"
+                  required
+                  disabled={loading}
+                />
+                <p className="text-xs text-muted-foreground">
+                  Apenas letras, números e espaços. Sem emojis ou símbolos especiais.
+                </p>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="category">Categoria *</Label>
+                <Select name="category" required disabled={loading}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Selecione uma categoria" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {categories.map((category) => (
+                      <SelectItem key={category} value={category}>
+                        {category}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="whatsappLink">Link do WhatsApp *</Label>
+                <Input
+                  id="whatsappLink"
+                  name="whatsappLink"
+                  placeholder="https://chat.whatsapp.com/..."
+                  required
+                  disabled={loading}
+                />
+                <p className="text-xs text-muted-foreground">
+                  Cole o link de convite do seu grupo do WhatsApp
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="description">Descrição</Label>
+                <Textarea
+                  id="description"
+                  name="description"
+                  placeholder="Descreva brevemente sobre o que é o grupo..."
+                  rows={4}
+                  disabled={loading}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label>Imagem do Grupo (opcional)</Label>
+                <div className="space-y-2">
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                    className="hidden"
+                  />
+                  <Button 
+                    type="button"
+                    variant="outline" 
+                    onClick={() => fileInputRef.current?.click()}
+                    disabled={uploading || loading}
+                    className="w-full"
+                  >
+                    <Upload className="h-4 w-4 mr-2" />
+                    {uploading ? "Enviando..." : "Escolher Imagem"}
+                  </Button>
+                  {imageUrl && (
+                    <div className="relative">
+                      <img 
+                        src={imageUrl} 
+                        alt="Preview" 
+                        className="w-full h-32 object-cover rounded border"
+                      />
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex justify-end">
+            <Button type="submit" disabled={loading || uploading}>
+              {loading ? "Enviando..." : "Enviar Grupo"}
+            </Button>
+          </div>
+        </form>
+      </CardContent>
+    </Card>
+  );
+}
