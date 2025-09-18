@@ -9,25 +9,7 @@ import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { Upload, Plus, AlertTriangle } from 'lucide-react';
-
-const categories = [
-  'Amizade',
-  'Compras',
-  'Educação',
-  'Entretenimento',
-  'Esportes',
-  'Família',
-  'Freelancers',
-  'Jogos',
-  'Música',
-  'Negócios',
-  'Notícias',
-  'Profissional',
-  'Relacionamento',
-  'Saúde',
-  'Tecnologia',
-  'Outros'
-];
+import { getAllCategoriesSorted } from '@/data/categories';
 
 interface GroupFormProps {
   onSuccess: () => void;
@@ -40,6 +22,7 @@ export default function GroupForm({ onSuccess }: GroupFormProps) {
   const [uploading, setUploading] = useState(false);
   const [imageUrl, setImageUrl] = useState<string>('');
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const categories = getAllCategoriesSorted();
 
   const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!user || !event.target.files || event.target.files.length === 0) return;
@@ -224,8 +207,8 @@ export default function GroupForm({ onSuccess }: GroupFormProps) {
                   </SelectTrigger>
                   <SelectContent>
                     {categories.map((category) => (
-                      <SelectItem key={category} value={category}>
-                        {category}
+                      <SelectItem key={category.id} value={category.name}>
+                        {category.name}
                       </SelectItem>
                     ))}
                   </SelectContent>

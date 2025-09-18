@@ -196,7 +196,7 @@ export default function Admin() {
     group.user_id.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  if (loading || loadingData) {
+  if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-background via-background/50 to-primary/5 flex items-center justify-center">
         <div className="text-center">
