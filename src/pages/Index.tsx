@@ -4,7 +4,7 @@ import { GroupGrid } from "@/components/group-grid";
 import { StatsBanner } from "@/components/stats-banner";
 import { Footer } from "@/components/footer";
 import { CookieBanner } from "@/components/cookie-banner";
-import { CategoryNavigation } from "@/components/category-navigation";
+
 import { getPopularGroups, getRecentGroups, mockGroups } from "@/data/mock-groups";
 import { useState } from "react";
 
@@ -30,13 +30,6 @@ const Index = () => {
           <StatsBanner />
         </div>
 
-        {/* Category Navigation */}
-        <div className="mb-8">
-          <CategoryNavigation 
-            selectedCategory={selectedCategory}
-            onCategorySelect={setSelectedCategory}
-          />
-        </div>
 
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Main Content */}
@@ -69,7 +62,10 @@ const Index = () => {
 
           {/* Sidebar */}
           <div className="lg:block">
-            <Sidebar />
+            <Sidebar 
+              selectedCategory={selectedCategory}
+              onCategorySelect={setSelectedCategory}
+            />
           </div>
         </div>
       </main>

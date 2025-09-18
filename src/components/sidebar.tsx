@@ -1,61 +1,185 @@
 import { 
   Users, 
-  ShoppingBag, 
-  Gamepad2, 
-  GraduationCap, 
-  Briefcase, 
-  Heart, 
-  Music, 
+  BookOpen,
+  Filter,
+  ShoppingBag,
+  DollarSign,
+  TrendingUp,
+  Briefcase,
+  Heart,
+  MessageCircle,
+  Instagram,
+  Gamepad2,
+  Image,
+  Music,
+  HandHeart,
+  Bitcoin,
+  GraduationCap,
+  Stethoscope,
   Car,
-  Home,
-  Utensils,
-  Camera,
-  BookOpen
+  Truck,
+  HardHat,
+  ChefHat,
+  Scissors,
+  PenTool,
+  MapPin,
+  Building2
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
+import { getAllCategoriesSorted } from "@/data/categories";
+import { useState } from "react";
 
-const categories = [
-  { name: "Amizade", icon: Heart, count: 2456 },
-  { name: "Compras", icon: ShoppingBag, count: 1823 },
-  { name: "Jogos", icon: Gamepad2, count: 3421 },
-  { name: "Educação", icon: GraduationCap, count: 1654 },
-  { name: "Trabalho", icon: Briefcase, count: 987 },
-  { name: "Música", icon: Music, count: 2156 },
-  { name: "Carros", icon: Car, count: 1432 },
-  { name: "Casa e Decoração", icon: Home, count: 876 },
-  { name: "Culinária", icon: Utensils, count: 1987 },
-  { name: "Fotografia", icon: Camera, count: 654 },
-];
+// Icon mapping for categories
+const getIconForCategory = (categoryId: string) => {
+  const iconMap: Record<string, any> = {
+    'vendas': ShoppingBag,
+    'marketing': TrendingUp,
+    'renda-extra': DollarSign,
+    'investimento': TrendingUp,
+    'empreendedores': Briefcase,
+    'afiliados': Users,
+    'olx': ShoppingBag,
+    'compra-venda': ShoppingBag,
+    'divulgacao': TrendingUp,
+    'instagram': Instagram,
+    'namoro': Heart,
+    'amizade': Heart,
+    'paquera': Heart,
+    'relacionamento': Heart,
+    'lgbt': Heart,
+    'amizade-colorida': Heart,
+    'terceira-idade': Users,
+    'casais': Heart,
+    'seguidores-instagram': Instagram,
+    'curtidas-instagram': Instagram,
+    'engajamento': TrendingUp,
+    'visualizacao-status': Instagram,
+    'free-fire': Gamepad2,
+    'fortnite': Gamepad2,
+    'roblox': Gamepad2,
+    'minecraft': Gamepad2,
+    'figurinhas': Image,
+    'memes': Image,
+    'anime': Image,
+    'rock': Music,
+    'vaquinha': HandHeart,
+    'doacao': HandHeart,
+    'criptomoedas': Bitcoin,
+    'apostas': TrendingUp,
+    'bet365': TrendingUp,
+    'leilao': ShoppingBag,
+    'rifa': TrendingUp,
+    'professores': GraduationCap,
+    'enfermagem': Stethoscope,
+    'motoristas': Car,
+    'motoboys': Car,
+    'caminhoneiros': Truck,
+    'construcao-civil': HardHat,
+    'diarista': Building2,
+    'confeitaria': ChefHat,
+    'croche': Scissors,
+    'escritores': PenTool,
+    'receitas': ChefHat,
+    'estudo-biblico': BookOpen,
+    'concurso': GraduationCap,
+    'leitura': BookOpen,
+    'livros': BookOpen,
+    'ingles': GraduationCap,
+    'emagrecimento': Heart,
+    'depressao': Heart,
+    'ansiedade': Heart,
+    'apoio-emocional': Heart,
+    'academia': Heart,
+    'oracao': Heart,
+    'evangelico': Heart,
+    'assembleia-deus': Heart,
+    'umbanda': Heart,
+    'mulheres': Users,
+    'maes': Heart,
+    'jovens': Users,
+    'coroas': Users,
+    'gay': Heart,
+    'lesbicas': Heart,
+    'transexuais': Heart,
+    'noticias': BookOpen,
+    'politica': BookOpen,
+    'direita': BookOpen,
+    'cachorros': Heart,
+    'carros': Car,
+    'motos': Car,
+    'bikes': Car,
+    'viagem': MapPin,
+    'brecho': ShoppingBag,
+    'desapego': ShoppingBag
+  };
+  
+  return iconMap[categoryId] || Users;
+};
 
-export function Sidebar() {
+interface SidebarProps {
+  selectedCategory?: string;
+  onCategorySelect: (category: string | null) => void;
+}
+
+export function Sidebar({ selectedCategory, onCategorySelect }: SidebarProps) {
+  const [showAllCategories, setShowAllCategories] = useState(false);
+  const allCategories = getAllCategoriesSorted();
+  const displayCategories = showAllCategories ? allCategories : allCategories.slice(0, 12);
+
   return (
     <aside className="w-80 space-y-6">
       {/* Categories */}
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center">
-            <Users className="h-5 w-5 mr-2 text-primary" />
+            <Filter className="h-5 w-5 mr-2 text-primary" />
             Categorias
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2">
-          {categories.map((category) => (
+          <Button
+            variant={!selectedCategory ? "default" : "outline"}
+            size="sm"
+            onClick={() => onCategorySelect(null)}
+            className="w-full justify-start mb-3"
+          >
+            <Users className="h-4 w-4 mr-2" />
+            Todos os Grupos
+          </Button>
+          
+          {displayCategories.map((category) => (
             <Button 
-              key={category.name}
-              variant="ghost" 
-              className="w-full justify-between hover:bg-card-hover"
+              key={category.id}
+              variant={selectedCategory === category.name ? "default" : "ghost"}
+              size="sm"
+              onClick={() => onCategorySelect(category.name)}
+              className="w-full justify-between hover:bg-muted/50 text-left"
             >
               <div className="flex items-center">
-                <category.icon className="h-4 w-4 mr-2 text-primary" />
-                <span className="text-sm">{category.name}</span>
+                {(() => {
+                  const IconComponent = getIconForCategory(category.id);
+                  return <IconComponent className="h-4 w-4 mr-2 text-primary flex-shrink-0" />;
+                })()}
+                <span className="text-xs truncate">{category.name}</span>
               </div>
-              <Badge variant="secondary" className="text-xs">
-                {category.count}
-              </Badge>
+              {category.priority >= 8 && (
+                <Badge variant="secondary" className="text-xs ml-1">
+                  Popular
+                </Badge>
+              )}
             </Button>
           ))}
+          
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setShowAllCategories(!showAllCategories)}
+            className="w-full text-muted-foreground text-xs mt-3"
+          >
+            {showAllCategories ? "Mostrar Menos" : "Ver Todas as Categorias"}
+          </Button>
         </CardContent>
       </Card>
 
