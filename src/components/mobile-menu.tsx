@@ -105,9 +105,11 @@ export function MobileMenu() {
                 Suporte
               </h3>
               
-              <Button variant="ghost" className="w-full justify-start text-sm" onClick={closeMenu}>
-                <Users className="h-4 w-4 mr-3" />
-                Anunciar Grupos
+              <Button asChild variant="ghost" className="w-full justify-start text-sm" onClick={closeMenu}>
+                <Link to="/impulsionar-grupos">
+                  <Users className="h-4 w-4 mr-3" />
+                  Impulsionar Grupos
+                </Link>
               </Button>
               
               <Button variant="ghost" className="w-full justify-start text-sm" onClick={closeMenu}>

@@ -1,4 +1,4 @@
-import { Users, Heart, ExternalLink } from "lucide-react";
+import { Users, Heart, ExternalLink, Star } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
@@ -50,8 +50,8 @@ export function GroupCard({
             
             {/* Premium Badge */}
             {isPremium && (
-              <div className="absolute -top-1 -right-1 w-6 h-6 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center">
-                <span className="text-xs font-bold text-white">★</span>
+              <div className="absolute -top-1 -right-1 w-6 h-6 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg">
+                <Star className="h-3 w-3 text-white fill-white" />
               </div>
             )}
           </div>

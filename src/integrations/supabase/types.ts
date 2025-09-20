@@ -93,7 +93,12 @@ export type Database = {
           id: string
           image_url: string | null
           is_premium: boolean | null
+          is_premium_active: boolean | null
           name: string
+          premium_activated_at: string | null
+          premium_activated_by: string | null
+          premium_expires_at: string | null
+          premium_payment_id: string | null
           rejection_reason: string | null
           status: string | null
           updated_at: string
@@ -111,7 +116,12 @@ export type Database = {
           id?: string
           image_url?: string | null
           is_premium?: boolean | null
+          is_premium_active?: boolean | null
           name: string
+          premium_activated_at?: string | null
+          premium_activated_by?: string | null
+          premium_expires_at?: string | null
+          premium_payment_id?: string | null
           rejection_reason?: string | null
           status?: string | null
           updated_at?: string
@@ -129,7 +139,12 @@ export type Database = {
           id?: string
           image_url?: string | null
           is_premium?: boolean | null
+          is_premium_active?: boolean | null
           name?: string
+          premium_activated_at?: string | null
+          premium_activated_by?: string | null
+          premium_expires_at?: string | null
+          premium_payment_id?: string | null
           rejection_reason?: string | null
           status?: string | null
           updated_at?: string
@@ -137,6 +152,53 @@ export type Database = {
           whatsapp_link?: string
         }
         Relationships: []
+      }
+      premium_payments: {
+        Row: {
+          amount: number
+          created_at: string
+          group_id: string
+          id: string
+          payment_confirmed_at: string | null
+          payment_method: string
+          payment_status: string
+          pix_code: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount?: number
+          created_at?: string
+          group_id: string
+          id?: string
+          payment_confirmed_at?: string | null
+          payment_method?: string
+          payment_status?: string
+          pix_code?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          group_id?: string
+          id?: string
+          payment_confirmed_at?: string | null
+          payment_method?: string
+          payment_status?: string
+          pix_code?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "premium_payments_group_id_fkey"
+            columns: ["group_id"]
+            isOneToOne: false
+            referencedRelation: "groups"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       profiles: {
         Row: {
@@ -179,12 +241,20 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      activate_group_premium: {
+        Args: { group_id_param: string; payment_id_param?: string }
+        Returns: undefined
+      }
       contains_prohibited_content: {
         Args: { text_content: string }
         Returns: boolean
       }
       increment_group_access: {
         Args: { group_id: string; user_agent?: string; user_ip?: string }
+        Returns: undefined
+      }
+      update_expired_premium_groups: {
+        Args: Record<PropertyKey, never>
         Returns: undefined
       }
     }

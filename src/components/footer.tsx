@@ -1,5 +1,6 @@
 import { MessageCircle, Mail, Shield, FileText } from "lucide-react";
 import { Button } from "./ui/button";
+import { Link } from "react-router-dom";
 
 export function Footer() {
   return (
@@ -41,9 +42,11 @@ export function Footer() {
                 </Button>
               </li>
               <li>
-                <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
-                  Anunciar grupo
-                </Button>
+                <Link to="/impulsionar-grupos">
+                  <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
+                    Impulsionar Grupos
+                  </Button>
+                </Link>
               </li>
             </ul>
           </div>

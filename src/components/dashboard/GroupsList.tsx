@@ -49,6 +49,60 @@ export default function GroupsList({ groups, onRefresh, getStatusBadge }: Groups
   const { toast } = useToast();
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
+  const handleBoostToPremium = async (groupId: string) => {
+    try {
+      // Create a premium payment record
+      const { data: payment, error: paymentError } = await supabase
+        .from('premium_payments')
+        .insert({
+          group_id: groupId,
+          user_id: (await supabase.auth.getUser()).data.user?.id,
+          amount: 9.90,
+          payment_method: 'pix',
+          payment_status: 'pending'
+        })
+        .select()
+        .single();
+
+      if (paymentError) {
+        console.error('Error creating payment:', paymentError);
+        toast({
+          title: "Erro ao criar pagamento",
+          variant: "destructive"
+        });
+        return;
+      }
+
+      // For demo purposes, simulate instant activation (in production, this would be triggered by PIX confirmation)
+      const { error: activationError } = await supabase
+        .rpc('activate_group_premium', { 
+          group_id_param: groupId,
+          payment_id_param: payment.id 
+        });
+
+      if (activationError) {
+        console.error('Error activating premium:', activationError);
+        toast({
+          title: "Erro ao ativar premium",
+          variant: "destructive"
+        });
+        return;
+      }
+
+      toast({
+        title: "Sucesso!",
+        description: "Grupo impulsionado como Premium com sucesso!"
+      });
+      onRefresh();
+    } catch (error) {
+      console.error('Error boosting to premium:', error);
+      toast({
+        title: "Erro ao impulsionar grupo",
+        variant: "destructive"
+      });
+    }
+  };
+
   const handleDeleteGroup = async (groupId: string) => {
     setDeletingId(groupId);
     

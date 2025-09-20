@@ -18,7 +18,14 @@ const Index = () => {
     ? mockGroups.filter(group => group.category === selectedCategory)
     : mockGroups;
   
-  const displayGroups = filteredGroups.slice(0, 12);
+  // Sort groups to show premium groups first
+  const sortedGroups = [...filteredGroups].sort((a, b) => {
+    if (a.isPremium && !b.isPremium) return -1;
+    if (!a.isPremium && b.isPremium) return 1;
+    return 0;
+  });
+  
+  const displayGroups = sortedGroups.slice(0, 12);
 
   return (
     <div className="min-h-screen bg-background">

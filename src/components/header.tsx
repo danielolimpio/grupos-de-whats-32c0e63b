@@ -49,6 +49,14 @@ export function Header() {
                     Enviar Grupo
                   </Button>
                 </Link>
+                <Link to="/impulsionar-grupos">
+                  <Button 
+                    size="sm" 
+                    className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-semibold"
+                  >
+                    Impulsionar
+                  </Button>
+                </Link>
                 <Link to="/dashboard">
                   <Button 
                     variant="outline" 
@@ -79,6 +87,14 @@ export function Header() {
                   >
                     <Plus className="h-4 w-4 mr-2" />
                     Enviar Grupo
+                  </Button>
+                </Link>
+                <Link to="/impulsionar-grupos">
+                  <Button 
+                    size="sm" 
+                    className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-semibold"
+                  >
+                    Impulsionar
                   </Button>
                 </Link>
                 <Link to="/auth">
