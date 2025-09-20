@@ -129,7 +129,7 @@ export function Sidebar({ selectedCategory, onCategorySelect }: SidebarProps) {
   const displayCategories = showAllCategories ? allCategories : allCategories.slice(0, 12);
 
   return (
-    <aside className="w-80 space-y-6">
+    <aside className="w-full lg:w-80 space-y-6 order-first lg:order-last">
       {/* Categories */}
       <Card>
         <CardHeader>
@@ -155,17 +155,17 @@ export function Sidebar({ selectedCategory, onCategorySelect }: SidebarProps) {
               variant={selectedCategory === category.name ? "default" : "ghost"}
               size="sm"
               onClick={() => onCategorySelect(category.name)}
-              className="w-full justify-between hover:bg-muted/50 text-left"
+              className="w-full justify-between hover:bg-muted/50 text-left p-2"
             >
-              <div className="flex items-center">
+              <div className="flex items-center min-w-0 flex-1">
                 {(() => {
                   const IconComponent = getIconForCategory(category.id);
                   return <IconComponent className="h-4 w-4 mr-2 text-primary flex-shrink-0" />;
                 })()}
-                <span className="text-xs truncate">{category.name}</span>
+                <span className="text-xs truncate font-medium">{category.name}</span>
               </div>
               {category.priority >= 8 && (
-                <Badge variant="secondary" className="text-xs ml-1">
+                <Badge variant="secondary" className="text-xs ml-2 flex-shrink-0">
                   Popular
                 </Badge>
               )}

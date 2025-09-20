@@ -32,6 +32,14 @@ const Index = () => {
 
 
         <div className="flex flex-col lg:flex-row gap-8">
+          {/* Sidebar - Mobile First */}
+          <div className="block lg:hidden">
+            <Sidebar 
+              selectedCategory={selectedCategory}
+              onCategorySelect={setSelectedCategory}
+            />
+          </div>
+
           {/* Main Content */}
           <div className="flex-1 space-y-12">
             {!selectedCategory && (
@@ -60,8 +68,8 @@ const Index = () => {
             />
           </div>
 
-          {/* Sidebar */}
-          <div className="lg:block">
+          {/* Sidebar - Desktop Only */}
+          <div className="hidden lg:block">
             <Sidebar 
               selectedCategory={selectedCategory}
               onCategorySelect={setSelectedCategory}

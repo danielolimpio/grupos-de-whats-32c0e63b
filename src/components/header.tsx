@@ -3,6 +3,7 @@ import { Button } from "./ui/button";
 import { SearchInput } from "./ui/search-input";
 import { Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
+import { MobileMenu } from "./mobile-menu";
 import whatsappLogo from "@/assets/whatsapp-logo.png";
 
 export function Header() {
@@ -12,8 +13,11 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-card-border">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
+          {/* Mobile Menu & Logo */}
           <div className="flex items-center space-x-3">
+            <div className="md:hidden">
+              <MobileMenu />
+            </div>
             <img 
               src={whatsappLogo} 
               alt="WhatsApp"
@@ -31,8 +35,8 @@ export function Header() {
             <SearchInput placeholder="Faça sua busca..." />
           </div>
 
-          {/* Navigation */}
-          <nav className="flex items-center space-x-2">
+          {/* Navigation - Hidden on Mobile */}
+          <nav className="hidden md:flex items-center space-x-2">
             {user ? (
               <>
                 <Link to="/dashboard">
@@ -97,15 +101,6 @@ export function Header() {
             >
               <BookOpen className="h-4 w-4 mr-2" />
               Blog
-            </Button>
-
-            {/* Mobile Menu */}
-            <Button 
-              variant="outline" 
-              size="sm"
-              className="sm:hidden"
-            >
-              <MessageCircle className="h-4 w-4" />
             </Button>
           </nav>
         </div>
