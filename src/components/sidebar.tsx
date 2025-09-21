@@ -188,8 +188,8 @@ export function Sidebar({ selectedCategory, onCategorySelect }: SidebarProps) {
           <p className="text-sm text-muted-foreground mb-4">
             Destaque seu grupo para milhares de usuários
           </p>
-          <Button size="sm" className="btn-whatsapp">
-            Anunciar Grupo
+          <Button size="sm" className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-semibold">
+            Impulsionar
           </Button>
         </CardContent>
       </Card>

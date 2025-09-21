@@ -72,7 +72,7 @@ export default function Admin() {
     
     try {
       const { data, error } = await supabase
-        .from('profiles')
+        .from('user_roles')
         .select('role')
         .eq('user_id', user.id)
         .single();

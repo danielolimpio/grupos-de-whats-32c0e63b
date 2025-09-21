@@ -4,7 +4,7 @@ import { SearchInput } from "./ui/search-input";
 import { Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import { MobileMenu } from "./mobile-menu";
-import whatsappLogo from "@/assets/whatsapp-logo.png";
+import whatsappLogo from "@/assets/whatsapp-logo-new.png";
 
 export function Header() {
   const { user, signOut } = useAuth();
@@ -18,11 +18,13 @@ export function Header() {
             <div className="md:hidden">
               <MobileMenu />
             </div>
-            <img 
-              src={whatsappLogo} 
-              alt="WhatsApp"
-              className="h-10 w-10 rounded-full"
-            />
+            <Link to="/">
+              <img 
+                src={whatsappLogo} 
+                alt="WhatsApp"
+                className="h-10 w-10 rounded-full cursor-pointer"
+              />
+            </Link>
             <div className="hidden md:block">
               <h1 className="text-xl font-bold text-foreground">
                 Grupos de <span className="text-primary">WhatsApp</span>
@@ -110,14 +112,16 @@ export function Header() {
               </>
             )}
 
-            <Button 
-              variant="ghost" 
-              size="sm"
-              className="hidden md:flex"
-            >
-              <BookOpen className="h-4 w-4 mr-2" />
-              Blog
-            </Button>
+            <Link to="/blog">
+              <Button 
+                variant="ghost" 
+                size="sm"
+                className="hidden md:flex"
+              >
+                <BookOpen className="h-4 w-4 mr-2" />
+                Blog
+              </Button>
+            </Link>
           </nav>
         </div>
       </div>

@@ -132,10 +132,11 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    background-image: 
-      radial-gradient(circle at 20% 20%, hsl(var(--pattern-bg)) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, hsl(var(--pattern-bg)) 0%, transparent 50%);
-    background-size: 120px 120px;
+    background-image: url('/src/assets/whatsapp-background.jpg');
+    background-size: 500px 500px;
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-blend-mode: overlay;
   }
 }
 

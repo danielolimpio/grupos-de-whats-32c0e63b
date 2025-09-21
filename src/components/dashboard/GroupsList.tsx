@@ -10,7 +10,8 @@ import {
   Trash2,
   Edit,
   ExternalLink,
-  AlertCircle
+  AlertCircle,
+  Star
 } from 'lucide-react';
 import {
   AlertDialog,
@@ -34,6 +35,7 @@ interface Group {
   status: string;
   access_count: number;
   is_premium: boolean;
+  is_premium_active: boolean;
   rejection_reason?: string;
   created_at: string;
   updated_at: string;
@@ -159,8 +161,11 @@ export default function GroupsList({ groups, onRefresh, getStatusBadge }: Groups
                 <div className="flex items-center gap-2 mb-2">
                   <CardTitle className="text-lg">{group.name}</CardTitle>
                   {getStatusBadge(group.status)}
-                  {group.is_premium && (
-                    <Badge className="bg-yellow-100 text-yellow-800">Premium</Badge>
+                  {group.is_premium_active && (
+                    <Badge className="bg-yellow-100 text-yellow-800">
+                      <Star className="h-3 w-3 mr-1" />
+                      Premium Ativo
+                    </Badge>
                   )}
                 </div>
                 <CardDescription className="text-sm">
@@ -173,6 +178,16 @@ export default function GroupsList({ groups, onRefresh, getStatusBadge }: Groups
                 )}
               </div>
               <div className="flex items-center gap-2">
+                {group.status === 'approved' && !group.is_premium_active && (
+                  <Button
+                    size="sm"
+                    className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-semibold"
+                    onClick={() => handleBoostToPremium(group.id)}
+                  >
+                    <Star className="h-4 w-4 mr-2" />
+                    Impulsionar
+                  </Button>
+                )}
                 {group.status === 'approved' && (
                   <Button
                     variant="outline"
