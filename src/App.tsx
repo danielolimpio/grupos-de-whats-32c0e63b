@@ -11,6 +11,14 @@ import Dashboard from "./pages/Dashboard";
 import Admin from "./pages/Admin";
 import AdminSetup from "./pages/AdminSetup";
 import Blog from "./pages/Blog";
+import ComoFunciona from "./pages/ComoFunciona";
+import RegrasComunidade from "./pages/RegrasComunidade";
+import DicasSeguranca from "./pages/DicasSeguranca";
+import CentralAjuda from "./pages/CentralAjuda";
+import ReportarProblema from "./pages/ReportarProblema";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import CookiePolicy from "./pages/CookiePolicy";
 import NotFound from "./pages/NotFound";
 import ImpulsionarGrupos from "./pages/ImpulsionarGrupos";
 
@@ -31,6 +39,14 @@ const App = () => (
               <Route path="/admin" element={<Admin />} />
               <Route path="/admin-setup" element={<AdminSetup />} />
               <Route path="/blog" element={<Blog />} />
+              <Route path="/como-funciona" element={<ComoFunciona />} />
+              <Route path="/regras-comunidade" element={<RegrasComunidade />} />
+              <Route path="/dicas-seguranca" element={<DicasSeguranca />} />
+              <Route path="/central-ajuda" element={<CentralAjuda />} />
+              <Route path="/reportar-problema" element={<ReportarProblema />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-of-service" element={<TermsOfService />} />
+              <Route path="/cookie-policy" element={<CookiePolicy />} />
               <Route path="/impulsionar-grupos" element={<ImpulsionarGrupos />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />

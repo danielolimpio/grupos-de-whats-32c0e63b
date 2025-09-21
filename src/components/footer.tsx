@@ -27,19 +27,25 @@ export function Footer() {
             <h3 className="font-semibold">Links Úteis</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
-                  Como funciona
-                </Button>
+                <Link to="/como-funciona">
+                  <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
+                    Como funciona
+                  </Button>
+                </Link>
               </li>
               <li>
-                <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
-                  Regras da comunidade
-                </Button>
+                <Link to="/regras-comunidade">
+                  <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
+                    Regras da comunidade
+                  </Button>
+                </Link>
               </li>
               <li>
-                <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
-                  Dicas de segurança
-                </Button>
+                <Link to="/dicas-seguranca">
+                  <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
+                    Dicas de segurança
+                  </Button>
+                </Link>
               </li>
               <li>
                 <Link to="/impulsionar-grupos">
@@ -60,19 +66,25 @@ export function Footer() {
                 <span>contato@gruposwhatsapp.com</span>
               </li>
               <li>
-                <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
-                  Central de ajuda
-                </Button>
+                <Link to="/central-ajuda">
+                  <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
+                    Central de ajuda
+                  </Button>
+                </Link>
               </li>
               <li>
-                <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
-                  Reportar problema
-                </Button>
+                <Link to="/reportar-problema">
+                  <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
+                    Reportar problema
+                  </Button>
+                </Link>
               </li>
               <li>
-                <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
-                  FAQ
-                </Button>
+                <Link to="/central-ajuda">
+                  <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
+                    FAQ
+                  </Button>
+                </Link>
               </li>
             </ul>
           </div>
@@ -83,20 +95,26 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               <li className="flex items-center space-x-2">
                 <Shield className="h-4 w-4" />
-                <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
-                  Política de Privacidade
-                </Button>
+                <Link to="/privacy-policy">
+                  <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
+                    Política de Privacidade
+                  </Button>
+                </Link>
               </li>
               <li className="flex items-center space-x-2">
                 <FileText className="h-4 w-4" />
-                <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
-                  Termos de Uso
-                </Button>
+                <Link to="/terms-of-service">
+                  <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
+                    Termos de Uso
+                  </Button>
+                </Link>
               </li>
               <li>
-                <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
-                  Cookies
-                </Button>
+                <Link to="/cookie-policy">
+                  <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
+                    Cookies
+                  </Button>
+                </Link>
               </li>
             </ul>
           </div>
@@ -109,7 +127,15 @@ export function Footer() {
               Este site não tem qualquer vínculo com Meta Platforms, Inc. (WhatsApp).
             </p>
             <p className="text-xs text-primary-foreground/60">
-              © 2024 Grupos de WhatsApp. Todos os direitos reservados.
+              © 2025 Grupos de WhatsApp | Todos os direitos reservados | Desenvolvido por{" "}
+              <a 
+                href="https://danielolimpio.com/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary-foreground hover:text-primary-foreground/80 transition-colors"
+              >
+                DanielOlimpio
+              </a>
             </p>
           </div>
         </div>
