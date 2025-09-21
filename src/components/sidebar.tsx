@@ -30,6 +30,7 @@ import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { getAllCategoriesSorted } from "@/data/categories";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 // Icon mapping for categories
 const getIconForCategory = (categoryId: string) => {
@@ -219,9 +220,11 @@ export function Sidebar({ selectedCategory, onCategorySelect }: SidebarProps) {
               Aprenda a moderar e engajar membros...
             </p>
           </div>
-          <Button variant="outline" size="sm" className="w-full">
-            Ver Mais Posts
-          </Button>
+          <Link to="/blog">
+            <Button variant="outline" size="sm" className="w-full">
+              Ver Mais Posts
+            </Button>
+          </Link>
         </CardContent>
       </Card>
     </aside>

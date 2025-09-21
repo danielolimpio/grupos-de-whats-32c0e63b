@@ -5,12 +5,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { Shield } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export default function AdminSetup() {
   const [email, setEmail] = useState('danielmoreiradmg10@gmail.com');
   const [password, setPassword] = useState('Vale30Night80*');
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const handleCreateAdmin = async () => {
     setLoading(true);
@@ -40,6 +42,9 @@ export default function AdminSetup() {
             title: "Login realizado",
             description: "Admin logado com sucesso!"
           });
+          
+          // Redirect to admin page after successful login
+          setTimeout(() => navigate('/admin'), 1500);
         } else {
           throw signUpError;
         }
@@ -48,6 +53,9 @@ export default function AdminSetup() {
           title: "Admin criado!",
           description: "Conta de administrador criada com sucesso!"
         });
+        
+        // Redirect to admin page after successful creation
+        setTimeout(() => navigate('/admin'), 1500);
       }
 
       // Now assign admin role

@@ -8,6 +8,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { AlertTriangle, CheckCircle, MessageSquare, Bug } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { Header } from '@/components/header';
+import { Footer } from '@/components/footer';
 
 export default function ReportarProblema() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -79,6 +81,7 @@ export default function ReportarProblema() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background/50 to-primary/5">
+      <Header />
       <div className="container mx-auto px-4 py-12">
         {/* Hero Section */}
         <div className="text-center mb-16">
@@ -234,6 +237,7 @@ export default function ReportarProblema() {
           </Card>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

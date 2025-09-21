@@ -1,5 +1,6 @@
 import { GroupCard } from "./group-card";
 import { WhatsAppGroup } from "@/data/mock-groups";
+import { Link } from "react-router-dom";
 
 interface GroupGridProps {
   groups: WhatsAppGroup[];
@@ -13,9 +14,9 @@ export function GroupGrid({ groups, title, showMore = false }: GroupGridProps) {
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold text-foreground">{title}</h2>
         {showMore && (
-          <button className="text-primary hover:text-primary-hover text-sm font-medium link-underline">
+          <Link to="/all-groups" className="text-primary hover:text-primary-hover text-sm font-medium link-underline">
             Ver todos
-          </button>
+          </Link>
         )}
       </div>
       

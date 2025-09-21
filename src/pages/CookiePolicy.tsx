@@ -2,6 +2,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Cookie, Settings, Shield, BarChart, Target, Info } from 'lucide-react';
+import { Header } from '@/components/header';
+import { Footer } from '@/components/footer';
 
 export default function CookiePolicy() {
   const cookieTypes = [
@@ -88,6 +90,7 @@ export default function CookiePolicy() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background/50 to-primary/5">
+      <Header />
       <div className="container mx-auto px-4 py-12">
         {/* Hero Section */}
         <div className="text-center mb-16">
@@ -292,6 +295,7 @@ export default function CookiePolicy() {
           </CardContent>
         </Card>
       </div>
+      <Footer />
     </div>
   );
 }

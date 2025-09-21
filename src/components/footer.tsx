@@ -22,10 +22,17 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Links Úteis */}
+          {/* Navegação */}
           <div className="space-y-4">
-            <h3 className="font-semibold">Links Úteis</h3>
+            <h3 className="font-semibold">Navegação</h3>
             <ul className="space-y-2 text-sm">
+              <li>
+                <Link to="/">
+                  <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
+                    Início
+                  </Button>
+                </Link>
+              </li>
               <li>
                 <Link to="/como-funciona">
                   <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
@@ -80,11 +87,9 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/central-ajuda">
-                  <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
-                    FAQ
-                  </Button>
-                </Link>
+                <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
+                  FAQ
+                </Button>
               </li>
             </ul>
           </div>
@@ -112,7 +117,8 @@ export function Footer() {
               <li>
                 <Link to="/cookie-policy">
                   <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
-                    Cookies
+                    <FileText className="h-4 w-4 mr-1" />
+                    Política de Cookies
                   </Button>
                 </Link>
               </li>
@@ -123,10 +129,10 @@ export function Footer() {
         {/* Disclaimer */}
         <div className="border-t border-primary-foreground/20 mt-8 pt-8">
           <div className="text-center space-y-2">
-            <p className="text-xs text-primary-foreground/60">
+            <p className="text-sm text-primary-foreground/60">
               Este site não tem qualquer vínculo com Meta Platforms, Inc. (WhatsApp).
             </p>
-            <p className="text-xs text-primary-foreground/60">
+            <p className="text-sm text-primary-foreground/60">
               © 2025 Grupos de WhatsApp | Todos os direitos reservados | Desenvolvido por{" "}
               <a 
                 href="https://danielolimpio.com/" 

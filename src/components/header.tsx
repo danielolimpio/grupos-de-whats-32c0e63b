@@ -25,11 +25,11 @@ export function Header() {
                 className="h-10 w-10 rounded-full cursor-pointer"
               />
             </Link>
-            <div className="hidden md:block">
-              <h1 className="text-xl font-bold text-foreground">
+            <Link to="/" className="hidden md:block">
+              <h1 className="text-xl font-bold text-foreground cursor-pointer hover:text-primary transition-colors">
                 Grupos de <span className="text-primary">WhatsApp</span>
               </h1>
-            </div>
+            </Link>
           </div>
 
           {/* Search Bar */}

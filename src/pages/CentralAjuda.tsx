@@ -3,6 +3,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Button } from '@/components/ui/button';
 import { HelpCircle, MessageCircle, Mail, Phone, Search, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Header } from '@/components/header';
+import { Footer } from '@/components/footer';
 
 export default function CentralAjuda() {
   const faqItems = [
@@ -97,6 +99,7 @@ export default function CentralAjuda() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background/50 to-primary/5">
+      <Header />
       <div className="container mx-auto px-4 py-12">
         {/* Hero Section */}
         <div className="text-center mb-16">
@@ -204,6 +207,7 @@ export default function CentralAjuda() {
           </CardContent>
         </Card>
       </div>
+      <Footer />
     </div>
   );
 }

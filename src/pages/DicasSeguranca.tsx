@@ -1,6 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Shield, Lock, Eye, AlertTriangle, UserCheck, MessageSquare } from 'lucide-react';
+import { Header } from '@/components/header';
+import { Footer } from '@/components/footer';
 
 export default function DicasSeguranca() {
   const securityTips = [
@@ -69,6 +71,7 @@ export default function DicasSeguranca() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background/50 to-primary/5">
+      <Header />
       <div className="container mx-auto px-4 py-12">
         {/* Hero Section */}
         <div className="text-center mb-16">
@@ -171,6 +174,7 @@ export default function DicasSeguranca() {
           </CardContent>
         </Card>
       </div>
+      <Footer />
     </div>
   );
 }
