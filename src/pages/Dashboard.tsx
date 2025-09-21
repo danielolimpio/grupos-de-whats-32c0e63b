@@ -36,6 +36,7 @@ interface Group {
   status: string;
   access_count: number;
   is_premium: boolean;
+  is_premium_active: boolean;
   rejection_reason?: string;
   created_at: string;
   updated_at: string;

@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import Admin from "./pages/Admin";
+import AdminSetup from "./pages/AdminSetup";
 import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
 import ImpulsionarGrupos from "./pages/ImpulsionarGrupos";
@@ -28,6 +29,7 @@ const App = () => (
               <Route path="/auth" element={<Auth />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/admin" element={<Admin />} />
+              <Route path="/admin-setup" element={<AdminSetup />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/impulsionar-grupos" element={<ImpulsionarGrupos />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

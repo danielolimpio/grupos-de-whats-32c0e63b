@@ -77,10 +77,16 @@ export default function Admin() {
         .eq('user_id', user.id)
         .single();
 
-      if (error) throw error;
+      if (error) {
+        // User doesn't have a role, so not admin
+        setProfile(null);
+        return;
+      }
+      
       setProfile(data);
     } catch (error) {
       console.error('Error checking admin access:', error);
+      setProfile(null);
     }
   };
 
