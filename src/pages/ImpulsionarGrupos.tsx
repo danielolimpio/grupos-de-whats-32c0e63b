@@ -5,16 +5,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Star, Clock, Users, TrendingUp, DollarSign, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-
 export default function ImpulsionarGrupos() {
-  return (
-    <>
+  return <>
       <Helmet>
         <title>Impulsionar Grupos - Destaque seu Grupo de WhatsApp | Grupos de Whats</title>
-        <meta 
-          name="description" 
-          content="Transforme seu grupo em Premium por R$ 9,90 e ganhe destaque na primeira página por 24 horas. Mais visibilidade, mais membros!" 
-        />
+        <meta name="description" content="Transforme seu grupo em Premium por R$ 9,90 e ganhe destaque na primeira página por 24 horas. Mais visibilidade, mais membros!" />
         <meta name="keywords" content="impulsionar grupo whatsapp, premium, destaque, visibilidade, pix, pagamento" />
         <link rel="canonical" href="https://gruposdewhats.com.br/impulsionar-grupos" />
         <meta property="og:title" content="Impulsionar Grupos - Destaque seu Grupo de WhatsApp" />
@@ -229,7 +224,7 @@ export default function ImpulsionarGrupos() {
                 </Button>
               </Link>
               <Link to="/dashboard">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                <Button size="lg" variant="outline" className="border-white text-white bg-amber-600 hover:bg-amber-500">
                   <Star className="h-4 w-4 mr-2" />
                   Impulsionar Agora
                 </Button>
@@ -240,6 +235,5 @@ export default function ImpulsionarGrupos() {
 
         <Footer />
       </div>
-    </>
-  );
+    </>;
 }
