@@ -15,8 +15,8 @@ import ImpulsionarGrupos from "./pages/ImpulsionarGrupos";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <HelmetProvider>
+  <HelmetProvider>
+    <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <TooltipProvider>
           <Toaster />
@@ -34,8 +34,8 @@ const App = () => (
           </BrowserRouter>
         </TooltipProvider>
       </AuthProvider>
-    </HelmetProvider>
-  </QueryClientProvider>
+    </QueryClientProvider>
+  </HelmetProvider>
 );
 
 export default App;
