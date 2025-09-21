@@ -22,6 +22,7 @@ import CookiePolicy from "./pages/CookiePolicy";
 import NotFound from "./pages/NotFound";
 import ImpulsionarGrupos from "./pages/ImpulsionarGrupos";
 import AllGroups from "./pages/AllGroups";
+import FAQ from "./pages/FAQ";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,7 @@ const App = () => (
               <Route path="/cookie-policy" element={<CookiePolicy />} />
               <Route path="/impulsionar-grupos" element={<ImpulsionarGrupos />} />
               <Route path="/all-groups" element={<AllGroups />} />
+              <Route path="/faq" element={<FAQ />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

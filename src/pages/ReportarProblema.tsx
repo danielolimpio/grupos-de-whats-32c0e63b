@@ -226,11 +226,11 @@ export default function ReportarProblema() {
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <h3 className="font-semibold mb-1">Email Direto</h3>
-                  <p className="text-sm text-muted-foreground">contato@gruposwhatsapp.com</p>
+                  <p className="text-sm text-muted-foreground">contato@gruposdewhats.com.br</p>
                 </div>
                 <div>
                   <h3 className="font-semibold mb-1">WhatsApp</h3>
-                  <p className="text-sm text-muted-foreground">+55 11 99999-9999</p>
+                  <p className="text-sm text-muted-foreground">+55 (12) 98251-9116</p>
                 </div>
               </div>
             </CardContent>

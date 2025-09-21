@@ -10,6 +10,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { Upload, Plus, AlertTriangle } from 'lucide-react';
 import { getAllCategoriesSorted } from '@/data/categories';
+import { WhatsAppGroupImageLoader } from '@/components/WhatsAppGroupImageLoader';
 
 interface GroupFormProps {
   onSuccess: () => void;
@@ -21,6 +22,7 @@ export default function GroupForm({ onSuccess }: GroupFormProps) {
   const [loading, setLoading] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [imageUrl, setImageUrl] = useState<string>('');
+  const [whatsappLink, setWhatsappLink] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
   const categories = getAllCategoriesSorted();
 
@@ -221,6 +223,8 @@ export default function GroupForm({ onSuccess }: GroupFormProps) {
                   id="whatsappLink"
                   name="whatsappLink"
                   placeholder="https://chat.whatsapp.com/..."
+                  value={whatsappLink}
+                  onChange={(e) => setWhatsappLink(e.target.value)}
                   required
                   disabled={loading}
                 />
@@ -243,34 +247,45 @@ export default function GroupForm({ onSuccess }: GroupFormProps) {
               </div>
 
               <div className="space-y-2">
-                <Label>Imagem do Grupo (opcional)</Label>
-                <div className="space-y-2">
-                  <input
-                    ref={fileInputRef}
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageUpload}
-                    className="hidden"
+                <Label>Imagem do Grupo</Label>
+                <div className="space-y-3">
+                  {/* Auto-load image from WhatsApp link */}
+                  <WhatsAppGroupImageLoader
+                    whatsappLink={whatsappLink}
+                    onImageLoad={setImageUrl}
+                    currentImageUrl={imageUrl}
                   />
-                  <Button 
-                    type="button"
-                    variant="outline" 
-                    onClick={() => fileInputRef.current?.click()}
-                    disabled={uploading || loading}
-                    className="w-full"
-                  >
-                    <Upload className="h-4 w-4 mr-2" />
-                    {uploading ? "Enviando..." : "Escolher Imagem"}
-                  </Button>
-                  {imageUrl && (
-                    <div className="relative">
-                      <img 
-                        src={imageUrl} 
-                        alt="Preview" 
-                        className="w-full h-32 object-cover rounded border"
-                      />
-                    </div>
-                  )}
+                  
+                  {/* Manual upload option */}
+                  <div className="space-y-2">
+                    <p className="text-sm text-muted-foreground">Ou envie uma imagem personalizada:</p>
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageUpload}
+                      className="hidden"
+                    />
+                    <Button 
+                      type="button"
+                      variant="outline" 
+                      onClick={() => fileInputRef.current?.click()}
+                      disabled={uploading || loading}
+                      className="w-full"
+                    >
+                      <Upload className="h-4 w-4 mr-2" />
+                      {uploading ? "Enviando..." : "Enviar Imagem Personalizada"}
+                    </Button>
+                    {imageUrl && !whatsappLink.includes('chat.whatsapp.com') && (
+                      <div className="relative">
+                        <img 
+                          src={imageUrl} 
+                          alt="Preview" 
+                          className="w-full h-32 object-cover rounded border"
+                        />
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>

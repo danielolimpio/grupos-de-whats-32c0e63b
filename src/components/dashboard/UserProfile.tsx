@@ -205,7 +205,7 @@ export default function UserProfile({ profile, onUpdate }: UserProfileProps) {
                   id="phone"
                   name="phone"
                   defaultValue={profile.phone || ''}
-                  placeholder="(11) 99999-9999"
+                  placeholder="(12) 98251-9116"
                   disabled={loading}
                 />
               </div>

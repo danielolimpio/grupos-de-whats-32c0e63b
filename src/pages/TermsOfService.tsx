@@ -210,8 +210,8 @@ export default function TermsOfService() {
             <div>
               <h3 className="font-semibold mb-2">Contato Legal</h3>
               <p className="text-muted-foreground text-sm">
-                Para questões legais: juridico@gruposwhatsapp.com<br/>
-                Para outros assuntos: contato@gruposwhatsapp.com
+                Para questões legais: juridico@gruposdewhats.com.br<br/>
+                Para outros assuntos: contato@gruposdewhats.com.br
               </p>
             </div>
             <div>

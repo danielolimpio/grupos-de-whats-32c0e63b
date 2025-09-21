@@ -61,14 +61,14 @@ export default function CentralAjuda() {
     {
       icon: Mail,
       title: "Email",
-      description: "contato@gruposwhatsapp.com",
+      description: "contato@gruposdewhats.com.br",
       action: "Enviar Email",
       available: "Resposta em até 24h"
     },
     {
       icon: Phone,
       title: "WhatsApp",
-      description: "+55 11 99999-9999",
+      description: "+55 (12) 98251-9116",
       action: "Chamar no WhatsApp",
       available: "Seg a Sex, 9h às 18h"
     }
@@ -176,7 +176,25 @@ export default function CentralAjuda() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="text-sm text-muted-foreground">{channel.available}</div>
-                  <Button className="w-full">{channel.action}</Button>
+                  {channel.title === 'WhatsApp' ? (
+                    <Button asChild className="w-full">
+                      <a 
+                        href="https://wa.me/5512982519116?text=Olá, Gostaria de falar sobre o site Grupos de Whatsapp!"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {channel.action}
+                      </a>
+                    </Button>
+                  ) : channel.title === 'Email' ? (
+                    <Button asChild className="w-full">
+                      <a href="mailto:contato@gruposdewhats.com.br">
+                        {channel.action}
+                      </a>
+                    </Button>
+                  ) : (
+                    <Button className="w-full">{channel.action}</Button>
+                  )}
                 </CardContent>
               </Card>
             ))}

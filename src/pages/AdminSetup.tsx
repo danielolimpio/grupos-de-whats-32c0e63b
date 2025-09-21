@@ -17,60 +17,54 @@ export default function AdminSetup() {
   const handleCreateAdmin = async () => {
     setLoading(true);
     try {
-      // Create the admin user
-      const { data: authData, error: signUpError } = await supabase.auth.signUp({
+      // First try to sign in (assuming user already exists)
+      const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
         email,
-        password,
-        options: {
-          emailRedirectTo: `${window.location.origin}/`
-        }
+        password
       });
 
-      if (signUpError) {
-        if (signUpError.message.includes('already registered')) {
-          // User already exists, try to sign in
-          const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
-            email,
-            password
-          });
-
-          if (signInError) {
-            throw signInError;
+      if (signInError) {
+        // If sign in fails, try to create new user
+        const { data: authData, error: signUpError } = await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            emailRedirectTo: `${window.location.origin}/admin`
           }
+        });
 
-          toast({
-            title: "Login realizado",
-            description: "Admin logado com sucesso!"
-          });
-          
-          // Redirect to admin page after successful login
-          setTimeout(() => navigate('/admin'), 1500);
-        } else {
+        if (signUpError) {
           throw signUpError;
         }
-      } else {
+
         toast({
           title: "Admin criado!",
           description: "Conta de administrador criada com sucesso!"
         });
-        
-        // Redirect to admin page after successful creation
-        setTimeout(() => navigate('/admin'), 1500);
+      } else {
+        toast({
+          title: "Login realizado",
+          description: "Admin logado com sucesso!"
+        });
       }
 
-      // Now assign admin role
-      const currentUser = (await supabase.auth.getUser()).data.user;
-      if (currentUser) {
+      // Get current user and assign admin role
+      const { data: { user }, error: userError } = await supabase.auth.getUser();
+      if (user && !userError) {
+        // Create or update admin role
         const { error: roleError } = await supabase
           .from('user_roles')
           .upsert({ 
-            user_id: currentUser.id, 
+            user_id: user.id, 
             role: 'admin' 
           });
 
         if (roleError) {
           console.error('Error assigning admin role:', roleError);
         }
+
+        // Redirect to admin page
+        setTimeout(() => navigate('/admin'), 1000);
       }
 
     } catch (error: any) {

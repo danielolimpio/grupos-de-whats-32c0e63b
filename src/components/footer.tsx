@@ -1,4 +1,4 @@
-import { MessageCircle, Mail, Shield, FileText } from "lucide-react";
+import { MessageCircle, Mail, Shield, FileText, Phone, Cookie } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 
@@ -70,7 +70,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               <li className="flex items-center space-x-2">
                 <Mail className="h-4 w-4" />
-                <span>contato@gruposwhatsapp.com</span>
+                <span>contato@gruposdewhats.com.br</span>
               </li>
               <li>
                 <Link to="/central-ajuda">
@@ -87,9 +87,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
-                  FAQ
-                </Button>
+                <Link to="/faq">
+                  <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
+                    FAQ
+                  </Button>
+                </Link>
               </li>
             </ul>
           </div>
@@ -117,7 +119,7 @@ export function Footer() {
               <li>
                 <Link to="/cookie-policy">
                   <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
-                    <FileText className="h-4 w-4 mr-1" />
+                    <Cookie className="h-4 w-4 mr-1" />
                     Política de Cookies
                   </Button>
                 </Link>
@@ -129,10 +131,10 @@ export function Footer() {
         {/* Disclaimer */}
         <div className="border-t border-primary-foreground/20 mt-8 pt-8">
           <div className="text-center space-y-2">
-            <p className="text-sm text-primary-foreground/60">
+            <p className="text-base text-primary-foreground/60 font-medium">
               Este site não tem qualquer vínculo com Meta Platforms, Inc. (WhatsApp).
             </p>
-            <p className="text-sm text-primary-foreground/60">
+            <p className="text-base text-primary-foreground/60 font-medium">
               © 2025 Grupos de WhatsApp | Todos os direitos reservados | Desenvolvido por{" "}
               <a 
                 href="https://danielolimpio.com/" 

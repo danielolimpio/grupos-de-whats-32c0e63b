@@ -288,8 +288,8 @@ export default function CookiePolicy() {
               entre em contato conosco:
             </p>
             <div className="space-y-2 text-sm">
-              <p><strong>Email:</strong> privacidade@gruposwhatsapp.com</p>
-              <p><strong>Telefone:</strong> +55 11 99999-9999</p>
+              <p><strong>Email:</strong> privacidade@gruposdewhats.com.br</p>
+              <p><strong>Telefone:</strong> +55 (12) 98251-9116</p>
               <p><strong>Horário:</strong> Segunda a sexta, 9h às 18h</p>
             </div>
           </CardContent>
