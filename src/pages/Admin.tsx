@@ -217,6 +217,17 @@ export default function Admin() {
     return <Navigate to="/auth" replace />;
   }
 
+  if (loadingData) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-background via-background/50 to-primary/5 flex items-center justify-center">
+        <div className="text-center">
+          <Shield className="h-12 w-12 text-primary mx-auto mb-4 animate-pulse" />
+          <p className="text-muted-foreground">Carregando...</p>
+        </div>
+      </div>
+    );
+  }
+
   if (!profile || (profile.role !== 'admin' && profile.role !== 'moderator')) {
     return <Navigate to="/dashboard" replace />;
   }

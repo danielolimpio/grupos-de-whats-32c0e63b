@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/hooks/useAuth';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -53,6 +53,7 @@ interface Profile {
 export default function Dashboard() {
   const { user, signOut, loading } = useAuth();
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [groups, setGroups] = useState<Group[]>([]);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loadingData, setLoadingData] = useState(true);
@@ -102,11 +103,21 @@ export default function Dashboard() {
   };
 
   const handleSignOut = async () => {
-    await signOut();
-    toast({
-      title: "Logout realizado",
-      description: "Você foi desconectado com sucesso.",
-    });
+    try {
+      await signOut();
+      toast({
+        title: "Logout realizado",
+        description: "Você foi desconectado com sucesso.",
+      });
+      navigate('/');
+    } catch (error: any) {
+      console.error('Logout error:', error);
+      toast({
+        title: "Erro no logout",
+        description: error.message,
+        variant: "destructive"
+      });
+    }
   };
 
   const getStatusBadge = (status: string) => {

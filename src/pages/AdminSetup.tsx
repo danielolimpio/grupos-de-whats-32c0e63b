@@ -63,8 +63,8 @@ export default function AdminSetup() {
           console.error('Error assigning admin role:', roleError);
         }
 
-        // Redirect to admin page
-        setTimeout(() => navigate('/admin'), 1000);
+        // Wait a bit for role to be assigned, then redirect to admin page
+        setTimeout(() => navigate('/admin'), 2000);
       }
 
     } catch (error: any) {
