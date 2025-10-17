@@ -33,6 +33,18 @@ serve(async (req) => {
 
     const html = await response.text()
 
+    // Helper function to decode HTML entities
+    const decodeHTMLEntities = (text: string): string => {
+      return text
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"')
+        .replace(/&#x27;/g, "'")
+        .replace(/&#x([0-9A-Fa-f]+);/g, (match, hex) => String.fromCharCode(parseInt(hex, 16)))
+        .replace(/&#(\d+);/g, (match, dec) => String.fromCharCode(parseInt(dec, 10)))
+    }
+
     // Extract Open Graph image from meta tags - try multiple formats
     let imageUrl = null
     
@@ -41,11 +53,16 @@ serve(async (req) => {
     const metaImageMatch = html.match(/<meta name="image" content="([^"]+)"/)
     const twitterImageMatch = html.match(/<meta name="twitter:image" content="([^"]+)"/)
     
-    imageUrl = ogImageMatch?.[1] || metaImageMatch?.[1] || twitterImageMatch?.[1]
+    let rawImageUrl = ogImageMatch?.[1] || metaImageMatch?.[1] || twitterImageMatch?.[1]
+    
+    // Decode HTML entities in the image URL
+    if (rawImageUrl) {
+      imageUrl = decodeHTMLEntities(rawImageUrl)
+    }
     
     // Also try to extract the group name
     const ogTitleMatch = html.match(/<meta property="og:title" content="([^"]+)"/)
-    const groupName = ogTitleMatch ? ogTitleMatch[1] : null
+    const groupName = ogTitleMatch ? decodeHTMLEntities(ogTitleMatch[1]) : null
     
     console.log('Image URL found:', imageUrl)
     console.log('Group name found:', groupName)

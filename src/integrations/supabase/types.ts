@@ -100,6 +100,7 @@ export type Database = {
           premium_expires_at: string | null
           premium_payment_id: string | null
           rejection_reason: string | null
+          slug: string | null
           status: string | null
           updated_at: string
           user_id: string
@@ -123,6 +124,7 @@ export type Database = {
           premium_expires_at?: string | null
           premium_payment_id?: string | null
           rejection_reason?: string | null
+          slug?: string | null
           status?: string | null
           updated_at?: string
           user_id: string
@@ -146,6 +148,7 @@ export type Database = {
           premium_expires_at?: string | null
           premium_payment_id?: string | null
           rejection_reason?: string | null
+          slug?: string | null
           status?: string | null
           updated_at?: string
           user_id?: string
@@ -269,6 +272,10 @@ export type Database = {
       contains_prohibited_content: {
         Args: { text_content: string }
         Returns: boolean
+      }
+      generate_slug: {
+        Args: { name: string }
+        Returns: string
       }
       get_public_profile: {
         Args: { profile_user_id: string }

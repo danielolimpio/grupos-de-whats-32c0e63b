@@ -3,6 +3,7 @@ import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { cn } from "@/lib/utils";
+import { useNavigate } from "react-router-dom";
 
 interface GroupCardProps {
   id: string;
@@ -14,6 +15,7 @@ interface GroupCardProps {
   isPremium?: boolean;
   isNew?: boolean;
   className?: string;
+  slug?: string;
 }
 
 export function GroupCard({
@@ -24,8 +26,16 @@ export function GroupCard({
   memberCount,
   isPremium = false,
   isNew = false,
-  className
+  className,
+  slug
 }: GroupCardProps) {
+  const navigate = useNavigate();
+  
+  const handleJoinClick = () => {
+    if (slug) {
+      navigate(`/grupo/${slug}`);
+    }
+  };
   return (
     <Card className={cn(
       "card-hover overflow-hidden transition-all duration-300 hover:shadow-lg",
@@ -90,6 +100,7 @@ export function GroupCard({
             <Button 
               size="sm" 
               className="w-full btn-whatsapp text-xs"
+              onClick={handleJoinClick}
             >
               <ExternalLink className="h-3 w-3 mr-1" />
               Entrar

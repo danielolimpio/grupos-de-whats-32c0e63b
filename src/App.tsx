@@ -23,6 +23,7 @@ import NotFound from "./pages/NotFound";
 import ImpulsionarGrupos from "./pages/ImpulsionarGrupos";
 import AllGroups from "./pages/AllGroups";
 import FAQ from "./pages/FAQ";
+import GroupDetails from "./pages/GroupDetails";
 
 const queryClient = new QueryClient();
 
@@ -52,6 +53,7 @@ const App = () => (
               <Route path="/impulsionar-grupos" element={<ImpulsionarGrupos />} />
               <Route path="/all-groups" element={<AllGroups />} />
               <Route path="/faq" element={<FAQ />} />
+              <Route path="/grupo/:slug" element={<GroupDetails />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
