@@ -33,13 +33,22 @@ serve(async (req) => {
 
     const html = await response.text()
 
-    // Extract Open Graph image from meta tags
+    // Extract Open Graph image from meta tags - try multiple formats
+    let imageUrl = null
+    
+    // Try different meta tag formats
     const ogImageMatch = html.match(/<meta property="og:image" content="([^"]+)"/)
-    const imageUrl = ogImageMatch ? ogImageMatch[1] : null
-
+    const metaImageMatch = html.match(/<meta name="image" content="([^"]+)"/)
+    const twitterImageMatch = html.match(/<meta name="twitter:image" content="([^"]+)"/)
+    
+    imageUrl = ogImageMatch?.[1] || metaImageMatch?.[1] || twitterImageMatch?.[1]
+    
     // Also try to extract the group name
     const ogTitleMatch = html.match(/<meta property="og:title" content="([^"]+)"/)
     const groupName = ogTitleMatch ? ogTitleMatch[1] : null
+    
+    console.log('Image URL found:', imageUrl)
+    console.log('Group name found:', groupName)
 
     if (imageUrl) {
       return new Response(

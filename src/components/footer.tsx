@@ -57,7 +57,7 @@ export function Footer() {
               <li>
                 <Link to="/impulsionar-grupos">
                   <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
-                    Impulsionar Grupos
+                    Anunciar Grupos
                   </Button>
                 </Link>
               </li>

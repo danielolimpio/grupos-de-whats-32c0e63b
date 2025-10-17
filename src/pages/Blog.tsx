@@ -222,14 +222,15 @@ export default function Blog() {
           </section>
         )}
 
-        {/* All Posts */}
-        <section>
-          <h2 className="text-2xl font-bold mb-6">
-            {searchTerm || selectedCategory !== "Todos" 
-              ? `Resultados ${searchTerm ? `para "${searchTerm}"` : `em ${selectedCategory}`}` 
-              : "Todos os Artigos"
-            }
-          </h2>
+        <div className="grid lg:grid-cols-3 gap-8">
+          {/* Main Content - All Posts */}
+          <section className="lg:col-span-2">
+            <h2 className="text-2xl font-bold mb-6">
+              {searchTerm || selectedCategory !== "Todos" 
+                ? `Resultados ${searchTerm ? `para "${searchTerm}"` : `em ${selectedCategory}`}` 
+                : "Todos os Artigos"
+              }
+            </h2>
           
           {filteredPosts.length === 0 ? (
             <Card>
@@ -243,7 +244,7 @@ export default function Blog() {
               </CardContent>
             </Card>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 gap-6">
               {filteredPosts.map((post) => (
                 <Card key={post.id} className="hover:shadow-lg transition-shadow cursor-pointer group">
                   <div className="aspect-video overflow-hidden rounded-t-lg">
@@ -293,7 +294,35 @@ export default function Blog() {
               ))}
             </div>
           )}
-        </section>
+          </section>
+
+          {/* Sidebar - Blog Tips */}
+          <aside className="lg:col-span-1">
+            <Card className="sticky top-4">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <TrendingUp className="h-5 w-5 text-primary" />
+                  Dicas do Blog
+                </CardTitle>
+                <CardDescription>Artigos mais populares</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3">
+                  {blogPosts.slice(0, 10).map((post) => (
+                    <li key={post.id}>
+                      <Link 
+                        to={`/blog/${post.id}`}
+                        className="text-sm hover:text-primary transition-colors line-clamp-2 block"
+                      >
+                        {post.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          </aside>
+        </div>
 
         {/* Newsletter CTA */}
         <section className="mt-16">

@@ -3,9 +3,21 @@ import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Star, Clock, Users, TrendingUp, DollarSign, Zap } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { useAuth } from "@/hooks/useAuth";
 export default function ImpulsionarGrupos() {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const handleEnviarGrupo = () => {
+    if (user) {
+      navigate('/dashboard');
+    } else {
+      navigate('/auth');
+    }
+  };
+
   return <>
       <Helmet>
         <title>Impulsionar Grupos - Destaque seu Grupo de WhatsApp | Grupos de Whats</title>
@@ -33,15 +45,13 @@ export default function ImpulsionarGrupos() {
               Destaque seu grupo na primeira página e aumente sua visibilidade por apenas R$ 9,90 por 24 horas
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/enviar-grupos">
-                <Button size="lg" className="bg-primary hover:bg-primary/90">
-                  Enviar Grupo Primeiro
-                </Button>
-              </Link>
+              <Button size="lg" className="bg-primary hover:bg-primary/90" onClick={handleEnviarGrupo}>
+                Enviar Grupo Primeiro
+              </Button>
               <Link to="/dashboard">
                 <Button size="lg" variant="outline" className="border-yellow-500 text-yellow-600 hover:bg-yellow-50">
                   <Star className="h-4 w-4 mr-2" />
-                  Impulsionar Agora
+                  Anunciar Agora
                 </Button>
               </Link>
             </div>
@@ -218,15 +228,13 @@ export default function ImpulsionarGrupos() {
               Transforme seu grupo em Premium e alcance milhares de novos membros
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/enviar-grupos">
-                <Button size="lg" variant="secondary" className="bg-white text-yellow-600 hover:bg-gray-100">
-                  Enviar Grupo Primeiro
-                </Button>
-              </Link>
+              <Button size="lg" variant="secondary" className="bg-white text-yellow-600 hover:bg-gray-100" onClick={handleEnviarGrupo}>
+                Enviar Grupo Primeiro
+              </Button>
               <Link to="/dashboard">
                 <Button size="lg" variant="outline" className="border-white text-white bg-amber-600 hover:bg-amber-500">
                   <Star className="h-4 w-4 mr-2" />
-                  Impulsionar Agora
+                  Anunciar Agora
                 </Button>
               </Link>
             </div>

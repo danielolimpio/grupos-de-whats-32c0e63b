@@ -191,7 +191,7 @@ export default function GroupsList({ groups, onRefresh, getStatusBadge }: Groups
                     onClick={() => handleBoostToPremium(group.id)}
                   >
                     <Star className="h-4 w-4 mr-2" />
-                    Impulsionar
+                    Anunciar
                   </Button>
                 )}
                 {group.status === 'approved' && (

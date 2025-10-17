@@ -39,8 +39,20 @@ export function WhatsAppGroupImageLoader({
       }
 
       if (data?.success && data?.imageUrl) {
-        setLoadedImageUrl(data.imageUrl);
-        onImageLoad(data.imageUrl);
+        // Verify the image URL is valid by trying to load it
+        const img = new Image();
+        img.onload = () => {
+          setLoadedImageUrl(data.imageUrl);
+          onImageLoad(data.imageUrl);
+        };
+        img.onerror = () => {
+          console.error('Failed to load image from URL:', data.imageUrl);
+          const placeholderImage = `https://ui-avatars.com/api/?name=${encodeURIComponent('Grupo WhatsApp')}&size=200&background=25d366&color=ffffff&format=png`;
+          setLoadedImageUrl(placeholderImage);
+          onImageLoad(placeholderImage);
+          setError('A imagem do grupo não pôde ser carregada');
+        };
+        img.src = data.imageUrl;
       } else {
         // Use placeholder if no image found
         const placeholderImage = `https://ui-avatars.com/api/?name=${encodeURIComponent('Grupo WhatsApp')}&size=200&background=25d366&color=ffffff&format=png`;

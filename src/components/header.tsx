@@ -56,7 +56,7 @@ export function Header() {
                     size="sm" 
                     className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-semibold"
                   >
-                    Impulsionar
+                    Anunciar
                   </Button>
                 </Link>
                 <Link to="/dashboard">
@@ -96,7 +96,7 @@ export function Header() {
                     size="sm" 
                     className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-semibold"
                   >
-                    Impulsionar
+                    Anunciar
                   </Button>
                 </Link>
                 <Link to="/auth">
