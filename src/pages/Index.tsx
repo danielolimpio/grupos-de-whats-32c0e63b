@@ -39,7 +39,7 @@ const Index = () => {
       const { data, error } = await supabaseClient
         .from('groups')
         .select('id, slug, name, description, category, image_url, is_premium_active, created_at, access_count')
-        .eq('is_active', true)
+        .eq('status', 'approved')
         .order('created_at', { ascending: false });
 
       if (error) throw error;
