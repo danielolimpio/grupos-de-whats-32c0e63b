@@ -36,6 +36,7 @@ export function GroupGrid({ groups, title, showMore = false }: GroupGridProps) {
             memberCount={group.memberCount}
             isPremium={group.isPremium}
             isNew={group.isNew}
+            slug={group.id}
           />
         ))}
       </div>
