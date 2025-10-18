@@ -1,8 +1,10 @@
 import { useParams, Navigate } from "react-router-dom";
 import { Header } from "@/components/header";
+import { Sidebar } from "@/components/sidebar";
 import { Footer } from "@/components/footer";
 import { CookieBanner } from "@/components/cookie-banner";
 import { GroupGrid } from "@/components/group-grid";
+import { StatsBanner } from "@/components/stats-banner";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { getCategoryBySlug } from "@/data/categories";
@@ -26,6 +28,7 @@ const Category = () => {
   const category = getCategoryBySlug(slug || '');
   const [groups, setGroups] = useState<GroupData[]>([]);
   const [loading, setLoading] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   useEffect(() => {
     if (category) {
@@ -103,23 +106,45 @@ const Category = () => {
         
         <main className="container mx-auto px-4 py-8">
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">{category.name}</h1>
-            <p className="text-lg text-muted-foreground">{category.description}</p>
+            <StatsBanner />
           </div>
 
-          {groups.length > 0 ? (
-            <GroupGrid 
-              groups={groups}
-              title={`Todos os ${category.name}`}
-              showMore={false}
-            />
-          ) : (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground text-lg">
-                Ainda não há grupos cadastrados nesta categoria.
-              </p>
+          <div className="flex-col lg:flex-row gap-8 flex">
+            <div className="block lg:hidden">
+              <Sidebar 
+                selectedCategory={selectedCategory}
+                onCategorySelect={setSelectedCategory}
+              />
             </div>
-          )}
+
+            <div className="flex-1">
+              <div className="mb-6">
+                <h1 className="text-3xl md:text-4xl font-bold mb-4">{category.name}</h1>
+                <p className="text-lg text-muted-foreground">{category.description}</p>
+              </div>
+
+              {groups.length > 0 ? (
+                <GroupGrid 
+                  groups={groups}
+                  title={`Todos os ${category.name}`}
+                  showMore={false}
+                />
+              ) : (
+                <div className="text-center py-12">
+                  <p className="text-muted-foreground text-lg">
+                    Ainda não há grupos cadastrados nesta categoria.
+                  </p>
+                </div>
+              )}
+            </div>
+
+            <div className="hidden lg:block">
+              <Sidebar 
+                selectedCategory={selectedCategory}
+                onCategorySelect={setSelectedCategory}
+              />
+            </div>
+          </div>
         </main>
 
         <Footer />
