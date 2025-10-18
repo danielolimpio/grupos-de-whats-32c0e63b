@@ -5,12 +5,7 @@ import { StatsBanner } from "@/components/stats-banner";
 import { Footer } from "@/components/footer";
 import { CookieBanner } from "@/components/cookie-banner";
 import { useState, useEffect } from "react";
-import { createClient } from '@supabase/supabase-js';
-
-const SUPABASE_URL = "https://fagbmezuyjmvuhzelomu.supabase.co";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhZ2JtZXp1eWptdnVoemVsb211Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgxMzM0NTQsImV4cCI6MjA3MzcwOTQ1NH0.FrEqG1pR4s4n7uUwk2deLIVzdIIJ0kOAuQf9QVQN-G4";
-
-const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY);
+import { supabase } from "@/integrations/supabase/client";
 
 interface GroupData {
   id: string;
@@ -36,7 +31,7 @@ const Index = () => {
 
   const fetchGroupsData = async () => {
     try {
-      const { data, error } = await supabaseClient
+      const { data, error } = await supabase
         .from('groups')
         .select('id, slug, name, description, category, image_url, is_premium_active, created_at, access_count')
         .eq('status', 'approved')

@@ -23,7 +23,21 @@ import {
   Scissors,
   PenTool,
   MapPin,
-  Building2
+  Building2,
+  Megaphone,
+  Tag,
+  Sparkles,
+  TrendingUpIcon,
+  Share2,
+  Video,
+  Film,
+  Newspaper,
+  Trophy,
+  Sticker,
+  UtensilsCrossed,
+  Plane,
+  Laptop,
+  Dog
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
@@ -35,85 +49,31 @@ import { Link } from "react-router-dom";
 // Icon mapping for categories
 const getIconForCategory = (categoryId: string) => {
   const iconMap: Record<string, any> = {
+    'divulgacao': Megaphone,
     'vendas': ShoppingBag,
-    'marketing': TrendingUp,
-    'renda-extra': DollarSign,
-    'investimento': TrendingUp,
-    'empreendedores': Briefcase,
-    'afiliados': Users,
-    'olx': ShoppingBag,
-    'compra-venda': ShoppingBag,
-    'divulgacao': TrendingUp,
-    'instagram': Instagram,
-    'namoro': Heart,
-    'amizade': Heart,
-    'paquera': Heart,
-    'relacionamento': Heart,
-    'lgbt': Heart,
-    'amizade-colorida': Heart,
-    'terceira-idade': Users,
-    'casais': Heart,
-    'seguidores-instagram': Instagram,
-    'curtidas-instagram': Instagram,
-    'engajamento': TrendingUp,
-    'visualizacao-status': Instagram,
-    'free-fire': Gamepad2,
-    'fortnite': Gamepad2,
-    'roblox': Gamepad2,
-    'minecraft': Gamepad2,
-    'figurinhas': Image,
-    'memes': Image,
-    'anime': Image,
-    'rock': Music,
-    'vaquinha': HandHeart,
-    'doacao': HandHeart,
-    'criptomoedas': Bitcoin,
-    'apostas': TrendingUp,
-    'bet365': TrendingUp,
-    'leilao': ShoppingBag,
-    'rifa': TrendingUp,
-    'professores': GraduationCap,
-    'enfermagem': Stethoscope,
-    'motoristas': Car,
-    'motoboys': Car,
-    'caminhoneiros': Truck,
-    'construcao-civil': HardHat,
-    'diarista': Building2,
-    'confeitaria': ChefHat,
-    'croche': Scissors,
-    'escritores': PenTool,
-    'receitas': ChefHat,
-    'estudo-biblico': BookOpen,
-    'concurso': GraduationCap,
-    'leitura': BookOpen,
+    'promocoes': Tag,
+    'oportunidades': Sparkles,
+    'investimentos': TrendingUpIcon,
+    'redes-sociais': Share2,
     'livros': BookOpen,
-    'ingles': GraduationCap,
-    'emagrecimento': Heart,
-    'depressao': Heart,
-    'ansiedade': Heart,
-    'apoio-emocional': Heart,
-    'academia': Heart,
-    'oracao': Heart,
-    'evangelico': Heart,
-    'assembleia-deus': Heart,
-    'umbanda': Heart,
-    'mulheres': Users,
-    'maes': Heart,
-    'jovens': Users,
-    'coroas': Users,
-    'gay': Heart,
-    'lesbicas': Heart,
-    'transexuais': Heart,
-    'noticias': BookOpen,
-    'politica': BookOpen,
-    'direita': BookOpen,
-    'cachorros': Heart,
-    'carros': Car,
-    'motos': Car,
-    'bikes': Car,
-    'viagem': MapPin,
-    'brecho': ShoppingBag,
-    'desapego': ShoppingBag
+    'estudos': GraduationCap,
+    'cursos': GraduationCap,
+    'videos': Video,
+    'musicas': Music,
+    'amizades': Heart,
+    'namoros': Heart,
+    'encontros': Heart,
+    'liberais': Users,
+    'noticias': Newspaper,
+    'esportes': Trophy,
+    'figurinhas': Sticker,
+    'receitas': UtensilsCrossed,
+    'viagens': Plane,
+    'tecnologia': Laptop,
+    'games': Gamepad2,
+    'cinema': Film,
+    'pets': Dog,
+    'estilo': Scissors
   };
   
   return iconMap[categoryId] || Users;
@@ -151,21 +111,21 @@ export function Sidebar({ selectedCategory, onCategorySelect }: SidebarProps) {
           </Button>
           
           {displayCategories.map((category) => (
-            <Button 
-              key={category.id}
-              variant={selectedCategory === category.name ? "default" : "ghost"}
-              size="sm"
-              onClick={() => onCategorySelect(category.name)}
-              className="w-full justify-between hover:bg-muted/50 text-left p-2"
-            >
-              <div className="flex items-center min-w-0 flex-1">
-              {(() => {
-                const IconComponent = getIconForCategory(category.id);
-                return <IconComponent className="h-4 w-4 mr-2 text-primary flex-shrink-0" />;
-              })()}
-              <span className="text-xs truncate font-medium">{category.name}</span>
-            </div>
-            </Button>
+            <Link to={`/categoria/${category.slug}`} key={category.id} className="block">
+              <Button 
+                variant="ghost"
+                size="sm"
+                className="w-full justify-between hover:bg-muted/50 text-left p-2"
+              >
+                <div className="flex items-center min-w-0 flex-1">
+                {(() => {
+                  const IconComponent = getIconForCategory(category.id);
+                  return <IconComponent className="h-4 w-4 mr-2 text-primary flex-shrink-0" />;
+                })()}
+                <span className="text-xs truncate font-medium">{category.name}</span>
+              </div>
+              </Button>
+            </Link>
           ))}
           
           <Button
