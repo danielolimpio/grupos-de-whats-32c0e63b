@@ -429,9 +429,18 @@ export default function Admin() {
               </p>
             </div>
           </div>
-          <Badge className="bg-red-100 text-red-800 text-sm">
-            {profile.role === 'admin' ? 'Administrador' : 'Moderador'}
-          </Badge>
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              onClick={() => window.location.href = '/admin/users'}
+            >
+              <Users className="h-4 w-4 mr-2" />
+              Gerenciar Usuários
+            </Button>
+            <Badge className="bg-red-100 text-red-800 text-sm">
+              {profile.role === 'admin' ? 'Administrador' : 'Moderador'}
+            </Badge>
+          </div>
         </div>
 
         {/* Search and Filters */}

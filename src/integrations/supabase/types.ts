@@ -271,6 +271,7 @@ export type Database = {
           created_at: string
           display_name: string | null
           id: string
+          is_blocked: boolean | null
           phone: string | null
           points: number | null
           role: string | null
@@ -282,6 +283,7 @@ export type Database = {
           created_at?: string
           display_name?: string | null
           id?: string
+          is_blocked?: boolean | null
           phone?: string | null
           points?: number | null
           role?: string | null
@@ -293,6 +295,7 @@ export type Database = {
           created_at?: string
           display_name?: string | null
           id?: string
+          is_blocked?: boolean | null
           phone?: string | null
           points?: number | null
           role?: string | null

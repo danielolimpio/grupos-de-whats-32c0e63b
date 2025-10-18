@@ -10,6 +10,7 @@ import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import Admin from "./pages/Admin";
 import AdminSetup from "./pages/AdminSetup";
+import AdminUsers from "./pages/AdminUsers";
 import Blog from "./pages/Blog";
 import ComoFunciona from "./pages/ComoFunciona";
 import RegrasComunidade from "./pages/RegrasComunidade";
@@ -46,6 +47,7 @@ const App = () => (
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/admin-setup" element={<AdminSetup />} />
+              <Route path="/admin/users" element={<AdminUsers />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/como-funciona" element={<ComoFunciona />} />
               <Route path="/regras-comunidade" element={<RegrasComunidade />} />
