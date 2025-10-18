@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { supabase } from '@/integrations/supabase/client';
+import { supabaseAdmin } from '@/integrations/supabase/admin-client';
 import { Shield } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -18,14 +18,14 @@ export default function AdminSetup() {
     setLoading(true);
     try {
       // First try to sign in (assuming user already exists)
-      const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
+      const { data: signInData, error: signInError } = await supabaseAdmin.auth.signInWithPassword({
         email,
         password
       });
 
       if (signInError) {
         // If sign in fails, try to create new user
-        const { data: authData, error: signUpError } = await supabase.auth.signUp({
+        const { data: authData, error: signUpError } = await supabaseAdmin.auth.signUp({
           email,
           password,
           options: {
@@ -49,10 +49,10 @@ export default function AdminSetup() {
       }
 
       // Get current user and assign admin role
-      const { data: { user }, error: userError } = await supabase.auth.getUser();
+      const { data: { user }, error: userError } = await supabaseAdmin.auth.getUser();
       if (user && !userError) {
         // Create or update admin role
-        const { error: roleError } = await supabase
+        const { error: roleError } = await supabaseAdmin
           .from('user_roles')
           .upsert({ 
             user_id: user.id, 

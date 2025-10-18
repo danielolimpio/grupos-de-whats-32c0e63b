@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useAuth } from '@/hooks/useAuth';
 import { Navigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
-import { supabase } from '@/integrations/supabase/client';
+import { supabaseAdmin } from '@/integrations/supabase/admin-client';
 import { 
   Shield,
   Users,
@@ -53,12 +52,27 @@ interface Profile {
 }
 
 export default function AdminUsers() {
-  const { user, loading } = useAuth();
   const { toast } = useToast();
+  const [user, setUser] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState<UserData[]>([]);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loadingData, setLoadingData] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    // Check admin authentication
+    supabaseAdmin.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+      setLoading(false);
+    });
+
+    const { data: { subscription } } = supabaseAdmin.auth.onAuthStateChange((event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
 
   useEffect(() => {
     if (user) {
@@ -71,7 +85,7 @@ export default function AdminUsers() {
     if (!user) return;
     
     try {
-      const { data, error } = await supabase
+      const { data, error } = await supabaseAdmin
         .from('user_roles')
         .select('role')
         .eq('user_id', user.id)
@@ -92,7 +106,7 @@ export default function AdminUsers() {
   const fetchUsers = async () => {
     try {
       // Fetch profiles with group counts
-      const { data: profilesData, error: profilesError } = await supabase
+      const { data: profilesData, error: profilesError } = await supabaseAdmin
         .from('profiles')
         .select('*')
         .order('created_at', { ascending: false });
@@ -103,13 +117,13 @@ export default function AdminUsers() {
       const usersWithData = await Promise.all(
         (profilesData || []).map(async (profile) => {
           // Count groups
-          const { count: groupsCount } = await supabase
+          const { count: groupsCount } = await supabaseAdmin
             .from('groups')
             .select('*', { count: 'exact', head: true })
             .eq('user_id', profile.user_id);
 
           // Check if user has premium groups
-          const { data: premiumGroups } = await supabase
+          const { data: premiumGroups } = await supabaseAdmin
             .from('groups')
             .select('is_premium_active')
             .eq('user_id', profile.user_id)
@@ -140,7 +154,7 @@ export default function AdminUsers() {
 
   const handleToggleBlock = async (userId: string, currentBlocked: boolean) => {
     try {
-      const { error } = await supabase
+      const { error } = await supabaseAdmin
         .from('profiles')
         .update({ is_blocked: !currentBlocked })
         .eq('user_id', userId);

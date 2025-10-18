@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useAuth } from '@/hooks/useAuth';
 import { Navigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -8,7 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { supabase } from '@/integrations/supabase/client';
+import { supabaseAdmin } from '@/integrations/supabase/admin-client';
 import { 
   CheckCircle, 
   XCircle, 
@@ -72,8 +71,9 @@ interface Profile {
 }
 
 export default function Admin() {
-  const { user, loading } = useAuth();
   const { toast } = useToast();
+  const [user, setUser] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
   const [groups, setGroups] = useState<Group[]>([]);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loadingData, setLoadingData] = useState(true);
@@ -92,6 +92,21 @@ export default function Admin() {
   const [refreshingImage, setRefreshingImage] = useState(false);
 
   useEffect(() => {
+    // Check admin authentication
+    supabaseAdmin.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+      setLoading(false);
+    });
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabaseAdmin.auth.onAuthStateChange((event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  useEffect(() => {
     if (user) {
       checkAdminAccess();
       fetchGroups();
@@ -102,7 +117,7 @@ export default function Admin() {
     if (!user) return;
     
     try {
-      const { data, error } = await supabase
+      const { data, error } = await supabaseAdmin
         .from('user_roles')
         .select('role')
         .eq('user_id', user.id)
@@ -123,7 +138,7 @@ export default function Admin() {
 
   const fetchGroups = async () => {
     try {
-      const { data, error } = await supabase
+      const { data, error } = await supabaseAdmin
         .from('groups')
         .select('*')
         .eq('status', selectedStatus)
@@ -140,7 +155,7 @@ export default function Admin() {
 
   const handleApproveGroup = async (groupId: string) => {
     try {
-      const { error } = await supabase
+      const { error } = await supabaseAdmin
         .from('groups')
         .update({
           status: 'approved',
@@ -152,7 +167,7 @@ export default function Admin() {
       if (error) throw error;
 
       // Log admin action
-      await supabase
+      await supabaseAdmin
         .from('admin_actions')
         .insert({
           admin_id: user?.id,
@@ -177,7 +192,7 @@ export default function Admin() {
 
   const handleRejectGroup = async (groupId: string, reason: string) => {
     try {
-      const { error } = await supabase
+      const { error } = await supabaseAdmin
         .from('groups')
         .update({
           status: 'rejected',
@@ -190,7 +205,7 @@ export default function Admin() {
       if (error) throw error;
 
       // Log admin action
-      await supabase
+      await supabaseAdmin
         .from('admin_actions')
         .insert({
           admin_id: user?.id,
@@ -257,13 +272,13 @@ export default function Admin() {
       const fileName = `${editingGroup?.id}-${Date.now()}.${fileExt}`;
       const filePath = `${fileName}`;
 
-      const { error: uploadError } = await supabase.storage
+      const { error: uploadError } = await supabaseAdmin.storage
         .from('group-images')
         .upload(filePath, file, { upsert: true });
 
       if (uploadError) throw uploadError;
 
-      const { data: { publicUrl } } = supabase.storage
+      const { data: { publicUrl } } = supabaseAdmin.storage
         .from('group-images')
         .getPublicUrl(filePath);
 
@@ -297,7 +312,7 @@ export default function Admin() {
     setRefreshingImage(true);
 
     try {
-      const { data, error: functionError } = await supabase.functions.invoke('fetch-whatsapp-group-image', {
+      const { data, error: functionError } = await supabaseAdmin.functions.invoke('fetch-whatsapp-group-image', {
         body: { whatsappLink: editFormData.whatsapp_link }
       });
 
@@ -327,7 +342,7 @@ export default function Admin() {
     if (!editingGroup) return;
 
     try {
-      const { error } = await supabase
+      const { error } = await supabaseAdmin
         .from('groups')
         .update({
           name: editFormData.name,
@@ -342,7 +357,7 @@ export default function Admin() {
       if (error) throw error;
 
       // Log admin action
-      await supabase
+      await supabaseAdmin
         .from('admin_actions')
         .insert({
           admin_id: user?.id,
