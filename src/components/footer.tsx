@@ -69,8 +69,8 @@ export function Footer() {
             <h3 className="font-semibold">Suporte</h3>
             <ul className="space-y-2 text-sm">
               <li className="flex items-center space-x-2">
-                <Mail className="h-4 w-4" />
-                <span>contato@gruposdewhats.com.br</span>
+                <Mail className="h-4 w-4 flex-shrink-0" />
+                <span className="break-all text-xs sm:text-sm">contato@gruposdewhats.com.br</span>
               </li>
               <li>
                 <Link to="/central-ajuda">
@@ -90,6 +90,13 @@ export function Footer() {
                 <Link to="/faq">
                   <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
                     FAQ
+                  </Button>
+                </Link>
+              </li>
+              <li>
+                <Link to="/contato">
+                  <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
+                    Contato
                   </Button>
                 </Link>
               </li>
@@ -121,6 +128,14 @@ export function Footer() {
                   <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
                     <Cookie className="h-4 w-4 mr-1" />
                     Política de Cookies
+                  </Button>
+                </Link>
+              </li>
+              <li>
+                <Link to="/politica-transparencia">
+                  <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
+                    <Shield className="h-4 w-4 mr-1" />
+                    Política de Transparência
                   </Button>
                 </Link>
               </li>

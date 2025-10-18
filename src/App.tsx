@@ -27,6 +27,8 @@ import GroupDetails from "./pages/GroupDetails";
 import Category from "./pages/Category";
 import Sitemap from "./pages/Sitemap";
 import AnunciarGrupos from "./pages/AnunciarGrupos";
+import Contato from "./pages/Contato";
+import PoliticaTransparencia from "./pages/PoliticaTransparencia";
 
 const queryClient = new QueryClient();
 
@@ -59,6 +61,8 @@ const App = () => (
               <Route path="/grupo/:slug" element={<GroupDetails />} />
               <Route path="/categoria/:slug" element={<Category />} />
               <Route path="/anunciar-grupos" element={<AnunciarGrupos />} />
+              <Route path="/contato" element={<Contato />} />
+              <Route path="/politica-transparencia" element={<PoliticaTransparencia />} />
               <Route path="/sitemap" element={<Sitemap />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
