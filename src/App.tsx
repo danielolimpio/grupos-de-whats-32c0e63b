@@ -1,3 +1,4 @@
+import React from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -31,7 +32,7 @@ import Contato from "./pages/Contato";
 import PoliticaTransparencia from "./pages/PoliticaTransparencia";
 
 const App = () => {
-  const queryClient = new QueryClient();
+  const queryClient = React.useMemo(() => new QueryClient(), []);
   
   return (
     <HelmetProvider>
