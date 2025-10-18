@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer";
 import { CookieBanner } from "@/components/cookie-banner";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { Helmet } from "react-helmet-async";
 
 interface GroupData {
   id: string;
@@ -90,7 +91,35 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <Helmet>
+        <title>Grupos de WhatsApp Brasil 2025 | +12.500 Grupos Ativos para Entrar</title>
+        <meta name="description" content="Descubra os melhores grupos de WhatsApp do Brasil em 2025. Mais de 12.500 grupos ativos de vendas, divulgação, amizades, estudos e muito mais. Entre grátis agora!" />
+        <link rel="canonical" href="https://gruposwhatsapp.com.br/" />
+        <meta property="og:title" content="Grupos de WhatsApp Brasil 2025 | +12.500 Grupos Ativos" />
+        <meta property="og:description" content="Descubra os melhores grupos de WhatsApp do Brasil. Entre grátis em milhares de grupos ativos!" />
+        <meta property="og:url" content="https://gruposwhatsapp.com.br/" />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": "Grupos de WhatsApp Brasil",
+            "description": "Descubra +12.500 grupos de WhatsApp organizados por categoria",
+            "url": "https://gruposwhatsapp.com.br/",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Grupos de WhatsApp Brasil",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://gruposwhatsapp.com.br/logo.png"
+              }
+            }
+          })}
+        </script>
+      </Helmet>
+      
+      <div className="min-h-screen bg-background">
       <Header />
       
       <main className="container mx-auto px-4 py-8">
@@ -142,6 +171,7 @@ const Index = () => {
       <Footer />
       <CookieBanner />
     </div>
+    </>
   );
 };
 

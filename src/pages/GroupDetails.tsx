@@ -29,6 +29,7 @@ interface Group {
   access_count: number;
   is_premium_active: boolean;
   slug: string;
+  created_at: string;
 }
 
 const GroupDetails = () => {
@@ -124,28 +125,61 @@ const GroupDetails = () => {
   return (
     <>
       <Helmet>
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDescription} />
+        <title>{group.name} - Grupo de WhatsApp | Grupos de WhatsApp Brasil</title>
+        <meta name="description" content={`Entre no grupo "${group.name}" no WhatsApp. ${group.description || 'Grupo ativo e verificado.'} Categoria: ${group.category}`} />
+        <link rel="canonical" content={`https://gruposwhatsapp.com.br/grupo/${slug}`} />
         
         {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={`https://gruposwhatsapp.com.br/grupo/${slug}`} />
+        <meta property="og:title" content={`${group.name} - Grupo de WhatsApp`} />
+        <meta property="og:description" content={group.description || `Entre no grupo ${group.name} no WhatsApp`} />
         <meta property="og:image" content={group.image_url} />
+        <meta property="og:site_name" content="Grupos de WhatsApp Brasil" />
         
         {/* Twitter */}
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={pageUrl} />
-        <meta property="twitter:title" content={pageTitle} />
-        <meta property="twitter:description" content={pageDescription} />
-        <meta property="twitter:image" content={group.image_url} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={`https://gruposwhatsapp.com.br/grupo/${slug}`} />
+        <meta name="twitter:title" content={`${group.name} - Grupo de WhatsApp`} />
+        <meta name="twitter:description" content={group.description || `Entre no grupo ${group.name} no WhatsApp`} />
+        <meta name="twitter:image" content={group.image_url} />
         
         {/* Keywords */}
-        <meta name="keywords" content={`whatsapp, grupo, ${group.category}, ${group.name}`} />
+        <meta name="keywords" content={`whatsapp, grupo whatsapp, ${group.category.toLowerCase()}, ${group.name}, grupos de whatsapp, link grupo whatsapp`} />
         
-        {/* Canonical */}
-        <link rel="canonical" href={pageUrl} />
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SocialMediaPosting",
+            "headline": group.name,
+            "description": group.description,
+            "image": group.image_url,
+            "url": `https://gruposwhatsapp.com.br/grupo/${slug}`,
+            "datePublished": group.created_at,
+            "author": {
+              "@type": "Organization",
+              "name": "Grupos de WhatsApp Brasil"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Grupos de WhatsApp Brasil",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://gruposwhatsapp.com.br/logo.png"
+              }
+            },
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": `https://gruposwhatsapp.com.br/grupo/${slug}`
+            },
+            "interactionStatistic": {
+              "@type": "InteractionCounter",
+              "interactionType": "https://schema.org/ViewAction",
+              "userInteractionCount": group.access_count
+            }
+          })}
+        </script>
       </Helmet>
 
       <div className="min-h-screen bg-background">

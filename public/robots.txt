@@ -1,14 +1,68 @@
-User-agent: Googlebot
+# robots.txt para Grupos de WhatsApp
+User-agent: *
 Allow: /
+Allow: /categoria/
+Allow: /grupo/
+Allow: /blog
+Allow: /como-funciona
+Allow: /faq
+Allow: /regras-comunidade
+Allow: /dicas-seguranca
 
+# Bloquear páginas administrativas e de autenticação
+Disallow: /admin
+Disallow: /admin-setup
+Disallow: /dashboard
+Disallow: /auth
+Disallow: /reportar-problema
+
+# Bloquear arquivos e pastas desnecessários
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /*?*utm_source=
+Disallow: /*?*ref=
+
+# Sitemap
+Sitemap: https://gruposwhatsapp.com.br/sitemap.xml
+
+# Configurações de crawl
+Crawl-delay: 1
+
+# Permitir todos os recursos importantes
+User-agent: Googlebot
+Allow: /assets/
+Allow: /images/
+Allow: /*.css
+Allow: /*.js
+
+User-agent: Googlebot-Image
+Allow: /assets/
+Allow: /images/
+
+# Bots permitidos
 User-agent: Bingbot
 Allow: /
 
-User-agent: Twitterbot
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
 Allow: /
 
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
 Allow: /

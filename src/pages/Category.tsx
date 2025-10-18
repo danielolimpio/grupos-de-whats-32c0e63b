@@ -98,7 +98,38 @@ const Category = () => {
         <meta property="og:title" content={category.seoTitle} />
         <meta property="og:description" content={category.metaDescription} />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content={`https://gruposwhatsapp.com.br/categoria/${slug}`} />
         <link rel="canonical" href={`https://gruposwhatsapp.com.br/categoria/${slug}`} />
+        <meta name="keywords" content={`${category.name.toLowerCase()}, grupos whatsapp ${category.id}, whatsapp ${category.id}, grupos de whatsapp`} />
+        
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": category.name,
+            "description": category.description,
+            "url": `https://gruposwhatsapp.com.br/categoria/${slug}`,
+            "breadcrumb": {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://gruposwhatsapp.com.br/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": category.name,
+                  "item": `https://gruposwhatsapp.com.br/categoria/${slug}`
+                }
+              ]
+            },
+            "numberOfItems": groups.length
+          })}
+        </script>
       </Helmet>
 
       <div className="min-h-screen bg-background">
