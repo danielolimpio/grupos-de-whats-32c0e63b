@@ -30,11 +30,12 @@ import AnunciarGrupos from "./pages/AnunciarGrupos";
 import Contato from "./pages/Contato";
 import PoliticaTransparencia from "./pages/PoliticaTransparencia";
 
-const queryClient = new QueryClient();
-
-const App = () => (
-  <HelmetProvider>
-    <QueryClientProvider client={queryClient}>
+const App = () => {
+  const queryClient = new QueryClient();
+  
+  return (
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <TooltipProvider>
           <Toaster />
@@ -72,6 +73,7 @@ const App = () => (
       </AuthProvider>
     </QueryClientProvider>
   </HelmetProvider>
-);
+  );
+};
 
 export default App;
