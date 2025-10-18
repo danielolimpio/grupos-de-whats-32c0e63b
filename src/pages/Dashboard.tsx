@@ -20,11 +20,14 @@ import {
   XCircle,
   Clock,
   Trash2,
-  Edit
+  Edit,
+  Heart
 } from 'lucide-react';
 import UserProfile from '@/components/dashboard/UserProfile';
 import GroupForm from '@/components/dashboard/GroupForm';
 import GroupsList from '@/components/dashboard/GroupsList';
+import { useFavorites } from '@/hooks/useFavorites';
+import { GroupCard } from '@/components/group-card';
 
 interface Group {
   id: string;
@@ -55,16 +58,25 @@ export default function Dashboard() {
   const { toast } = useToast();
   const navigate = useNavigate();
   const [groups, setGroups] = useState<Group[]>([]);
+  const [favoriteGroups, setFavoriteGroups] = useState<Group[]>([]);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loadingData, setLoadingData] = useState(true);
   const [activeTab, setActiveTab] = useState("overview");
+  const { favorites, toggleFavorite, isFavorited } = useFavorites(user?.id);
 
   useEffect(() => {
     if (user) {
       fetchProfile();
       fetchUserGroups();
+      fetchFavoriteGroups();
     }
   }, [user]);
+
+  useEffect(() => {
+    if (user) {
+      fetchFavoriteGroups();
+    }
+  }, [favorites, user]);
 
   const fetchProfile = async () => {
     if (!user) return;
@@ -99,6 +111,36 @@ export default function Dashboard() {
       console.error('Error fetching groups:', error);
     } finally {
       setLoadingData(false);
+    }
+  };
+
+  const fetchFavoriteGroups = async () => {
+    if (!user) return;
+
+    try {
+      const { data: favoritesData, error: favError } = await supabase
+        .from('favorites')
+        .select('group_id')
+        .eq('user_id', user.id);
+
+      if (favError) throw favError;
+
+      if (favoritesData && favoritesData.length > 0) {
+        const groupIds = favoritesData.map(fav => fav.group_id);
+        
+        const { data: groupsData, error: groupsError } = await supabase
+          .from('groups')
+          .select('*')
+          .in('id', groupIds)
+          .eq('status', 'approved');
+
+        if (groupsError) throw groupsError;
+        setFavoriteGroups(groupsData || []);
+      } else {
+        setFavoriteGroups([]);
+      }
+    } catch (error) {
+      console.error('Error fetching favorite groups:', error);
     }
   };
 
@@ -139,7 +181,8 @@ export default function Dashboard() {
     total: groups.length,
     approved: groups.filter(g => g.status === 'approved').length,
     pending: groups.filter(g => g.status === 'pending').length,
-    totalViews: groups.reduce((sum, g) => sum + g.access_count, 0)
+    totalViews: groups.reduce((sum, g) => sum + g.access_count, 0),
+    favorites: favorites.size
   };
 
   if (loading) {
@@ -178,7 +221,7 @@ export default function Dashboard() {
         </div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-6 mb-8">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total de Grupos</CardTitle>
@@ -215,13 +258,23 @@ export default function Dashboard() {
               <div className="text-2xl font-bold">{stats.totalViews}</div>
             </CardContent>
           </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Favoritos</CardTitle>
+              <Heart className="h-4 w-4 text-red-500" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold text-red-500">{stats.favorites}</div>
+            </CardContent>
+          </Card>
         </div>
 
         {/* Main Content */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="overview">Visão Geral</TabsTrigger>
             <TabsTrigger value="groups">Meus Grupos</TabsTrigger>
+            <TabsTrigger value="favorites">Favoritos</TabsTrigger>
             <TabsTrigger value="add-group">Novo Grupo</TabsTrigger>
             <TabsTrigger value="profile">Perfil</TabsTrigger>
           </TabsList>
@@ -281,6 +334,48 @@ export default function Dashboard() {
               onRefresh={fetchUserGroups}
               getStatusBadge={getStatusBadge}
             />
+          </TabsContent>
+
+          <TabsContent value="favorites">
+            <Card>
+              <CardHeader>
+                <CardTitle>Meus Favoritos</CardTitle>
+                <CardDescription>
+                  Grupos que você marcou como favoritos
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                {favoriteGroups.length === 0 ? (
+                  <div className="text-center py-8">
+                    <Heart className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                    <p className="text-muted-foreground mb-4">
+                      Você ainda não tem grupos favoritos
+                    </p>
+                    <Button onClick={() => navigate("/")}>
+                      <Plus className="h-4 w-4 mr-2" />
+                      Explorar Grupos
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {favoriteGroups.map((group) => (
+                      <GroupCard
+                        key={group.id}
+                        id={group.id}
+                        name={group.name}
+                        description={group.description || ""}
+                        category={group.category}
+                        image={group.image_url || ""}
+                        isPremium={group.is_premium_active}
+                        slug={group.id}
+                        isFavorited={isFavorited(group.id)}
+                        onToggleFavorite={toggleFavorite}
+                      />
+                    ))}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
           </TabsContent>
 
           <TabsContent value="add-group">

@@ -7,6 +7,8 @@ import { CookieBanner } from "@/components/cookie-banner";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Helmet } from "react-helmet-async";
+import { useAuth } from "@/hooks/useAuth";
+import { useFavorites } from "@/hooks/useFavorites";
 
 interface GroupData {
   id: string;
@@ -22,6 +24,8 @@ interface GroupData {
 }
 
 const Index = () => {
+  const { user } = useAuth();
+  const { isFavorited, toggleFavorite } = useFavorites(user?.id);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [groups, setGroups] = useState<GroupData[]>([]);
   const [loading, setLoading] = useState(true);
@@ -142,12 +146,16 @@ const Index = () => {
                   groups={popularGroups}
                   title="📈 Grupos Mais Acessados"
                   showMore={true}
+                  isFavorited={isFavorited}
+                  onToggleFavorite={toggleFavorite}
                 />
 
                 <GroupGrid 
                   groups={recentGroups}
                   title="🆕 Grupos Mais Recentes"
                   showMore={true}
+                  isFavorited={isFavorited}
+                  onToggleFavorite={toggleFavorite}
                 />
               </>
             )}
@@ -156,6 +164,8 @@ const Index = () => {
               groups={displayGroups}
               title={selectedCategory ? `${selectedCategory}` : "🌟 Todos os Grupos"}
               showMore={true}
+              isFavorited={isFavorited}
+              onToggleFavorite={toggleFavorite}
             />
           </div>
 

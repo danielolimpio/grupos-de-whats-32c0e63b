@@ -16,9 +16,12 @@ interface GroupCardProps {
   isNew?: boolean;
   className?: string;
   slug?: string;
+  isFavorited?: boolean;
+  onToggleFavorite?: (id: string) => void;
 }
 
 export function GroupCard({
+  id,
   name,
   description,
   category,
@@ -27,13 +30,21 @@ export function GroupCard({
   isPremium = false,
   isNew = false,
   className,
-  slug
+  slug,
+  isFavorited = false,
+  onToggleFavorite
 }: GroupCardProps) {
   const navigate = useNavigate();
   
   const handleJoinClick = () => {
     if (slug) {
       navigate(`/grupo/${slug}`);
+    }
+  };
+
+  const handleFavoriteClick = () => {
+    if (onToggleFavorite) {
+      onToggleFavorite(id);
     }
   };
   return (
@@ -110,9 +121,13 @@ export function GroupCard({
               variant="ghost" 
               size="sm"
               className="w-full text-xs hover:bg-card-hover"
+              onClick={handleFavoriteClick}
             >
-              <Heart className="h-3 w-3 mr-1" />
-              Favoritar
+              <Heart className={cn(
+                "h-3 w-3 mr-1",
+                isFavorited && "fill-red-500 text-red-500"
+              )} />
+              {isFavorited ? "Favorito" : "Favoritar"}
             </Button>
           </div>
         </div>

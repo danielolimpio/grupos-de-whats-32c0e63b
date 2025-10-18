@@ -7,9 +7,11 @@ interface GroupGridProps {
   groups: WhatsAppGroup[];
   title: string;
   showMore?: boolean;
+  isFavorited?: (id: string) => boolean;
+  onToggleFavorite?: (id: string) => void;
 }
 
-export function GroupGrid({ groups, title, showMore = false }: GroupGridProps) {
+export function GroupGrid({ groups, title, showMore = false, isFavorited, onToggleFavorite }: GroupGridProps) {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -37,6 +39,8 @@ export function GroupGrid({ groups, title, showMore = false }: GroupGridProps) {
             isPremium={group.isPremium}
             isNew={group.isNew}
             slug={group.id}
+            isFavorited={isFavorited ? isFavorited(group.id) : false}
+            onToggleFavorite={onToggleFavorite}
           />
         ))}
       </div>

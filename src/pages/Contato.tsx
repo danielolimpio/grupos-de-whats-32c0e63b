@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { MapPin, Building2, FileText, Phone } from "lucide-react";
+import { ContactForm } from "@/components/ContactForm";
 
 const Contato = () => {
   return (
@@ -83,6 +84,14 @@ const Contato = () => {
                 />
               </div>
             </div>
+          </div>
+
+          <div className="bg-card p-6 rounded-lg border">
+            <h2 className="text-xl font-semibold mb-4 flex items-center gap-2 text-foreground">
+              <Phone className="w-6 h-6 text-primary" />
+              Envie sua Mensagem
+            </h2>
+            <ContactForm />
           </div>
 
           <div className="bg-muted/50 p-6 rounded-lg border">
