@@ -19,7 +19,9 @@ import {
   MessageSquare,
   AlertTriangle,
   Search,
-  Edit
+  Edit,
+  Upload,
+  RefreshCw
 } from 'lucide-react';
 import {
   Dialog,
@@ -86,6 +88,8 @@ export default function Admin() {
     whatsapp_link: '',
     image_url: ''
   });
+  const [uploadingImage, setUploadingImage] = useState(false);
+  const [refreshingImage, setRefreshingImage] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -220,6 +224,103 @@ export default function Admin() {
       image_url: group.image_url || ''
     });
     setEditDialogOpen(true);
+  };
+
+  const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+      toast({
+        title: "Erro",
+        description: "Por favor, selecione um arquivo de imagem válido.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    // Validate file size (max 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      toast({
+        title: "Erro",
+        description: "A imagem deve ter no máximo 5MB.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setUploadingImage(true);
+
+    try {
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${editingGroup?.id}-${Date.now()}.${fileExt}`;
+      const filePath = `${fileName}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from('group-images')
+        .upload(filePath, file, { upsert: true });
+
+      if (uploadError) throw uploadError;
+
+      const { data: { publicUrl } } = supabase.storage
+        .from('group-images')
+        .getPublicUrl(filePath);
+
+      setEditFormData({ ...editFormData, image_url: publicUrl });
+
+      toast({
+        title: "Sucesso!",
+        description: "Imagem enviada com sucesso.",
+      });
+    } catch (error: any) {
+      toast({
+        title: "Erro ao enviar imagem",
+        description: error.message,
+        variant: "destructive"
+      });
+    } finally {
+      setUploadingImage(false);
+    }
+  };
+
+  const handleRefreshImage = async () => {
+    if (!editFormData.whatsapp_link) {
+      toast({
+        title: "Erro",
+        description: "Por favor, insira um link do WhatsApp primeiro.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setRefreshingImage(true);
+
+    try {
+      const { data, error: functionError } = await supabase.functions.invoke('fetch-whatsapp-group-image', {
+        body: { whatsappLink: editFormData.whatsapp_link }
+      });
+
+      if (functionError) throw functionError;
+
+      if (data?.success && data?.imageUrl) {
+        setEditFormData({ ...editFormData, image_url: data.imageUrl });
+        toast({
+          title: "Sucesso!",
+          description: "Imagem atualizada do WhatsApp.",
+        });
+      } else {
+        throw new Error('Não foi possível carregar a imagem do grupo');
+      }
+    } catch (error: any) {
+      toast({
+        title: "Erro ao atualizar imagem",
+        description: error.message,
+        variant: "destructive"
+      });
+    } finally {
+      setRefreshingImage(false);
+    }
   };
 
   const handleSaveEdit = async () => {
@@ -571,14 +672,64 @@ export default function Admin() {
                 placeholder="https://chat.whatsapp.com/..."
               />
             </div>
-            <div>
-              <Label htmlFor="edit-image">URL da Imagem</Label>
-              <Input
-                id="edit-image"
-                value={editFormData.image_url}
-                onChange={(e) => setEditFormData({ ...editFormData, image_url: e.target.value })}
-                placeholder="URL da imagem (opcional)"
-              />
+            <div className="space-y-3">
+              <Label>Imagem do Grupo</Label>
+              
+              {editFormData.image_url && (
+                <div className="flex items-center gap-3 p-3 border rounded-lg bg-muted/30">
+                  <img 
+                    src={editFormData.image_url} 
+                    alt="Preview" 
+                    className="w-16 h-16 rounded object-cover"
+                  />
+                  <div className="flex-1 text-sm text-muted-foreground">
+                    Imagem atual
+                  </div>
+                </div>
+              )}
+
+              <div className="flex gap-2">
+                <div className="flex-1">
+                  <Input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                    disabled={uploadingImage}
+                    className="cursor-pointer"
+                  />
+                </div>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={handleRefreshImage}
+                  disabled={refreshingImage || !editFormData.whatsapp_link}
+                  className="gap-2"
+                >
+                  {refreshingImage ? (
+                    <>
+                      <RefreshCw className="h-4 w-4 animate-spin" />
+                      Atualizando...
+                    </>
+                  ) : (
+                    <>
+                      <RefreshCw className="h-4 w-4" />
+                      Atualizar do WhatsApp
+                    </>
+                  )}
+                </Button>
+              </div>
+
+              <div>
+                <Label htmlFor="edit-image-url" className="text-xs text-muted-foreground">
+                  Ou cole a URL da imagem
+                </Label>
+                <Input
+                  id="edit-image-url"
+                  value={editFormData.image_url}
+                  onChange={(e) => setEditFormData({ ...editFormData, image_url: e.target.value })}
+                  placeholder="https://..."
+                />
+              </div>
             </div>
           </div>
           <DialogFooter>
