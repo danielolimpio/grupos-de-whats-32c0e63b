@@ -38,7 +38,7 @@ export function CategoryNavigation({ selectedCategory, onCategorySelect }: Categ
             onClick={() => onCategorySelect(category.name)}
             className="whitespace-nowrap"
           >
-            {category.name}
+            {category.displayName || category.name}
             {category.priority >= 8 && (
               <Badge variant="secondary" className="ml-1 text-xs">
                 Popular

@@ -73,7 +73,8 @@ const getIconForCategory = (categoryId: string) => {
     'games': Gamepad2,
     'cinema': Film,
     'pets': Dog,
-    'estilo': Scissors
+    'estilo': Scissors,
+    'zoeiras': MessageCircle
   };
   
   return iconMap[categoryId] || Users;
@@ -118,11 +119,11 @@ export function Sidebar({ selectedCategory, onCategorySelect }: SidebarProps) {
                 className="w-full justify-between hover:bg-muted/50 text-left p-2"
               >
                 <div className="flex items-center min-w-0 flex-1">
-                {(() => {
+                 {(() => {
                   const IconComponent = getIconForCategory(category.id);
                   return <IconComponent className="h-4 w-4 mr-2 text-primary flex-shrink-0" />;
                 })()}
-                <span className="text-xs truncate font-medium">{category.name}</span>
+                <span className="text-xs truncate font-medium">{category.displayName || category.name}</span>
               </div>
               </Button>
             </Link>
