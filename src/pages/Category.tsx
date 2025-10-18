@@ -41,7 +41,7 @@ const Category = () => {
         .from('groups')
         .select('id, slug, name, description, category, image_url, is_premium_active, created_at, access_count')
         .eq('status', 'approved')
-        .eq('category', category.id)
+        .eq('category', category.name)
         .order('is_premium_active', { ascending: false })
         .order('created_at', { ascending: false });
 
