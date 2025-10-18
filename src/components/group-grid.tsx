@@ -30,7 +30,7 @@ export function GroupGrid({ groups, title, showMore = false, isFavorited, onTogg
         {groups.map((group) => (
           <GroupCard
             key={group.id}
-            id={group.id}
+            id={(group as any).uuid || group.id}
             name={group.name}
             description={group.description}
             category={group.category}
@@ -39,7 +39,7 @@ export function GroupGrid({ groups, title, showMore = false, isFavorited, onTogg
             isPremium={group.isPremium}
             isNew={group.isNew}
             slug={group.id}
-            isFavorited={isFavorited ? isFavorited(group.id) : false}
+            isFavorited={isFavorited ? isFavorited((group as any).uuid || group.id) : false}
             onToggleFavorite={onToggleFavorite}
           />
         ))}

@@ -12,6 +12,7 @@ import { useFavorites } from "@/hooks/useFavorites";
 
 interface GroupData {
   id: string;
+  uuid: string;
   name: string;
   description: string;
   category: string;
@@ -50,6 +51,7 @@ const Index = () => {
 
       const formattedGroups: GroupData[] = data.map((group: any) => ({
         id: group.slug || group.id,
+        uuid: group.id,
         name: group.name,
         description: group.description,
         category: group.category,
