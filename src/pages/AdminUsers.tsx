@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -11,7 +11,8 @@ import {
   Search,
   Ban,
   CheckCircle,
-  XCircle
+  XCircle,
+  ArrowLeft
 } from 'lucide-react';
 import { SearchInput } from '@/components/ui/search-input';
 import {
@@ -228,9 +229,17 @@ export default function AdminUsers() {
               </p>
             </div>
           </div>
-          <Badge className="bg-red-100 text-red-800 text-sm">
-            {profile.role === 'admin' ? 'Administrador' : 'Moderador'}
-          </Badge>
+          <div className="flex gap-2">
+            <Button variant="outline" asChild>
+              <Link to="/admin">
+                <ArrowLeft className="h-4 w-4 mr-2" />
+                Voltar ao Painel
+              </Link>
+            </Button>
+            <Badge className="bg-red-100 text-red-800 text-sm">
+              {profile.role === 'admin' ? 'Administrador' : 'Moderador'}
+            </Badge>
+          </div>
         </div>
 
         {/* Stats */}

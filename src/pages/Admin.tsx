@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -445,12 +445,11 @@ export default function Admin() {
             </div>
           </div>
           <div className="flex gap-2">
-            <Button
-              variant="outline"
-              onClick={() => window.location.href = '/admin/users'}
-            >
-              <Users className="h-4 w-4 mr-2" />
-              Gerenciar Usuários
+            <Button variant="outline" asChild>
+              <Link to="/admin/users">
+                <Users className="h-4 w-4 mr-2" />
+                Gerenciar Usuários
+              </Link>
             </Button>
             <Badge className="bg-red-100 text-red-800 text-sm">
               {profile.role === 'admin' ? 'Administrador' : 'Moderador'}
