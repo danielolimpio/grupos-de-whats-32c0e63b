@@ -273,11 +273,19 @@ export const WHATSAPP_CATEGORIES: Category[] = [
 ];
 
 export const getMainMenuCategories = () => {
-  return WHATSAPP_CATEGORIES.filter(cat => cat.priority >= 7).sort((a, b) => b.priority - a.priority);
+  return WHATSAPP_CATEGORIES.filter(cat => cat.priority >= 7).sort((a, b) => {
+    const nameA = (a.displayName || a.name).toLowerCase();
+    const nameB = (b.displayName || b.name).toLowerCase();
+    return nameA.localeCompare(nameB);
+  });
 };
 
 export const getAllCategoriesSorted = () => {
-  return [...WHATSAPP_CATEGORIES].sort((a, b) => b.priority - a.priority);
+  return [...WHATSAPP_CATEGORIES].sort((a, b) => {
+    const nameA = (a.displayName || a.name).toLowerCase();
+    const nameB = (b.displayName || b.name).toLowerCase();
+    return nameA.localeCompare(nameB);
+  });
 };
 
 export const getCategoryBySlug = (slug: string) => {
