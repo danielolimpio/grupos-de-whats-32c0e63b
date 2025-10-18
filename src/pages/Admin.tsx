@@ -18,8 +18,26 @@ import {
   BarChart3,
   MessageSquare,
   AlertTriangle,
-  Search
+  Search,
+  Edit
 } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Label } from "@/components/ui/label";
+import { getAllCategoriesSorted } from '@/data/categories';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -59,6 +77,15 @@ export default function Admin() {
   const [loadingData, setLoadingData] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedStatus, setSelectedStatus] = useState('pending');
+  const [editDialogOpen, setEditDialogOpen] = useState(false);
+  const [editingGroup, setEditingGroup] = useState<Group | null>(null);
+  const [editFormData, setEditFormData] = useState({
+    name: '',
+    description: '',
+    category: '',
+    whatsapp_link: '',
+    image_url: ''
+  });
 
   useEffect(() => {
     if (user) {
@@ -177,6 +204,61 @@ export default function Admin() {
     } catch (error: any) {
       toast({
         title: "Erro ao rejeitar grupo",
+        description: error.message,
+        variant: "destructive"
+      });
+    }
+  };
+
+  const handleEditGroup = (group: Group) => {
+    setEditingGroup(group);
+    setEditFormData({
+      name: group.name,
+      description: group.description || '',
+      category: group.category,
+      whatsapp_link: group.whatsapp_link,
+      image_url: group.image_url || ''
+    });
+    setEditDialogOpen(true);
+  };
+
+  const handleSaveEdit = async () => {
+    if (!editingGroup) return;
+
+    try {
+      const { error } = await supabase
+        .from('groups')
+        .update({
+          name: editFormData.name,
+          description: editFormData.description,
+          category: editFormData.category,
+          whatsapp_link: editFormData.whatsapp_link,
+          image_url: editFormData.image_url || null,
+          updated_at: new Date().toISOString()
+        })
+        .eq('id', editingGroup.id);
+
+      if (error) throw error;
+
+      // Log admin action
+      await supabase
+        .from('admin_actions')
+        .insert({
+          admin_id: user?.id,
+          group_id: editingGroup.id,
+          action: 'edited'
+        });
+
+      toast({
+        title: "Grupo atualizado!",
+        description: "As alterações foram salvas com sucesso.",
+      });
+
+      setEditDialogOpen(false);
+      fetchGroups();
+    } catch (error: any) {
+      toast({
+        title: "Erro ao atualizar grupo",
         description: error.message,
         variant: "destructive"
       });
@@ -331,6 +413,14 @@ export default function Admin() {
                       </CardDescription>
                     </div>
                     <div className="flex items-center gap-2">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() => handleEditGroup(group)}
+                      >
+                        <Edit className="h-4 w-4 mr-2" />
+                        Editar
+                      </Button>
                       {group.status === 'pending' && (
                         <>
                           <Button
@@ -424,6 +514,83 @@ export default function Admin() {
           )}
         </div>
       </div>
+
+      {/* Edit Dialog */}
+      <Dialog open={editDialogOpen} onOpenChange={setEditDialogOpen}>
+        <DialogContent className="max-w-2xl">
+          <DialogHeader>
+            <DialogTitle>Editar Grupo</DialogTitle>
+            <DialogDescription>
+              Faça as alterações necessárias no grupo
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4">
+            <div>
+              <Label htmlFor="edit-name">Nome do Grupo</Label>
+              <Input
+                id="edit-name"
+                value={editFormData.name}
+                onChange={(e) => setEditFormData({ ...editFormData, name: e.target.value })}
+                placeholder="Nome do grupo"
+              />
+            </div>
+            <div>
+              <Label htmlFor="edit-category">Categoria</Label>
+              <Select
+                value={editFormData.category}
+                onValueChange={(value) => setEditFormData({ ...editFormData, category: value })}
+              >
+                <SelectTrigger id="edit-category">
+                  <SelectValue placeholder="Selecione uma categoria" />
+                </SelectTrigger>
+                <SelectContent>
+                  {getAllCategoriesSorted().map((cat) => (
+                    <SelectItem key={cat.id} value={cat.name}>
+                      {cat.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div>
+              <Label htmlFor="edit-description">Descrição</Label>
+              <Textarea
+                id="edit-description"
+                value={editFormData.description}
+                onChange={(e) => setEditFormData({ ...editFormData, description: e.target.value })}
+                placeholder="Descrição do grupo"
+                rows={3}
+              />
+            </div>
+            <div>
+              <Label htmlFor="edit-whatsapp">Link do WhatsApp</Label>
+              <Input
+                id="edit-whatsapp"
+                value={editFormData.whatsapp_link}
+                onChange={(e) => setEditFormData({ ...editFormData, whatsapp_link: e.target.value })}
+                placeholder="https://chat.whatsapp.com/..."
+              />
+            </div>
+            <div>
+              <Label htmlFor="edit-image">URL da Imagem</Label>
+              <Input
+                id="edit-image"
+                value={editFormData.image_url}
+                onChange={(e) => setEditFormData({ ...editFormData, image_url: e.target.value })}
+                placeholder="URL da imagem (opcional)"
+              />
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setEditDialogOpen(false)}>
+              Cancelar
+            </Button>
+            <Button onClick={handleSaveEdit}>
+              Salvar Alterações
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
