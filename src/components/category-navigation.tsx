@@ -36,7 +36,7 @@ export function CategoryNavigation({ selectedCategory, onCategorySelect }: Categ
             variant={selectedCategory === category.name ? "default" : "outline"}
             size="sm"
             onClick={() => onCategorySelect(category.name)}
-            className="whitespace-nowrap"
+            className="whitespace-nowrap text-sm font-medium"
           >
             {category.displayName || category.name}
             {category.priority >= 8 && (

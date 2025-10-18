@@ -123,7 +123,7 @@ export function Sidebar({ selectedCategory, onCategorySelect }: SidebarProps) {
                   const IconComponent = getIconForCategory(category.id);
                   return <IconComponent className="h-4 w-4 mr-2 text-primary flex-shrink-0" />;
                 })()}
-                <span className="text-xs truncate font-medium">{category.displayName || category.name}</span>
+                <span className="text-sm truncate font-medium">{category.displayName || category.name}</span>
               </div>
               </Button>
             </Link>
