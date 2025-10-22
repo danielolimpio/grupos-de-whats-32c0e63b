@@ -51,58 +51,11 @@ export default function GroupsList({ groups, onRefresh, getStatusBadge }: Groups
   const { toast } = useToast();
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
-  const handleBoostToPremium = async (groupId: string) => {
-    try {
-      // Create a premium payment record
-      const { data: payment, error: paymentError } = await supabase
-        .from('premium_payments')
-        .insert({
-          group_id: groupId,
-          user_id: (await supabase.auth.getUser()).data.user?.id,
-          amount: 9.90,
-          payment_method: 'pix',
-          payment_status: 'pending'
-        })
-        .select()
-        .single();
-
-      if (paymentError) {
-        console.error('Error creating payment:', paymentError);
-        toast({
-          title: "Erro ao criar pagamento",
-          variant: "destructive"
-        });
-        return;
-      }
-
-      // For demo purposes, simulate instant activation (in production, this would be triggered by PIX confirmation)
-      const { error: activationError } = await supabase
-        .rpc('activate_group_premium', { 
-          group_id_param: groupId,
-          payment_id_param: payment.id 
-        });
-
-      if (activationError) {
-        console.error('Error activating premium:', activationError);
-        toast({
-          title: "Erro ao ativar premium",
-          variant: "destructive"
-        });
-        return;
-      }
-
-      toast({
-        title: "Sucesso!",
-        description: "Grupo impulsionado como Premium com sucesso!"
-      });
-      onRefresh();
-    } catch (error) {
-      console.error('Error boosting to premium:', error);
-      toast({
-        title: "Erro ao impulsionar grupo",
-        variant: "destructive"
-      });
-    }
+  const handleNavigateToCheckout = (groupId: string) => {
+    // Store the group ID in sessionStorage to use in checkout
+    sessionStorage.setItem('selectedGroupId', groupId);
+    // Navigate to checkout page
+    window.location.href = '/checkout';
   };
 
   const handleDeleteGroup = async (groupId: string) => {
@@ -188,7 +141,7 @@ export default function GroupsList({ groups, onRefresh, getStatusBadge }: Groups
                   <Button
                     size="sm"
                     className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-semibold"
-                    onClick={() => handleBoostToPremium(group.id)}
+                    onClick={() => handleNavigateToCheckout(group.id)}
                   >
                     <Star className="h-4 w-4 mr-2" />
                     Anunciar

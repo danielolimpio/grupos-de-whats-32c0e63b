@@ -48,12 +48,10 @@ export default function ImpulsionarGrupos() {
               <Button size="lg" className="bg-primary hover:bg-primary/90" onClick={handleEnviarGrupo}>
                 Enviar Grupo Primeiro
               </Button>
-              <Link to="/dashboard">
-                <Button size="lg" variant="outline" className="border-yellow-500 text-yellow-600 hover:bg-yellow-50">
-                  <Star className="h-4 w-4 mr-2" />
-                  Anunciar Agora
-                </Button>
-              </Link>
+              <Button size="lg" variant="outline" className="border-yellow-500 text-yellow-600 hover:bg-yellow-50" onClick={handleEnviarGrupo}>
+                <Star className="h-4 w-4 mr-2" />
+                Anunciar Agora
+              </Button>
             </div>
           </section>
 
@@ -231,12 +229,10 @@ export default function ImpulsionarGrupos() {
               <Button size="lg" variant="secondary" className="bg-white text-yellow-600 hover:bg-gray-100" onClick={handleEnviarGrupo}>
                 Enviar Grupo Primeiro
               </Button>
-              <Link to="/dashboard">
-                <Button size="lg" variant="outline" className="border-white text-white bg-amber-600 hover:bg-amber-500">
-                  <Star className="h-4 w-4 mr-2" />
-                  Anunciar Agora
-                </Button>
-              </Link>
+              <Button size="lg" variant="outline" className="border-white text-white bg-amber-600 hover:bg-amber-500" onClick={handleEnviarGrupo}>
+                <Star className="h-4 w-4 mr-2" />
+                Anunciar Agora
+              </Button>
             </div>
           </section>
         </main>
