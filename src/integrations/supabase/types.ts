@@ -338,10 +338,7 @@ export type Database = {
         Args: { text_content: string }
         Returns: boolean
       }
-      generate_slug: {
-        Args: { name: string }
-        Returns: string
-      }
+      generate_slug: { Args: { name: string }; Returns: string }
       get_public_profile: {
         Args: { profile_user_id: string }
         Returns: {
@@ -362,10 +359,7 @@ export type Database = {
         Args: { group_id: string; user_agent?: string; user_ip?: string }
         Returns: undefined
       }
-      update_expired_premium_groups: {
-        Args: Record<PropertyKey, never>
-        Returns: undefined
-      }
+      update_expired_premium_groups: { Args: never; Returns: undefined }
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"
