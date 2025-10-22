@@ -65,11 +65,36 @@ export default function Dashboard() {
   const { favorites, toggleFavorite, isFavorited } = useFavorites(user?.id);
 
   useEffect(() => {
-    if (user) {
-      fetchProfile();
-      fetchUserGroups();
-      fetchFavoriteGroups();
-    }
+    const checkAccessAndFetchData = async () => {
+      if (user) {
+        // Check if user is an admin trying to access user dashboard
+        try {
+          const { data } = await supabase
+            .from('user_roles')
+            .select('role')
+            .eq('user_id', user.id)
+            .single();
+
+          if (data && (data.role === 'admin' || data.role === 'moderator')) {
+            toast({
+              title: "Acesso negado",
+              description: "Esta é a área de usuários. Use /admin para acessar a área administrativa.",
+              variant: "destructive"
+            });
+            navigate('/admin');
+            return;
+          }
+        } catch (error) {
+          // User doesn't have admin role, continue
+        }
+
+        fetchProfile();
+        fetchUserGroups();
+        fetchFavoriteGroups();
+      }
+    };
+
+    checkAccessAndFetchData();
   }, [user]);
 
   useEffect(() => {

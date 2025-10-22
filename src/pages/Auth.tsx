@@ -9,6 +9,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/hooks/use-toast';
 import { MessageSquare, ArrowLeft, Eye, EyeOff } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { supabase } from '@/integrations/supabase/client';
 
 export default function Auth() {
   const [isLoading, setIsLoading] = useState(false);
@@ -19,9 +20,34 @@ export default function Auth() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user) {
-      navigate('/dashboard');
-    }
+    // Check if user is already logged in and redirect to dashboard
+    const checkUserAndRedirect = async () => {
+      if (user) {
+        // Check if this user is an admin trying to access regular user area
+        try {
+          const { data } = await supabase
+            .from('user_roles')
+            .select('role')
+            .eq('user_id', user.id)
+            .single();
+
+          if (data && (data.role === 'admin' || data.role === 'moderator')) {
+            toast({
+              title: "Acesso negado",
+              description: "Esta é a área de usuários. Use /admin-setup para acessar a área administrativa.",
+              variant: "destructive"
+            });
+            return;
+          }
+        } catch (error) {
+          // User doesn't have a role, so it's a regular user
+        }
+        
+        navigate('/dashboard');
+      }
+    };
+
+    checkUserAndRedirect();
   }, [user, navigate]);
 
   const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -40,12 +66,41 @@ export default function Auth() {
         description: error.message,
         variant: "destructive"
       });
-    } else {
-      toast({
-        title: "Login realizado com sucesso!",
-        description: "Bem-vindo de volta.",
-      });
+      setIsLoading(false);
+      return;
     }
+
+    // After successful login, check if user is an admin
+    const { data: { user: loggedUser } } = await supabase.auth.getUser();
+    
+    if (loggedUser) {
+      try {
+        const { data } = await supabase
+          .from('user_roles')
+          .select('role')
+          .eq('user_id', loggedUser.id)
+          .single();
+
+        if (data && (data.role === 'admin' || data.role === 'moderator')) {
+          // This is an admin, don't allow access to user area
+          await supabase.auth.signOut();
+          toast({
+            title: "Acesso negado",
+            description: "Esta conta é de administrador. Use /admin-setup para acessar a área administrativa.",
+            variant: "destructive"
+          });
+          setIsLoading(false);
+          return;
+        }
+      } catch (error) {
+        // User doesn't have a role, continue as regular user
+      }
+    }
+
+    toast({
+      title: "Login realizado com sucesso!",
+      description: "Bem-vindo de volta.",
+    });
     
     setIsLoading(false);
   };

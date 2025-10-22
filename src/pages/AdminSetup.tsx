@@ -42,11 +42,47 @@ export default function AdminSetup() {
           description: "Conta de administrador criada com sucesso!"
         });
       } else {
+        // After successful login, verify this user should be an admin
+        const { data: { user: loggedUser } } = await supabaseAdmin.auth.getUser();
+        
+        if (loggedUser) {
+          try {
+            const { data } = await supabaseAdmin
+              .from('user_roles')
+              .select('role')
+              .eq('user_id', loggedUser.id)
+              .single();
+
+            // If user doesn't have admin role, reject login
+            if (!data || (data.role !== 'admin' && data.role !== 'moderator')) {
+              await supabaseAdmin.auth.signOut();
+              toast({
+                title: "Acesso negado",
+                description: "Esta conta não tem permissões administrativas. Use /auth para acessar a área de usuários.",
+                variant: "destructive"
+              });
+              setLoading(false);
+              return;
+            }
+          } catch (error) {
+            // No role found, reject access
+            await supabaseAdmin.auth.signOut();
+            toast({
+              title: "Acesso negado",
+              description: "Esta conta não tem permissões administrativas.",
+              variant: "destructive"
+            });
+            setLoading(false);
+            return;
+          }
+        }
+
         toast({
           title: "Login realizado",
           description: "Admin logado com sucesso!"
         });
       }
+
 
       // Get current user and assign admin role
       const { data: { user }, error: userError } = await supabaseAdmin.auth.getUser();

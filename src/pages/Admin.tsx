@@ -412,7 +412,7 @@ export default function Admin() {
   }
 
   if (!user) {
-    return <Navigate to="/auth" replace />;
+    return <Navigate to="/admin-setup" replace />;
   }
 
   if (loadingData) {
@@ -427,7 +427,7 @@ export default function Admin() {
   }
 
   if (!profile || (profile.role !== 'admin' && profile.role !== 'moderator')) {
-    return <Navigate to="/dashboard" replace />;
+    return <Navigate to="/admin-setup" replace />;
   }
 
   return (
