@@ -30,6 +30,7 @@ import Sitemap from "./pages/Sitemap";
 import AnunciarGrupos from "./pages/AnunciarGrupos";
 import Contato from "./pages/Contato";
 import PoliticaTransparencia from "./pages/PoliticaTransparencia";
+import Checkout from "./pages/Checkout";
 
 const queryClient = new QueryClient();
 
@@ -45,6 +46,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/checkout" element={<Checkout />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/admin-setup" element={<AdminSetup />} />
               <Route path="/admin/users" element={<AdminUsers />} />

@@ -121,9 +121,9 @@ export default function AdminSetup() {
           <div className="mx-auto w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
             <Shield className="h-6 w-6 text-red-600" />
           </div>
-          <CardTitle>Setup Administrador</CardTitle>
+          <CardTitle>Login Administrador</CardTitle>
           <CardDescription>
-            Criar/logar conta de administrador do sistema
+            Acessar painel administrativo do sistema
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -150,7 +150,7 @@ export default function AdminSetup() {
             className="w-full"
             disabled={loading}
           >
-            {loading ? "Processando..." : "Criar/Logar Admin"}
+            {loading ? "Processando..." : "Entrar como Admin"}
           </Button>
         </CardContent>
       </Card>
