@@ -8,6 +8,7 @@ import { Clock, User, Search, TrendingUp, Shield, Heart, MessageCircle, Users, S
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
+import { Sidebar } from "@/components/sidebar";
 
 const blogPosts = [
   {
@@ -222,9 +223,9 @@ export default function Blog() {
           </section>
         )}
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="flex flex-col lg:flex-row gap-8">
           {/* Main Content - All Posts */}
-          <section className="lg:col-span-2">
+          <section className="flex-1">
             <h2 className="text-2xl font-bold mb-6">
               {searchTerm || selectedCategory !== "Todos" 
                 ? `Resultados ${searchTerm ? `para "${searchTerm}"` : `em ${selectedCategory}`}` 
@@ -296,32 +297,11 @@ export default function Blog() {
           )}
           </section>
 
-          {/* Sidebar - Blog Tips */}
-          <aside className="lg:col-span-1">
-            <Card className="sticky top-4">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <TrendingUp className="h-5 w-5 text-primary" />
-                  Dicas do Blog
-                </CardTitle>
-                <CardDescription>Artigos mais populares</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  {blogPosts.slice(0, 10).map((post) => (
-                    <li key={post.id}>
-                      <Link 
-                        to={`/blog/${post.id}`}
-                        className="text-sm hover:text-primary transition-colors line-clamp-2 block"
-                      >
-                        {post.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </aside>
+          {/* Sidebar with Categories and Premium Ad */}
+          <Sidebar 
+            selectedCategory={selectedCategory !== "Todos" ? selectedCategory : undefined}
+            onCategorySelect={(category) => setSelectedCategory(category || "Todos")}
+          />
         </div>
 
         {/* Newsletter CTA */}

@@ -1,17 +1,42 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Calendar, CreditCard, Tag } from 'lucide-react';
+import { ArrowLeft, Calendar, CreditCard, Tag, Loader2 } from 'lucide-react';
+import { loadStripe } from '@stripe/stripe-js';
+import { useToast } from '@/hooks/use-toast';
+
+// Mapeamento de dias para Stripe Price IDs
+const STRIPE_PRICES: Record<number, { priceId: string; productId: string; amount: number }> = {
+  1: { priceId: 'price_1SL4TqAglZhgVhrDBe5GrcEf', productId: 'prod_THdlnsMUOTY44Y', amount: 9.90 },
+  2: { priceId: 'price_1SL4n6AglZhgVhrDYypdcuK9', productId: 'prod_THe5Q7BoKXdIyp', amount: 19.80 },
+  3: { priceId: 'price_1SL4o5AglZhgVhrDuAurLIG8', productId: 'prod_THe6xev7LRatL8', amount: 27.70 },
+  4: { priceId: 'price_1SL4oyAglZhgVhrDEF3X3Wyb', productId: 'prod_THe70h2nYPL9BC', amount: 39.60 },
+  5: { priceId: 'price_1SL4qGAglZhgVhrDhQsylzu0', productId: 'prod_THe8vtTda3y8oA', amount: 49.50 },
+  7: { priceId: 'price_1SL4rAAglZhgVhrDryeAjLHY', productId: 'prod_THe9uoQeAFRWOS', amount: 69.30 },
+  12: { priceId: 'price_1SL4rvAglZhgVhrDv6tMkIZm', productId: 'prod_THeA990TwPMWzB', amount: 118.80 },
+  15: { priceId: 'price_1SL4slAglZhgVhrD1yf2lxR0', productId: 'prod_THeBIrnffoeMGJ', amount: 148.50 },
+};
 
 const BASE_PRICE = 9.90;
 
 export default function Checkout() {
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [days, setDays] = useState<number>(1);
+  const [loading, setLoading] = useState(false);
+  const [groupId, setGroupId] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Recupera o ID do grupo do sessionStorage
+    const storedGroupId = sessionStorage.getItem('checkout-group-id');
+    if (storedGroupId) {
+      setGroupId(storedGroupId);
+    }
+  }, []);
 
   const calculateDiscount = (numDays: number): number => {
     if (numDays >= 30) return 0.50; // 50% desconto
@@ -43,9 +68,74 @@ export default function Checkout() {
     }
   };
 
-  const handleCheckout = () => {
-    // Aqui você implementará a lógica de pagamento
-    console.log('Processando pagamento para', days, 'dias');
+  const getClosestStripePrice = (numDays: number) => {
+    // Encontra o preço mais próximo configurado no Stripe
+    const availableDays = Object.keys(STRIPE_PRICES).map(Number).sort((a, b) => a - b);
+    
+    // Se o número exato existe, retorna
+    if (STRIPE_PRICES[numDays]) {
+      return STRIPE_PRICES[numDays];
+    }
+    
+    // Caso contrário, calcula manualmente baseado no preço base
+    return null;
+  };
+
+  const handleCheckout = async () => {
+    if (!groupId) {
+      toast({
+        title: "Erro",
+        description: "Grupo não identificado. Por favor, tente novamente.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setLoading(true);
+    
+    try {
+      // Aqui você integraria com seu backend para criar uma sessão Stripe
+      // Por enquanto, vamos simular o processo
+      
+      const stripePrice = getClosestStripePrice(days);
+      
+      toast({
+        title: "Processando Pagamento",
+        description: `Redirecionando para checkout seguro (${days} dias - R$ ${total.toFixed(2)})...`,
+      });
+
+      // TODO: Integrar com Stripe Checkout Session
+      // const response = await fetch('/api/create-checkout-session', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({
+      //     groupId,
+      //     days,
+      //     priceId: stripePrice?.priceId || 'custom',
+      //     amount: total
+      //   })
+      // });
+      // const { sessionId } = await response.json();
+      // const stripe = await loadStripe('sua_publishable_key');
+      // await stripe?.redirectToCheckout({ sessionId });
+      
+      console.log('Payment info:', {
+        groupId,
+        days,
+        total,
+        stripePrice
+      });
+      
+    } catch (error) {
+      console.error('Checkout error:', error);
+      toast({
+        title: "Erro",
+        description: "Falha ao processar pagamento. Tente novamente.",
+        variant: "destructive"
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -219,9 +309,16 @@ export default function Checkout() {
                 className="w-full"
                 size="lg"
                 onClick={handleCheckout}
-                disabled={days < 1}
+                disabled={days < 1 || loading}
               >
-                Finalizar Pagamento - R$ {total.toFixed(2)}
+                {loading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Processando...
+                  </>
+                ) : (
+                  `Finalizar Pagamento - R$ ${total.toFixed(2)}`
+                )}
               </Button>
 
               <p className="text-xs text-center text-muted-foreground">
