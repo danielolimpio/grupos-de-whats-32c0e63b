@@ -2,8 +2,9 @@ import { Users, Heart, ExternalLink, Star } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
-import { cn, stripHtmlTags } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
+import DOMPurify from "dompurify";
 
 interface GroupCardProps {
   id: string;
@@ -35,6 +36,12 @@ export function GroupCard({
   onToggleFavorite
 }: GroupCardProps) {
   const navigate = useNavigate();
+  
+  // Sanitize HTML content for description
+  const sanitizedDescription = DOMPurify.sanitize(description || '', {
+    ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'u', 'h1', 'h2', 'h3', 'ul', 'ol', 'li', 'hr'],
+    ALLOWED_ATTR: []
+  });
   
   const handleJoinClick = () => {
     if (slug) {
@@ -90,9 +97,20 @@ export function GroupCard({
               )}
             </div>
             
-            <p className="text-xs text-muted-foreground line-clamp-2">
-              {stripHtmlTags(description || '')}
-            </p>
+            <div 
+              className="text-xs text-muted-foreground line-clamp-2
+                [&_p]:my-0 [&_p]:leading-relaxed
+                [&_strong]:font-semibold [&_strong]:text-foreground
+                [&_em]:italic
+                [&_u]:underline
+                [&_h1]:text-sm [&_h1]:font-semibold [&_h1]:my-0
+                [&_h2]:text-xs [&_h2]:font-semibold [&_h2]:my-0
+                [&_h3]:text-xs [&_h3]:font-semibold [&_h3]:my-0
+                [&_ul]:list-disc [&_ul]:ml-4 [&_ul]:my-0
+                [&_ol]:list-decimal [&_ol]:ml-4 [&_ol]:my-0
+                [&_li]:leading-relaxed"
+              dangerouslySetInnerHTML={{ __html: sanitizedDescription }}
+            />
             
             <Badge variant="outline" className="text-xs">
               {category}
