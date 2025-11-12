@@ -269,6 +269,16 @@ export const WHATSAPP_CATEGORIES: Category[] = [
     seoTitle: 'Grupos do Whatsapp de Zoeiras - Humor e Diversão 2025',
     metaDescription: 'Grupos do WhatsApp de zoeiras. Humor, memes, piadas e muita diversão com pessoas descontraídas.',
     priority: 7
+  },
+  {
+    id: 'uniao',
+    name: 'Grupos de Whatsapp de União',
+    displayName: 'Grupos Whatsapp União',
+    slug: 'grupos-de-whatsapp-de-uniao',
+    description: 'União, comunidade e fortalecimento de laços',
+    seoTitle: 'Grupos de Whatsapp de União - Comunidade e Conexão 2025',
+    metaDescription: 'Grupos de WhatsApp de união. Fortaleça laços, participe de comunidades e promova a união entre pessoas.',
+    priority: 8
   }
 ];
 
