@@ -98,11 +98,6 @@ export default function Dashboard() {
     checkAccessAndFetchData();
   }, [user]);
 
-  useEffect(() => {
-    if (activeTab === 'add-group') {
-      navigate('/checkout');
-    }
-  }, [activeTab, navigate]);
 
   const fetchProfile = async () => {
     if (!user) return;
