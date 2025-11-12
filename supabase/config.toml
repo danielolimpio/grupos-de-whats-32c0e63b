@@ -1,1 +1,7 @@
 project_id = "fagbmezuyjmvuhzelomu"
+
+[functions.fetch-whatsapp-group-image]
+verify_jwt = false
+
+[functions.download-whatsapp-image]
+verify_jwt = false

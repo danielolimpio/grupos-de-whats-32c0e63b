@@ -29,30 +29,40 @@ export function WhatsAppGroupImageLoader({
       }
 
       // Call edge function to fetch WhatsApp group image
-      const { data, error: functionError } = await supabase.functions.invoke('fetch-whatsapp-group-image', {
+      const { data: fetchData, error: fetchError } = await supabase.functions.invoke('fetch-whatsapp-group-image', {
         body: { whatsappLink: link }
       });
 
-      if (functionError) {
-        console.error('Error calling edge function:', functionError);
+      if (fetchError) {
+        console.error('Error calling fetch function:', fetchError);
         throw new Error('Erro ao buscar imagem do grupo');
       }
 
-      if (data?.success && data?.imageUrl) {
-        // Verify the image URL is valid by trying to load it
-        const img = new Image();
-        img.onload = () => {
-          setLoadedImageUrl(data.imageUrl);
-          onImageLoad(data.imageUrl);
-        };
-        img.onerror = () => {
-          console.error('Failed to load image from URL:', data.imageUrl);
+      if (fetchData?.success && fetchData?.imageUrl) {
+        // Download and upload the image to Supabase Storage
+        const { data: downloadData, error: downloadError } = await supabase.functions.invoke('download-whatsapp-image', {
+          body: { 
+            imageUrl: fetchData.imageUrl,
+            groupId: groupCodeMatch[1]
+          }
+        });
+
+        if (downloadError) {
+          console.error('Error downloading image:', downloadError);
+          // Fallback to original URL
+          setLoadedImageUrl(fetchData.imageUrl);
+          onImageLoad(fetchData.imageUrl);
+        } else if (downloadData?.success && downloadData?.imageUrl) {
+          // Use the uploaded image URL
+          setLoadedImageUrl(downloadData.imageUrl);
+          onImageLoad(downloadData.imageUrl);
+        } else {
+          // Use placeholder if download failed
           const placeholderImage = `https://ui-avatars.com/api/?name=${encodeURIComponent('Grupo WhatsApp')}&size=200&background=25d366&color=ffffff&format=png`;
           setLoadedImageUrl(placeholderImage);
           onImageLoad(placeholderImage);
           setError('A imagem do grupo não pôde ser carregada');
-        };
-        img.src = data.imageUrl;
+        }
       } else {
         // Use placeholder if no image found
         const placeholderImage = `https://ui-avatars.com/api/?name=${encodeURIComponent('Grupo WhatsApp')}&size=200&background=25d366&color=ffffff&format=png`;
