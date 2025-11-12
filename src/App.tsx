@@ -31,6 +31,7 @@ import AnunciarGrupos from "./pages/AnunciarGrupos";
 import Contato from "./pages/Contato";
 import PoliticaTransparencia from "./pages/PoliticaTransparencia";
 import Checkout from "./pages/Checkout";
+import MigrateImages from "./pages/MigrateImages";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,7 @@ const App = () => (
               <Route path="/admin" element={<Admin />} />
               <Route path="/admin-setup" element={<AdminSetup />} />
               <Route path="/admin/users" element={<AdminUsers />} />
+              <Route path="/admin/migrate-images" element={<MigrateImages />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/como-funciona" element={<ComoFunciona />} />
               <Route path="/regras-comunidade" element={<RegrasComunidade />} />

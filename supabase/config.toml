@@ -5,3 +5,6 @@ verify_jwt = false
 
 [functions.download-whatsapp-image]
 verify_jwt = false
+
+[functions.migrate-group-images]
+verify_jwt = false
