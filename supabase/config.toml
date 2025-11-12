@@ -7,4 +7,4 @@ verify_jwt = false
 verify_jwt = false
 
 [functions.migrate-group-images]
-verify_jwt = false
+verify_jwt = true

@@ -338,6 +338,7 @@ export type Database = {
         Args: { text_content: string }
         Returns: boolean
       }
+      delete_old_contacts: { Args: never; Returns: undefined }
       generate_slug: { Args: { name: string }; Returns: string }
       get_public_profile: {
         Args: { profile_user_id: string }

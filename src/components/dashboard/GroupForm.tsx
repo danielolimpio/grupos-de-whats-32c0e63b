@@ -69,8 +69,22 @@ export default function GroupForm({ onSuccess }: GroupFormProps) {
   };
 
   const validateWhatsAppLink = (link: string): boolean => {
-    // Basic WhatsApp link validation
-    return link.includes('chat.whatsapp.com') || link.includes('wa.me');
+    // Secure URL validation to prevent malicious links
+    try {
+      if (!link || link.length > 500) return false;
+      
+      const url = new URL(link);
+      
+      // Only allow HTTPS protocol
+      if (url.protocol !== 'https:') return false;
+      
+      // Check that hostname exactly matches WhatsApp domains
+      const validHosts = ['chat.whatsapp.com', 'wa.me'];
+      return validHosts.includes(url.hostname);
+    } catch {
+      // Invalid URL format
+      return false;
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
