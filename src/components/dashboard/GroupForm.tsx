@@ -11,6 +11,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { Upload, Plus, AlertTriangle } from 'lucide-react';
 import { getAllCategoriesSorted } from '@/data/categories';
 import { WhatsAppGroupImageLoader } from '@/components/WhatsAppGroupImageLoader';
+import { generateSlug } from '@/lib/utils';
 
 interface GroupFormProps {
   onSuccess: () => void;
@@ -63,8 +64,8 @@ export default function GroupForm({ onSuccess }: GroupFormProps) {
   };
 
   const validateGroupName = (name: string): boolean => {
-    // Check for only letters, numbers, and spaces
-    const validPattern = /^[a-zA-Z0-9\s]+$/;
+    // Allow Portuguese characters, letters, numbers, spaces, and common punctuation
+    const validPattern = /^[a-zA-ZÀ-ÿ0-9\s\-ç~^`´?!.,]+$/;
     return validPattern.test(name);
   };
 
@@ -102,7 +103,7 @@ export default function GroupForm({ onSuccess }: GroupFormProps) {
     if (!validateGroupName(name)) {
       toast({
         title: "Nome inválido",
-        description: "O nome do grupo deve conter apenas letras, números e espaços (sem emojis ou símbolos).",
+        description: "O nome do grupo deve conter apenas letras, números, espaços e pontuação básica da língua portuguesa (sem emojis).",
         variant: "destructive"
       });
       setLoading(false);
@@ -138,12 +139,13 @@ export default function GroupForm({ onSuccess }: GroupFormProps) {
         return;
       }
 
-      // Create group
+      // Create group with normalized slug
       const { error } = await supabase
         .from('groups')
         .insert({
           user_id: user.id,
           name: name.trim(),
+          slug: generateSlug(name.trim()),
           description: description.trim(),
           category,
           image_url: imageUrl,
@@ -189,7 +191,7 @@ export default function GroupForm({ onSuccess }: GroupFormProps) {
             <div className="space-y-2">
               <h4 className="font-medium text-yellow-800">Regras Importantes</h4>
               <ul className="text-sm text-yellow-700 space-y-1">
-                <li>• <strong>Nome:</strong> Apenas letras, números e espaços (sem emojis ou símbolos)</li>
+                <li>• <strong>Nome:</strong> Letras, números, espaços e pontuação básica (sem emojis)</li>
                 <li>• <strong>Proibido:</strong> Conteúdo adulto, drogas, armas, golpes ou fraudes</li>
                 <li>• <strong>Moderação:</strong> Todos os grupos passam por análise antes da aprovação</li>
                 <li>• <strong>Qualidade:</strong> Descrições claras e links válidos do WhatsApp</li>
@@ -211,7 +213,7 @@ export default function GroupForm({ onSuccess }: GroupFormProps) {
                   disabled={loading}
                 />
                 <p className="text-xs text-muted-foreground">
-                  Apenas letras, números e espaços. Sem emojis ou símbolos especiais.
+                  Permitido acentos e pontuação portuguesa. Sem emojis.
                 </p>
               </div>
 
