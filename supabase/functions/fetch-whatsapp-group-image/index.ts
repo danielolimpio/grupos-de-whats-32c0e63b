@@ -13,9 +13,26 @@ serve(async (req) => {
   try {
     const { whatsappLink } = await req.json()
 
-    if (!whatsappLink || !whatsappLink.includes('chat.whatsapp.com')) {
+    if (!whatsappLink) {
       return new Response(
-        JSON.stringify({ error: 'Link do WhatsApp inválido' }),
+        JSON.stringify({ error: 'WhatsApp link é obrigatório' }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 400 }
+      )
+    }
+
+    // Security: Validate WhatsApp URL to prevent SSRF attacks
+    try {
+      const url = new URL(whatsappLink)
+      const validHosts = ['chat.whatsapp.com', 'wa.me']
+      if (url.protocol !== 'https:' || !validHosts.includes(url.hostname)) {
+        return new Response(
+          JSON.stringify({ error: 'URL inválida. Apenas links oficiais do WhatsApp são permitidos.' }),
+          { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 400 }
+        )
+      }
+    } catch {
+      return new Response(
+        JSON.stringify({ error: 'Formato de URL inválido' }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 400 }
       )
     }

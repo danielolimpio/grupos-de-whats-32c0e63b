@@ -21,6 +21,24 @@ serve(async (req) => {
       )
     }
 
+    // Security: Validate image URL to prevent SSRF attacks
+    try {
+      const url = new URL(imageUrl)
+      // Only allow HTTPS and specific trusted domains
+      const allowedHosts = ['pps.whatsapp.net', 'mmg.whatsapp.net', 'ui-avatars.com']
+      if (url.protocol !== 'https:' || !allowedHosts.some(host => url.hostname.includes(host))) {
+        return new Response(
+          JSON.stringify({ error: 'URL de imagem não permitida' }),
+          { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 400 }
+        )
+      }
+    } catch {
+      return new Response(
+        JSON.stringify({ error: 'Formato de URL inválido' }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 400 }
+      )
+    }
+
     console.log('Downloading image from:', imageUrl)
 
     // Download the image from WhatsApp
