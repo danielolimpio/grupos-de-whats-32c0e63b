@@ -8,8 +8,8 @@ import { Shield } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export default function AdminSetup() {
-  const [email, setEmail] = useState('danielmoreiradmg10@gmail.com');
-  const [password, setPassword] = useState('Vale30Night80*');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
