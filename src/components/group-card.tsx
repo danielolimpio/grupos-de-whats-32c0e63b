@@ -2,7 +2,7 @@ import { Users, Heart, ExternalLink, Star } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
-import { cn } from "@/lib/utils";
+import { cn, stripHtmlTags } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
 
 interface GroupCardProps {
@@ -91,7 +91,7 @@ export function GroupCard({
             </div>
             
             <p className="text-xs text-muted-foreground line-clamp-2">
-              {description}
+              {stripHtmlTags(description || '')}
             </p>
             
             <Badge variant="outline" className="text-xs">

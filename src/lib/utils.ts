@@ -16,3 +16,10 @@ export function generateSlug(text: string): string {
     .replace(/\s+/g, '-') // Replace spaces with hyphens
     .replace(/-+/g, '-'); // Replace multiple hyphens with single hyphen
 }
+
+export function stripHtmlTags(html: string): string {
+  return html
+    .replace(/<[^>]*>/g, ' ') // Remove HTML tags
+    .replace(/\s+/g, ' ') // Replace multiple spaces with single space
+    .trim();
+}

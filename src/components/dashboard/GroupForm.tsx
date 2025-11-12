@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
+import { RichTextEditor } from '@/components/ui/rich-text-editor';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
@@ -24,6 +24,7 @@ export default function GroupForm({ onSuccess }: GroupFormProps) {
   const [uploading, setUploading] = useState(false);
   const [imageUrl, setImageUrl] = useState<string>('');
   const [whatsappLink, setWhatsappLink] = useState('');
+  const [description, setDescription] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
   const categories = getAllCategoriesSorted();
 
@@ -95,7 +96,6 @@ export default function GroupForm({ onSuccess }: GroupFormProps) {
     setLoading(true);
     const formData = new FormData(e.currentTarget);
     const name = formData.get('name') as string;
-    const description = formData.get('description') as string;
     const category = formData.get('category') as string;
     const whatsappLink = formData.get('whatsappLink') as string;
 
@@ -252,14 +252,16 @@ export default function GroupForm({ onSuccess }: GroupFormProps) {
 
             <div className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="description">Descrição</Label>
-                <Textarea
-                  id="description"
-                  name="description"
-                  placeholder="Descreva brevemente sobre o que é o grupo..."
-                  rows={4}
+                <Label htmlFor="description">Descrição *</Label>
+                <RichTextEditor
+                  content={description}
+                  onChange={setDescription}
+                  placeholder="Descreva sobre o grupo... Use as ferramentas de formatação para organizar o texto."
                   disabled={loading}
                 />
+                <p className="text-xs text-muted-foreground">
+                  Use as ferramentas acima para formatar: negrito, listas, títulos, etc.
+                </p>
               </div>
 
               <div className="space-y-2">

@@ -4,6 +4,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
+import DOMPurify from 'dompurify';
+import { stripHtmlTags } from '@/lib/utils';
 import { 
   Eye,
   Calendar,
@@ -131,9 +133,11 @@ export default function GroupsList({ groups, onRefresh, getStatusBadge }: Groups
                   <span className="font-medium">Categoria:</span> {group.category}
                 </CardDescription>
                 {group.description && (
-                  <p className="text-sm text-muted-foreground mt-1">
-                    {group.description}
-                  </p>
+                  <div 
+                    className="text-sm text-muted-foreground mt-1 line-clamp-2"
+                  >
+                    {stripHtmlTags(group.description)}
+                  </div>
                 )}
               </div>
               <div className="flex items-center gap-2">

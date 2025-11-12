@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import DOMPurify from "dompurify";
 import { supabase } from "@/integrations/supabase/client";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -120,20 +121,28 @@ const GroupDetails = () => {
 
   const pageUrl = window.location.href;
   const pageTitle = `${group.name} - Grupos de WhatsApp`;
-  const pageDescription = group.description || `Entre no grupo ${group.name} no WhatsApp`;
+  // Strip HTML tags for meta description
+  const plainDescription = group.description ? group.description.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim() : `Entre no grupo ${group.name} no WhatsApp`;
+  const pageDescription = plainDescription.length > 160 ? plainDescription.substring(0, 157) + '...' : plainDescription;
+  
+  // Sanitize HTML content
+  const sanitizedDescription = DOMPurify.sanitize(group.description || '', {
+    ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'u', 'h1', 'h2', 'h3', 'ul', 'ol', 'li', 'hr'],
+    ALLOWED_ATTR: []
+  });
 
   return (
     <>
       <Helmet>
         <title>{group.name} - Grupo de WhatsApp | Grupos de WhatsApp Brasil</title>
-        <meta name="description" content={`Entre no grupo "${group.name}" no WhatsApp. ${group.description || 'Grupo ativo e verificado.'} Categoria: ${group.category}`} />
+        <meta name="description" content={`Entre no grupo "${group.name}" no WhatsApp. ${pageDescription} Categoria: ${group.category}`} />
         <link rel="canonical" content={`https://gruposwhatsapp.com.br/grupo/${slug}`} />
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="article" />
         <meta property="og:url" content={`https://gruposwhatsapp.com.br/grupo/${slug}`} />
         <meta property="og:title" content={`${group.name} - Grupo de WhatsApp`} />
-        <meta property="og:description" content={group.description || `Entre no grupo ${group.name} no WhatsApp`} />
+        <meta property="og:description" content={pageDescription} />
         <meta property="og:image" content={group.image_url} />
         <meta property="og:site_name" content="Grupos de WhatsApp Brasil" />
         
@@ -141,7 +150,7 @@ const GroupDetails = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content={`https://gruposwhatsapp.com.br/grupo/${slug}`} />
         <meta name="twitter:title" content={`${group.name} - Grupo de WhatsApp`} />
-        <meta name="twitter:description" content={group.description || `Entre no grupo ${group.name} no WhatsApp`} />
+        <meta name="twitter:description" content={pageDescription} />
         <meta name="twitter:image" content={group.image_url} />
         
         {/* Keywords */}
@@ -153,7 +162,7 @@ const GroupDetails = () => {
             "@context": "https://schema.org",
             "@type": "SocialMediaPosting",
             "headline": group.name,
-            "description": group.description,
+            "description": plainDescription,
             "image": group.image_url,
             "url": `https://gruposwhatsapp.com.br/grupo/${slug}`,
             "datePublished": group.created_at,
@@ -196,9 +205,18 @@ const GroupDetails = () => {
                 />
                 <div className="flex-1">
                   <CardTitle className="text-3xl mb-2">{group.name}</CardTitle>
-                  <CardDescription className="text-base mb-4">
-                    {group.description}
-                  </CardDescription>
+                  {sanitizedDescription && (
+                    <div 
+                      className="prose prose-sm max-w-none mb-4 text-muted-foreground
+                        prose-headings:text-foreground prose-headings:font-semibold prose-headings:mt-4 prose-headings:mb-2
+                        prose-h1:text-xl prose-h2:text-lg prose-h3:text-base
+                        prose-p:my-2 prose-p:text-foreground/90
+                        prose-strong:text-foreground prose-strong:font-semibold
+                        prose-ul:my-2 prose-ol:my-2 prose-li:text-foreground/90
+                        prose-hr:my-4 prose-hr:border-border"
+                      dangerouslySetInnerHTML={{ __html: sanitizedDescription }}
+                    />
+                  )}
                   <div className="flex flex-wrap gap-3">
                     <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-primary/10 text-primary">
                       {group.category}
