@@ -11,3 +11,7 @@ verify_jwt = false
 # Admin-only function - requires authentication
 [functions.migrate-group-images]
 verify_jwt = true
+
+# Email confirmation webhook - called by Supabase Auth
+[functions.send-confirmation-email]
+verify_jwt = false
