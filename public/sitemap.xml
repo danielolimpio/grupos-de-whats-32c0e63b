@@ -93,7 +93,201 @@
     <priority>0.3</priority>
   </url>
 
-  <!-- NOTA: Este é um sitemap inicial. Use a página /sitemap para gerar um sitemap dinâmico -->
-  <!-- com todas as categorias e grupos do banco de dados -->
+  <!-- Páginas de categorias -->
+  <url>
+    <loc>https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-amizades</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-cinema</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-cursos</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-divulgacao</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-encontros</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-esportes</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-estilo</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-estudos</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-figurinhas</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-games</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-investimentos</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-liberais</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-livros</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-musicas</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-namoros</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-noticias</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-oportunidades</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-pets</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-promocoes</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-receitas</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-redes-sociais</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-tecnologia</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gruposdewhats.com.br/categoria/grupos-de-whatsapp-de-uniao</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-vendas</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-viagens</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-videos</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-zoeiras</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- NOTA: Este é um sitemap inicial com categorias. -->
+  <!-- Para incluir TODOS os 71 grupos automaticamente: -->
+  <!-- 1. Acesse https://gruposdewhats.com.br/sitemap -->
+  <!-- 2. Baixe o sitemap.xml gerado automaticamente -->
+  <!-- 3. Substitua este arquivo pelo gerado -->
+  <!-- 4. Repita mensalmente para incluir novos grupos -->
 
 </urlset>
