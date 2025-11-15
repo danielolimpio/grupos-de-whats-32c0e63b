@@ -53,9 +53,9 @@ serve(async (req) => {
 
     // Send email via Resend
     const { data, error } = await resend.emails.send({
-      from: 'Verde Comunidade <onboarding@resend.dev>', // TODO: Replace with your verified domain
+      from: 'Grupos de WhatsApp <onboarding@resend.dev>', // TODO: Replace with your verified domain
       to: [user.email],
-      subject: 'Confirme seu email - Verde Comunidade',
+      subject: 'Confirme seu cadastro - Grupos de WhatsApp',
       html,
     })
 
