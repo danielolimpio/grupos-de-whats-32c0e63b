@@ -25,6 +25,15 @@ jobs:
 
       - name: Mostrar arquivos gerados
         run: ls -la dist/
+      
+      - name: Verificar .htaccess
+        run: |
+          if [ -f dist/.htaccess ]; then
+            echo "✅ .htaccess encontrado"
+            cat dist/.htaccess
+          else
+            echo "⚠️ .htaccess não encontrado"
+          fi
 
       - name: Deploy FTP para Hostinger
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4

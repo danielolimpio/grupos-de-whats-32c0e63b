@@ -10,7 +10,7 @@ const Sitemap = () => {
   }, []);
 
   const generateSitemap = async () => {
-    const baseUrl = 'https://gruposwhatsapp.com.br';
+    const baseUrl = 'https://gruposdewhats.com.br';
     const today = new Date().toISOString().split('T')[0];
 
     let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
@@ -122,7 +122,7 @@ const Sitemap = () => {
             <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground">
               <li>Faça upload do arquivo sitemap.xml para a raiz do seu site</li>
               <li>Acesse o Google Search Console</li>
-              <li>Vá em Sitemaps e adicione a URL: https://gruposwhatsapp.com.br/sitemap.xml</li>
+              <li>Vá em Sitemaps e adicione a URL: https://gruposdewhats.com.br/sitemap.xml</li>
               <li>Clique em "Enviar"</li>
               <li>Aguarde o Google processar o sitemap (pode levar alguns dias)</li>
             </ol>

@@ -15,4 +15,11 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  publicDir: "public",
+  build: {
+    outDir: "dist",
+    assetsDir: "assets",
+    // Garantir que arquivos começando com ponto sejam copiados
+    copyPublicDir: true,
+  },
 }));
