@@ -31,13 +31,13 @@ export const ConfirmEmail = ({
 }: ConfirmEmailProps) => (
   <Html>
     <Head />
-    <Preview>Confirme seu email para continuar</Preview>
+    <Preview>Confirme seu cadastro - Grupos de WhatsApp</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Heading style={h1}>Bem-vindo!</Heading>
+        <Heading style={h1}>Bem-vindo aos Grupos de WhatsApp!</Heading>
         
         <Text style={text}>
-          Obrigado por se registrar. Para garantir a segurança da sua conta, precisamos confirmar seu endereço de email.
+          Obrigado por se cadastrar. Para garantir a segurança da sua conta e ativar seu perfil, precisamos confirmar seu endereço de email.
         </Text>
 
         <Section style={buttonContainer}>
@@ -45,21 +45,21 @@ export const ConfirmEmail = ({
             style={button}
             href={`${supabase_url}/auth/v1/verify?token=${token_hash}&type=${email_action_type}&redirect_to=${redirect_to}`}
           >
-            Confirmar meu email
+            Confirmar meu cadastro
           </Button>
         </Section>
 
         <Text style={text}>
-          Ou copie e cole este código de confirmação:
+          Ou copie e cole este código de confirmação no site:
         </Text>
         <code style={code}>{token}</code>
 
         <Text style={textSecondary}>
-          Este link é válido por 24 horas e expirará após o uso.
+          Este link é válido por 24 horas e só pode ser usado uma vez.
         </Text>
 
         <Text style={textSecondary}>
-          Se você não se registrou em nossa plataforma, pode ignorar este email com segurança.
+          Se você não se cadastrou em nossa plataforma, pode ignorar este email com segurança.
         </Text>
 
         <Section style={footer}>
@@ -67,7 +67,7 @@ export const ConfirmEmail = ({
             Este email foi enviado para <strong>{user_email}</strong>
           </Text>
           <Text style={footerText}>
-            © {new Date().getFullYear()} Verde Comunidade. Todos os direitos reservados.
+            © {new Date().getFullYear()} Grupos de WhatsApp. Todos os direitos reservados.
           </Text>
         </Section>
       </Container>
