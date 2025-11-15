@@ -1,6 +1,7 @@
-import { MessageCircle, Mail, Shield, FileText, Phone, Cookie } from "lucide-react";
+import { Mail, Shield, FileText, Phone, Cookie } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
+import logo from "@/assets/logo.png";
 
 export function Footer() {
   return (
@@ -9,10 +10,10 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <MessageCircle className="h-6 w-6" />
+            <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+              <img src={logo} alt="Grupos de WhatsApp" className="h-8 w-8 rounded-lg" />
               <span className="text-lg font-bold">Grupos de WhatsApp</span>
-            </div>
+            </Link>
             <p className="text-primary-foreground/80 text-sm">
               A maior plataforma para descobrir e compartilhar grupos de WhatsApp no Brasil.
             </p>

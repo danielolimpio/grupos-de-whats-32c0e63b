@@ -4,7 +4,7 @@ import { SearchInput } from "./ui/search-input";
 import { Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import { MobileMenu } from "./mobile-menu";
-import whatsappLogo from "@/assets/whatsapp-logo-new.png";
+import logo from "@/assets/logo.png";
 
 export function Header() {
   const { user, signOut } = useAuth();
@@ -20,9 +20,9 @@ export function Header() {
             </div>
             <Link to="/">
               <img 
-                src={whatsappLogo} 
-                alt="WhatsApp"
-                className="h-10 w-10 rounded-full cursor-pointer"
+                src={logo} 
+                alt="Grupos de WhatsApp"
+                className="h-10 w-10 rounded-lg cursor-pointer"
               />
             </Link>
             <Link to="/" className="hidden md:block">
