@@ -23,7 +23,7 @@ Disallow: /*?*utm_source=
 Disallow: /*?*ref=
 
 # Sitemap
-Sitemap: https://gruposwhatsapp.com.br/sitemap.xml
+Sitemap: https://gruposdewhats.com.br/sitemap.xml
 
 # Configurações de crawl
 Crawl-delay: 1
