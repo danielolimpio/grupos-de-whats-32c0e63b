@@ -346,7 +346,7 @@ export default function Dashboard() {
                             size="sm"
                             className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-semibold"
                             onClick={() => {
-                              sessionStorage.setItem('selectedGroupId', group.id);
+                              sessionStorage.setItem('checkout-group-id', group.id);
                               navigate('/checkout');
                             }}
                           >
