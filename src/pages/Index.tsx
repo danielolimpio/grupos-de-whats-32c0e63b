@@ -3,7 +3,6 @@ import { Sidebar } from "@/components/sidebar";
 import { GroupGrid } from "@/components/group-grid";
 import { StatsBanner } from "@/components/stats-banner";
 import { Footer } from "@/components/footer";
-import { CookieBanner } from "@/components/cookie-banner";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Helmet } from "react-helmet-async";
@@ -181,7 +180,6 @@ const Index = () => {
       </main>
 
       <Footer />
-      <CookieBanner />
     </div>
     </>
   );
