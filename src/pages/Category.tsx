@@ -2,7 +2,6 @@ import { useParams, Navigate } from "react-router-dom";
 import { Header } from "@/components/header";
 import { Sidebar } from "@/components/sidebar";
 import { Footer } from "@/components/footer";
-import { CookieBanner } from "@/components/cookie-banner";
 import { GroupGrid } from "@/components/group-grid";
 import { StatsBanner } from "@/components/stats-banner";
 import { useState, useEffect } from "react";
@@ -179,7 +178,6 @@ const Category = () => {
         </main>
 
         <Footer />
-        <CookieBanner />
       </div>
     </>
   );
