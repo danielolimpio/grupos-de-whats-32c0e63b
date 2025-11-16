@@ -81,8 +81,15 @@ const Index = () => {
   });
 
   const popularGroups = [...groups].sort((a, b) => b.accessCount - a.accessCount).slice(0, 8);
-  const recentGroups = [...groups].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).slice(0, 8);
-  const displayGroups = sortedGroups.slice(0, 12);
+  
+  const popularIds = new Set(popularGroups.map(g => g.uuid));
+  const recentGroups = [...groups]
+    .filter(g => !popularIds.has(g.uuid))
+    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+    .slice(0, 8);
+  
+  const usedIds = new Set([...popularGroups.map(g => g.uuid), ...recentGroups.map(g => g.uuid)]);
+  const displayGroups = sortedGroups.filter(g => !usedIds.has(g.uuid)).slice(0, 12);
 
   if (loading) {
     return (
@@ -145,7 +152,7 @@ const Index = () => {
               <>
                 <GroupGrid 
                   groups={popularGroups}
-                  title="📈 Grupos Mais Acessados"
+                  title="Grupos Mais Acessados"
                   showMore={true}
                   isFavorited={isFavorited}
                   onToggleFavorite={toggleFavorite}
@@ -153,7 +160,7 @@ const Index = () => {
 
                 <GroupGrid 
                   groups={recentGroups}
-                  title="🆕 Grupos Mais Recentes"
+                  title="Grupos Mais Recentes"
                   showMore={true}
                   isFavorited={isFavorited}
                   onToggleFavorite={toggleFavorite}
@@ -163,7 +170,7 @@ const Index = () => {
 
             <GroupGrid 
               groups={displayGroups}
-              title={selectedCategory ? `${selectedCategory}` : "🌟 Todos os Grupos"}
+              title={selectedCategory ? `${selectedCategory}` : "Todos os Grupos"}
               showMore={true}
               isFavorited={isFavorited}
               onToggleFavorite={toggleFavorite}

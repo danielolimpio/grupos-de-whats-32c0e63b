@@ -1,7 +1,6 @@
 import { GroupCard } from "./group-card";
 import { WhatsAppGroup } from "@/data/mock-groups";
 import { Link } from "react-router-dom";
-import { Sparkles, Clock, Users, Eye } from "lucide-react";
 
 interface GroupGridProps {
   groups: WhatsAppGroup[];
@@ -15,10 +14,7 @@ export function GroupGrid({ groups, title, showMore = false, isFavorited, onTogg
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          {getIconForSection(title)}
-          <h2 className="text-2xl font-bold text-foreground">{title}</h2>
-        </div>
+        <h2 className="text-2xl font-bold text-foreground">{title}</h2>
         {showMore && (
           <Link to="/all-groups" className="text-primary hover:text-primary-hover text-sm font-medium link-underline">
             Ver todos
@@ -46,33 +42,4 @@ export function GroupGrid({ groups, title, showMore = false, isFavorited, onTogg
       </div>
     </div>
   );
-}
-
-function getIconForSection(title: string) {
-  switch (title.toLowerCase()) {
-    case 'grupos mais acessados':
-      return (
-        <div className="w-5 h-5 bg-gradient-to-r from-whatsapp to-green-500 rounded-full flex items-center justify-center">
-          <Sparkles className="h-3 w-3 text-white" />
-        </div>
-      );
-    case 'grupos mais recentes':
-      return (
-        <div className="w-5 h-5 bg-gradient-to-r from-whatsapp to-green-500 rounded-full flex items-center justify-center">
-          <Clock className="h-3 w-3 text-white" />
-        </div>
-      );
-    case 'todos os grupos':
-      return (
-        <div className="w-5 h-5 bg-gradient-to-r from-whatsapp to-green-500 rounded-full flex items-center justify-center">
-          <Users className="h-3 w-3 text-white" />
-        </div>
-      );
-    default:
-      return (
-        <div className="w-5 h-5 bg-gradient-to-r from-whatsapp to-green-500 rounded-full flex items-center justify-center">
-          <Eye className="h-3 w-3 text-white" />
-        </div>
-      );
-  }
 }
