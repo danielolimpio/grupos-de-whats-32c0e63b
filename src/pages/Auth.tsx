@@ -34,7 +34,7 @@ export default function Auth() {
           if (data && (data.role === 'admin' || data.role === 'moderator')) {
             toast({
               title: "Acesso negado",
-              description: "Esta é a área de usuários. Use /admin-setup para acessar a área administrativa.",
+              description: "Esta é a área de usuários. Use /admin para acessar a área administrativa.",
               variant: "destructive"
             });
             return;
@@ -86,7 +86,7 @@ export default function Auth() {
           await supabase.auth.signOut();
           toast({
             title: "Acesso negado",
-            description: "Esta conta é de administrador. Use /admin-setup para acessar a área administrativa.",
+            description: "Esta conta é de administrador. Use /admin para acessar a área administrativa.",
             variant: "destructive"
           });
           setIsLoading(false);
