@@ -9,7 +9,6 @@ import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import Admin from "./pages/Admin";
-import AdminSetup from "./pages/AdminSetup";
 import AdminUsers from "./pages/AdminUsers";
 import Blog from "./pages/Blog";
 import ComoFunciona from "./pages/ComoFunciona";
@@ -49,7 +48,6 @@ const App = () => (
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/admin" element={<Admin />} />
-              <Route path="/admin-setup" element={<AdminSetup />} />
               <Route path="/admin/users" element={<AdminUsers />} />
               <Route path="/admin/migrate-images" element={<MigrateImages />} />
               <Route path="/blog" element={<Blog />} />
