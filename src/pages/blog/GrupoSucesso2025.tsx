@@ -206,7 +206,7 @@ export default function GrupoSucesso2025() {
 
             <h3 className="text-2xl font-bold mt-8 mb-4">2. Mantenha Qualidade na Escala</h3>
             <ul className="list-disc pl-6 space-y-2">
-              <li><strong>Curadoria de conteúdo:</strong> Qualidade > Quantidade sempre</li>
+              <li><strong>Curadoria de conteúdo:</strong> Qualidade {'>'} Quantidade sempre</li>
               <li><strong>Triagem de novos membros:</strong> Perguntas de screening</li>
               <li><strong>Limpeza regular:</strong> Remova inativos após 60 dias (avise antes)</li>
               <li><strong>Eventos especiais:</strong> Lives, AMAs, workshops mensais</li>
