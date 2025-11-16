@@ -445,7 +445,7 @@ export default function Admin() {
   }
 
   if (!user) {
-    return <Navigate to="/auth" replace />;
+    return <Navigate to="/admin-setup" replace />;
   }
 
   if (loadingData) {
@@ -460,12 +460,7 @@ export default function Admin() {
   }
 
   if (!profile || (profile.role !== 'admin' && profile.role !== 'moderator')) {
-    toast({
-      title: "Acesso negado",
-      description: "Você não tem permissão para acessar esta área.",
-      variant: "destructive"
-    });
-    return <Navigate to="/" replace />;
+    return <Navigate to="/admin-setup" replace />;
   }
 
   return (

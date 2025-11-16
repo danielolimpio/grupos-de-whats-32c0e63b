@@ -120,17 +120,6 @@ export default function GroupForm({ onSuccess }: GroupFormProps) {
       return;
     }
 
-    // Validate description length
-    if (description && description.length > 5000) {
-      toast({
-        title: "Descrição muito longa",
-        description: "A descrição deve ter no máximo 5000 caracteres.",
-        variant: "destructive",
-      });
-      setLoading(false);
-      return;
-    }
-
     try {
       // Check for prohibited content
       const { data: hasProhibited, error: checkError } = await supabase
