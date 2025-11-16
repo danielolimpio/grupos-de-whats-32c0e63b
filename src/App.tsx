@@ -12,6 +12,12 @@ import Admin from "./pages/Admin";
 import AdminSetup from "./pages/AdminSetup";
 import AdminUsers from "./pages/AdminUsers";
 import Blog from "./pages/Blog";
+import GrupoSucesso2025 from "./pages/blog/GrupoSucesso2025";
+import RegrasEssenciais from "./pages/blog/RegrasEssenciais";
+import GruposPremium from "./pages/blog/GruposPremium";
+import SegurancaWhatsApp from "./pages/blog/SegurancaWhatsApp";
+import AumentarEngajamento from "./pages/blog/AumentarEngajamento";
+import MelhoresHorarios from "./pages/blog/MelhoresHorarios";
 import ComoFunciona from "./pages/ComoFunciona";
 import RegrasComunidade from "./pages/RegrasComunidade";
 import DicasSeguranca from "./pages/DicasSeguranca";
@@ -53,6 +59,12 @@ const App = () => (
               <Route path="/admin/users" element={<AdminUsers />} />
               <Route path="/admin/migrate-images" element={<MigrateImages />} />
               <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/como-criar-grupo-sucesso-2025" element={<GrupoSucesso2025 />} />
+              <Route path="/blog/regras-essenciais-grupo-organizado" element={<RegrasEssenciais />} />
+              <Route path="/blog/por-que-grupos-premium-tem-mais-sucesso" element={<GruposPremium />} />
+              <Route path="/blog/seguranca-whatsapp-proteja-seu-grupo" element={<SegurancaWhatsApp />} />
+              <Route path="/blog/como-aumentar-engajamento-grupo" element={<AumentarEngajamento />} />
+              <Route path="/blog/melhores-horarios-postar-grupos" element={<MelhoresHorarios />} />
               <Route path="/como-funciona" element={<ComoFunciona />} />
               <Route path="/regras-comunidade" element={<RegrasComunidade />} />
               <Route path="/dicas-seguranca" element={<DicasSeguranca />} />

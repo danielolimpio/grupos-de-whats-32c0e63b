@@ -13,6 +13,7 @@ import { Sidebar } from "@/components/sidebar";
 const blogPosts = [
   {
     id: 1,
+    slug: "como-criar-grupo-sucesso-2025",
     title: "Como Criar um Grupo de WhatsApp de Sucesso: Guia Completo 2024",
     excerpt: "Descubra as melhores estratégias para criar e administrar grupos de WhatsApp que realmente engajam e crescem. Dicas práticas testadas por milhares de administradores.",
     content: "Criar um grupo de WhatsApp de sucesso vai muito além de simplesmente reunir pessoas...",
@@ -26,6 +27,7 @@ const blogPosts = [
   },
   {
     id: 2,
+    slug: "regras-essenciais-grupo-organizado",
     title: "10 Regras Essenciais para Manter seu Grupo Organizado",
     excerpt: "Mantenha a ordem e o respeito no seu grupo com essas regras fundamentais que todo administrador deveria conhecer.",
     content: "Um grupo bem organizado é a chave para o sucesso e longevidade...",
@@ -39,6 +41,7 @@ const blogPosts = [
   },
   {
     id: 3,
+    slug: "por-que-grupos-premium-tem-mais-sucesso",
     title: "Por Que Grupos Premium Têm Mais Sucesso",
     excerpt: "Entenda os benefícios de impulsionar seu grupo e como isso pode aumentar significativamente o engajamento e crescimento.",
     content: "Grupos Premium não são apenas uma questão de visibilidade...",
@@ -52,6 +55,7 @@ const blogPosts = [
   },
   {
     id: 4,
+    slug: "seguranca-whatsapp-proteja-seu-grupo",
     title: "Segurança no WhatsApp: Proteja seu Grupo de Spam e Golpes",
     excerpt: "Aprenda como identificar e prevenir spam, golpes e conteúdo malicioso nos seus grupos de WhatsApp.",
     content: "A segurança do seu grupo é fundamental para manter um ambiente saudável...",
@@ -65,6 +69,7 @@ const blogPosts = [
   },
   {
     id: 5,
+    slug: "como-aumentar-engajamento-grupo",
     title: "Como Aumentar o Engajamento no seu Grupo",
     excerpt: "Estratégias comprovadas para manter seus membros ativos e interessados no conteúdo do seu grupo.",
     content: "O engajamento é o coração de qualquer grupo de sucesso...",
@@ -78,6 +83,7 @@ const blogPosts = [
   },
   {
     id: 6,
+    slug: "melhores-horarios-postar-grupos",
     title: "Melhores Horários para Postar em Grupos de WhatsApp",
     excerpt: "Descubra os horários com maior engajamento e como adaptar sua estratégia de conteúdo para diferentes tipos de grupos.",
     content: "O timing é tudo quando se trata de engajamento em grupos...",
@@ -213,9 +219,11 @@ export default function Blog() {
                         </Badge>
                       ))}
                     </div>
-                    <Button className="w-full btn-whatsapp">
-                      Ler Artigo
-                    </Button>
+                    <Link to={`/blog/${post.slug}`}>
+                      <Button className="w-full btn-whatsapp">
+                        Ler Artigo
+                      </Button>
+                    </Link>
                   </CardContent>
                 </Card>
               ))}
@@ -287,9 +295,11 @@ export default function Blog() {
                         </Badge>
                       ))}
                     </div>
-                    <Button className="w-full btn-whatsapp">
-                      Ler Artigo
-                    </Button>
+                    <Link to={`/blog/${post.slug}`}>
+                      <Button className="w-full btn-whatsapp">
+                        Ler Artigo
+                      </Button>
+                    </Link>
                   </CardContent>
                 </Card>
               ))}
