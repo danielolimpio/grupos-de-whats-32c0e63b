@@ -2,6 +2,7 @@ import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Underline from '@tiptap/extension-underline';
 import Placeholder from '@tiptap/extension-placeholder';
+import CharacterCount from '@tiptap/extension-character-count';
 import { 
   Bold, 
   Italic, 
@@ -41,6 +42,9 @@ export function RichTextEditor({
       Underline,
       Placeholder.configure({
         placeholder,
+      }),
+      CharacterCount.configure({
+        limit: 5000,
       }),
     ],
     content,
@@ -214,6 +218,9 @@ export function RichTextEditor({
           disabled && "opacity-50 cursor-not-allowed"
         )}
       />
+      <div className="px-3 py-2 text-xs text-muted-foreground border-t border-input text-right">
+        {editor.storage.characterCount.characters()}/5000 caracteres
+      </div>
     </div>
   );
 }
