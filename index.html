@@ -68,6 +68,37 @@
   </head>
 
   <body>
+    <style>
+      /* Prevent Flash of Unstyled Content (FOUC) */
+      #root:empty {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: #ffffff;
+      }
+      #root:empty::after {
+        content: '';
+        width: 48px;
+        height: 48px;
+        border: 3px solid #e5e7eb;
+        border-top-color: #25D366;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+      @media (prefers-color-scheme: dark) {
+        #root:empty {
+          background: #0a0a0a;
+        }
+        #root:empty::after {
+          border-color: #262626;
+          border-top-color: #25D366;
+        }
+      }
+    </style>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

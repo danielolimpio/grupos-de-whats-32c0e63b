@@ -68,25 +68,35 @@ export default function GroupsList({ groups, onRefresh, getStatusBadge }: Groups
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) throw new Error('Usuário não autenticado');
 
+      // Delete related records first (that the user has permission to delete)
+      await supabase.from('favorites').delete().eq('group_id', groupId).eq('user_id', user.id);
+      
+      // Delete the group (will cascade to other related records via RLS and foreign keys)
       const { error } = await supabase
         .from('groups')
         .delete()
         .eq('id', groupId)
         .eq('user_id', user.id); // Only delete if it belongs to the user
 
-      if (error) throw error;
+      if (error) {
+        console.error('Delete error details:', error);
+        throw error;
+      }
 
       toast({
         title: "Grupo removido",
-        description: "O grupo foi removido com sucesso.",
+        description: "O grupo foi removido completamente do sistema.",
       });
       
-      onRefresh();
+      // Wait a bit before refreshing to ensure deletion is complete
+      setTimeout(() => {
+        onRefresh();
+      }, 500);
     } catch (error: any) {
       console.error('Delete error:', error);
       toast({
         title: "Erro ao remover grupo",
-        description: error.message,
+        description: error.message || "Não foi possível remover o grupo. Tente novamente.",
         variant: "destructive"
       });
     } finally {

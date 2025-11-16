@@ -20,7 +20,8 @@ import {
   Search,
   Edit,
   Upload,
-  RefreshCw
+  RefreshCw,
+  Trash2
 } from 'lucide-react';
 import {
   Dialog,
@@ -223,6 +224,38 @@ export default function Admin() {
     } catch (error: any) {
       toast({
         title: "Erro ao rejeitar grupo",
+        description: error.message,
+        variant: "destructive"
+      });
+    }
+  };
+
+  const handleDeleteGroup = async (groupId: string) => {
+    try {
+      // Delete related records first
+      await supabaseAdmin.from('favorites').delete().eq('group_id', groupId);
+      await supabaseAdmin.from('group_accesses').delete().eq('group_id', groupId);
+      await supabaseAdmin.from('admin_actions').delete().eq('group_id', groupId);
+      await supabaseAdmin.from('premium_payments').delete().eq('group_id', groupId);
+
+      // Delete the group
+      const { error } = await supabaseAdmin
+        .from('groups')
+        .delete()
+        .eq('id', groupId);
+
+      if (error) throw error;
+
+      toast({
+        title: "Grupo excluído",
+        description: "O grupo foi excluído permanentemente do sistema.",
+      });
+
+      fetchGroups();
+    } catch (error: any) {
+      console.error('Delete error:', error);
+      toast({
+        title: "Erro ao excluir grupo",
         description: error.message,
         variant: "destructive"
       });
@@ -594,6 +627,31 @@ export default function Admin() {
                           </AlertDialog>
                         </>
                       )}
+                      <AlertDialog>
+                        <AlertDialogTrigger asChild>
+                          <Button variant="outline" size="sm" className="text-red-600 hover:text-red-700 hover:bg-red-50">
+                            <Trash2 className="h-4 w-4 mr-2" />
+                            Excluir
+                          </Button>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent>
+                          <AlertDialogHeader>
+                            <AlertDialogTitle>Excluir Grupo Permanentemente</AlertDialogTitle>
+                            <AlertDialogDescription>
+                              Esta ação não pode ser desfeita. O grupo "{group.name}" será excluído permanentemente do sistema, incluindo todos os dados relacionados (favoritos, acessos, histórico).
+                            </AlertDialogDescription>
+                          </AlertDialogHeader>
+                          <AlertDialogFooter>
+                            <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                            <AlertDialogAction
+                              onClick={() => handleDeleteGroup(group.id)}
+                              className="bg-red-600 hover:bg-red-700"
+                            >
+                              Excluir Permanentemente
+                            </AlertDialogAction>
+                          </AlertDialogFooter>
+                        </AlertDialogContent>
+                      </AlertDialog>
                     </div>
                   </div>
                 </CardHeader>
