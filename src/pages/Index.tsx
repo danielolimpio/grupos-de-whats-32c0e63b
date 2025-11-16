@@ -80,16 +80,22 @@ const Index = () => {
     return 0;
   });
 
-  const popularGroups = [...groups].sort((a, b) => b.accessCount - a.accessCount).slice(0, 8);
+  const premiumGroups = [...groups].filter(g => g.isPremium).slice(0, 8);
   
-  const popularIds = new Set(popularGroups.map(g => g.uuid));
+  const premiumIds = new Set(premiumGroups.map(g => g.uuid));
+  const popularGroups = [...groups]
+    .filter(g => !premiumIds.has(g.uuid))
+    .sort((a, b) => b.accessCount - a.accessCount)
+    .slice(0, 8);
+  
+  const usedIds = new Set([...premiumGroups.map(g => g.uuid), ...popularGroups.map(g => g.uuid)]);
   const recentGroups = [...groups]
-    .filter(g => !popularIds.has(g.uuid))
+    .filter(g => !usedIds.has(g.uuid))
     .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
     .slice(0, 8);
   
-  const usedIds = new Set([...popularGroups.map(g => g.uuid), ...recentGroups.map(g => g.uuid)]);
-  const displayGroups = sortedGroups.filter(g => !usedIds.has(g.uuid)).slice(0, 12);
+  const allUsedIds = new Set([...premiumGroups.map(g => g.uuid), ...popularGroups.map(g => g.uuid), ...recentGroups.map(g => g.uuid)]);
+  const displayGroups = sortedGroups.filter(g => !allUsedIds.has(g.uuid)).slice(0, 12);
 
   if (loading) {
     return (
@@ -150,6 +156,14 @@ const Index = () => {
           <div className="flex-1 space-y-12">
             {!selectedCategory && (
               <>
+                <GroupGrid 
+                  groups={premiumGroups}
+                  title="Grupos Premium"
+                  showMore={true}
+                  isFavorited={isFavorited}
+                  onToggleFavorite={toggleFavorite}
+                />
+
                 <GroupGrid 
                   groups={popularGroups}
                   title="Grupos Mais Acessados"
