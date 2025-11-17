@@ -20,6 +20,21 @@ export default function Auth() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Check for email confirmation in URL
+    const params = new URLSearchParams(window.location.search);
+    const confirmed = params.get('confirmed');
+    
+    if (confirmed === 'true') {
+      toast({
+        title: "Email confirmado com sucesso!",
+        description: "Seu cadastro foi confirmado. Você já pode fazer login.",
+      });
+      // Clean URL
+      window.history.replaceState({}, document.title, '/auth');
+    }
+  }, []);
+
+  useEffect(() => {
     // Check if user is already logged in and redirect to dashboard
     const checkUserAndRedirect = async () => {
       if (user) {
