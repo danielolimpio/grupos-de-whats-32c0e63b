@@ -3,11 +3,13 @@ User-agent: *
 Allow: /
 Allow: /categoria/
 Allow: /grupo/
+Allow: /todos-grupos
 Allow: /blog
 Allow: /como-funciona
 Allow: /faq
 Allow: /regras-comunidade
 Allow: /dicas-seguranca
+Allow: /central-ajuda
 
 # Bloquear páginas administrativas e de autenticação
 Disallow: /admin
@@ -15,6 +17,7 @@ Disallow: /admin-setup
 Disallow: /dashboard
 Disallow: /auth
 Disallow: /reportar-problema
+Disallow: /migrate-images
 
 # Bloquear arquivos e pastas desnecessários
 Disallow: /api/
