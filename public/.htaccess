@@ -27,7 +27,7 @@
   AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json application/xml
 </IfModule>
 
-# Headers de Segurança
+# Headers de Segurança e Cache
 <IfModule mod_headers.c>
   # Previne ataques MIME-type
   Header set X-Content-Type-Options "nosniff"
@@ -43,6 +43,18 @@
   
   # Permissions Policy
   Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  
+  # Cache control para HTML - sempre revalidar
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+  
+  # Cache control para assets com hash (Vite) - cache longo
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
 </IfModule>
 
 # Cache de recursos estáticos
@@ -58,10 +70,10 @@
   ExpiresByType image/svg+xml "access plus 1 year"
   ExpiresByType image/x-icon "access plus 1 year"
   
-  # CSS e JavaScript
-  ExpiresByType text/css "access plus 1 month"
-  ExpiresByType application/javascript "access plus 1 month"
-  ExpiresByType text/javascript "access plus 1 month"
+  # CSS e JavaScript com hash (gerados pelo Vite)
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
   
   # Fontes
   ExpiresByType font/woff2 "access plus 1 year"
