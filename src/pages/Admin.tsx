@@ -176,9 +176,22 @@ export default function Admin() {
           action: 'approved'
         });
 
+      // Send notification email
+      try {
+        await supabaseAdmin.functions.invoke('send-group-notification', {
+          body: {
+            groupId,
+            status: 'approved'
+          }
+        });
+      } catch (emailError) {
+        console.error('Error sending notification email:', emailError);
+        // Don't fail the approval if email fails
+      }
+
       toast({
         title: "Grupo aprovado!",
-        description: "O grupo foi aprovado e está agora visível no site.",
+        description: "O grupo foi aprovado e o usuário foi notificado por email.",
       });
 
       fetchGroups();
@@ -215,9 +228,23 @@ export default function Admin() {
           reason: reason
         });
 
+      // Send notification email
+      try {
+        await supabaseAdmin.functions.invoke('send-group-notification', {
+          body: {
+            groupId,
+            status: 'rejected',
+            rejectionReason: reason
+          }
+        });
+      } catch (emailError) {
+        console.error('Error sending notification email:', emailError);
+        // Don't fail the rejection if email fails
+      }
+
       toast({
         title: "Grupo rejeitado",
-        description: "O grupo foi rejeitado e o usuário será notificado.",
+        description: "O grupo foi rejeitado e o usuário foi notificado por email.",
       });
 
       fetchGroups();
