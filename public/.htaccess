@@ -3,7 +3,20 @@
   RewriteEngine On
   RewriteBase /
   
-  # Se não for arquivo nem diretório, redireciona para index.html
+  # Redirecionamento 301 para URLs antigas específicas
+  RewriteRule ^category/sem-categoria/?$ / [R=301,L]
+  RewriteRule ^quem-somos/?$ / [R=301,L]
+  RewriteRule ^categorias/?$ / [R=301,L]
+  RewriteRule ^cadastro/?$ / [R=301,L]
+  RewriteRule ^minha-conta/?$ /auth [R=301,L]
+  RewriteRule ^minha-conta/entrar/?$ /auth [R=301,L]
+  
+  # Redirecionamento 301 genérico para outras URLs antigas conhecidas
+  RewriteRule ^category/(.*)$ / [R=301,L]
+  RewriteRule ^produto/(.*)$ / [R=301,L]
+  RewriteRule ^servico/(.*)$ / [R=301,L]
+  
+  # Se não for arquivo nem diretório, redireciona para index.html (SPA routing)
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule . /index.html [L]
