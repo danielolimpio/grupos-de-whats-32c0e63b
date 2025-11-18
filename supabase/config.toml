@@ -15,3 +15,7 @@ verify_jwt = true
 # Email confirmation webhook - called by Supabase Auth
 [functions.send-confirmation-email]
 verify_jwt = false
+
+# Group notification system - requires authentication
+[functions.send-group-notification]
+verify_jwt = true
