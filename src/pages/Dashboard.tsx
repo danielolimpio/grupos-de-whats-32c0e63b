@@ -296,7 +296,7 @@ export default function Dashboard() {
             <TabsTrigger value="overview">Visão Geral</TabsTrigger>
             <TabsTrigger value="groups">Meus Grupos</TabsTrigger>
             <TabsTrigger value="favorites">Favoritos</TabsTrigger>
-            <TabsTrigger value="add-group">Anunciar Grupo</TabsTrigger>
+            <TabsTrigger value="add-group" className="font-semibold">Enviar Novo Grupo</TabsTrigger>
             <TabsTrigger value="profile">Perfil</TabsTrigger>
           </TabsList>
 
