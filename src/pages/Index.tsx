@@ -3,6 +3,8 @@ import { Sidebar } from "@/components/sidebar";
 import { GroupGrid } from "@/components/group-grid";
 import { StatsBanner } from "@/components/stats-banner";
 import { Footer } from "@/components/footer";
+import { FeaturedLinks } from "@/components/featured-links";
+import { SEOContent } from "@/components/seo-content";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Helmet } from "react-helmet-async";
@@ -113,25 +115,71 @@ const Index = () => {
       <Helmet>
         <title>Grupos de WhatsApp Brasil 2025 | +12.500 Grupos Ativos para Entrar</title>
         <meta name="description" content="Descubra os melhores grupos de WhatsApp do Brasil em 2025. Mais de 12.500 grupos ativos de vendas, divulgação, amizades, estudos e muito mais. Entre grátis agora!" />
-        <link rel="canonical" href="https://gruposwhatsapp.com.br/" />
+        <meta name="keywords" content="grupos de whatsapp, grupos whatsapp brasil, grupos de amizades, grupos de namoros, grupos de divulgação, grupos de vendas, links grupos whatsapp, grupos whatsapp 2025" />
+        <link rel="canonical" href="https://gruposdewhats.com.br/" />
         <meta property="og:title" content="Grupos de WhatsApp Brasil 2025 | +12.500 Grupos Ativos" />
         <meta property="og:description" content="Descubra os melhores grupos de WhatsApp do Brasil. Entre grátis em milhares de grupos ativos!" />
-        <meta property="og:url" content="https://gruposwhatsapp.com.br/" />
+        <meta property="og:url" content="https://gruposdewhats.com.br/" />
         <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Grupos de WhatsApp Brasil 2025 | +12.500 Grupos Ativos" />
+        <meta name="twitter:description" content="Descubra os melhores grupos de WhatsApp do Brasil. Entre grátis em milhares de grupos ativos!" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "CollectionPage",
-            "name": "Grupos de WhatsApp Brasil",
-            "description": "Descubra +12.500 grupos de WhatsApp organizados por categoria",
-            "url": "https://gruposwhatsapp.com.br/",
+            "name": "Grupos de WhatsApp Brasil 2025",
+            "description": "Descubra +12.500 grupos de WhatsApp organizados por categoria. Grupos de amizades, namoros, divulgação, vendas e muito mais.",
+            "url": "https://gruposdewhats.com.br/",
+            "mainEntity": {
+              "@type": "ItemList",
+              "numberOfItems": 12500,
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Grupos de Amizades",
+                  "url": "https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-amizades"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Grupos de Namoros",
+                  "url": "https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-namoros"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Grupos de Divulgação",
+                  "url": "https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-divulgacao"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 4,
+                  "name": "Grupos de Vendas",
+                  "url": "https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-vendas"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 5,
+                  "name": "Grupos de Encontros",
+                  "url": "https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-encontros"
+                }
+              ]
+            },
             "publisher": {
               "@type": "Organization",
               "name": "Grupos de WhatsApp Brasil",
+              "url": "https://gruposdewhats.com.br/",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://gruposwhatsapp.com.br/logo.png"
+                "url": "https://gruposdewhats.com.br/logo.png"
               }
+            },
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://gruposdewhats.com.br/?q={search_term_string}",
+              "query-input": "required name=search_term_string"
             }
           })}
         </script>
@@ -144,6 +192,8 @@ const Index = () => {
         <div className="mb-8">
           <StatsBanner />
         </div>
+
+        <FeaturedLinks />
 
         <div className="flex-col lg:flex-row gap-8 flex">
           <div className="block lg:hidden">
@@ -179,6 +229,8 @@ const Index = () => {
                   isFavorited={isFavorited}
                   onToggleFavorite={toggleFavorite}
                 />
+
+                <SEOContent />
               </>
             )}
 
