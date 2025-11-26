@@ -1,3 +1,4 @@
+import React from "react";
 import { Users, Heart, ExternalLink, Star } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
@@ -36,12 +37,17 @@ export function GroupCard({
   onToggleFavorite
 }: GroupCardProps) {
   const navigate = useNavigate();
+  const [imageError, setImageError] = React.useState(false);
+  const [imageLoading, setImageLoading] = React.useState(true);
   
   // Sanitize HTML content for description
   const sanitizedDescription = DOMPurify.sanitize(description || '', {
     ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'u', 'h1', 'h2', 'h3', 'ul', 'ol', 'li', 'hr'],
     ALLOWED_ATTR: []
   });
+  
+  const fallbackImage = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=25d366&color=fff&size=128`;
+  const displayImage = imageError || !image ? fallbackImage : image;
   
   const handleJoinClick = () => {
     if (slug) {
@@ -65,13 +71,19 @@ export function GroupCard({
           {/* Group Image */}
           <div className="relative">
             <div className="w-16 h-16 rounded-full overflow-hidden bg-muted flex items-center justify-center">
+              {imageLoading && !imageError && (
+                <div className="absolute inset-0 flex items-center justify-center bg-muted">
+                  <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
+                </div>
+              )}
               <img 
-                src={image} 
+                src={displayImage} 
                 alt={name}
                 className="w-full h-full object-cover"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=25d366&color=fff&size=64`;
+                onLoad={() => setImageLoading(false)}
+                onError={() => {
+                  setImageError(true);
+                  setImageLoading(false);
                 }}
               />
             </div>
