@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Clock, User, Search, TrendingUp, Shield, Heart, MessageCircle, Users, Star } from "lucide-react";
+import { Clock, User, Search, TrendingUp, Shield, Heart, MessageCircle, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
@@ -169,67 +169,6 @@ export default function Blog() {
           </div>
         </section>
 
-        {/* Featured Posts */}
-        {searchTerm === "" && selectedCategory === "Todos" && (
-          <section className="mb-16">
-            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-              <Star className="h-6 w-6 text-yellow-500 fill-yellow-500" />
-              Artigos em Destaque
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {featuredPosts.map((post) => (
-                <Card key={post.id} className="hover:shadow-lg transition-shadow cursor-pointer group">
-                  <div className="aspect-video overflow-hidden rounded-t-lg">
-                    <img 
-                      src={post.image} 
-                      alt={post.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <CardHeader className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <Badge className="bg-yellow-100 text-yellow-800">
-                        <Star className="h-3 w-3 mr-1" />
-                        Destaque
-                      </Badge>
-                      <Badge variant="outline">{post.category}</Badge>
-                    </div>
-                    <CardTitle className="line-clamp-2 group-hover:text-primary transition-colors">
-                      {post.title}
-                    </CardTitle>
-                    <CardDescription className="line-clamp-3">
-                      {post.excerpt}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
-                      <div className="flex items-center gap-2">
-                        <User className="h-4 w-4" />
-                        {post.author}
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Clock className="h-4 w-4" />
-                        {post.readTime}
-                      </div>
-                    </div>
-                    <div className="flex flex-wrap gap-1 mb-4">
-                      {post.tags.slice(0, 3).map((tag) => (
-                        <Badge key={tag} variant="secondary" className="text-xs">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                    <Link to={`/blog/${post.slug}`}>
-                      <Button className="w-full btn-whatsapp">
-                        Ler Artigo
-                      </Button>
-                    </Link>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </section>
-        )}
 
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Main Content - All Posts */}
