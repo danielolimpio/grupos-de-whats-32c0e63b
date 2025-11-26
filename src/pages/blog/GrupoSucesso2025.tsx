@@ -38,7 +38,7 @@ export default function GrupoSucesso2025() {
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="h-4 w-4" />
-                <span>15 de Novembro, 2025</span>
+                <span>15 de Janeiro, 2025</span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="h-4 w-4" />
@@ -47,8 +47,8 @@ export default function GrupoSucesso2025() {
             </div>
 
             <img 
-              src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=1200&h=600&fit=crop" 
-              alt="Criar grupo de WhatsApp de sucesso"
+              src="/images/blog-grupo-sucesso-2025.jpg" 
+              alt="Como Criar um Grupo de WhatsApp de Sucesso em 2025"
               className="w-full h-[400px] object-cover rounded-lg mb-6"
             />
           </header>
