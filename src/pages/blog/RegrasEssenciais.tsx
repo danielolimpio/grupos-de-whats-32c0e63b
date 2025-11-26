@@ -1,9 +1,11 @@
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Share2, Clock, User } from "lucide-react";
+import { ArrowLeft, Share2, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { AuthorInfo } from "@/components/blog/AuthorInfo";
+import { AuthorBio } from "@/components/blog/AuthorBio";
 
 export default function RegrasEssenciais() {
   return (
@@ -31,19 +33,11 @@ export default function RegrasEssenciais() {
               10 Regras Essenciais para Manter seu Grupo de WhatsApp Organizado
             </h1>
             
-            <div className="flex flex-wrap items-center gap-4 text-muted-foreground mb-6">
-              <div className="flex items-center gap-2">
-                <User className="h-4 w-4" />
-                <span>Maria Silva</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4" />
-                <span>15 de Novembro, 2025</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4" />
-                <span>8 min de leitura</span>
-              </div>
+            <AuthorInfo />
+            
+            <div className="flex items-center gap-2 text-muted-foreground mt-2">
+              <Clock className="h-4 w-4" />
+              <span>8 min de leitura</span>
             </div>
 
             <img 
@@ -276,6 +270,8 @@ export default function RegrasEssenciais() {
               Implemente estas 10 regras essenciais, comunique-as claramente e aplique-as consistentemente. Você verá seu grupo se transformar de bagunçado para profissional, de tóxico para acolhedor, de estagnado para crescente. Regras bem implementadas não afastam membros - atraem os membros CERTOS e criam o ambiente onde todos querem estar.
             </p>
           </div>
+
+          <AuthorBio />
 
           <div className="mt-12 pt-8 border-t">
             <div className="flex items-center justify-between">
