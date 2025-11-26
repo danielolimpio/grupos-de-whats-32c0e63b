@@ -31,6 +31,8 @@ const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [groups, setGroups] = useState<GroupData[]>([]);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const groupsPerPage = 12;
 
   useEffect(() => {
     fetchGroupsData();
@@ -85,19 +87,18 @@ const Index = () => {
   const premiumGroups = [...groups].filter(g => g.isPremium).slice(0, 8);
   
   const premiumIds = new Set(premiumGroups.map(g => g.uuid));
-  const popularGroups = [...groups]
-    .filter(g => !premiumIds.has(g.uuid))
-    .sort((a, b) => b.accessCount - a.accessCount)
-    .slice(0, 8);
+  const allNonPremiumGroups = sortedGroups.filter(g => !premiumIds.has(g.uuid));
   
-  const usedIds = new Set([...premiumGroups.map(g => g.uuid), ...popularGroups.map(g => g.uuid)]);
-  const recentGroups = [...groups]
-    .filter(g => !usedIds.has(g.uuid))
-    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-    .slice(0, 8);
-  
-  const allUsedIds = new Set([...premiumGroups.map(g => g.uuid), ...popularGroups.map(g => g.uuid), ...recentGroups.map(g => g.uuid)]);
-  const displayGroups = sortedGroups.filter(g => !allUsedIds.has(g.uuid)).slice(0, 12);
+  // Pagination logic
+  const totalPages = Math.ceil(allNonPremiumGroups.length / groupsPerPage);
+  const startIndex = (currentPage - 1) * groupsPerPage;
+  const endIndex = startIndex + groupsPerPage;
+  const displayGroups = allNonPremiumGroups.slice(startIndex, endIndex);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   if (loading) {
     return (
@@ -213,34 +214,71 @@ const Index = () => {
                   isFavorited={isFavorited}
                   onToggleFavorite={toggleFavorite}
                 />
-
-                <GroupGrid 
-                  groups={popularGroups}
-                  title="Grupos Mais Acessados"
-                  showMore={true}
-                  isFavorited={isFavorited}
-                  onToggleFavorite={toggleFavorite}
-                />
-
-                <GroupGrid 
-                  groups={recentGroups}
-                  title="Grupos Mais Recentes"
-                  showMore={true}
-                  isFavorited={isFavorited}
-                  onToggleFavorite={toggleFavorite}
-                />
-
-                <SEOContent />
               </>
             )}
 
             <GroupGrid 
               groups={displayGroups}
               title={selectedCategory ? `${selectedCategory}` : "Todos os Grupos"}
-              showMore={true}
+              showMore={false}
               isFavorited={isFavorited}
               onToggleFavorite={toggleFavorite}
             />
+
+            {/* Pagination */}
+            {!selectedCategory && totalPages > 1 && (
+              <div className="flex justify-center py-8">
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className="px-4 py-2 rounded-lg border border-border bg-card hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  >
+                    Anterior
+                  </button>
+                  
+                  <div className="flex gap-1">
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
+                      if (
+                        page === 1 ||
+                        page === totalPages ||
+                        (page >= currentPage - 1 && page <= currentPage + 1)
+                      ) {
+                        return (
+                          <button
+                            key={page}
+                            onClick={() => handlePageChange(page)}
+                            className={`px-4 py-2 rounded-lg border transition-colors ${
+                              currentPage === page
+                                ? 'bg-primary text-primary-foreground border-primary'
+                                : 'border-border bg-card hover:bg-muted'
+                            }`}
+                          >
+                            {page}
+                          </button>
+                        );
+                      } else if (
+                        page === currentPage - 2 ||
+                        page === currentPage + 2
+                      ) {
+                        return <span key={page} className="px-2 py-2">...</span>;
+                      }
+                      return null;
+                    })}
+                  </div>
+
+                  <button
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className="px-4 py-2 rounded-lg border border-border bg-card hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  >
+                    Próxima
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {!selectedCategory && <SEOContent />}
           </div>
 
           <div className="hidden lg:block">
