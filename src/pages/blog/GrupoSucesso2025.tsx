@@ -1,9 +1,11 @@
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Share2, Clock, User } from "lucide-react";
+import { ArrowLeft, Share2, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { AuthorInfo } from "@/components/blog/AuthorInfo";
+import { AuthorBio } from "@/components/blog/AuthorBio";
 
 export default function GrupoSucesso2025() {
   return (
@@ -31,19 +33,11 @@ export default function GrupoSucesso2025() {
               Como Criar um Grupo de WhatsApp de Sucesso: Guia Completo 2025
             </h1>
             
-            <div className="flex flex-wrap items-center gap-4 text-muted-foreground mb-6">
-              <div className="flex items-center gap-2">
-                <User className="h-4 w-4" />
-                <span>Equipe Grupos de Whats</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4" />
-                <span>15 de Janeiro, 2025</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4" />
-                <span>15 min de leitura</span>
-              </div>
+            <AuthorInfo />
+            
+            <div className="flex items-center gap-2 text-muted-foreground mt-2">
+              <Clock className="h-4 w-4" />
+              <span>15 min de leitura</span>
             </div>
 
             <img 
@@ -240,6 +234,8 @@ export default function GrupoSucesso2025() {
               Lembre-se: um grupo de 100 membros super engajados vale muito mais que um grupo de 1000 membros inativos. Foque em qualidade, agregue valor real e o sucesso virá naturalmente. Seu grupo tem potencial para se tornar uma comunidade transformadora - tudo depende de como você o constrói desde o primeiro dia.
             </p>
           </div>
+
+          <AuthorBio />
 
           <div className="mt-12 pt-8 border-t">
             <div className="flex items-center justify-between">

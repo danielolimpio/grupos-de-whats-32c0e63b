@@ -1,9 +1,11 @@
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Share2, Clock, User, Star } from "lucide-react";
+import { ArrowLeft, Share2, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { AuthorInfo } from "@/components/blog/AuthorInfo";
+import { AuthorBio } from "@/components/blog/AuthorBio";
 
 export default function GruposPremium() {
   return (
@@ -31,19 +33,11 @@ export default function GruposPremium() {
               Por Que Grupos Premium Têm Mais Sucesso
             </h1>
             
-            <div className="flex flex-wrap items-center gap-4 text-muted-foreground mb-6">
-              <div className="flex items-center gap-2">
-                <User className="h-4 w-4" />
-                <span>João Santos</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4" />
-                <span>15 de Novembro, 2025</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Star className="h-4 w-4" />
-                <span>11 min de leitura</span>
-              </div>
+            <AuthorInfo />
+            
+            <div className="flex items-center gap-2 text-muted-foreground mt-2">
+              <Clock className="h-4 w-4" />
+              <span>11 min de leitura</span>
             </div>
 
             <img 
@@ -338,6 +332,8 @@ export default function GruposPremium() {
               Para 2025, com a competição cada vez mais acirrada no WhatsApp, grupos premium não são mais um luxo opcional - estão se tornando uma necessidade para quem quer realmente se destacar e construir comunidades de impacto. A questão não é se vale a pena, mas quando você vai dar esse passo estratégico para levar seu grupo ao próximo nível.
             </p>
           </div>
+
+          <AuthorBio />
 
           <div className="mt-12 pt-8 border-t">
             <div className="flex items-center justify-between">

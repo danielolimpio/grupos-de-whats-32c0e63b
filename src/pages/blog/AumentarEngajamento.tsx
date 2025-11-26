@@ -1,9 +1,11 @@
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Share2, Clock, User, TrendingUp } from "lucide-react";
+import { ArrowLeft, Share2, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { AuthorInfo } from "@/components/blog/AuthorInfo";
+import { AuthorBio } from "@/components/blog/AuthorBio";
 
 export default function AumentarEngajamento() {
   return (
@@ -31,19 +33,11 @@ export default function AumentarEngajamento() {
               Como Aumentar o Engajamento no seu Grupo de WhatsApp
             </h1>
             
-            <div className="flex flex-wrap items-center gap-4 text-muted-foreground mb-6">
-              <div className="flex items-center gap-2">
-                <User className="h-4 w-4" />
-                <span>Pedro Oliveira</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4" />
-                <span>15 de Novembro, 2025</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <TrendingUp className="h-4 w-4" />
-                <span>12 min de leitura</span>
-              </div>
+            <AuthorInfo />
+            
+            <div className="flex items-center gap-2 text-muted-foreground mt-2">
+              <Clock className="h-4 w-4" />
+              <span>12 min de leitura</span>
             </div>
 
             <img 
@@ -217,6 +211,8 @@ export default function AumentarEngajamento() {
               Com as estratégias certas e dedicação constante, você pode transformar seu grupo de WhatsApp em uma comunidade vibrante, engajada e valiosa para todos os membros. O segredo está em focar sempre na qualidade sobre quantidade e em criar um ambiente onde as pessoas realmente querem participar.
             </p>
           </div>
+
+          <AuthorBio />
 
           <div className="mt-12 pt-8 border-t">
             <div className="flex items-center justify-between">
