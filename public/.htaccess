@@ -1,7 +1,18 @@
+# Forçar MIME type correto para arquivos importantes
+<IfModule mod_mime.c>
+  AddType text/plain .txt
+  AddType application/xml .xml
+</IfModule>
+
 # Roteamento para aplicação React SPA
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+  
+  # Arquivos especiais - servir diretamente sem redirect
+  RewriteRule ^ads\.txt$ - [L]
+  RewriteRule ^robots\.txt$ - [L]
+  RewriteRule ^sitemap\.xml$ - [L]
   
   # Redirecionamento 301 para URLs antigas específicas
   RewriteRule ^category/sem-categoria/?$ / [R=301,L]
