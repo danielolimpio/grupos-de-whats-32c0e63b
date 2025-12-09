@@ -94,10 +94,24 @@ const blogPosts = [
     image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=300&fit=crop",
     tags: ["Horários", "Estratégia", "Timing"],
     featured: false
+  },
+  {
+    id: 7,
+    slug: "como-criar-grupos-whatsapp-sem-expor-numero",
+    title: "Como Criar Grupos de WhatsApp sem Expor Seu Número em 2025",
+    excerpt: "Aprenda métodos seguros e atualizados para criar grupos no WhatsApp sem revelar seu número pessoal. Proteja sua privacidade e evite spams com dicas práticas e testadas.",
+    content: "Você já pensou em criar um grupo de WhatsApp para seu negócio, estudos, comunidade ou evento...",
+    author: "Daniel Olimpio",
+    date: "2025-12-09",
+    readTime: "15 min",
+    category: "Segurança",
+    image: "/images/blog-criar-grupos-sem-expor-numero.jpg",
+    tags: ["Privacidade", "Segurança", "WhatsApp Business", "Número Secundário"],
+    featured: true
   }
 ];
 
-const categories = ["Todos", "Tutorial", "Dicas", "Premium", "Segurança", "Engajamento", "Estratégia"];
+const categories = ["Todos", "Tutorial", "Dicas", "Premium", "Segurança", "Privacidade", "Engajamento", "Estratégia"];
 
 export default function Blog() {
   const [searchTerm, setSearchTerm] = useState("");

@@ -18,6 +18,7 @@ import GruposPremium from "./pages/blog/GruposPremium";
 import SegurancaWhatsApp from "./pages/blog/SegurancaWhatsApp";
 import AumentarEngajamento from "./pages/blog/AumentarEngajamento";
 import MelhoresHorarios from "./pages/blog/MelhoresHorarios";
+import CriarGruposSemExporNumero from "./pages/blog/CriarGruposSemExporNumero";
 import ComoFunciona from "./pages/ComoFunciona";
 import RegrasComunidade from "./pages/RegrasComunidade";
 import DicasSeguranca from "./pages/DicasSeguranca";
@@ -65,6 +66,7 @@ const App = () => (
               <Route path="/blog/seguranca-whatsapp-proteja-seu-grupo" element={<SegurancaWhatsApp />} />
               <Route path="/blog/como-aumentar-engajamento-grupo" element={<AumentarEngajamento />} />
               <Route path="/blog/melhores-horarios-postar-grupos" element={<MelhoresHorarios />} />
+              <Route path="/blog/como-criar-grupos-whatsapp-sem-expor-numero" element={<CriarGruposSemExporNumero />} />
               <Route path="/como-funciona" element={<ComoFunciona />} />
               <Route path="/regras-comunidade" element={<RegrasComunidade />} />
               <Route path="/dicas-seguranca" element={<DicasSeguranca />} />
