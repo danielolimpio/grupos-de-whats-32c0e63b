@@ -27,6 +27,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Helmet } from 'react-helmet-async';
+import { EzoicAd, EzoicFloatingAds } from '@/components/ezoic-ad';
 
 const FAQ_DATA = [
   {
@@ -171,6 +172,9 @@ export default function FAQ() {
       <div className="min-h-screen bg-background">
         <Header />
         
+        <EzoicAd placement="top_of_page" className="container mx-auto px-4" />
+        <EzoicFloatingAds />
+        
         <main className="container mx-auto px-4 py-8">
           {/* Header */}
           <div className="text-center mb-8">
@@ -183,6 +187,8 @@ export default function FAQ() {
               divulgar seus grupos ou impulsionar links no portal gruposdewhats.com.br
             </p>
           </div>
+
+          <EzoicAd placement="under_page_title" className="mb-6" />
 
           {/* Search Bar */}
           <div className="max-w-md mx-auto mb-8">
@@ -229,6 +235,8 @@ export default function FAQ() {
             ))}
           </div>
 
+          <EzoicAd placement="mid_content" className="my-8" />
+
           {/* Contact CTA */}
           <Card className="mt-12">
             <CardContent className="pt-6">
@@ -257,6 +265,8 @@ export default function FAQ() {
               </div>
             </CardContent>
           </Card>
+
+          <EzoicAd placement="bottom_of_page" className="mt-8" />
         </main>
 
         <Footer />
