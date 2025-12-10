@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { AuthorInfo } from "@/components/blog/AuthorInfo";
 import { AuthorBio } from "@/components/blog/AuthorBio";
+import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
 
 export default function AumentarEngajamento() {
   return (
@@ -19,6 +20,9 @@ export default function AumentarEngajamento() {
 
       <div className="min-h-screen bg-background">
         <Header />
+        
+        <EzoicAd placement="top_of_page" className="container mx-auto px-4" />
+        <EzoicFloatingAds />
         
         <article className="container mx-auto px-4 py-8 max-w-4xl">
           <Link to="/blog">
@@ -47,10 +51,14 @@ export default function AumentarEngajamento() {
             />
           </header>
 
+          <EzoicAd placement="under_page_title" className="my-6" />
+
           <div className="prose prose-lg max-w-none">
             <p className="text-xl text-muted-foreground mb-8">
               O engajamento é o coração de qualquer grupo de WhatsApp de sucesso. Sem membros ativos e participativos, até o melhor conteúdo pode passar despercebido. Neste guia completo, você vai descobrir estratégias comprovadas para transformar seu grupo em uma comunidade vibrante e engajada.
             </p>
+
+            <EzoicAd placement="under_first_paragraph" className="my-6" />
 
             <h2 className="text-3xl font-bold mt-12 mb-6">O Que é Engajamento em Grupos de WhatsApp?</h2>
             <p>
@@ -59,6 +67,8 @@ export default function AumentarEngajamento() {
             <p>
               Em 2025, com a saturação de grupos no WhatsApp, o engajamento tornou-se ainda mais crucial. As pessoas estão cada vez mais seletivas sobre quais grupos permanecer, e apenas aqueles que oferecem valor real conseguem manter sua base de membros ativa e crescente.
             </p>
+
+            <EzoicAd placement="under_second_paragraph" className="my-6" />
 
             <h2 className="text-3xl font-bold mt-12 mb-6">1. Conheça Profundamente Seu Público</h2>
             <p>
@@ -87,6 +97,8 @@ export default function AumentarEngajamento() {
               <li><strong>Histórias de sucesso:</strong> Compartilhe casos reais de membros que alcançaram resultados</li>
             </ul>
 
+            <EzoicAd placement="mid_content" className="my-6" />
+
             <h2 className="text-3xl font-bold mt-12 mb-6">3. Use Perguntas Estratégicas</h2>
             <p>
               Perguntas são uma das ferramentas mais poderosas para gerar engajamento. Mas não qualquer pergunta - elas precisam ser estratégicas e relevantes. Exemplos eficazes:
@@ -113,6 +125,8 @@ export default function AumentarEngajamento() {
               <li><strong>Quiz Mensal:</strong> Teste de conhecimentos com premiação para os melhores</li>
             </ul>
 
+            <EzoicAd placement="long_content" className="my-6" />
+
             <h2 className="text-3xl font-bold mt-12 mb-6">5. Reconheça e Valorize os Membros Ativos</h2>
             <p>
               As pessoas gostam de ser reconhecidas. Criar um sistema de reconhecimento pode aumentar significativamente o engajamento:
@@ -137,6 +151,8 @@ export default function AumentarEngajamento() {
               <li>Criar regras claras e aplicá-las consistentemente</li>
             </ul>
 
+            <EzoicAd placement="longer_content" className="my-6" />
+
             <h2 className="text-3xl font-bold mt-12 mb-6">7. Use Conteúdo Multimídia Estrategicamente</h2>
             <p>
               Vídeos, imagens e áudios podem aumentar drasticamente o engajamento, mas precisam ser usados com sabedoria:
@@ -159,6 +175,8 @@ export default function AumentarEngajamento() {
               <li>Subgrupo de iniciantes para dúvidas básicas</li>
               <li>Subgrupo de ferramentas para reviews e dicas</li>
             </ul>
+
+            <EzoicAd placement="longest_content" className="my-6" />
 
             <h2 className="text-3xl font-bold mt-12 mb-6">9. Realize Lives e Sessões de Q&A</h2>
             <p>
@@ -187,6 +205,8 @@ export default function AumentarEngajamento() {
               Use essas métricas para refinar sua estratégia continuamente. O que funciona para um grupo pode não funcionar para outro.
             </p>
 
+            <EzoicAd placement="incontent_5" className="my-6" />
+
             <h2 className="text-3xl font-bold mt-12 mb-6">Erros Comuns que Matam o Engajamento</h2>
             <p>
               Evite estas armadilhas que podem destruir o engajamento do seu grupo:
@@ -213,6 +233,8 @@ export default function AumentarEngajamento() {
           </div>
 
           <AuthorBio />
+
+          <EzoicAd placement="bottom_of_page" className="my-6" />
 
           <div className="mt-12 pt-8 border-t">
             <div className="flex items-center justify-between">

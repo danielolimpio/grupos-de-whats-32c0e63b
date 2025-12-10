@@ -1,0 +1,6 @@
+# Ezoic ads.txt
+# Para atualizações automáticas, configure um redirect em seu servidor:
+# Redirect 301 /ads.txt https://srv.adstxtmanager.com/19390/gruposdewhats.com.br
+
+# Ou atualize manualmente este arquivo com o conteúdo de:
+# https://srv.adstxtmanager.com/19390/gruposdewhats.com.br
