@@ -45,6 +45,7 @@ import { Badge } from "./ui/badge";
 import { getAllCategoriesSorted } from "@/data/categories";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { EzoicAd } from "./ezoic-ad";
 
 // Icon mapping for categories
 const getIconForCategory = (categoryId: string) => {
@@ -92,6 +93,9 @@ export function Sidebar({ selectedCategory, onCategorySelect }: SidebarProps) {
 
   return (
     <aside className="w-full lg:w-80 space-y-6 order-first lg:order-last">
+      {/* Ezoic - sidebar - sidebar */}
+      <EzoicAd placement="sidebar" />
+      
       {/* Categories */}
       <Card>
         <CardHeader>
@@ -139,6 +143,9 @@ export function Sidebar({ selectedCategory, onCategorySelect }: SidebarProps) {
           </Button>
         </CardContent>
       </Card>
+
+      {/* Ezoic - sidebar_middle - sidebar_middle */}
+      <EzoicAd placement="sidebar_middle" />
 
       {/* Premium Ad */}
       <Card className="bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
@@ -190,6 +197,9 @@ export function Sidebar({ selectedCategory, onCategorySelect }: SidebarProps) {
           </Link>
         </CardContent>
       </Card>
+
+      {/* Ezoic - sidebar_bottom - sidebar_bottom */}
+      <EzoicAd placement="sidebar_bottom" />
     </aside>
   );
 }

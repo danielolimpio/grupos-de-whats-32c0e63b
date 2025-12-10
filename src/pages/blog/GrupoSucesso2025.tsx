@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { AuthorInfo } from "@/components/blog/AuthorInfo";
 import { AuthorBio } from "@/components/blog/AuthorBio";
+import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
 
 export default function GrupoSucesso2025() {
   return (
@@ -19,6 +20,11 @@ export default function GrupoSucesso2025() {
 
       <div className="min-h-screen bg-background">
         <Header />
+        
+        {/* Ezoic - top_of_page - top_of_page */}
+        <div className="container mx-auto px-4 pt-4 max-w-4xl">
+          <EzoicAd placement="top_of_page" />
+        </div>
         
         <article className="container mx-auto px-4 py-8 max-w-4xl">
           <Link to="/blog">
@@ -45,12 +51,18 @@ export default function GrupoSucesso2025() {
               alt="Como Criar um Grupo de WhatsApp de Sucesso em 2025"
               className="w-full h-[400px] object-cover rounded-lg mb-6"
             />
+            
+            {/* Ezoic - under_page_title - under_page_title */}
+            <EzoicAd placement="under_page_title" className="my-4" />
           </header>
 
           <div className="prose prose-lg max-w-none">
             <p className="text-xl text-muted-foreground mb-8">
               Criar um grupo de WhatsApp é fácil - basta alguns toques na tela. Mas criar um grupo de SUCESSO, que cresce organicamente, mantém membros engajados e atinge seus objetivos, é uma arte e ciência que poucos dominam. Este guia completo de 2025 vai te mostrar exatamente como fazer isso, passo a passo.
             </p>
+            
+            {/* Ezoic - under_first_paragraph - under_first_paragraph */}
+            <EzoicAd placement="under_first_paragraph" className="my-4" />
 
             <h2 className="text-3xl font-bold mt-12 mb-6">Fase 1: Planejamento Estratégico (Antes de Criar)</h2>
 
@@ -113,6 +125,9 @@ export default function GrupoSucesso2025() {
               <li><strong>Horários:</strong> "Evite mensagens entre 22h e 7h"</li>
               <li><strong>Consequências:</strong> "Violações resultam em advertência ou remoção"</li>
             </ol>
+            
+            {/* Ezoic - under_second_paragraph - under_second_paragraph */}
+            <EzoicAd placement="under_second_paragraph" className="my-4" />
 
             <h3 className="text-2xl font-bold mt-8 mb-4">3. Prepare Conteúdo Inicial</h3>
             <p>ANTES de adicionar membros, prepare:</p>
@@ -158,6 +173,9 @@ export default function GrupoSucesso2025() {
             </ul>
 
             <h2 className="text-3xl font-bold mt-12 mb-6">Fase 4: Engajamento e Retenção</h2>
+            
+            {/* Ezoic - mid_content - mid_content */}
+            <EzoicAd placement="mid_content" className="my-4" />
 
             <h3 className="text-2xl font-bold mt-8 mb-4">1. Crie Rotinas e Tradições</h3>
             <p>Rituais criam antecipação e hábito:</p>
@@ -187,6 +205,9 @@ export default function GrupoSucesso2025() {
             </ul>
 
             <h2 className="text-3xl font-bold mt-12 mb-6">Fase 5: Escala e Sustentabilidade</h2>
+            
+            {/* Ezoic - long_content - long_content */}
+            <EzoicAd placement="long_content" className="my-4" />
 
             <h3 className="text-2xl font-bold mt-8 mb-4">1. Estruture para Crescimento</h3>
             <p>Com 100+ membros:</p>
@@ -234,6 +255,9 @@ export default function GrupoSucesso2025() {
               Lembre-se: um grupo de 100 membros super engajados vale muito mais que um grupo de 1000 membros inativos. Foque em qualidade, agregue valor real e o sucesso virá naturalmente. Seu grupo tem potencial para se tornar uma comunidade transformadora - tudo depende de como você o constrói desde o primeiro dia.
             </p>
           </div>
+          
+          {/* Ezoic - bottom_of_page - bottom_of_page */}
+          <EzoicAd placement="bottom_of_page" className="my-8" />
 
           <AuthorBio />
 
@@ -251,6 +275,9 @@ export default function GrupoSucesso2025() {
             </div>
           </div>
         </article>
+
+        {/* Ezoic Floating Ads */}
+        <EzoicFloatingAds />
 
         <Footer />
       </div>
