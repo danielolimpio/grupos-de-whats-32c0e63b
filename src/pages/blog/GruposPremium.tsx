@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { AuthorInfo } from "@/components/blog/AuthorInfo";
 import { AuthorBio } from "@/components/blog/AuthorBio";
+import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
 
 export default function GruposPremium() {
   return (
@@ -19,6 +20,9 @@ export default function GruposPremium() {
 
       <div className="min-h-screen bg-background">
         <Header />
+        
+        <EzoicAd placement="top_of_page" className="container mx-auto px-4" />
+        <EzoicFloatingAds />
         
         <article className="container mx-auto px-4 py-8 max-w-4xl">
           <Link to="/blog">
@@ -47,10 +51,14 @@ export default function GruposPremium() {
             />
           </header>
 
+          <EzoicAd placement="under_page_title" className="my-6" />
+
           <div className="prose prose-lg max-w-none">
             <p className="text-xl text-muted-foreground mb-8">
               Em um cenário onde milhões de grupos competem por atenção no WhatsApp, os grupos premium se destacam consistentemente com crescimento acelerado, maior engajamento e comunidades mais ativas. Mas o que exatamente torna um grupo premium tão mais efetivo? Neste artigo, vamos explorar os dados concretos e estratégias por trás do sucesso premium.
             </p>
+
+            <EzoicAd placement="under_first_paragraph" className="my-6" />
 
             <h2 className="text-3xl font-bold mt-12 mb-6">O Que é um Grupo Premium?</h2>
             <p>
@@ -63,6 +71,8 @@ export default function GruposPremium() {
               <li><strong>Alcance ampliado:</strong> São promovidos em múltiplas categorias e seções</li>
               <li><strong>Métricas aprimoradas:</strong> Acesso a estatísticas detalhadas de desempenho</li>
             </ul>
+
+            <EzoicAd placement="under_second_paragraph" className="my-6" />
 
             <h2 className="text-3xl font-bold mt-12 mb-6">Dados Reais: O Impacto do Premium</h2>
             <p>
@@ -89,6 +99,8 @@ export default function GruposPremium() {
               <li><strong>Grupos Regulares:</strong> Taxa de saída de 38% após 90 dias</li>
               <li><strong>Resultado:</strong> Retenção 3,2x melhor em grupos premium</li>
             </ul>
+
+            <EzoicAd placement="mid_content" className="my-6" />
 
             <h2 className="text-3xl font-bold mt-12 mb-6">Por Que Grupos Premium Crescem Mais Rápido?</h2>
 
@@ -128,6 +140,8 @@ export default function GruposPremium() {
               <li>Comunidades premium naturalmente estabelecem padrões mais altos</li>
             </ul>
 
+            <EzoicAd placement="long_content" className="my-6" />
+
             <h3 className="text-2xl font-bold mt-8 mb-4">4. Vantagem Competitiva Inicial</h3>
             <p>
               O boost inicial de membros cria momentum que grupos regulares raramente conseguem alcançar. Com mais membros desde o início:
@@ -164,6 +178,8 @@ export default function GruposPremium() {
               <li>Ambiente acolhedor mas profissional</li>
               <li>Equilíbrio entre liberdade e organização</li>
             </ul>
+
+            <EzoicAd placement="longer_content" className="my-6" />
 
             <h3 className="text-2xl font-bold mt-8 mb-4">3. Conteúdo de Alta Qualidade</h3>
             <p>
@@ -208,6 +224,8 @@ export default function GruposPremium() {
               <li><strong>ROI:</strong> Base maior para eventual monetização via cursos, consultorias, etc.</li>
             </ul>
 
+            <EzoicAd placement="longest_content" className="my-6" />
+
             <h3 className="text-2xl font-bold mt-8 mb-4">Para Grupos de Networking</h3>
             <ul className="list-disc pl-6 space-y-2">
               <li><strong>Custo médio:</strong> R$ 80-200/mês</li>
@@ -247,6 +265,8 @@ export default function GruposPremium() {
               <li>Inclua prova social (número de membros, testemunhos)</li>
               <li>Seja claro sobre expectativas e regras</li>
             </ul>
+
+            <EzoicAd placement="incontent_5" className="my-6" />
 
             <h3 className="text-2xl font-bold mt-8 mb-4">2. Prepare-se para o Influxo</h3>
             <ul className="list-disc pl-6 space-y-2">
@@ -323,17 +343,19 @@ export default function GruposPremium() {
 
             <h2 className="text-3xl font-bold mt-12 mb-6">Conclusão</h2>
             <p>
-              Os dados são claros: grupos premium têm vantagens significativas em crescimento, engajamento e retenção. Mas o sucesso não vem automaticamente com o badge premium - ele vem da combinação de visibilidade aumentada com conteúdo de qualidade, moderação ativa e estratégia clara.
+              Grupos premium não são apenas uma opção de marketing - são uma estratégia comprovada para acelerar o crescimento e estabelecer comunidades mais fortes no WhatsApp. Os dados mostram consistentemente que o investimento em destaque premium retorna em múltiplos benefícios: mais membros, maior engajamento, melhor retenção e, para grupos comerciais, mais conversões.
             </p>
             <p>
-              Se você está comprometido em criar uma comunidade valiosa e está disposto a investir tempo e energia, o status premium pode acelerar dramaticamente seus resultados. O investimento financeiro é relativamente pequeno comparado ao potencial de retorno, seja em vendas diretas, oportunidades de networking ou construção de autoridade no seu nicho.
+              No entanto, premium não é mágica. O sucesso depende de combinar a visibilidade ampliada com conteúdo de qualidade, moderação ativa e proposta de valor clara. Use o impulso premium como catalisador, não como substituto para o trabalho árduo de construir uma comunidade valiosa.
             </p>
             <p>
-              Para 2025, com a competição cada vez mais acirrada no WhatsApp, grupos premium não são mais um luxo opcional - estão se tornando uma necessidade para quem quer realmente se destacar e construir comunidades de impacto. A questão não é se vale a pena, mas quando você vai dar esse passo estratégico para levar seu grupo ao próximo nível.
+              Se seu grupo tem potencial, está bem estruturado e você está pronto para dedicar tempo e esforço, o investimento premium pode ser o diferencial que transforma uma comunidade promissora em um fenômeno de engajamento. Em 2025, com a competição cada vez mais acirrada, ter essa vantagem pode ser exatamente o que seu grupo precisa para se destacar.
             </p>
           </div>
 
           <AuthorBio />
+
+          <EzoicAd placement="bottom_of_page" className="my-6" />
 
           <div className="mt-12 pt-8 border-t">
             <div className="flex items-center justify-between">
