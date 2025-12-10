@@ -7,6 +7,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
 
 export default function AllGroups() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -25,6 +26,9 @@ export default function AllGroups() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
+      
+      <EzoicAd placement="top_of_page" className="container mx-auto px-4" />
+      <EzoicFloatingAds />
       
       <main className="container mx-auto px-4 py-8">
         {/* Back Button */}
@@ -56,20 +60,29 @@ export default function AllGroups() {
                 Encontre o grupo perfeito para você! {sortedGroups.length} grupos disponíveis.
               </p>
             </div>
+
+            <EzoicAd placement="under_page_title" className="mb-6" />
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {sortedGroups.map((group) => (
-                <GroupCard
-                  key={group.id}
-                  id={group.id}
-                  name={group.name}
-                  description={group.description}
-                  category={group.category}
-                  image={group.image}
-                  memberCount={group.memberCount}
-                  isPremium={group.isPremium}
-                  isNew={group.isNew}
-                />
+              {sortedGroups.map((group, index) => (
+                <>
+                  <GroupCard
+                    key={group.id}
+                    id={group.id}
+                    name={group.name}
+                    description={group.description}
+                    category={group.category}
+                    image={group.image}
+                    memberCount={group.memberCount}
+                    isPremium={group.isPremium}
+                    isNew={group.isNew}
+                  />
+                  {index === 7 && (
+                    <div key="ad-mid" className="col-span-full">
+                      <EzoicAd placement="mid_content" className="my-4" />
+                    </div>
+                  )}
+                </>
               ))}
             </div>
             
@@ -97,6 +110,8 @@ export default function AllGroups() {
             />
           </div>
         </div>
+
+        <EzoicAd placement="bottom_of_page" className="mt-8" />
       </main>
 
       <Footer />

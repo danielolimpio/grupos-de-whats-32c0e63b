@@ -3,6 +3,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Shield, Lock, Eye, AlertTriangle, UserCheck, MessageSquare } from 'lucide-react';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
+import { EzoicAd, EzoicFloatingAds } from '@/components/ezoic-ad';
 
 export default function DicasSeguranca() {
   const securityTips = [
@@ -72,6 +73,10 @@ export default function DicasSeguranca() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background/50 to-primary/5">
       <Header />
+      
+      <EzoicAd placement="top_of_page" className="container mx-auto px-4" />
+      <EzoicFloatingAds />
+      
       <div className="container mx-auto px-4 py-12">
         {/* Hero Section */}
         <div className="text-center mb-16">
@@ -82,6 +87,8 @@ export default function DicasSeguranca() {
             Mantenha-se seguro ao participar de grupos de WhatsApp com nossas dicas essenciais de proteção
           </p>
         </div>
+
+        <EzoicAd placement="under_page_title" className="mb-8" />
 
         {/* Important Alert */}
         <Alert className="mb-8 border-red-200 bg-red-50">
@@ -118,6 +125,8 @@ export default function DicasSeguranca() {
             </Card>
           ))}
         </div>
+
+        <EzoicAd placement="mid_content" className="mb-8" />
 
         {/* Warning Signals */}
         <Card className="mb-8 border-yellow-200 bg-yellow-50/50">
@@ -173,6 +182,8 @@ export default function DicasSeguranca() {
             </Alert>
           </CardContent>
         </Card>
+
+        <EzoicAd placement="bottom_of_page" className="mt-8" />
       </div>
       <Footer />
     </div>
