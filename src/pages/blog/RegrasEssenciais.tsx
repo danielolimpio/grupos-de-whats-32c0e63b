@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { AuthorInfo } from "@/components/blog/AuthorInfo";
 import { AuthorBio } from "@/components/blog/AuthorBio";
+import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
 
 export default function RegrasEssenciais() {
   return (
@@ -19,6 +20,11 @@ export default function RegrasEssenciais() {
 
       <div className="min-h-screen bg-background">
         <Header />
+        
+        {/* Ezoic - top_of_page - top_of_page */}
+        <div className="container mx-auto px-4 pt-4 max-w-4xl">
+          <EzoicAd placement="top_of_page" />
+        </div>
         
         <article className="container mx-auto px-4 py-8 max-w-4xl">
           <Link to="/blog">
@@ -45,12 +51,18 @@ export default function RegrasEssenciais() {
               alt="Regras para grupos de WhatsApp organizados"
               className="w-full h-[400px] object-cover rounded-lg mb-6"
             />
+            
+            {/* Ezoic - under_page_title - under_page_title */}
+            <EzoicAd placement="under_page_title" className="my-4" />
           </header>
 
           <div className="prose prose-lg max-w-none">
             <p className="text-xl text-muted-foreground mb-8">
               Um grupo bem organizado é a diferença entre uma comunidade próspera e um caos digital. Estas 10 regras essenciais são o fundamento de todo grupo de WhatsApp de sucesso, baseadas em análise de milhares de grupos bem-sucedidos em 2025. Implemente-as e veja seu grupo se transformar.
             </p>
+            
+            {/* Ezoic - under_first_paragraph - under_first_paragraph */}
+            <EzoicAd placement="under_first_paragraph" className="my-4" />
 
             <h2 className="text-3xl font-bold mt-12 mb-6">Regra #1: Respeito Acima de Tudo</h2>
             <p><strong>A Regra:</strong> "Tratamos todos os membros com respeito e dignidade. Ataques pessoais, xingamentos, discriminação ou assédio de qualquer tipo resultam em remoção imediata."</p>
@@ -286,7 +298,13 @@ export default function RegrasEssenciais() {
               </Button>
             </div>
           </div>
+          
+          {/* Ezoic - bottom_of_page - bottom_of_page */}
+          <EzoicAd placement="bottom_of_page" className="my-8" />
         </article>
+
+        {/* Ezoic Floating Ads */}
+        <EzoicFloatingAds />
 
         <Footer />
       </div>
