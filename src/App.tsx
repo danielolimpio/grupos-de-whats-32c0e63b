@@ -61,7 +61,7 @@ const App = () => (
               <Route path="/admin/users" element={<AdminUsers />} />
               <Route path="/admin/migrate-images" element={<MigrateImages />} />
               <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/como-criar-grupo-sucesso-2025" element={<GrupoSucesso2025 />} />
+              <Route path="/blog/como-criar-grupo-sucesso-2026" element={<GrupoSucesso2025 />} />
               <Route path="/blog/regras-essenciais-grupo-organizado" element={<RegrasEssenciais />} />
               <Route path="/blog/por-que-grupos-premium-tem-mais-sucesso" element={<GruposPremium />} />
               <Route path="/blog/seguranca-whatsapp-proteja-seu-grupo" element={<SegurancaWhatsApp />} />
