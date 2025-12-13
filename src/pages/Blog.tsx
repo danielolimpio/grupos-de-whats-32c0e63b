@@ -14,15 +14,15 @@ import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
 const blogPosts = [
   {
     id: 1,
-    slug: "como-criar-grupo-sucesso-2025",
-    title: "Como Criar um Grupo de WhatsApp de Sucesso: Guia Completo 2025",
-    excerpt: "Descubra as melhores estratégias atualizadas para 2025 para criar e administrar grupos de WhatsApp que realmente engajam e crescem. Dicas práticas testadas por milhares de administradores.",
+    slug: "como-criar-grupo-sucesso-2026",
+    title: "Como Criar um Grupo de WhatsApp de Sucesso: Guia Completo 2026",
+    excerpt: "Descubra as melhores estratégias atualizadas para 2026 para criar e administrar grupos de WhatsApp que realmente engajam e crescem. Dicas práticas testadas por milhares de administradores.",
     content: "Criar um grupo de WhatsApp de sucesso vai muito além de simplesmente reunir pessoas...",
     author: "Daniel Olimpio",
-    date: "2025-11-26",
+    date: "2025-12-10",
     readTime: "15 min",
     category: "Tutorial",
-    image: "/images/blog-grupo-sucesso-2025.jpg",
+    image: "/images/blog-grupo-sucesso-2026.jpg",
     tags: ["WhatsApp", "Grupos", "Tutorial", "Administração"],
     featured: true
   },
@@ -33,7 +33,7 @@ const blogPosts = [
     excerpt: "Mantenha a ordem e o respeito no seu grupo com essas regras fundamentais que todo administrador deveria conhecer.",
     content: "Um grupo bem organizado é a chave para o sucesso e longevidade...",
     author: "Daniel Olimpio",
-    date: "2025-11-26",
+    date: "2025-12-08",
     readTime: "8 min",
     category: "Dicas",
     image: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=500&h=300&fit=crop",
@@ -47,7 +47,7 @@ const blogPosts = [
     excerpt: "Entenda os benefícios de impulsionar seu grupo e como isso pode aumentar significativamente o engajamento e crescimento.",
     content: "Grupos Premium não são apenas uma questão de visibilidade...",
     author: "Daniel Olimpio",
-    date: "2025-11-26",
+    date: "2025-12-06",
     readTime: "11 min",
     category: "Premium",
     image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=500&h=300&fit=crop",
@@ -61,7 +61,7 @@ const blogPosts = [
     excerpt: "Aprenda como identificar e prevenir spam, golpes e conteúdo malicioso nos seus grupos de WhatsApp.",
     content: "A segurança do seu grupo é fundamental para manter um ambiente saudável...",
     author: "Daniel Olimpio",
-    date: "2025-11-26",
+    date: "2025-12-04",
     readTime: "13 min",
     category: "Segurança",
     image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500&h=300&fit=crop",
@@ -75,7 +75,7 @@ const blogPosts = [
     excerpt: "Estratégias comprovadas para manter seus membros ativos e interessados no conteúdo do seu grupo.",
     content: "O engajamento é o coração de qualquer grupo de sucesso...",
     author: "Daniel Olimpio",
-    date: "2025-11-26",
+    date: "2025-12-02",
     readTime: "12 min",
     category: "Engajamento",
     image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop",
@@ -89,7 +89,7 @@ const blogPosts = [
     excerpt: "Descubra os horários com maior engajamento e como adaptar sua estratégia de conteúdo para diferentes tipos de grupos.",
     content: "O timing é tudo quando se trata de engajamento em grupos...",
     author: "Daniel Olimpio",
-    date: "2025-11-26",
+    date: "2025-11-28",
     readTime: "10 min",
     category: "Estratégia",
     image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=300&fit=crop",
@@ -232,13 +232,15 @@ export default function Blog() {
             <div className="grid md:grid-cols-2 gap-6">
               {filteredPosts.map((post) => (
                 <Card key={post.id} className="hover:shadow-lg transition-shadow cursor-pointer group">
-                  <div className="aspect-video overflow-hidden rounded-t-lg">
-                    <img 
-                      src={post.image} 
-                      alt={post.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
+                  <Link to={`/blog/${post.slug}`}>
+                    <div className="aspect-video overflow-hidden rounded-t-lg">
+                      <img 
+                        src={post.image} 
+                        alt={post.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  </Link>
                   <CardHeader className="space-y-2">
                     <div className="flex items-center justify-between">
                       <Badge variant="outline">{post.category}</Badge>
@@ -246,9 +248,11 @@ export default function Blog() {
                         {new Date(post.date).toLocaleDateString('pt-BR')}
                       </span>
                     </div>
-                    <CardTitle className="line-clamp-2 group-hover:text-primary transition-colors">
-                      {post.title}
-                    </CardTitle>
+                    <Link to={`/blog/${post.slug}`}>
+                      <CardTitle className="line-clamp-2 group-hover:text-primary transition-colors cursor-pointer">
+                        {post.title}
+                      </CardTitle>
+                    </Link>
                     <CardDescription className="line-clamp-3">
                       {post.excerpt}
                     </CardDescription>
