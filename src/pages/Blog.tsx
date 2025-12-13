@@ -109,6 +109,20 @@ const blogPosts = [
     image: "/images/blog-criar-grupos-sem-expor-numero.jpg",
     tags: ["Privacidade", "Segurança", "WhatsApp Business", "Número Secundário"],
     featured: true
+  },
+  {
+    id: 8,
+    slug: "melhores-praticas-moderar-grupos-whatsapp",
+    title: "Melhores Práticas para Moderar Grupos de WhatsApp: Guia Definitivo",
+    excerpt: "Domine a moderação de grupos com regras claras, ferramentas de controle e técnicas de engajamento. Evite conflitos e mantenha sua comunidade saudável e ativa.",
+    content: "Imagine acordar com 300 notificações no WhatsApp...",
+    author: "Daniel Olimpio",
+    date: "2025-12-13",
+    readTime: "18 min",
+    category: "Tutorial",
+    image: "/images/blog-moderar-grupos-whatsapp.jpg",
+    tags: ["Moderação", "Administração", "Conflitos", "Engajamento"],
+    featured: true
   }
 ];
 
