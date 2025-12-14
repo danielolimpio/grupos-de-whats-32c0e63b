@@ -37,7 +37,7 @@ export default function SegurancaWhatsApp() {
               Segurança no WhatsApp: Proteja seu Grupo de Spam e Golpes
             </h1>
             
-            <AuthorInfo />
+            <AuthorInfo date="2025-12-04" />
             
             <div className="flex items-center gap-2 text-muted-foreground mt-2">
               <Clock className="h-4 w-4" />

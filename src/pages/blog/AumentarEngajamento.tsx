@@ -37,7 +37,7 @@ export default function AumentarEngajamento() {
               Como Aumentar o Engajamento no seu Grupo de WhatsApp
             </h1>
             
-            <AuthorInfo />
+            <AuthorInfo date="2025-12-02" />
             
             <div className="flex items-center gap-2 text-muted-foreground mt-2">
               <Clock className="h-4 w-4" />

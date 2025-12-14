@@ -37,7 +37,7 @@ export default function MelhoresHorarios() {
               Melhores Horários para Postar em Grupos de WhatsApp
             </h1>
             
-            <AuthorInfo />
+            <AuthorInfo date="2025-11-28" />
             
             <div className="flex items-center gap-2 text-muted-foreground mt-2">
               <Clock className="h-4 w-4" />

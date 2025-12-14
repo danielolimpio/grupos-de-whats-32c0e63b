@@ -40,7 +40,7 @@ export default function CriarGruposSemExporNumero() {
               Como Criar Grupos de WhatsApp sem Expor Seu Número em 2025
             </h1>
             
-            <AuthorInfo />
+            <AuthorInfo date="2025-12-09" />
             
             <div className="flex items-center gap-2 text-muted-foreground mt-2">
               <Clock className="h-4 w-4" />
