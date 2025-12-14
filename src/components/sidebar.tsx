@@ -147,24 +147,6 @@ export function Sidebar({ selectedCategory, onCategorySelect }: SidebarProps) {
       {/* Ezoic - sidebar_middle - sidebar_middle */}
       <EzoicAd placement="sidebar_middle" />
 
-      {/* Premium Ad */}
-      <Card className="bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
-        <CardContent className="p-6 text-center">
-          <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
-            <Users className="h-8 w-8 text-primary" />
-          </div>
-          <h3 className="font-semibold mb-2">Anúncio Premium</h3>
-          <p className="text-sm text-muted-foreground mb-4">
-            Destaque seu grupo para milhares de usuários
-          </p>
-          <Link to="/impulsionar-grupos">
-            <Button size="sm" className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-semibold w-full">
-              Anunciar
-            </Button>
-          </Link>
-        </CardContent>
-      </Card>
-
       {/* Blog Preview */}
       <Card>
         <CardHeader>

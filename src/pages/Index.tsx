@@ -85,17 +85,12 @@ const Index = () => {
     if (!a.isPremium && b.isPremium) return 1;
     return 0;
   });
-
-  const premiumGroups = [...groups].filter(g => g.isPremium).slice(0, 8);
-  
-  const premiumIds = new Set(premiumGroups.map(g => g.uuid));
-  const allNonPremiumGroups = sortedGroups.filter(g => !premiumIds.has(g.uuid));
   
   // Pagination logic
-  const totalPages = Math.ceil(allNonPremiumGroups.length / groupsPerPage);
+  const totalPages = Math.ceil(sortedGroups.length / groupsPerPage);
   const startIndex = (currentPage - 1) * groupsPerPage;
   const endIndex = startIndex + groupsPerPage;
-  const displayGroups = allNonPremiumGroups.slice(startIndex, endIndex);
+  const displayGroups = sortedGroups.slice(startIndex, endIndex);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -215,25 +210,18 @@ const Index = () => {
           </div>
 
           <div className="flex-1 space-y-12">
-            {!selectedCategory && (
-              <>
-                <GroupGrid 
-                  groups={premiumGroups}
-                  title="Grupos Premium"
-                  showMore={true}
-                  isFavorited={isFavorited}
-                  onToggleFavorite={toggleFavorite}
-                />
-              </>
-            )}
-
-            <GroupGrid 
-              groups={displayGroups}
-              title={selectedCategory ? `${selectedCategory}` : "Todos os Grupos"}
-              showMore={false}
-              isFavorited={isFavorited}
-              onToggleFavorite={toggleFavorite}
-            />
+            <div>
+              <GroupGrid 
+                groups={displayGroups}
+                title={selectedCategory ? `${selectedCategory}` : "Todos os Grupos"}
+                showMore={false}
+                isFavorited={isFavorited}
+                onToggleFavorite={toggleFavorite}
+              />
+              <p className="text-xs text-muted-foreground mt-4 px-1">
+                Todos os grupos listados são revisados por nossa equipe com base em critérios de segurança, relevância e moderação ativa. Não aceitamos sugestões com conteúdo comercial direto, links suspeitos ou grupos sem regras claras.
+              </p>
+            </div>
 
             {/* Pagination */}
             {!selectedCategory && totalPages > 1 && (
