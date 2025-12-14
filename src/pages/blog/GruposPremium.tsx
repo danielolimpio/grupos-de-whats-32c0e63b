@@ -37,7 +37,7 @@ export default function GruposPremium() {
               Por Que Grupos Premium Têm Mais Sucesso
             </h1>
             
-            <AuthorInfo />
+            <AuthorInfo date="2025-12-06" />
             
             <div className="flex items-center gap-2 text-muted-foreground mt-2">
               <Clock className="h-4 w-4" />

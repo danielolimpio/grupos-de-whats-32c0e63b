@@ -39,7 +39,7 @@ export default function RegrasEssenciais() {
               10 Regras Essenciais para Manter seu Grupo de WhatsApp Organizado
             </h1>
             
-            <AuthorInfo />
+            <AuthorInfo date="2025-12-08" />
             
             <div className="flex items-center gap-2 text-muted-foreground mt-2">
               <Clock className="h-4 w-4" />

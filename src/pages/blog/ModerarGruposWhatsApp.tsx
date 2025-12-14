@@ -40,7 +40,7 @@ export default function ModerarGruposWhatsApp() {
               Melhores Práticas para Moderar Grupos de WhatsApp: Guia Definitivo
             </h1>
             
-            <AuthorInfo />
+            <AuthorInfo date="2025-12-13" />
             
             <div className="flex items-center gap-2 text-muted-foreground mt-2">
               <Clock className="h-4 w-4" />

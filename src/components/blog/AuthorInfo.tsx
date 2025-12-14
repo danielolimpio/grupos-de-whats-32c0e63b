@@ -2,9 +2,24 @@ import { User, Calendar } from "lucide-react";
 
 interface AuthorInfoProps {
   compact?: boolean;
+  date?: string;
 }
 
-export function AuthorInfo({ compact = false }: AuthorInfoProps) {
+function formatDate(dateString?: string): string {
+  if (!dateString) return "13 de Dezembro, 2025";
+  
+  const date = new Date(dateString + "T12:00:00");
+  const months = [
+    "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+    "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+  ];
+  
+  return `${date.getDate()} de ${months[date.getMonth()]}, ${date.getFullYear()}`;
+}
+
+export function AuthorInfo({ compact = false, date }: AuthorInfoProps) {
+  const formattedDate = formatDate(date);
+  
   if (compact) {
     return (
       <div className="flex items-center gap-4 text-muted-foreground">
@@ -14,7 +29,7 @@ export function AuthorInfo({ compact = false }: AuthorInfoProps) {
         </div>
         <div className="flex items-center gap-2">
           <Calendar className="h-4 w-4" />
-          <span>26 de Novembro, 2025</span>
+          <span>{formattedDate}</span>
         </div>
       </div>
     );
@@ -29,7 +44,7 @@ export function AuthorInfo({ compact = false }: AuthorInfoProps) {
       />
       <div>
         <div className="font-semibold text-foreground">Daniel Olimpio</div>
-        <div className="text-sm text-muted-foreground">26 de Novembro, 2025</div>
+        <div className="text-sm text-muted-foreground">{formattedDate}</div>
       </div>
     </div>
   );

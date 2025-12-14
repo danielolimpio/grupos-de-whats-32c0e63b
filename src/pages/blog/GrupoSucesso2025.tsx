@@ -39,7 +39,7 @@ export default function GrupoSucesso2025() {
               Como Criar um Grupo de WhatsApp de Sucesso: Guia Completo 2026
             </h1>
             
-            <AuthorInfo />
+            <AuthorInfo date="2025-12-10" />
             
             <div className="flex items-center gap-2 text-muted-foreground mt-2">
               <Clock className="h-4 w-4" />
