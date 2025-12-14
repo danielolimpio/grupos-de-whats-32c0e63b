@@ -15,12 +15,8 @@ export function Footer() {
               <span className="text-lg font-bold">Grupos de WhatsApp</span>
             </Link>
             <p className="text-primary-foreground/80 text-sm">
-              A maior plataforma para descobrir e compartilhar grupos de WhatsApp no Brasil.
+              Guia com dicas úteis sobre grupos e comunidades, ferramentas e boas práticas para usar o WhatsApp com segurança, privacidade e eficiência no Brasil.
             </p>
-            <div className="text-xs text-primary-foreground/60">
-              <p>+12.500 grupos cadastrados</p>
-              <p>Milhares de usuários conectados</p>
-            </div>
           </div>
 
           {/* Navegação */}
@@ -147,8 +143,11 @@ export function Footer() {
         {/* Disclaimer */}
         <div className="border-t border-primary-foreground/20 mt-8 pt-8">
           <div className="text-center space-y-2">
-            <p className="text-base text-primary-foreground/60 font-medium">
-              Este site não tem qualquer vínculo com Meta Platforms, Inc. (WhatsApp).
+            <p className="text-sm text-primary-foreground/70 font-semibold mb-1">
+              Isenção de Responsabilidade sobre Marcas
+            </p>
+            <p className="text-sm text-primary-foreground/60">
+              Este site não é afiliado, autorizado, patrocinado ou endossado pela Meta Platforms, Inc. ou por qualquer de suas subsidiárias, incluindo o WhatsApp. WhatsApp e o logotipo do WhatsApp são marcas registradas da Meta Platforms, Inc.
             </p>
             <p className="text-base text-primary-foreground/60 font-medium">
               © 2025 Grupos de WhatsApp | Todos os direitos reservados | Desenvolvido por{" "}

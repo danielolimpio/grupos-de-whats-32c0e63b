@@ -8,13 +8,13 @@ const blogPosts = [
   {
     id: 1,
     slug: "como-criar-grupo-sucesso-2025",
-    title: "Como Criar um Grupo de WhatsApp de Sucesso: Guia Completo 2025",
-    excerpt: "Descubra as melhores estratégias atualizadas para 2025 para criar e administrar grupos de WhatsApp que realmente engajam e crescem.",
+    title: "Como Criar um Grupo de WhatsApp de Sucesso: Guia Completo 2026",
+    excerpt: "Descubra as melhores estratégias atualizadas para 2026 para criar e administrar grupos de WhatsApp que realmente engajam e crescem.",
     author: "Daniel Olimpio",
     date: "2025-11-26",
     readTime: "15 min",
     category: "Tutorial",
-    image: "/images/blog-grupo-sucesso-2025.jpg",
+    image: "/images/blog-grupo-sucesso-2026.jpg",
   },
   {
     id: 2,
