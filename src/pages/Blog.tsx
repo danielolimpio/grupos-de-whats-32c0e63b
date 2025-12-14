@@ -21,7 +21,7 @@ const blogPosts = [
     author: "Daniel Olimpio",
     date: "2025-12-10",
     readTime: "15 min",
-    category: "Tutorial",
+    categories: ["Grupos", "Comunidade"],
     image: "/images/blog-grupo-sucesso-2026.jpg",
     tags: ["WhatsApp", "Grupos", "Tutorial", "Administração"],
     featured: true
@@ -35,7 +35,7 @@ const blogPosts = [
     author: "Daniel Olimpio",
     date: "2025-12-08",
     readTime: "8 min",
-    category: "Dicas",
+    categories: ["Comunidade", "Grupos"],
     image: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=500&h=300&fit=crop",
     tags: ["Regras", "Organização", "Moderação"],
     featured: false
@@ -49,7 +49,7 @@ const blogPosts = [
     author: "Daniel Olimpio",
     date: "2025-12-06",
     readTime: "11 min",
-    category: "Premium",
+    categories: ["Negócios", "Grupos"],
     image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=500&h=300&fit=crop",
     tags: ["Premium", "Crescimento", "Visibilidade"],
     featured: true
@@ -63,7 +63,7 @@ const blogPosts = [
     author: "Daniel Olimpio",
     date: "2025-12-04",
     readTime: "13 min",
-    category: "Segurança",
+    categories: ["Privacidade", "Ferramentas"],
     image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500&h=300&fit=crop",
     tags: ["Segurança", "Spam", "Proteção"],
     featured: false
@@ -77,7 +77,7 @@ const blogPosts = [
     author: "Daniel Olimpio",
     date: "2025-12-02",
     readTime: "12 min",
-    category: "Engajamento",
+    categories: ["Comunidade", "Negócios"],
     image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop",
     tags: ["Engajamento", "Interação", "Crescimento"],
     featured: false
@@ -91,7 +91,7 @@ const blogPosts = [
     author: "Daniel Olimpio",
     date: "2025-11-28",
     readTime: "10 min",
-    category: "Estratégia",
+    categories: ["Ferramentas", "Negócios"],
     image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=300&fit=crop",
     tags: ["Horários", "Estratégia", "Timing"],
     featured: false
@@ -105,7 +105,7 @@ const blogPosts = [
     author: "Daniel Olimpio",
     date: "2025-12-09",
     readTime: "15 min",
-    category: "Segurança",
+    categories: ["Privacidade", "Ferramentas", "Grupos"],
     image: "/images/blog-criar-grupos-sem-expor-numero.jpg",
     tags: ["Privacidade", "Segurança", "WhatsApp Business", "Número Secundário"],
     featured: true
@@ -119,14 +119,14 @@ const blogPosts = [
     author: "Daniel Olimpio",
     date: "2025-12-13",
     readTime: "18 min",
-    category: "Tutorial",
+    categories: ["Comunidade", "Ferramentas", "Grupos"],
     image: "/images/blog-moderar-grupos-whatsapp.jpg",
     tags: ["Moderação", "Administração", "Conflitos", "Engajamento"],
     featured: true
   }
 ];
 
-const categories = ["Todos", "Tutorial", "Dicas", "Premium", "Segurança", "Privacidade", "Engajamento", "Estratégia"];
+const categories = ["Todos", "Ferramentas", "Negócios", "Comunidade", "Grupos", "Privacidade"];
 
 export default function Blog() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -136,7 +136,7 @@ export default function Blog() {
     const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
-    const matchesCategory = selectedCategory === "Todos" || post.category === selectedCategory;
+    const matchesCategory = selectedCategory === "Todos" || post.categories.includes(selectedCategory);
     return matchesSearch && matchesCategory;
   });
 
@@ -242,8 +242,12 @@ export default function Blog() {
                     </div>
                   </Link>
                   <CardHeader className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <Badge variant="outline">{post.category}</Badge>
+                    <div className="flex items-center justify-between flex-wrap gap-1">
+                      <div className="flex flex-wrap gap-1">
+                        {post.categories.map((cat) => (
+                          <Badge key={cat} variant="outline">{cat}</Badge>
+                        ))}
+                      </div>
                       <span className="text-xs text-muted-foreground">
                         {new Date(post.date).toLocaleDateString('pt-BR')}
                       </span>
