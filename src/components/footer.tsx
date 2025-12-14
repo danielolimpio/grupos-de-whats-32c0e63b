@@ -31,6 +31,13 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link to="/sobre">
+                  <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
+                    Sobre
+                  </Button>
+                </Link>
+              </li>
+              <li>
                 <Link to="/como-funciona">
                   <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
                     Como funciona

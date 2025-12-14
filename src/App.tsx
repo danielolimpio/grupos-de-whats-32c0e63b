@@ -40,6 +40,7 @@ import Contato from "./pages/Contato";
 import PoliticaTransparencia from "./pages/PoliticaTransparencia";
 import Checkout from "./pages/Checkout";
 import MigrateImages from "./pages/MigrateImages";
+import Sobre from "./pages/Sobre";
 
 const queryClient = new QueryClient();
 
@@ -86,6 +87,7 @@ const App = () => (
               <Route path="/contato" element={<Contato />} />
               <Route path="/politica-transparencia" element={<PoliticaTransparencia />} />
               <Route path="/sitemap" element={<Sitemap />} />
+              <Route path="/sobre" element={<Sobre />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
