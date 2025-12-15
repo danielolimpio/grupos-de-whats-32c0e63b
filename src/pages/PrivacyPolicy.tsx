@@ -501,7 +501,7 @@ export default function PrivacyPolicy() {
             </p>
             <p className="text-muted-foreground text-sm">
               Informações específicas sobre como usamos tais tecnologias e como você pode recusar determinados cookies estão descritas em nosso{' '}
-              <Link to="/cookie-policy" className="text-primary hover:underline font-medium">
+              <Link to="/politica-de-cookies" className="text-primary hover:underline font-medium">
                 Aviso de Cookies
               </Link>.
             </p>
@@ -693,7 +693,7 @@ export default function PrivacyPolicy() {
               <h4 className="font-semibold text-foreground mb-3">Cookies e tecnologias semelhantes</h4>
               <p className="text-muted-foreground text-sm">
                 A maioria dos navegadores da web é configurada para aceitar cookies por padrão. Se preferir, geralmente é possível escolher configurar seu navegador para remover cookies e rejeitar cookies. Se você escolher remover cookies ou rejeitar cookies, isso poderá afetar determinados recursos ou serviços de nossos Serviços. Você também pode desativar a publicidade baseada em interesses de anunciantes em nossos Serviços. Para mais informações, consulte nosso{' '}
-                <Link to="/cookie-policy" className="text-primary hover:underline font-medium">
+                <Link to="/politica-de-cookies" className="text-primary hover:underline font-medium">
                   Aviso de Cookies
                 </Link>.
               </p>

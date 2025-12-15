@@ -75,9 +75,9 @@ const App = () => (
               <Route path="/dicas-seguranca" element={<DicasSeguranca />} />
               <Route path="/central-ajuda" element={<CentralAjuda />} />
               <Route path="/reportar-problema" element={<ReportarProblema />} />
-              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-              <Route path="/terms-of-service" element={<TermsOfService />} />
-              <Route path="/cookie-policy" element={<CookiePolicy />} />
+              <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
+              <Route path="/termos-de-uso" element={<TermsOfService />} />
+              <Route path="/politica-de-cookies" element={<CookiePolicy />} />
               <Route path="/impulsionar-grupos" element={<ImpulsionarGrupos />} />
               <Route path="/all-groups" element={<AllGroups />} />
               <Route path="/faq" element={<FAQ />} />
@@ -85,7 +85,7 @@ const App = () => (
               <Route path="/categoria/:slug" element={<Category />} />
               <Route path="/anunciar-grupos" element={<AnunciarGrupos />} />
               <Route path="/contato" element={<Contato />} />
-              <Route path="/politica-transparencia" element={<PoliticaTransparencia />} />
+              <Route path="/politica-de-transparencia" element={<PoliticaTransparencia />} />
               <Route path="/sitemap" element={<Sitemap />} />
               <Route path="/sobre" element={<Sobre />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

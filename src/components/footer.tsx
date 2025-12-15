@@ -113,7 +113,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               <li className="flex items-center space-x-2">
                 <Shield className="h-4 w-4" />
-                <Link to="/privacy-policy">
+                <Link to="/politica-de-privacidade">
                   <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
                     Política de Privacidade
                   </Button>
@@ -121,14 +121,14 @@ export function Footer() {
               </li>
               <li className="flex items-center space-x-2">
                 <FileText className="h-4 w-4" />
-                <Link to="/terms-of-service">
+                <Link to="/termos-de-uso">
                   <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
                     Termos de Uso
                   </Button>
                 </Link>
               </li>
               <li>
-                <Link to="/cookie-policy">
+                <Link to="/politica-de-cookies">
                   <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
                     <Cookie className="h-4 w-4 mr-1" />
                     Política de Cookies
@@ -136,7 +136,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/politica-transparencia">
+                <Link to="/politica-de-transparencia">
                   <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
                     <Shield className="h-4 w-4 mr-1" />
                     Política de Transparência
