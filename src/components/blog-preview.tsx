@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const blogPosts = [
   {
     id: 1,
-    slug: "como-criar-grupo-sucesso-2025",
+    slug: "como-criar-grupo-sucesso-2026",
     title: "Como Criar um Grupo de WhatsApp de Sucesso: Guia Completo 2026",
     excerpt: "Descubra as melhores estratégias atualizadas para 2026 para criar e administrar grupos de WhatsApp que realmente engajam e crescem.",
     author: "Daniel Olimpio",

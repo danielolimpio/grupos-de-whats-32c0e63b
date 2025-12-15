@@ -8,8 +8,10 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
+import { useUpdateCanonical } from "@/hooks/useCanonical";
 
 export default function AllGroups() {
+  useUpdateCanonical();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   
   const filteredGroups = selectedCategory 

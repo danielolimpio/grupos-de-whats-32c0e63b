@@ -4,8 +4,10 @@ import { Shield, Lock, Eye, AlertTriangle, UserCheck, MessageSquare } from 'luci
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { EzoicAd, EzoicFloatingAds } from '@/components/ezoic-ad';
+import { useUpdateCanonical } from '@/hooks/useCanonical';
 
 export default function DicasSeguranca() {
+  useUpdateCanonical();
   const securityTips = [
     {
       icon: Lock,

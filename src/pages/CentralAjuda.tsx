@@ -6,8 +6,10 @@ import { Link } from 'react-router-dom';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { EzoicAd, EzoicFloatingAds } from '@/components/ezoic-ad';
+import { useUpdateCanonical } from '@/hooks/useCanonical';
 
 export default function CentralAjuda() {
+  useUpdateCanonical();
   const faqItems = [
     {
       question: "Como funciona a plataforma?",

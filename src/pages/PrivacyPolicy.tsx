@@ -5,8 +5,10 @@ import { Footer } from '@/components/footer';
 import { Link } from 'react-router-dom';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
+import { useUpdateCanonical } from '@/hooks/useCanonical';
 
 export default function PrivacyPolicy() {
+  useUpdateCanonical();
   const tableOfContents = [
     "Que informações coletamos?",
     "Como processamos suas informações?",
