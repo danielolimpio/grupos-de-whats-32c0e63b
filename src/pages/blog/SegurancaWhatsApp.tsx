@@ -7,15 +7,18 @@ import { Helmet } from "react-helmet-async";
 import { AuthorInfo } from "@/components/blog/AuthorInfo";
 import { AuthorBio } from "@/components/blog/AuthorBio";
 import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
+import { useCanonical } from "@/hooks/useCanonical";
 
 export default function SegurancaWhatsApp() {
+  const canonicalUrl = useCanonical();
+  
   return (
     <>
       <Helmet>
         <title>Segurança no WhatsApp: Proteja seu Grupo de Spam e Golpes | Grupos de Whats</title>
         <meta name="description" content="Guia completo de segurança para grupos de WhatsApp. Aprenda a identificar e prevenir spam, golpes, scams e conteúdo malicioso em 2025." />
         <meta name="keywords" content="segurança whatsapp, proteger grupo whatsapp, spam whatsapp, golpes whatsapp, segurança digital" />
-        <link rel="canonical" href="https://gruposdewhats.com.br/blog/seguranca-whatsapp-proteger-grupo-spam-golpes" />
+        <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
       <div className="min-h-screen bg-background">

@@ -10,6 +10,7 @@ import { Helmet } from "react-helmet-async";
 import { useState } from "react";
 import { Sidebar } from "@/components/sidebar";
 import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
+import { useCanonical } from "@/hooks/useCanonical";
 
 const blogPosts = [
   {
@@ -129,6 +130,7 @@ const blogPosts = [
 const categories = ["Todos", "Ferramentas", "Negócios", "Comunidade", "Grupos", "Privacidade"];
 
 export default function Blog() {
+  const canonicalUrl = useCanonical();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Todos");
 
@@ -147,7 +149,7 @@ export default function Blog() {
       <title>Blog - Dicas e Tutoriais sobre Grupos de WhatsApp | Grupos de Whats</title>
       <meta name="description" content="Aprenda como criar, gerenciar e fazer crescer seus grupos de WhatsApp com nossos guias especializados e dicas exclusivas." />
       <meta name="keywords" content="blog whatsapp, tutoriais grupos, dicas whatsapp, como criar grupo, administrar grupo whatsapp" />
-      <link rel="canonical" href="https://gruposdewhats.com.br/blog" />
+      <link rel="canonical" href={canonicalUrl} />
       <meta property="og:title" content="Blog - Dicas e Tutoriais sobre Grupos de WhatsApp" />
       <meta property="og:description" content="Aprenda como criar, gerenciar e fazer crescer seus grupos de WhatsApp com nossos guias especializados." />
     </Helmet>

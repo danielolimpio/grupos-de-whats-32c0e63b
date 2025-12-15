@@ -12,6 +12,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Helmet } from "react-helmet-async";
 import { useAuth } from "@/hooks/useAuth";
 import { useFavorites } from "@/hooks/useFavorites";
+import { useCanonical } from "@/hooks/useCanonical";
 
 interface GroupData {
   id: string;
@@ -30,6 +31,7 @@ interface GroupData {
 const Index = () => {
   const { user } = useAuth();
   const { isFavorited, toggleFavorite } = useFavorites(user?.id);
+  const canonicalUrl = useCanonical();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [groups, setGroups] = useState<GroupData[]>([]);
   const [loading, setLoading] = useState(true);
@@ -114,7 +116,7 @@ const Index = () => {
         <title>Grupos de WhatsApp Brasil 2025 | +12.500 Grupos Ativos para Entrar</title>
         <meta name="description" content="Descubra os melhores grupos de WhatsApp do Brasil em 2025. Mais de 12.500 grupos ativos de vendas, divulgação, amizades, estudos e muito mais. Entre grátis agora!" />
         <meta name="keywords" content="grupos de whatsapp, grupos whatsapp brasil, grupos de amizades, grupos de namoros, grupos de divulgação, grupos de vendas, links grupos whatsapp, grupos whatsapp 2025" />
-        <link rel="canonical" href="https://gruposdewhats.com.br/" />
+        <link rel="canonical" href={canonicalUrl} />
         <meta property="og:title" content="Grupos de WhatsApp Brasil 2025 | +12.500 Grupos Ativos" />
         <meta property="og:description" content="Descubra os melhores grupos de WhatsApp do Brasil. Entre grátis em milhares de grupos ativos!" />
         <meta property="og:url" content="https://gruposdewhats.com.br/" />

@@ -29,13 +29,11 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import CookiePolicy from "./pages/CookiePolicy";
 import NotFound from "./pages/NotFound";
-import ImpulsionarGrupos from "./pages/ImpulsionarGrupos";
 import AllGroups from "./pages/AllGroups";
 import FAQ from "./pages/FAQ";
 import GroupDetails from "./pages/GroupDetails";
 import Category from "./pages/Category";
 import Sitemap from "./pages/Sitemap";
-import AnunciarGrupos from "./pages/AnunciarGrupos";
 import Contato from "./pages/Contato";
 import PoliticaTransparencia from "./pages/PoliticaTransparencia";
 import Checkout from "./pages/Checkout";
@@ -78,12 +76,10 @@ const App = () => (
               <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
               <Route path="/termos-de-uso" element={<TermsOfService />} />
               <Route path="/politica-de-cookies" element={<CookiePolicy />} />
-              <Route path="/impulsionar-grupos" element={<ImpulsionarGrupos />} />
-              <Route path="/all-groups" element={<AllGroups />} />
+              <Route path="/todos-grupos" element={<AllGroups />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/grupo/:slug" element={<GroupDetails />} />
               <Route path="/categoria/:slug" element={<Category />} />
-              <Route path="/anunciar-grupos" element={<AnunciarGrupos />} />
               <Route path="/contato" element={<Contato />} />
               <Route path="/politica-de-transparencia" element={<PoliticaTransparencia />} />
               <Route path="/sitemap" element={<Sitemap />} />

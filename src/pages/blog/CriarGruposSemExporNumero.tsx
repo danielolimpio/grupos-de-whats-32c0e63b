@@ -8,15 +8,18 @@ import { Helmet } from "react-helmet-async";
 import { AuthorInfo } from "@/components/blog/AuthorInfo";
 import { AuthorBio } from "@/components/blog/AuthorBio";
 import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
+import { useCanonical } from "@/hooks/useCanonical";
 
 export default function CriarGruposSemExporNumero() {
+  const canonicalUrl = useCanonical();
+  
   return (
     <>
       <Helmet>
         <title>Como Criar Grupos de WhatsApp sem Expor Seu Número em 2025 | Grupos de Whats</title>
         <meta name="description" content="Aprenda métodos seguros e atualizados para criar grupos no WhatsApp sem revelar seu número pessoal. Proteja sua privacidade e evite spams com dicas práticas e testadas." />
         <meta name="keywords" content="criar grupo whatsapp sem expor número, privacidade whatsapp, número secundário whatsapp, whatsapp business, proteger número whatsapp" />
-        <link rel="canonical" href="https://gruposdewhats.com.br/blog/como-criar-grupos-whatsapp-sem-expor-numero" />
+        <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
       <div className="min-h-screen bg-background">

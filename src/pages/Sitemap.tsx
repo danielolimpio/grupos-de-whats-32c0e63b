@@ -36,11 +36,13 @@ const Sitemap = () => {
       { path: '/regras-comunidade', priority: '0.6', changefreq: 'monthly' },
       { path: '/dicas-seguranca', priority: '0.6', changefreq: 'monthly' },
       { path: '/central-ajuda', priority: '0.6', changefreq: 'monthly' },
-      { path: '/impulsionar-grupos', priority: '0.7', changefreq: 'weekly' },
-      { path: '/all-groups', priority: '0.9', changefreq: 'daily' },
+      { path: '/sobre', priority: '0.6', changefreq: 'monthly' },
+      { path: '/contato', priority: '0.6', changefreq: 'monthly' },
+      { path: '/todos-grupos', priority: '0.9', changefreq: 'daily' },
       { path: '/politica-de-privacidade', priority: '0.3', changefreq: 'yearly' },
       { path: '/termos-de-uso', priority: '0.3', changefreq: 'yearly' },
-      { path: '/politica-de-cookies', priority: '0.3', changefreq: 'yearly' }
+      { path: '/politica-de-cookies', priority: '0.3', changefreq: 'yearly' },
+      { path: '/politica-de-transparencia', priority: '0.3', changefreq: 'yearly' }
     ];
 
     staticPages.forEach(page => {

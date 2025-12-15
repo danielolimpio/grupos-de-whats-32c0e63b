@@ -7,15 +7,18 @@ import { Helmet } from "react-helmet-async";
 import { AuthorInfo } from "@/components/blog/AuthorInfo";
 import { AuthorBio } from "@/components/blog/AuthorBio";
 import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
+import { useCanonical } from "@/hooks/useCanonical";
 
 export default function GruposPremium() {
+  const canonicalUrl = useCanonical();
+  
   return (
     <>
       <Helmet>
         <title>Por Que Grupos Premium Têm Mais Sucesso | Grupos de Whats</title>
         <meta name="description" content="Descubra por que grupos premium crescem mais rápido e têm maior engajamento. Análise completa dos benefícios de impulsionar seu grupo de WhatsApp em 2025." />
         <meta name="keywords" content="grupos premium whatsapp, impulsionar grupo, destaque grupo whatsapp, crescimento acelerado" />
-        <link rel="canonical" href="https://gruposdewhats.com.br/blog/por-que-grupos-premium-tem-mais-sucesso" />
+        <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
       <div className="min-h-screen bg-background">

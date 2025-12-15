@@ -7,15 +7,18 @@ import { Helmet } from "react-helmet-async";
 import { AuthorInfo } from "@/components/blog/AuthorInfo";
 import { AuthorBio } from "@/components/blog/AuthorBio";
 import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
+import { useCanonical } from "@/hooks/useCanonical";
 
 export default function RegrasEssenciais() {
+  const canonicalUrl = useCanonical();
+  
   return (
     <>
       <Helmet>
         <title>10 Regras Essenciais para Manter seu Grupo de WhatsApp Organizado | Grupos de Whats</title>
         <meta name="description" content="Descubra as 10 regras fundamentais para manter ordem, respeito e engajamento no seu grupo de WhatsApp. Guia prático 2025 para administradores." />
         <meta name="keywords" content="regras grupo whatsapp, organizar grupo, moderação whatsapp, regras comunidade" />
-        <link rel="canonical" href="https://gruposdewhats.com.br/blog/10-regras-essenciais-manter-grupo-organizado" />
+        <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
       <div className="min-h-screen bg-background">
