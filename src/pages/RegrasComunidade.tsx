@@ -4,8 +4,10 @@ import { Shield, X, Check, AlertTriangle, Users } from 'lucide-react';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { EzoicAd, EzoicFloatingAds } from '@/components/ezoic-ad';
+import { useUpdateCanonical } from '@/hooks/useCanonical';
 
 export default function RegrasComunidade() {
+  useUpdateCanonical();
   const allowedContent = [
     "Grupos educacionais e de aprendizado",
     "Comunidades de hobbies e interesses",

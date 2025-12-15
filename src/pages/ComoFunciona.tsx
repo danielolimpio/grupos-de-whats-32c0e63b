@@ -4,8 +4,10 @@ import { Search, Users, Shield, MessageSquare, CheckCircle, UserPlus } from 'luc
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { EzoicAd, EzoicFloatingAds } from '@/components/ezoic-ad';
+import { useUpdateCanonical } from '@/hooks/useCanonical';
 
 export default function ComoFunciona() {
+  useUpdateCanonical();
   const steps = [
     {
       icon: UserPlus,

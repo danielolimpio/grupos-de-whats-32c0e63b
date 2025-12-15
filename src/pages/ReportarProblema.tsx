@@ -10,8 +10,10 @@ import { AlertTriangle, CheckCircle, MessageSquare, Bug } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
+import { useUpdateCanonical } from '@/hooks/useCanonical';
 
 export default function ReportarProblema() {
+  useUpdateCanonical();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const { toast } = useToast();

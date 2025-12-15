@@ -34,8 +34,10 @@ import {
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { Link } from 'react-router-dom';
+import { useUpdateCanonical } from '@/hooks/useCanonical';
 
 export default function TermsOfService() {
+  useUpdateCanonical();
   const tableOfContents = [
     { id: 'nossos-servicos', title: '1. Nossos Serviços' },
     { id: 'propriedade-intelectual', title: '2. Direitos de Propriedade Intelectual' },

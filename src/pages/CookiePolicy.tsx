@@ -25,8 +25,10 @@ import {
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { Link } from 'react-router-dom';
+import { useUpdateCanonical } from '@/hooks/useCanonical';
 
 export default function CookiePolicy() {
+  useUpdateCanonical();
   const tableOfContents = [
     { id: 'o-que-sao', title: 'O que são cookies?' },
     { id: 'por-que-usamos', title: 'Por que usamos cookies?' },

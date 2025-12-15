@@ -2,17 +2,20 @@ import { Helmet } from "react-helmet-async";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Shield, FileText, Eye, Lock, Users } from "lucide-react";
+import { useCanonical } from "@/hooks/useCanonical";
 
 const PoliticaTransparencia = () => {
+  const canonicalUrl = useCanonical();
+  
   return (
     <>
       <Helmet>
-        <title>Política de Transparência - Grupos Whatsapp Brasil</title>
-        <meta name="description" content="Conheça nossa política de transparência e como tratamos as informações de grupos e usuários na plataforma Grupos Whatsapp Brasil." />
-        <link rel="canonical" href="https://gruposwhatsappbrasil.com/politica-de-transparencia" />
-        <meta property="og:title" content="Política de Transparência - Grupos Whatsapp Brasil" />
+        <title>Política de Transparência - Grupos de Whats</title>
+        <meta name="description" content="Conheça nossa política de transparência e como tratamos as informações de grupos e usuários na plataforma Grupos de Whats." />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:title" content="Política de Transparência - Grupos de Whats" />
         <meta property="og:description" content="Conheça nossa política de transparência e como tratamos as informações de grupos e usuários na plataforma." />
-        <meta property="og:url" content="https://gruposwhatsappbrasil.com/politica-de-transparencia" />
+        <meta property="og:url" content={canonicalUrl} />
         <meta property="og:type" content="website" />
       </Helmet>
       
@@ -146,7 +149,7 @@ const PoliticaTransparencia = () => {
                 Para questões sobre transparência ou proteção de dados:
               </p>
               <ul className="space-y-2 text-muted-foreground">
-                <li>📧 E-mail: contato@gruposwhatsappbrasil.com</li>
+                <li>📧 E-mail: contato@gruposdewhats.com.br</li>
                 <li>📍 Endereço: Av. Júlia Freire, 1200 - Expedicionários, João Pessoa - PB, CEP: 58041-000</li>
                 <li>🏢 CNPJ: 60.139.021/0001-14</li>
               </ul>
