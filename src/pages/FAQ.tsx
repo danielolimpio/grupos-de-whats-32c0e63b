@@ -28,6 +28,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Helmet } from 'react-helmet-async';
 import { EzoicAd, EzoicFloatingAds } from '@/components/ezoic-ad';
+import { useCanonical } from '@/hooks/useCanonical';
 
 const FAQ_DATA = [
   {
@@ -149,6 +150,7 @@ const FAQ_DATA = [
 ];
 
 export default function FAQ() {
+  const canonicalUrl = useCanonical();
   const [searchTerm, setSearchTerm] = useState('');
 
   const filteredFAQ = FAQ_DATA.map(category => ({
@@ -166,7 +168,7 @@ export default function FAQ() {
         <title>FAQ - Perguntas Frequentes | Grupos de WhatsApp</title>
         <meta name="description" content="Encontre respostas para as perguntas mais frequentes sobre como usar o portal Grupos de WhatsApp, cadastrar grupos, impulsionar e muito mais." />
         <meta name="keywords" content="FAQ, perguntas frequentes, grupos whatsapp, ajuda, suporte, como usar" />
-        <link rel="canonical" href={`${window.location.origin}/faq`} />
+        <link rel="canonical" href={canonicalUrl} />
       </Helmet>
       
       <div className="min-h-screen bg-background">

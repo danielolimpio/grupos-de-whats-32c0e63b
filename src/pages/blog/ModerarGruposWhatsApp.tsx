@@ -8,15 +8,18 @@ import { Helmet } from "react-helmet-async";
 import { AuthorInfo } from "@/components/blog/AuthorInfo";
 import { AuthorBio } from "@/components/blog/AuthorBio";
 import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
+import { useCanonical } from "@/hooks/useCanonical";
 
 export default function ModerarGruposWhatsApp() {
+  const canonicalUrl = useCanonical();
+  
   return (
     <>
       <Helmet>
         <title>Melhores Práticas para Moderar Grupos de WhatsApp: Guia Definitivo | Grupos de Whats</title>
         <meta name="description" content="Domine a moderação de grupos com regras claras, ferramentas de controle e técnicas de engajamento. Evite conflitos e mantenha sua comunidade saudável e ativa." />
         <meta name="keywords" content="moderar grupo whatsapp, moderação whatsapp, administrar grupo, regras grupo whatsapp, conflitos grupo whatsapp" />
-        <link rel="canonical" href="https://gruposdewhats.com.br/blog/melhores-praticas-moderar-grupos-whatsapp" />
+        <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
       <div className="min-h-screen bg-background">

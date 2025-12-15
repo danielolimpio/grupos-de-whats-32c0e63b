@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
+import { useCanonical } from "@/hooks/useCanonical";
 
 interface Group {
   id: string;
@@ -37,6 +38,7 @@ interface Group {
 const GroupDetails = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
+  const canonicalUrl = useCanonical();
   const [group, setGroup] = useState<Group | null>(null);
   const [loading, setLoading] = useState(true);
   const [hasAgreed, setHasAgreed] = useState(false);
@@ -137,11 +139,11 @@ const GroupDetails = () => {
       <Helmet>
         <title>{group.name} - Grupo de WhatsApp | Grupos de WhatsApp Brasil</title>
         <meta name="description" content={`Entre no grupo "${group.name}" no WhatsApp. ${pageDescription} Categoria: ${group.category}`} />
-        <link rel="canonical" content={`https://gruposwhatsapp.com.br/grupo/${slug}`} />
+        <link rel="canonical" href={canonicalUrl} />
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://gruposwhatsapp.com.br/grupo/${slug}`} />
+        <meta property="og:url" content={canonicalUrl} />
         <meta property="og:title" content={`${group.name} - Grupo de WhatsApp`} />
         <meta property="og:description" content={pageDescription} />
         <meta property="og:image" content={group.image_url} />
@@ -149,7 +151,7 @@ const GroupDetails = () => {
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content={`https://gruposwhatsapp.com.br/grupo/${slug}`} />
+        <meta name="twitter:url" content={canonicalUrl} />
         <meta name="twitter:title" content={`${group.name} - Grupo de WhatsApp`} />
         <meta name="twitter:description" content={pageDescription} />
         <meta name="twitter:image" content={group.image_url} />
@@ -165,7 +167,7 @@ const GroupDetails = () => {
             "headline": group.name,
             "description": plainDescription,
             "image": group.image_url,
-            "url": `https://gruposwhatsapp.com.br/grupo/${slug}`,
+            "url": canonicalUrl,
             "datePublished": group.created_at,
             "author": {
               "@type": "Organization",
@@ -176,12 +178,12 @@ const GroupDetails = () => {
               "name": "Grupos de WhatsApp Brasil",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://gruposwhatsapp.com.br/logo.png"
+                "url": "https://gruposdewhats.com.br/logo.png"
               }
             },
             "mainEntityOfPage": {
               "@type": "WebPage",
-              "@id": `https://gruposwhatsapp.com.br/grupo/${slug}`
+              "@id": canonicalUrl
             },
             "interactionStatistic": {
               "@type": "InteractionCounter",

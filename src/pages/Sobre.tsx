@@ -25,8 +25,11 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { useCanonical } from "@/hooks/useCanonical";
 
 const Sobre = () => {
+  const canonicalUrl = useCanonical();
+  
   const features = [
     {
       icon: Lock,
@@ -88,7 +91,7 @@ const Sobre = () => {
           content="Conheça o Grupos de Whats: plataforma independente com guias, dicas e boas práticas para usar o WhatsApp com segurança, privacidade e eficiência no Brasil." 
         />
         <meta name="keywords" content="sobre grupos de whats, whatsapp brasil, guia whatsapp, segurança whatsapp, privacidade whatsapp" />
-        <link rel="canonical" href="https://gruposdewhats.com.br/sobre" />
+        <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
       <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20">

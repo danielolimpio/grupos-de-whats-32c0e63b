@@ -7,15 +7,18 @@ import { Helmet } from "react-helmet-async";
 import { AuthorInfo } from "@/components/blog/AuthorInfo";
 import { AuthorBio } from "@/components/blog/AuthorBio";
 import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
+import { useCanonical } from "@/hooks/useCanonical";
 
 export default function AumentarEngajamento() {
+  const canonicalUrl = useCanonical();
+  
   return (
     <>
       <Helmet>
         <title>Como Aumentar o Engajamento no seu Grupo de WhatsApp | Grupos de Whats</title>
         <meta name="description" content="Estratégias comprovadas para aumentar o engajamento e manter seus membros ativos no grupo de WhatsApp. Guia completo 2025 com técnicas práticas e testadas." />
         <meta name="keywords" content="engajamento whatsapp, aumentar engajamento grupo, grupo whatsapp ativo, estratégias engajamento" />
-        <link rel="canonical" href="https://gruposdewhats.com.br/blog/como-aumentar-engajamento-grupo" />
+        <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
       <div className="min-h-screen bg-background">

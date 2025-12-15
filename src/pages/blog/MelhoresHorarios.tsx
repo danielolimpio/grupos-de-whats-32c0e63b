@@ -7,15 +7,18 @@ import { Helmet } from "react-helmet-async";
 import { AuthorInfo } from "@/components/blog/AuthorInfo";
 import { AuthorBio } from "@/components/blog/AuthorBio";
 import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
+import { useCanonical } from "@/hooks/useCanonical";
 
 export default function MelhoresHorarios() {
+  const canonicalUrl = useCanonical();
+  
   return (
     <>
       <Helmet>
         <title>Melhores Horários para Postar em Grupos de WhatsApp | Grupos de Whats</title>
         <meta name="description" content="Descubra os horários ideais para postar em grupos de WhatsApp e maximize o engajamento. Análise completa por tipo de grupo e público em 2025." />
         <meta name="keywords" content="horários whatsapp, melhor hora postar grupo, timing whatsapp, engajamento horário" />
-        <link rel="canonical" href="https://gruposdewhats.com.br/blog/melhores-horarios-postar-grupos-whatsapp" />
+        <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
       <div className="min-h-screen bg-background">

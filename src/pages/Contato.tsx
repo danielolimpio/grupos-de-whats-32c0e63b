@@ -3,21 +3,24 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { MapPin, Building2, FileText, Phone } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
+import { useCanonical } from "@/hooks/useCanonical";
 
 const Contato = () => {
+  const canonicalUrl = useCanonical();
+  
   return (
     <>
       <Helmet>
-        <title>Contato - Grupos Whatsapp Brasil</title>
-        <meta name="description" content="Entre em contato com Grupos Whatsapp Brasil. Endereço, CNPJ e localização no mapa." />
-        <link rel="canonical" href="https://gruposwhatsappbrasil.com/contato" />
-        <meta property="og:title" content="Contato - Grupos Whatsapp Brasil" />
-        <meta property="og:description" content="Entre em contato com Grupos Whatsapp Brasil. Endereço, CNPJ e localização no mapa." />
-        <meta property="og:url" content="https://gruposwhatsappbrasil.com/contato" />
+        <title>Contato - Grupos de WhatsApp Brasil</title>
+        <meta name="description" content="Entre em contato com Grupos de WhatsApp Brasil. Endereço, CNPJ e localização no mapa." />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:title" content="Contato - Grupos de WhatsApp Brasil" />
+        <meta property="og:description" content="Entre em contato com Grupos de WhatsApp Brasil. Endereço, CNPJ e localização no mapa." />
+        <meta property="og:url" content={canonicalUrl} />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="Contato - Grupos Whatsapp Brasil" />
-        <meta name="twitter:description" content="Entre em contato com Grupos Whatsapp Brasil. Endereço, CNPJ e localização no mapa." />
+        <meta name="twitter:title" content="Contato - Grupos de WhatsApp Brasil" />
+        <meta name="twitter:description" content="Entre em contato com Grupos de WhatsApp Brasil. Endereço, CNPJ e localização no mapa." />
       </Helmet>
       
       <div className="min-h-screen bg-background flex flex-col">

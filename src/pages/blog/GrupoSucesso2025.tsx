@@ -7,15 +7,18 @@ import { Helmet } from "react-helmet-async";
 import { AuthorInfo } from "@/components/blog/AuthorInfo";
 import { AuthorBio } from "@/components/blog/AuthorBio";
 import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
+import { useCanonical } from "@/hooks/useCanonical";
 
 export default function GrupoSucesso2025() {
+  const canonicalUrl = useCanonical();
+  
   return (
     <>
       <Helmet>
         <title>Como Criar um Grupo de WhatsApp de Sucesso: Guia Completo 2026 | Grupos de Whats</title>
         <meta name="description" content="Guia definitivo 2026 para criar e administrar grupos de WhatsApp que realmente crescem e engajam. Estratégias práticas testadas por milhares de administradores." />
         <meta name="keywords" content="criar grupo whatsapp, grupo sucesso whatsapp, administrar grupo, guia whatsapp 2026" />
-        <link rel="canonical" href="https://gruposdewhats.com.br/blog/como-criar-grupo-whatsapp-sucesso-guia-completo-2026" />
+        <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
       <div className="min-h-screen bg-background">

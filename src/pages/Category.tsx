@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { getCategoryBySlug } from "@/data/categories";
 import { Helmet } from "react-helmet-async";
+import { useCanonical } from "@/hooks/useCanonical";
 
 interface GroupData {
   id: string;
@@ -26,6 +27,7 @@ interface GroupData {
 const Category = () => {
   const { slug } = useParams();
   const category = getCategoryBySlug(slug || '');
+  const canonicalUrl = useCanonical();
   const [groups, setGroups] = useState<GroupData[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -98,8 +100,8 @@ const Category = () => {
         <meta property="og:title" content={category.seoTitle} />
         <meta property="og:description" content={category.metaDescription} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://gruposwhatsapp.com.br/categoria/${slug}`} />
-        <link rel="canonical" href={`https://gruposwhatsapp.com.br/categoria/${slug}`} />
+        <meta property="og:url" content={canonicalUrl} />
+        <link rel="canonical" href={canonicalUrl} />
         <meta name="keywords" content={`${category.name.toLowerCase()}, grupos whatsapp ${category.id}, whatsapp ${category.id}, grupos de whatsapp`} />
         
         {/* Structured Data */}
@@ -109,7 +111,7 @@ const Category = () => {
             "@type": "CollectionPage",
             "name": category.name,
             "description": category.description,
-            "url": `https://gruposwhatsapp.com.br/categoria/${slug}`,
+            "url": canonicalUrl,
             "breadcrumb": {
               "@type": "BreadcrumbList",
               "itemListElement": [
@@ -117,13 +119,13 @@ const Category = () => {
                   "@type": "ListItem",
                   "position": 1,
                   "name": "Home",
-                  "item": "https://gruposwhatsapp.com.br/"
+                  "item": "https://gruposdewhats.com.br/"
                 },
                 {
                   "@type": "ListItem",
                   "position": 2,
                   "name": category.name,
-                  "item": `https://gruposwhatsapp.com.br/categoria/${slug}`
+                  "item": canonicalUrl
                 }
               ]
             },
