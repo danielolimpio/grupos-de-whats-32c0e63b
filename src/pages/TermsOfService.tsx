@@ -739,13 +739,13 @@ export default function TermsOfService() {
         {/* Related Links */}
         <div className="mt-8 flex flex-wrap gap-4 justify-center">
           <Button variant="outline" asChild>
-            <Link to="/privacy-policy" className="inline-flex items-center gap-2">
+            <Link to="/politica-de-privacidade" className="inline-flex items-center gap-2">
               <Shield className="h-4 w-4" />
               Política de Privacidade
             </Link>
           </Button>
           <Button variant="outline" asChild>
-            <Link to="/cookie-policy" className="inline-flex items-center gap-2">
+            <Link to="/politica-de-cookies" className="inline-flex items-center gap-2">
               <FileText className="h-4 w-4" />
               Política de Cookies
             </Link>

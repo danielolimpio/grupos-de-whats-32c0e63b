@@ -9,10 +9,10 @@ const PoliticaTransparencia = () => {
       <Helmet>
         <title>Política de Transparência - Grupos Whatsapp Brasil</title>
         <meta name="description" content="Conheça nossa política de transparência e como tratamos as informações de grupos e usuários na plataforma Grupos Whatsapp Brasil." />
-        <link rel="canonical" href="https://gruposwhatsappbrasil.com/politica-transparencia" />
+        <link rel="canonical" href="https://gruposwhatsappbrasil.com/politica-de-transparencia" />
         <meta property="og:title" content="Política de Transparência - Grupos Whatsapp Brasil" />
         <meta property="og:description" content="Conheça nossa política de transparência e como tratamos as informações de grupos e usuários na plataforma." />
-        <meta property="og:url" content="https://gruposwhatsappbrasil.com/politica-transparencia" />
+        <meta property="og:url" content="https://gruposwhatsappbrasil.com/politica-de-transparencia" />
         <meta property="og:type" content="website" />
       </Helmet>
       

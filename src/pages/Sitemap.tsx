@@ -38,9 +38,9 @@ const Sitemap = () => {
       { path: '/central-ajuda', priority: '0.6', changefreq: 'monthly' },
       { path: '/impulsionar-grupos', priority: '0.7', changefreq: 'weekly' },
       { path: '/all-groups', priority: '0.9', changefreq: 'daily' },
-      { path: '/privacy-policy', priority: '0.3', changefreq: 'yearly' },
-      { path: '/terms-of-service', priority: '0.3', changefreq: 'yearly' },
-      { path: '/cookie-policy', priority: '0.3', changefreq: 'yearly' }
+      { path: '/politica-de-privacidade', priority: '0.3', changefreq: 'yearly' },
+      { path: '/termos-de-uso', priority: '0.3', changefreq: 'yearly' },
+      { path: '/politica-de-cookies', priority: '0.3', changefreq: 'yearly' }
     ];
 
     staticPages.forEach(page => {
