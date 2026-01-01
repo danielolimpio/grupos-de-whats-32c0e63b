@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <script>window.scrollTo(0,0);</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato | Grupos de Whats</title>
+  <meta name="description" content="Entre em contato com a equipe do Grupos de Whats. Tire suas dúvidas, envie sugestões ou reporte problemas.">
+  <meta name="keywords" content="contato grupos whatsapp, fale conosco, suporte grupos whats">
+  <link rel="canonical" href="https://gruposdewhats.com.br/contato/">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <style>
+    :root{--primary:#25d366;--background:#0a0a0a;--foreground:#fafafa;--muted-foreground:#a1a1aa;--border:#27272a;--card:#171717}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:system-ui,-apple-system,sans-serif;background:var(--background);color:var(--foreground);line-height:1.6}
+    a{color:var(--primary);text-decoration:none}a:hover{text-decoration:underline}
+    .container{max-width:700px;margin:0 auto;padding:0 1rem}
+    header{background:var(--card);border-bottom:1px solid var(--border);padding:1rem 0}
+    .header-content{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;max-width:1200px;margin:0 auto;padding:0 1rem}
+    .logo{font-size:1.5rem;font-weight:700;color:var(--primary)}
+    nav{display:flex;gap:1.5rem;flex-wrap:wrap}
+    nav a{color:var(--foreground);font-size:0.875rem}
+    main{padding:3rem 0}
+    h1{font-size:2.25rem;margin-bottom:1.5rem;text-align:center}
+    p{margin-bottom:1rem;color:var(--muted-foreground)}
+    .contact-info{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:2rem 0}
+    .contact-card{background:var(--card);border:1px solid var(--border);border-radius:0.75rem;padding:1.5rem;text-align:center}
+    .contact-card h3{font-size:1rem;margin-bottom:0.5rem}
+    .contact-card p{margin:0;font-size:0.875rem}
+    .form-group{margin-bottom:1rem}
+    label{display:block;margin-bottom:0.5rem;font-weight:500}
+    input,textarea,select{width:100%;padding:0.75rem;background:var(--card);border:1px solid var(--border);border-radius:0.5rem;color:var(--foreground);font-size:1rem}
+    input:focus,textarea:focus,select:focus{outline:none;border-color:var(--primary)}
+    textarea{min-height:150px;resize:vertical}
+    .btn{display:inline-block;background:var(--primary);color:#000;padding:0.75rem 1.5rem;border-radius:0.5rem;font-weight:600;border:none;cursor:pointer;width:100%}
+    .btn:hover{opacity:0.9}
+    footer{background:var(--card);border-top:1px solid var(--border);padding:2rem 0;margin-top:3rem}
+    .footer-bottom{text-align:center;color:var(--muted-foreground);font-size:0.875rem}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <a href="/" class="logo">Grupos de Whats</a>
+      <nav>
+        <a href="/">Início</a>
+        <a href="/sobre/">Sobre</a>
+        <a href="/blog/">Blog</a>
+        <a href="/todos-grupos/">Grupos</a>
+        <a href="/contato/">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1>Entre em Contato</h1>
+      <p style="text-align:center;max-width:500px;margin:0 auto 2rem">
+        Tem alguma dúvida, sugestão ou precisa de ajuda? Estamos aqui para ajudar!
+      </p>
+
+      <section class="contact-info">
+        <div class="contact-card">
+          <h3>📧 Email</h3>
+          <p><a href="mailto:contato@gruposdewhats.com.br">contato@gruposdewhats.com.br</a></p>
+        </div>
+        <div class="contact-card">
+          <h3>⏰ Horário</h3>
+          <p>Seg a Sex, 9h às 18h</p>
+        </div>
+        <div class="contact-card">
+          <h3>📍 Resposta</h3>
+          <p>Em até 48 horas úteis</p>
+        </div>
+      </section>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:0.75rem;padding:2rem;margin-top:2rem">
+        <h2 style="margin-bottom:1.5rem">Envie sua Mensagem</h2>
+        <form action="#" method="POST">
+          <div class="form-group">
+            <label for="name">Nome Completo *</label>
+            <input type="text" id="name" name="name" required placeholder="Seu nome">
+          </div>
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required placeholder="seu@email.com">
+          </div>
+          <div class="form-group">
+            <label for="whatsapp">WhatsApp</label>
+            <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000">
+          </div>
+          <div class="form-group">
+            <label for="subject">Assunto *</label>
+            <select id="subject" name="subject" required>
+              <option value="">Selecione um assunto</option>
+              <option value="duvida">Dúvida Geral</option>
+              <option value="sugestao">Sugestão</option>
+              <option value="problema">Reportar Problema</option>
+              <option value="parceria">Parceria</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Mensagem *</label>
+            <textarea id="message" name="message" required placeholder="Escreva sua mensagem aqui..."></textarea>
+          </div>
+          <button type="submit" class="btn">Enviar Mensagem</button>
+        </form>
+      </div>
+
+      <div style="margin-top:2rem;text-align:center">
+        <h3 style="margin-bottom:1rem">Outras Formas de Ajuda</h3>
+        <p>
+          <a href="/faq/">Perguntas Frequentes (FAQ)</a> • 
+          <a href="/central-ajuda/">Central de Ajuda</a> • 
+          <a href="/reportar-problema/">Reportar Problema</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-bottom">
+      <p>© 2025 Grupos de Whats. Todos os direitos reservados.</p>
+      <p style="margin-top:0.5rem"><a href="/">Início</a> • <a href="/blog/">Blog</a> • <a href="/politica-de-privacidade/">Privacidade</a></p>
+    </div>
+  </footer>
+</body>
+</html>
