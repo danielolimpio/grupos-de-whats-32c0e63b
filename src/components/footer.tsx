@@ -136,6 +136,13 @@ export function Footer() {
                   </Button>
                 </Link>
               </li>
+              <li>
+                <Link to="/sitemap">
+                  <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
+                    Sitemap
+                  </Button>
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
