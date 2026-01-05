@@ -6,6 +6,17 @@ import { Link } from "react-router-dom";
 
 const blogPosts = [
   {
+    id: 9,
+    slug: "como-encontrar-grupos-de-whatsapp-por-interesse-em-2026",
+    title: "Guia Completo: Como Encontrar Grupos de WhatsApp por Interesse em 2026",
+    excerpt: "Saiba onde e como buscar grupos de WhatsApp sobre qualquer tema — desde hobbies até negócios. Dicas exclusivas para encontrar comunidades reais e ativas.",
+    author: "Daniel Olimpio",
+    date: "2026-01-05",
+    readTime: "18 min",
+    category: "Tutorial",
+    image: "/images/como-encontrar-grupos-whatsapp-interesse-2026.jpg",
+  },
+  {
     id: 1,
     slug: "como-criar-grupo-sucesso-2026",
     title: "Como Criar um Grupo de WhatsApp de Sucesso: Guia Completo 2026",
