@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { Shield, FileText, Eye, Lock, Users } from "lucide-react";
+import { Shield, FileText, Eye, Lock } from "lucide-react";
 import { useCanonical } from "@/hooks/useCanonical";
 
 const PoliticaTransparencia = () => {
@@ -10,11 +10,11 @@ const PoliticaTransparencia = () => {
   return (
     <>
       <Helmet>
-        <title>Política de Transparência - Grupos de Whats</title>
-        <meta name="description" content="Conheça nossa política de transparência e como tratamos as informações de grupos e usuários na plataforma Grupos de Whats." />
+        <title>Política de Transparência - Blog do WhatsApp</title>
+        <meta name="description" content="Conheça nossa política de transparência e como tratamos as informações dos usuários no Blog do WhatsApp." />
         <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content="Política de Transparência - Grupos de Whats" />
-        <meta property="og:description" content="Conheça nossa política de transparência e como tratamos as informações de grupos e usuários na plataforma." />
+        <meta property="og:title" content="Política de Transparência - Blog do WhatsApp" />
+        <meta property="og:description" content="Conheça nossa política de transparência e como tratamos as informações dos usuários." />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:type" content="website" />
       </Helmet>
@@ -39,10 +39,10 @@ const PoliticaTransparencia = () => {
                 <div>
                   <h2 className="text-2xl font-semibold text-foreground mb-3">1. Transparência nas Informações</h2>
                   <p className="text-muted-foreground leading-relaxed mb-3">
-                    Comprometemo-nos a ser transparentes sobre como coletamos, usamos e compartilhamos informações em nossa plataforma.
+                    Comprometemo-nos a ser transparentes sobre como coletamos, usamos e compartilhamos informações em nosso blog.
                   </p>
                   <ul className="list-disc list-inside space-y-2 text-muted-foreground ml-4">
-                    <li>Todas as informações públicas de grupos são visíveis a todos os usuários</li>
+                    <li>Todos os conteúdos são produzidos de forma independente</li>
                     <li>Dados de acesso são coletados apenas para fins estatísticos</li>
                     <li>Não vendemos informações de usuários a terceiros</li>
                   </ul>
@@ -54,33 +54,15 @@ const PoliticaTransparencia = () => {
               <div className="flex items-start gap-3 mb-4">
                 <FileText className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
                 <div>
-                  <h2 className="text-2xl font-semibold text-foreground mb-3">2. Publicação de Grupos</h2>
+                  <h2 className="text-2xl font-semibold text-foreground mb-3">2. Nosso Conteúdo</h2>
                   <p className="text-muted-foreground leading-relaxed mb-3">
-                    Todos os grupos publicados passam por um processo de moderação transparente:
+                    Todo o conteúdo publicado segue critérios rigorosos de qualidade:
                   </p>
                   <ul className="list-disc list-inside space-y-2 text-muted-foreground ml-4">
-                    <li>Verificação de conformidade com nossas regras de comunidade</li>
-                    <li>Análise de conteúdo apropriado</li>
-                    <li>Aprovação ou rejeição com motivo informado ao administrador</li>
-                    <li>Tempo médio de análise: 24-48 horas</li>
-                  </ul>
-                </div>
-              </div>
-            </section>
-
-            <section className="bg-card p-6 rounded-lg border">
-              <div className="flex items-start gap-3 mb-4">
-                <Users className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
-                <div>
-                  <h2 className="text-2xl font-semibold text-foreground mb-3">3. Moderação de Conteúdo</h2>
-                  <p className="text-muted-foreground leading-relaxed mb-3">
-                    Nossa equipe de moderação trabalha para manter a plataforma segura e relevante:
-                  </p>
-                  <ul className="list-disc list-inside space-y-2 text-muted-foreground ml-4">
-                    <li>Análise de denúncias em até 24 horas</li>
-                    <li>Remoção de conteúdo inadequado ou ilegal</li>
-                    <li>Notificação aos administradores sobre ações tomadas</li>
-                    <li>Processo de recurso disponível para decisões contestadas</li>
+                    <li>Verificação de informações antes da publicação</li>
+                    <li>Atualização regular do conteúdo</li>
+                    <li>Fontes confiáveis e documentação oficial do WhatsApp</li>
+                    <li>Revisão por especialistas da área</li>
                   </ul>
                 </div>
               </div>
@@ -90,7 +72,7 @@ const PoliticaTransparencia = () => {
               <div className="flex items-start gap-3 mb-4">
                 <Lock className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
                 <div>
-                  <h2 className="text-2xl font-semibold text-foreground mb-3">4. Proteção de Dados</h2>
+                  <h2 className="text-2xl font-semibold text-foreground mb-3">3. Proteção de Dados</h2>
                   <p className="text-muted-foreground leading-relaxed mb-3">
                     Implementamos medidas de segurança para proteger suas informações:
                   </p>
@@ -108,38 +90,36 @@ const PoliticaTransparencia = () => {
               <div className="flex items-start gap-3 mb-4">
                 <Shield className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
                 <div>
-                  <h2 className="text-2xl font-semibold text-foreground mb-3">5. Dados Coletados</h2>
+                  <h2 className="text-2xl font-semibold text-foreground mb-3">4. Dados Coletados</h2>
                   <p className="text-muted-foreground leading-relaxed mb-3">
-                    Coletamos apenas os dados necessários para operar a plataforma:
+                    Coletamos apenas os dados necessários para operar o blog:
                   </p>
                   <ul className="list-disc list-inside space-y-2 text-muted-foreground ml-4">
-                    <li>Informações de cadastro (nome, e-mail)</li>
-                    <li>Dados de grupos publicados (nome, descrição, categoria, link)</li>
                     <li>Estatísticas de acesso (anônimas)</li>
-                    <li>Informações de pagamento (processadas por terceiros seguros)</li>
+                    <li>Informações de contato (quando você envia uma mensagem)</li>
+                    <li>Preferências de navegação (cookies)</li>
                   </ul>
                 </div>
               </div>
             </section>
 
             <section className="bg-card p-6 rounded-lg border">
-              <h2 className="text-2xl font-semibold text-foreground mb-3">6. Seus Direitos</h2>
+              <h2 className="text-2xl font-semibold text-foreground mb-3">5. Seus Direitos</h2>
               <p className="text-muted-foreground leading-relaxed mb-3">
                 Você tem direito a:
               </p>
               <ul className="list-disc list-inside space-y-2 text-muted-foreground ml-4">
                 <li>Acessar suas informações pessoais</li>
                 <li>Solicitar correção de dados incorretos</li>
-                <li>Solicitar exclusão de sua conta e dados</li>
-                <li>Exportar seus dados em formato legível</li>
+                <li>Solicitar exclusão de seus dados</li>
                 <li>Revogar consentimentos a qualquer momento</li>
               </ul>
             </section>
 
             <section className="bg-card p-6 rounded-lg border">
-              <h2 className="text-2xl font-semibold text-foreground mb-3">7. Atualizações desta Política</h2>
+              <h2 className="text-2xl font-semibold text-foreground mb-3">6. Atualizações desta Política</h2>
               <p className="text-muted-foreground leading-relaxed">
-                Podemos atualizar esta Política de Transparência periodicamente. Notificaremos sobre mudanças significativas através de e-mail ou aviso na plataforma. O uso continuado após alterações constitui aceitação das mudanças.
+                Podemos atualizar esta Política de Transparência periodicamente. Notificaremos sobre mudanças significativas através de aviso na plataforma. O uso continuado após alterações constitui aceitação das mudanças.
               </p>
             </section>
 

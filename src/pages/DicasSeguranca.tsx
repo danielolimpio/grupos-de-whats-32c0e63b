@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Shield, Lock, Eye, AlertTriangle, UserCheck, MessageSquare } from 'lucide-react';
+import { Shield, Lock, Eye, AlertTriangle, MessageSquare } from 'lucide-react';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { EzoicAd, EzoicFloatingAds } from '@/components/ezoic-ad';
@@ -12,64 +12,64 @@ export default function DicasSeguranca() {
     {
       icon: Lock,
       title: "Proteja seus Dados Pessoais",
-      description: "Nunca compartilhe informações pessoais como CPF, senhas ou dados bancários em grupos públicos.",
+      description: "Nunca compartilhe informações pessoais como CPF, senhas ou dados bancários em conversas online.",
       tips: [
         "Não divulgue seu endereço completo",
         "Evite compartilhar fotos de documentos",
         "Cuidado com golpes de phishing",
-        "Use apelidos em vez do nome completo"
+        "Use apelidos em vez do nome completo quando apropriado"
       ]
     },
     {
       icon: Eye,
-      title: "Verifique Antes de Participar",
-      description: "Analise o grupo e seus membros antes de se juntar ou compartilhar informações.",
+      title: "Configure sua Privacidade no WhatsApp",
+      description: "O WhatsApp oferece diversas opções para proteger sua privacidade.",
       tips: [
-        "Leia a descrição do grupo",
-        "Observe as mensagens recentes",
-        "Verifique o perfil dos administradores",
-        "Desconfie de grupos muito novos com muitos membros"
+        "Ative a verificação em duas etapas",
+        "Configure quem pode ver sua foto de perfil",
+        "Controle quem pode ver seu status",
+        "Configure quem pode ver sua última visualização"
       ]
     },
     {
-      icon: UserCheck,
-      title: "Identifique Administradores Confiáveis",
-      description: "Grupos bem moderados têm administradores ativos e regras claras.",
+      icon: Shield,
+      title: "Identifique Golpes e Fraudes",
+      description: "Fique atento a tentativas de fraude que são comuns no WhatsApp.",
       tips: [
-        "Administradores respondem a dúvidas",
-        "Existe moderação ativa",
-        "Regras são aplicadas consistentemente",
-        "Há transparência sobre o propósito do grupo"
+        "Desconfie de mensagens pedindo dinheiro urgente",
+        "Nunca clique em links suspeitos",
+        "Não compartilhe códigos de verificação",
+        "Verifique a identidade antes de transferir dinheiro"
       ]
     },
     {
       icon: MessageSquare,
-      title: "Cuidado com Golpes Comuns",
-      description: "Esteja atento a tentativas de fraude que são comuns em grupos de WhatsApp.",
+      title: "Comunicação Segura",
+      description: "Mantenha suas conversas seguras e privadas.",
       tips: [
-        "Ofertas 'imperdíveis' ou muito boas para ser verdade",
-        "Pedidos urgentes de dinheiro ou dados",
-        "Links suspeitos ou downloads",
-        "Promessas de dinheiro fácil"
+        "Use mensagens temporárias para conteúdo sensível",
+        "Bloqueie contatos indesejados",
+        "Denuncie spam e conteúdo abusivo",
+        "Mantenha o app sempre atualizado"
       ]
     }
   ];
 
   const warningSignals = [
-    "Administradores anônimos ou sem perfil",
-    "Pressão para agir rapidamente",
-    "Pedidos de dinheiro ou investimentos",
-    "Links para sites suspeitos",
-    "Promessas de ganhos irreais",
-    "Ausência de moderação ou regras"
+    "Mensagens de desconhecidos pedindo informações pessoais",
+    "Pedidos urgentes de dinheiro, mesmo de conhecidos",
+    "Links encurtados ou suspeitos",
+    "Ofertas muito boas para ser verdade",
+    "Pedidos de códigos de verificação",
+    "Mensagens com erros de português ou formatação estranha"
   ];
 
-  const reportSteps = [
-    "Saia do grupo imediatamente",
-    "Não compartilhe o grupo com outros",
-    "Reporte através do nosso sistema",
-    "Denuncie ao WhatsApp se necessário",
-    "Avise amigos e familiares"
+  const protectionSteps = [
+    "Ative a verificação em duas etapas",
+    "Configure as opções de privacidade",
+    "Mantenha o aplicativo atualizado",
+    "Não clique em links desconhecidos",
+    "Denuncie mensagens suspeitas"
   ];
 
   return (
@@ -83,10 +83,10 @@ export default function DicasSeguranca() {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-            Dicas de Segurança
+            Dicas de Segurança no WhatsApp
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Mantenha-se seguro ao participar de grupos de WhatsApp com nossas dicas essenciais de proteção
+            Aprenda a usar o WhatsApp com segurança e proteger seus dados pessoais
           </p>
         </div>
 
@@ -96,8 +96,8 @@ export default function DicasSeguranca() {
         <Alert className="mb-8 border-red-200 bg-red-50">
           <AlertTriangle className="h-4 w-4" />
           <AlertDescription>
-            <strong>Importante:</strong> Nunca compartilhe dados pessoais, senhas ou informações bancárias em grupos públicos. 
-            Quando algo parecer suspeito, confie no seu instinto e saia do grupo.
+            <strong>Importante:</strong> Nunca compartilhe dados pessoais, senhas ou informações bancárias em conversas online. 
+            Quando algo parecer suspeito, confie no seu instinto e não responda.
           </AlertDescription>
         </Alert>
 
@@ -135,10 +135,10 @@ export default function DicasSeguranca() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-yellow-800">
               <AlertTriangle className="h-5 w-5" />
-              Sinais de Alerta
+              Sinais de Alerta de Golpes
             </CardTitle>
             <CardDescription className="text-yellow-700">
-              Fique atento a estes sinais que podem indicar grupos problemáticos
+              Fique atento a estes sinais que podem indicar tentativas de golpe
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -153,20 +153,20 @@ export default function DicasSeguranca() {
           </CardContent>
         </Card>
 
-        {/* How to Report */}
+        {/* How to Protect Yourself */}
         <Card className="bg-gradient-to-r from-primary/5 to-primary/10 border-primary/20">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Shield className="h-5 w-5 text-primary" />
-              Como Denunciar Grupos Suspeitos
+              Como se Proteger
             </CardTitle>
             <CardDescription>
-              Se você encontrar um grupo que viola nossas regras ou parece suspeito
+              Passos simples para manter sua segurança no WhatsApp
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {reportSteps.map((step, index) => (
+              {protectionSteps.map((step, index) => (
                 <div key={index} className="flex items-center gap-3">
                   <div className="w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center flex-shrink-0">
                     {index + 1}
@@ -176,10 +176,10 @@ export default function DicasSeguranca() {
               ))}
             </div>
             <Alert className="mt-6">
-              <AlertTriangle className="h-4 w-4" />
+              <Shield className="h-4 w-4" />
               <AlertDescription>
-                Lembre-se: sua segurança é mais importante que qualquer oportunidade. 
-                Quando em dúvida, sempre prefira não participar.
+                Lembre-se: sua segurança é prioridade. Em caso de dúvida, 
+                sempre prefira não compartilhar informações sensíveis.
               </AlertDescription>
             </Alert>
           </CardContent>

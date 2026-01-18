@@ -4,7 +4,6 @@ import { Footer } from '@/components/footer';
 import { 
   Card, 
   CardContent, 
-  CardDescription, 
   CardHeader, 
   CardTitle 
 } from '@/components/ui/card';
@@ -18,12 +17,10 @@ import { Input } from '@/components/ui/input';
 import { 
   HelpCircle, 
   Search, 
-  Users, 
   Shield, 
-  Star, 
   MessageCircle,
   Globe,
-  Settings
+  BookOpen
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Helmet } from 'react-helmet-async';
@@ -32,118 +29,70 @@ import { useCanonical } from '@/hooks/useCanonical';
 
 const FAQ_DATA = [
   {
-    category: "Sobre o portal",
+    category: "Sobre o Blog",
     icon: Globe,
     questions: [
       {
-        question: "O que é o Grupos de WhatsApp?",
-        answer: "O gruposdewhats.com.br é um portal onde qualquer pessoa pode divulgar grupos de WhatsApp e também entrar em grupos já existentes de diversas categorias como amizade, namoro, vendas, estudos, promoções e muito mais."
+        question: "O que é o Blog do WhatsApp?",
+        answer: "O Blog do WhatsApp é um portal independente com dicas, tutoriais e guias práticos para usar o WhatsApp com segurança, eficiência e inteligência. Não temos vínculo com a Meta ou o WhatsApp."
       },
       {
-        question: "O site é gratuito?",
-        answer: "Sim. Você pode cadastrar grupos de WhatsApp grátis. Além disso, temos a opção VIP, que coloca o grupo em destaque no topo da lista."
+        question: "Os conteúdos são gratuitos?",
+        answer: "Sim. Todos os artigos, tutoriais e dicas disponíveis são completamente gratuitos."
       },
       {
-        question: "O site é confiável e seguro?",
-        answer: "Sim. Nossa equipe de moderação analisa todos os links antes da publicação, evitando conteúdos maliciosos, ilegais ou ofensivos."
+        question: "O blog é confiável e seguro?",
+        answer: "Sim. Todo nosso conteúdo é produzido por especialistas e revisado para garantir informações precisas e atualizadas."
       }
     ]
   },
   {
-    category: "Cadastro e gerenciamento",
-    icon: Settings,
-    questions: [
-      {
-        question: "Como cadastrar meu grupo de WhatsApp no portal?",
-        answer: "Clique em \"Adicionar Grupo\", preencha os dados (nome, descrição, categoria e imagem) e envie. O grupo será analisado antes da publicação."
-      },
-      {
-        question: "Quanto tempo demora para aprovar meu grupo?",
-        answer: "O prazo médio é de até 24 horas."
-      },
-      {
-        question: "Por que meu grupo pode ser reprovado?",
-        answer: "Grupos são reprovados quando contêm: Conteúdos ilegais ou ofensivos; Links falsos ou maliciosos; Violações às regras do WhatsApp; Informações incompletas."
-      },
-      {
-        question: "Como editar informações de um grupo já enviado?",
-        answer: "Acesse \"Meus Grupos\", clique em \"Editar\" e altere as informações necessárias."
-      },
-      {
-        question: "Como remover ou cancelar um grupo que enviei?",
-        answer: "Vá até \"Meus Grupos\" no canto superior direito. Localize o grupo desejado. Clique em \"Editar\". Selecione \"Remover Grupo\"."
-      }
-    ]
-  },
-  {
-    category: "Divulgação e destaque",
-    icon: Star,
-    questions: [
-      {
-        question: "Como faço para destacar meu grupo no portal?",
-        answer: "Você pode impulsionar seu grupo tornando-o VIP, garantindo mais visibilidade."
-      },
-      {
-        question: "O que é um grupo VIP?",
-        answer: "Um grupo VIP recebe: Destaque no topo da lista por 12 horas; Identificação com estrela e borda especial; Mais chances de atrair participantes."
-      },
-      {
-        question: "Quanto custa para impulsionar um grupo?",
-        answer: "O valor é de apenas R$ 9,90 por 12 horas de destaque VIP."
-      },
-      {
-        question: "Quais são as formas de pagamento?",
-        answer: "O pagamento é realizado via PIX, rápido e seguro."
-      },
-      {
-        question: "Como impulsionar meu grupo?",
-        answer: "Cadastre seu grupo e aguarde aprovação. Acesse \"Meus Grupos\". Clique em \"Impulsionar como VIP\". Realize o pagamento via PIX. Seu grupo será exibido automaticamente no topo."
-      }
-    ]
-  },
-  {
-    category: "Participação em grupos",
-    icon: Users,
-    questions: [
-      {
-        question: "Como entrar em um grupo listado no portal?",
-        answer: "Acesse a página inicial do gruposdewhats.com.br; Escolha o grupo desejado; Clique em \"Entrar\" para ver descrição e regras; Clique novamente em \"Entrar no grupo\" e seu WhatsApp será aberto automaticamente."
-      },
-      {
-        question: "Posso enviar qualquer tipo de grupo?",
-        answer: "Não. Apenas grupos que respeitem as regras de convivência e privacidade. Grupos com conteúdos ilegais, adultos ou ofensivos não são permitidos."
-      }
-    ]
-  },
-  {
-    category: "Dúvidas sobre o WhatsApp",
-    icon: MessageCircle,
-    questions: [
-      {
-        question: "Como criar um grupo no WhatsApp?",
-        answer: "Abra o aplicativo → toque em \"Novo Grupo\" → selecione contatos → defina nome/foto → clique em \"Criar\"."
-      },
-      {
-        question: "Como convidar pessoas para o meu grupo?",
-        answer: "Você pode enviar um link de convite ou adicionar os contatos diretamente."
-      },
-      {
-        question: "Como sair de um grupo no WhatsApp?",
-        answer: "Abra o grupo → toque no nome → selecione \"Sair do grupo\"."
-      },
-      {
-        question: "Como denunciar um grupo no WhatsApp?",
-        answer: "Abra o grupo → toque no nome → selecione \"Denunciar grupo\" e siga as instruções."
-      }
-    ]
-  },
-  {
-    category: "Suporte",
+    category: "Segurança no WhatsApp",
     icon: Shield,
     questions: [
       {
-        question: "Como entrar em contato com o suporte do portal?",
-        answer: "Acesse a página de Contato no menu do site ou envie uma mensagem pelo formulário disponível."
+        question: "Como ativar a verificação em duas etapas?",
+        answer: "Acesse Configurações → Conta → Verificação em duas etapas → Ativar. Crie um PIN de 6 dígitos e adicione um e-mail de recuperação."
+      },
+      {
+        question: "Como identificar golpes no WhatsApp?",
+        answer: "Fique atento a: mensagens pedindo dinheiro urgente, links suspeitos, pedidos de códigos de verificação, e ofertas muito boas para ser verdade."
+      },
+      {
+        question: "Como configurar minha privacidade?",
+        answer: "Acesse Configurações → Privacidade. Você pode controlar quem vê sua foto de perfil, status, última visualização e muito mais."
+      }
+    ]
+  },
+  {
+    category: "Dicas de Uso",
+    icon: MessageCircle,
+    questions: [
+      {
+        question: "Como usar listas de transmissão?",
+        answer: "Acesse o menu principal → Nova transmissão → Selecione os contatos. As mensagens são enviadas individualmente para cada pessoa."
+      },
+      {
+        question: "Como salvar mensagens importantes?",
+        answer: "Mantenha pressionada a mensagem → Toque na estrela. As mensagens com estrela ficam salvas em Configurações → Mensagens com estrela."
+      },
+      {
+        question: "Como usar o WhatsApp Web?",
+        answer: "Acesse web.whatsapp.com no computador → No celular, vá em Configurações → Dispositivos conectados → Conectar um dispositivo → Escaneie o QR Code."
+      }
+    ]
+  },
+  {
+    category: "Recursos Avançados",
+    icon: BookOpen,
+    questions: [
+      {
+        question: "O que são mensagens temporárias?",
+        answer: "Mensagens temporárias desaparecem automaticamente após um período definido (24h, 7 dias ou 90 dias). Ative em Configurações da conversa → Mensagens temporárias."
+      },
+      {
+        question: "Como fazer backup das conversas?",
+        answer: "Acesse Configurações → Conversas → Backup de conversas. Você pode fazer backup manual ou configurar backup automático."
       }
     ]
   }
@@ -165,9 +114,9 @@ export default function FAQ() {
   return (
     <>
       <Helmet>
-        <title>FAQ - Perguntas Frequentes | Grupos de WhatsApp</title>
-        <meta name="description" content="Encontre respostas para as perguntas mais frequentes sobre como usar o portal Grupos de WhatsApp, cadastrar grupos, impulsionar e muito mais." />
-        <meta name="keywords" content="FAQ, perguntas frequentes, grupos whatsapp, ajuda, suporte, como usar" />
+        <title>FAQ - Perguntas Frequentes | Blog do WhatsApp</title>
+        <meta name="description" content="Encontre respostas para as perguntas mais frequentes sobre como usar o WhatsApp com segurança, dicas de privacidade e recursos avançados." />
+        <meta name="keywords" content="FAQ, perguntas frequentes, whatsapp, ajuda, suporte, dicas" />
         <link rel="canonical" href={canonicalUrl} />
       </Helmet>
       
@@ -185,8 +134,7 @@ export default function FAQ() {
             </div>
             <h1 className="text-3xl font-bold mb-4">FAQ - Perguntas Frequentes</h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Separamos abaixo as dúvidas mais comuns de quem deseja entrar em grupos de WhatsApp, 
-              divulgar seus grupos ou impulsionar links no portal gruposdewhats.com.br
+              Encontre respostas para as dúvidas mais comuns sobre segurança, privacidade e uso do WhatsApp
             </p>
           </div>
 
@@ -245,12 +193,12 @@ export default function FAQ() {
               <div className="text-center space-y-4">
                 <h3 className="text-xl font-semibold">Não encontrou sua resposta?</h3>
                 <p className="text-muted-foreground">
-                  Nossa equipe de suporte está pronta para ajudá-lo
+                  Nossa equipe está pronta para ajudá-lo
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <Button asChild>
                     <a 
-                      href="https://wa.me/5512982519116?text=Olá, Gostaria de falar sobre o site Grupos de Whatsapp!"
+                      href="https://wa.me/5512982519116?text=Olá, Gostaria de falar sobre o Blog do WhatsApp!"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
