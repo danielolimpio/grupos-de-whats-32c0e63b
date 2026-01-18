@@ -84,11 +84,7 @@ const blogPosts = [
   }
 ];
 
-interface BlogPreviewProps {
-  showAll?: boolean;
-}
-
-export function BlogPreview({ showAll = false }: BlogPreviewProps) {
+export function BlogPreview() {
   return (
     <section className="py-12 px-4 bg-muted/30 rounded-lg">
       <div className="mb-8 text-center">
@@ -97,10 +93,10 @@ export function BlogPreview({ showAll = false }: BlogPreviewProps) {
           <span className="text-primary font-semibold">Blog</span>
         </div>
         <h2 className="text-3xl font-bold text-foreground mb-2">
-          Dicas e Tutoriais sobre WhatsApp
+          Aprenda Mais sobre Grupos de WhatsApp
         </h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          Confira nossos artigos com dicas, tutoriais e estratégias para usar o WhatsApp de forma segura e eficiente
+          Confira nossos artigos com dicas, tutoriais e estratégias para criar e gerenciar grupos de sucesso
         </p>
       </div>
 
@@ -144,15 +140,13 @@ export function BlogPreview({ showAll = false }: BlogPreviewProps) {
         ))}
       </div>
 
-      {!showAll && (
-        <div className="text-center">
-          <Link to="/blog">
-            <Button size="lg" className="btn-whatsapp">
-              Ver Todos os Artigos
-            </Button>
-          </Link>
-        </div>
-      )}
+      <div className="text-center">
+        <Link to="/blog">
+          <Button size="lg" className="btn-whatsapp">
+            Ver Todos os Artigos
+          </Button>
+        </Link>
+      </div>
     </section>
   );
 }

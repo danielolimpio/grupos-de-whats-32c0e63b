@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
-import { HelpCircle, MessageCircle, Mail, BookOpen } from 'lucide-react';
+import { HelpCircle, MessageCircle, Mail, Phone, Search, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
@@ -12,32 +12,55 @@ export default function CentralAjuda() {
   useUpdateCanonical();
   const faqItems = [
     {
-      question: "O que é o Blog do WhatsApp?",
-      answer: "Nosso blog oferece dicas, tutoriais e guias práticos sobre como usar o WhatsApp de forma segura, eficiente e inteligente. Compartilhamos conhecimento para melhorar sua experiência digital."
+      question: "Como funciona a plataforma?",
+      answer: "Nossa plataforma conecta pessoas através de grupos de WhatsApp organizados por categorias. Usuários podem descobrir grupos de seu interesse e administradores podem enviar seus grupos para análise e aprovação."
     },
     {
-      question: "Os conteúdos do blog são gratuitos?",
-      answer: "Sim, todos os artigos e tutoriais disponíveis em nosso blog são completamente gratuitos."
+      question: "Como envio meu grupo para a plataforma?",
+      answer: "Cadastre-se, acesse o dashboard e clique em 'Enviar Grupo'. Preencha as informações necessárias incluindo nome, categoria, descrição e link do WhatsApp. Todos os grupos passam por moderação antes da aprovação."
     },
     {
-      question: "Como posso entrar em contato com vocês?",
-      answer: "Você pode entrar em contato através do nosso formulário de contato, por e-mail ou WhatsApp. Todos os canais estão disponíveis na página de Contato."
+      question: "Quanto tempo leva para aprovar um grupo?",
+      answer: "O processo de moderação leva entre 24 a 48 horas úteis. Grupos que seguem nossas diretrizes são aprovados mais rapidamente."
     },
     {
-      question: "Com que frequência vocês publicam novos conteúdos?",
-      answer: "Publicamos novos artigos regularmente, sempre trazendo informações atualizadas sobre recursos do WhatsApp, dicas de segurança e boas práticas."
+      question: "Por que meu grupo foi rejeitado?",
+      answer: "Grupos podem ser rejeitados por violarem nossas regras de comunidade, conterem informações incompletas, links inválidos ou conteúdo inadequado. Você receberá uma notificação com o motivo específico."
     },
     {
-      question: "Posso sugerir temas para novos artigos?",
-      answer: "Sim! Adoramos receber sugestões de nossos leitores. Entre em contato conosco através do formulário de contato com suas ideias."
+      question: "Posso editar meu grupo após aprovação?",
+      answer: "Sim, você pode editar informações do seu grupo através do dashboard. Alterações significativas podem requerer nova moderação."
     },
     {
-      question: "O site é afiliado ao WhatsApp/Meta?",
-      answer: "Não. Somos um blog independente, sem qualquer vínculo com a Meta Platforms, Inc. ou o WhatsApp. Nosso objetivo é compartilhar informações úteis para usuários brasileiros."
+      question: "Como faço para destacar meu grupo?",
+      answer: "Oferecemos planos de destaque que colocam seu grupo em posições privilegiadas, aumentando a visibilidade e número de novos membros."
+    },
+    {
+      question: "Como reporto um grupo inadequado?",
+      answer: "Use o sistema de denúncias disponível em cada grupo ou entre em contato conosco. Analisamos todas as denúncias e tomamos as ações necessárias."
+    },
+    {
+      question: "A plataforma é gratuita?",
+      answer: "Sim, descobrir e participar de grupos é totalmente gratuito. Oferecemos também serviços premium de destaque para quem quer dar mais visibilidade aos seus grupos."
+    },
+    {
+      question: "Como altero minha senha?",
+      answer: "Acesse seu perfil no dashboard e clique em 'Alterar Senha'. Você receberá um email com instruções para redefinir sua senha."
+    },
+    {
+      question: "Como excluo minha conta?",
+      answer: "Entre em contato conosco através dos canais de suporte. Lembre-se que excluir sua conta também remove todos os grupos enviados por você."
     }
   ];
 
   const supportChannels = [
+    {
+      icon: MessageCircle,
+      title: "Chat Online",
+      description: "Suporte em tempo real",
+      action: "Iniciar Chat",
+      available: "24h"
+    },
     {
       icon: Mail,
       title: "Email",
@@ -46,7 +69,7 @@ export default function CentralAjuda() {
       available: "Resposta em até 24h"
     },
     {
-      icon: MessageCircle,
+      icon: Phone,
       title: "WhatsApp",
       description: "+55 (12) 98251-9116",
       action: "Chamar no WhatsApp",
@@ -57,13 +80,23 @@ export default function CentralAjuda() {
   const helpCategories = [
     {
       icon: BookOpen,
-      title: "Nosso Blog",
-      description: "Explore artigos e tutoriais"
+      title: "Primeiros Passos",
+      description: "Aprenda como usar a plataforma"
+    },
+    {
+      icon: Search,
+      title: "Encontrar Grupos",
+      description: "Dicas para descobrir grupos interessantes"
+    },
+    {
+      icon: MessageCircle,
+      title: "Gerenciar Grupos",
+      description: "Como administrar seus grupos na plataforma"
     },
     {
       icon: HelpCircle,
-      title: "Dúvidas Frequentes",
-      description: "Respostas para perguntas comuns"
+      title: "Solução de Problemas",
+      description: "Resolva problemas comuns rapidamente"
     }
   ];
 
@@ -81,14 +114,14 @@ export default function CentralAjuda() {
             Central de Ajuda
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Encontre respostas para suas dúvidas ou entre em contato com nosso suporte
+            Encontre respostas para suas dúvidas ou entre em contato com nosso suporte especializado
           </p>
         </div>
 
         <EzoicAd placement="under_page_title" className="mb-8" />
 
         {/* Quick Help Categories */}
-        <div className="grid md:grid-cols-2 gap-6 mb-16 max-w-2xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {helpCategories.map((category, index) => (
             <Card key={index} className="text-center hover:shadow-lg transition-all duration-300 cursor-pointer">
               <CardHeader>
@@ -112,7 +145,7 @@ export default function CentralAjuda() {
               Perguntas Frequentes
             </CardTitle>
             <CardDescription>
-              Respostas para as dúvidas mais comuns dos nossos leitores
+              Respostas para as dúvidas mais comuns dos nossos usuários
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -142,7 +175,7 @@ export default function CentralAjuda() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {supportChannels.map((channel, index) => (
               <Card key={index} className="text-center hover:shadow-lg transition-all duration-300">
                 <CardHeader>
@@ -157,19 +190,21 @@ export default function CentralAjuda() {
                   {channel.title === 'WhatsApp' ? (
                     <Button asChild className="w-full">
                       <a 
-                        href="https://wa.me/5512982519116?text=Olá, Gostaria de falar sobre o Blog do WhatsApp!"
+                        href="https://wa.me/5512982519116?text=Olá, Gostaria de falar sobre o site Grupos de Whatsapp!"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         {channel.action}
                       </a>
                     </Button>
-                  ) : (
+                  ) : channel.title === 'Email' ? (
                     <Button asChild className="w-full">
                       <a href="mailto:contato@gruposdewhats.com.br">
                         {channel.action}
                       </a>
                     </Button>
+                  ) : (
+                    <Button className="w-full">{channel.action}</Button>
                   )}
                 </CardContent>
               </Card>
@@ -182,20 +217,20 @@ export default function CentralAjuda() {
           <CardHeader className="text-center">
             <CardTitle className="text-2xl mb-2">Não Encontrou o que Procurava?</CardTitle>
             <CardDescription>
-              Nossa equipe está sempre pronta para ajudar você
+              Nossa equipe de suporte está sempre pronta para ajudar você
             </CardDescription>
           </CardHeader>
           <CardContent className="text-center space-y-4">
             <p className="text-muted-foreground">
-              Se você não encontrou a resposta para sua dúvida, 
+              Se você não encontrou a resposta para sua dúvida nas perguntas frequentes, 
               não hesite em entrar em contato conosco. Estamos aqui para ajudar!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
-                <Link to="/contato">Fale Conosco</Link>
+                <Link to="/reportar-problema">Reportar Problema</Link>
               </Button>
-              <Button size="lg" variant="outline" asChild>
-                <Link to="/blog">Ver Blog</Link>
+              <Button size="lg" variant="outline">
+                Falar com Suporte
               </Button>
             </div>
           </CardContent>

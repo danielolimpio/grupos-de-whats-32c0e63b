@@ -3,6 +3,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { 
   Shield, 
+  Users, 
   Heart, 
   Target, 
   BookOpen, 
@@ -36,9 +37,9 @@ const Sobre = () => {
       description: "Guias completos sobre configurações de privacidade e segurança"
     },
     {
-      icon: MessageSquare,
-      title: "Dicas de Uso",
-      description: "Tutoriais para usar o WhatsApp de forma mais eficiente"
+      icon: Users,
+      title: "Moderação de Grupos",
+      description: "Estratégias éticas para engajar e moderar grupos sem estresse"
     },
     {
       icon: Briefcase,
@@ -58,8 +59,8 @@ const Sobre = () => {
   ];
 
   const commitments = [
-    "Conteúdo verificado e atualizado",
-    "Informações baseadas em fontes oficiais",
+    "Não vendemos links",
+    "Não promovemos grupos por pagamento",
     "Não coletamos dados além do necessário",
     "Nunca nos confundimos com o WhatsApp oficial"
   ];
@@ -67,6 +68,7 @@ const Sobre = () => {
   const expertiseAreas = [
     { icon: MessageSquare, label: "Estratégia e Uso Avançado do WhatsApp" },
     { icon: Shield, label: "Privacidade e Segurança Digital" },
+    { icon: Users, label: "Moderação de Comunidades e Grupos" },
     { icon: TrendingUp, label: "WhatsApp Business e Vendas por Mensagem" },
     { icon: Palette, label: "UI/UX para Experiências de Conversação" },
     { icon: Award, label: "Brand Identity para Comunicação Digital" }
@@ -83,12 +85,12 @@ const Sobre = () => {
   return (
     <>
       <Helmet>
-        <title>Sobre o Blog do WhatsApp - Guia de WhatsApp no Brasil</title>
+        <title>Sobre o Grupos de Whats - Guia de WhatsApp no Brasil</title>
         <meta 
           name="description" 
-          content="Conheça o Blog do WhatsApp: plataforma independente com guias, dicas e boas práticas para usar o WhatsApp com segurança, privacidade e eficiência no Brasil." 
+          content="Conheça o Grupos de Whats: plataforma independente com guias, dicas e boas práticas para usar o WhatsApp com segurança, privacidade e eficiência no Brasil." 
         />
-        <meta name="keywords" content="sobre blog whatsapp, whatsapp brasil, guia whatsapp, segurança whatsapp, privacidade whatsapp" />
+        <meta name="keywords" content="sobre grupos de whats, whatsapp brasil, guia whatsapp, segurança whatsapp, privacidade whatsapp" />
         <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
@@ -103,7 +105,7 @@ const Sobre = () => {
               Nossa Missão
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
-              Sobre o <span className="text-primary">Blog do WhatsApp</span>
+              Sobre o <span className="text-primary">Grupos de Whats</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Nascemos com um propósito simples, mas essencial: ajudar brasileiros a usarem o WhatsApp 
@@ -120,15 +122,15 @@ const Sobre = () => {
                   <Target className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-foreground mb-2">Blog 100% Independente</h2>
+                  <h2 className="text-2xl font-bold text-foreground mb-2">Plataforma 100% Independente</h2>
                   <p className="text-muted-foreground">Sem qualquer vínculo com a Meta Platforms, Inc. ou o WhatsApp</p>
                 </div>
               </div>
               
               <p className="text-foreground/80 leading-relaxed text-lg">
-                Nosso foco é oferecer <strong>informação de qualidade</strong> sobre tudo 
+                Nosso foco não é listar grupos — é oferecer <strong>informação de qualidade</strong> sobre tudo 
                 o que envolve o ecossistema do WhatsApp no Brasil: desde privacidade e segurança digital até 
-                ferramentas, boas práticas de uso, recursos do WhatsApp Business e dicas para uma comunicação mais eficiente.
+                ferramentas, boas práticas de moderação, uso do WhatsApp Business e gestão saudável de comunidades.
               </p>
             </CardContent>
           </Card>
@@ -145,9 +147,10 @@ const Sobre = () => {
             <Card className="border-amber-500/20 bg-gradient-to-br from-amber-50/50 to-background dark:from-amber-950/20 dark:to-background">
               <CardContent className="p-8">
                 <p className="text-foreground/80 leading-relaxed text-lg mb-6">
-                  Hoje, milhões de pessoas usam o WhatsApp para <strong>estudar</strong>, <strong>empreender</strong>, 
-                  se organizar no trabalho, coordenar equipes e manter laços familiares. 
-                  Mas sem orientação, podem surgir problemas: vazamento de dados, golpes, spam ou uso ineficiente da ferramenta.
+                  Hoje, milhões de pessoas usam grupos de WhatsApp para <strong>estudar</strong>, <strong>empreender</strong>, 
+                  se organizar em condomínios, coordenar equipes, compartilhar hobbies ou manter laços familiares. 
+                  Mas sem orientação, esses mesmos grupos podem virar caos: conflitos, vazamento de dados, spam, 
+                  golpes ou simplesmente abandono.
                 </p>
                 
                 <div className="bg-primary/5 border border-primary/10 rounded-xl p-6">
@@ -158,7 +161,7 @@ const Sobre = () => {
                 
                 <p className="text-muted-foreground mt-6">
                   Por isso, criamos conteúdos práticos, atualizados e baseados em experiências reais — 
-                  feitos por quem entende os desafios do uso diário do WhatsApp.
+                  feitos por quem entende os desafios de administrar, participar e proteger comunidades digitais.
                 </p>
               </CardContent>
             </Card>
@@ -209,9 +212,9 @@ const Sobre = () => {
                 </div>
                 
                 <p className="text-muted-foreground leading-relaxed">
-                  Nosso sucesso é medido pelo valor que entregamos — pelo usuário que aprendeu a proteger 
-                  sua privacidade, pelo empreendedor que melhorou sua comunicação ou pela família que se 
-                  manteve conectada com segurança.
+                  Nosso sucesso é medido pelo valor que entregamos — pelo administrador que conseguiu resolver 
+                  um conflito, pelo empreendedor que vendeu mais com ética ou pela família que se manteve 
+                  conectada com segurança.
                 </p>
               </CardContent>
             </Card>
@@ -220,9 +223,9 @@ const Sobre = () => {
           {/* Tagline */}
           <div className="text-center mb-16">
             <div className="inline-block bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 rounded-2xl p-8 md:p-10">
-              <h2 className="text-2xl md:text-3xl font-bold text-primary mb-3">Blog do WhatsApp</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-primary mb-3">Grupos de Whats</h2>
               <p className="text-lg text-foreground/80">
-                Informação útil. WhatsApp com responsabilidade.
+                Conexões reais. Informação útil. WhatsApp com responsabilidade.
               </p>
             </div>
           </div>
@@ -291,7 +294,7 @@ const Sobre = () => {
                     <h4 className="text-xl font-bold text-foreground">Sobre Mim</h4>
                   </div>
                   <p className="text-muted-foreground leading-relaxed text-lg">
-                    Explorando o potencial do WhatsApp como plataforma de comunicação, utilidade e negócios.
+                    Explorando o potencial do WhatsApp como plataforma de conexão, utilidade e negócios.
                   </p>
                 </div>
 
@@ -313,7 +316,8 @@ const Sobre = () => {
                     <p>
                       Combinando minha experiência de mais de <strong>20 anos no mercado digital</strong> — em desenvolvimento 
                       web, design de interfaces e estratégia de produtos — passei a estudar, testar e documentar as 
-                      melhores práticas para uso seguro, eficaz e ético do WhatsApp.
+                      melhores práticas para uso seguro, eficaz e ético do WhatsApp, tanto por indivíduos quanto 
+                      por empresas e comunidades.
                     </p>
                   </div>
                 </div>

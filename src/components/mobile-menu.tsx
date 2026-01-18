@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { Menu, X, BookOpen, Shield, HelpCircle, Mail, FileText, Cookie, Scale } from "lucide-react";
+import { Menu, X, Users, UserPlus, BookOpen, Shield, HelpCircle, AlertTriangle, Mail, FileText, Cookie, Scale } from "lucide-react";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { Link } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
 
 export function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, signOut } = useAuth();
 
   const closeMenu = () => setIsOpen(false);
 
@@ -37,11 +39,37 @@ export function MobileMenu() {
                 className="w-full justify-start h-12 text-base font-medium"
                 onClick={closeMenu}
               >
-                <Link to="/contato">
-                  <Mail className="h-5 w-5 mr-3" />
-                  Enviar
+                <Link to="/dashboard">
+                  <Users className="h-5 w-5 mr-3" />
+                  Enviar Grupos
                 </Link>
               </Button>
+              
+              {user ? (
+                <Button 
+                  variant="outline" 
+                  className="w-full justify-start h-12 text-base font-medium"
+                  onClick={() => {
+                    signOut();
+                    closeMenu();
+                  }}
+                >
+                  <UserPlus className="h-5 w-5 mr-3" />
+                  Sair
+                </Button>
+              ) : (
+                <Button 
+                  asChild
+                  variant="outline" 
+                  className="w-full justify-start h-12 text-base font-medium"
+                  onClick={closeMenu}
+                >
+                  <Link to="/auth">
+                    <UserPlus className="h-5 w-5 mr-3" />
+                    Entrar
+                  </Link>
+                </Button>
+              )}
             </div>
 
             {/* Secondary Menu Items */}
@@ -50,25 +78,24 @@ export function MobileMenu() {
                 Navegação
               </h3>
               
-              <Button asChild variant="ghost" className="w-full justify-start text-sm" onClick={closeMenu}>
-                <Link to="/blog">
-                  <BookOpen className="h-4 w-4 mr-3" />
-                  Blog
-                </Link>
+              <Button variant="ghost" className="w-full justify-start text-sm" onClick={closeMenu}>
+                <BookOpen className="h-4 w-4 mr-3" />
+                Blog
               </Button>
               
-              <Button asChild variant="ghost" className="w-full justify-start text-sm" onClick={closeMenu}>
-                <Link to="/sobre">
-                  <HelpCircle className="h-4 w-4 mr-3" />
-                  Sobre
-                </Link>
+              <Button variant="ghost" className="w-full justify-start text-sm" onClick={closeMenu}>
+                <HelpCircle className="h-4 w-4 mr-3" />
+                Como Funciona
               </Button>
               
-              <Button asChild variant="ghost" className="w-full justify-start text-sm" onClick={closeMenu}>
-                <Link to="/dicas-seguranca">
-                  <Shield className="h-4 w-4 mr-3" />
-                  Dicas de Segurança
-                </Link>
+              <Button variant="ghost" className="w-full justify-start text-sm" onClick={closeMenu}>
+                <Shield className="h-4 w-4 mr-3" />
+                Regras da Comunidade
+              </Button>
+              
+              <Button variant="ghost" className="w-full justify-start text-sm" onClick={closeMenu}>
+                <Shield className="h-4 w-4 mr-3" />
+                Dicas de Segurança
               </Button>
             </div>
 
@@ -79,24 +106,25 @@ export function MobileMenu() {
               </h3>
               
               <Button asChild variant="ghost" className="w-full justify-start text-sm" onClick={closeMenu}>
-                <Link to="/central-ajuda">
-                  <HelpCircle className="h-4 w-4 mr-3" />
-                  Central de Ajuda
+                <Link to="/impulsionar-grupos">
+                  <Users className="h-4 w-4 mr-3" />
+                  Anunciar Grupos
                 </Link>
               </Button>
               
-              <Button asChild variant="ghost" className="w-full justify-start text-sm" onClick={closeMenu}>
-                <Link to="/faq">
-                  <HelpCircle className="h-4 w-4 mr-3" />
-                  FAQ
-                </Link>
+              <Button variant="ghost" className="w-full justify-start text-sm" onClick={closeMenu}>
+                <HelpCircle className="h-4 w-4 mr-3" />
+                Central de Ajuda
               </Button>
               
-              <Button asChild variant="ghost" className="w-full justify-start text-sm" onClick={closeMenu}>
-                <Link to="/contato">
-                  <Mail className="h-4 w-4 mr-3" />
-                  Contato
-                </Link>
+              <Button variant="ghost" className="w-full justify-start text-sm" onClick={closeMenu}>
+                <AlertTriangle className="h-4 w-4 mr-3" />
+                Reportar Problema
+              </Button>
+              
+              <Button variant="ghost" className="w-full justify-start text-sm" onClick={closeMenu}>
+                <HelpCircle className="h-4 w-4 mr-3" />
+                FAQ
               </Button>
             </div>
           </div>
@@ -107,25 +135,19 @@ export function MobileMenu() {
               Informações Legais
             </h3>
             
-            <Button asChild variant="ghost" className="w-full justify-start text-xs text-muted-foreground" onClick={closeMenu}>
-              <Link to="/politica-de-privacidade">
-                <FileText className="h-3 w-3 mr-2" />
-                Política de Privacidade
-              </Link>
+            <Button variant="ghost" className="w-full justify-start text-xs text-muted-foreground" onClick={closeMenu}>
+              <FileText className="h-3 w-3 mr-2" />
+              Política de Privacidade
             </Button>
             
-            <Button asChild variant="ghost" className="w-full justify-start text-xs text-muted-foreground" onClick={closeMenu}>
-              <Link to="/termos-de-uso">
-                <Scale className="h-3 w-3 mr-2" />
-                Termos de Uso
-              </Link>
+            <Button variant="ghost" className="w-full justify-start text-xs text-muted-foreground" onClick={closeMenu}>
+              <Scale className="h-3 w-3 mr-2" />
+              Termos de Uso
             </Button>
             
-            <Button asChild variant="ghost" className="w-full justify-start text-xs text-muted-foreground" onClick={closeMenu}>
-              <Link to="/politica-de-cookies">
-                <Cookie className="h-3 w-3 mr-2" />
-                Política de Cookies
-              </Link>
+            <Button variant="ghost" className="w-full justify-start text-xs text-muted-foreground" onClick={closeMenu}>
+              <Cookie className="h-3 w-3 mr-2" />
+              Política de Cookies
             </Button>
           </div>
         </div>
