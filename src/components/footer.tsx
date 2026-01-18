@@ -1,4 +1,4 @@
-import { Mail, Shield, FileText, Phone, Cookie } from "lucide-react";
+import { Mail, Shield, FileText, Cookie } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
@@ -11,11 +11,11 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-              <img src={logo} alt="Grupos de WhatsApp" className="h-8 w-8 rounded-lg" />
-              <span className="text-lg font-bold">Grupos de WhatsApp</span>
+              <img src={logo} alt="Blog do WhatsApp" className="h-8 w-8 rounded-lg" />
+              <span className="text-lg font-bold">Blog do WhatsApp</span>
             </Link>
             <p className="text-primary-foreground/80 text-sm">
-              Guia com dicas úteis sobre grupos e comunidades, ferramentas e boas práticas para usar o WhatsApp com segurança, privacidade e eficiência no Brasil.
+              Blog com dicas úteis, tutoriais e boas práticas para usar o WhatsApp com segurança, privacidade e eficiência no Brasil.
             </p>
           </div>
 
@@ -38,16 +38,9 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/como-funciona">
+                <Link to="/blog">
                   <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
-                    Como funciona
-                  </Button>
-                </Link>
-              </li>
-              <li>
-                <Link to="/regras-comunidade">
-                  <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
-                    Regras da comunidade
+                    Blog
                   </Button>
                 </Link>
               </li>
@@ -73,13 +66,6 @@ export function Footer() {
                 <Link to="/central-ajuda">
                   <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
                     Central de ajuda
-                  </Button>
-                </Link>
-              </li>
-              <li>
-                <Link to="/reportar-problema">
-                  <Button variant="link" className="text-primary-foreground/80 hover:text-primary-foreground p-0 h-auto">
-                    Reportar problema
                   </Button>
                 </Link>
               </li>
@@ -157,7 +143,7 @@ export function Footer() {
               Este site não é afiliado, autorizado, patrocinado ou endossado pela Meta Platforms, Inc. ou por qualquer de suas subsidiárias, incluindo o WhatsApp. WhatsApp e o logotipo do WhatsApp são marcas registradas da Meta Platforms, Inc.
             </p>
             <p className="text-base text-primary-foreground/60 font-medium">
-              © 2025 Grupos de WhatsApp | Todos os direitos reservados | Desenvolvido por{" "}
+              © 2025 Blog do WhatsApp | Todos os direitos reservados | Desenvolvido por{" "}
               <a 
                 href="https://danielolimpio.com/" 
                 target="_blank" 
