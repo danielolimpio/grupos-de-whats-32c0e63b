@@ -125,7 +125,7 @@ export function SEOContent() {
       </section>
 
       {/* Bloco 4: Convite para Engajamento com o Blog */}
-      <section className="bg-gradient-to-r from-primary to-primary-glow rounded-2xl shadow-xl p-8 text-white">
+      <section className="bg-gradient-to-r from-[hsl(220_10%_25%)] to-[hsl(220_10%_35%)] rounded-2xl shadow-xl p-8 text-white">
         <div className="flex flex-col md:flex-row items-center gap-6">
           <div className="p-4 bg-white/20 rounded-2xl backdrop-blur-sm">
             <TrendingUp className="h-12 w-12 text-white" />
@@ -135,12 +135,12 @@ export function SEOContent() {
               Quer Ir Além dos Links? Explore Nosso Blog!
             </h2>
             <p className="text-white/90 mb-4 leading-relaxed">
-              No nosso blog, você encontra guias avançados e práticos para transformar sua experiência no WhatsApp:
+              No nosso blog, você encontra guias avançados e práticos para transformar sua experiência em grupos online:
             </p>
             <ul className="text-white/90 space-y-2 mb-6">
               <li className="flex items-center gap-2">
                 <CheckCircle className="h-5 w-5 flex-shrink-0" />
-                <span>Como proteger sua privacidade ao usar grupos de WhatsApp</span>
+                <span>Como proteger sua privacidade ao usar grupos online</span>
               </li>
               <li className="flex items-center gap-2">
                 <CheckCircle className="h-5 w-5 flex-shrink-0" />
@@ -153,7 +153,7 @@ export function SEOContent() {
             </ul>
             <Link 
               to="/blog" 
-              className="inline-flex items-center gap-2 bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-white/90 transition-all hover:scale-105 shadow-lg"
+              className="inline-flex items-center gap-2 bg-white text-[hsl(220_10%_25%)] px-6 py-3 rounded-lg font-semibold hover:bg-white/90 transition-all hover:scale-105 shadow-lg"
             >
               <BookOpen className="h-5 w-5" />
               Acessar o Blog

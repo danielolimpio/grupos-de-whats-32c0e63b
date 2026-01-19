@@ -21,13 +21,13 @@ export function Header() {
             <Link to="/">
               <img 
                 src={logo} 
-                alt="Grupos de WhatsApp"
+                alt="GruposdeWhats"
                 className="h-10 w-10 rounded-lg cursor-pointer"
               />
             </Link>
             <Link to="/" className="hidden md:block">
               <h1 className="text-xl font-bold text-foreground cursor-pointer hover:text-primary transition-colors">
-                Grupos de <span className="text-primary">WhatsApp</span>
+                GruposdeWhats
               </h1>
             </Link>
           </div>

@@ -46,7 +46,7 @@ export function GroupCard({
     ALLOWED_ATTR: []
   });
   
-  const fallbackImage = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=25d366&color=fff&size=128`;
+  const fallbackImage = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=3d4654&color=fff&size=128`;
   const displayImage = imageError || !image ? fallbackImage : image;
   
   const handleJoinClick = () => {

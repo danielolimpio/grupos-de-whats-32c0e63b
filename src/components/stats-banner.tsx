@@ -1,4 +1,4 @@
-import { Users, TrendingUp, Star, Clock } from "lucide-react";
+import { Users, TrendingUp, Clock } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 
 export function StatsBanner() {
@@ -16,12 +16,6 @@ export function StatsBanner() {
       color: "text-success"
     },
     {
-      icon: Star,
-      label: "Grupos Premium",
-      value: "156",
-      color: "text-warning"
-    },
-    {
       icon: Clock,
       label: "Novos Hoje",
       value: "23",
@@ -32,7 +26,7 @@ export function StatsBanner() {
   return (
     <Card className="bg-gradient-to-r from-primary/5 to-primary/10 border-primary/20">
       <CardContent className="p-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-3 gap-6">
           {stats.map((stat, index) => (
             <div key={index} className="text-center">
               <stat.icon className={`h-8 w-8 mx-auto mb-2 ${stat.color}`} />
