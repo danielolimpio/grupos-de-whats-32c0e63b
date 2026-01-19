@@ -8,62 +8,62 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* WhatsApp Brand Colors */
-    --whatsapp-green: 142 70% 49%;
-    --whatsapp-light: 142 70% 92%;
-    --whatsapp-dark: 142 70% 35%;
+    /* Brand Colors - Neutral Dark Gray */
+    --brand-dark: 220 10% 25%;
+    --brand-medium: 220 8% 40%;
+    --brand-light: 220 8% 90%;
     
     /* Background System */
     --background: 0 0% 98%;
-    --foreground: 210 11% 15%;
-    --pattern-bg: 142 70% 96%;
+    --foreground: 220 10% 15%;
+    --pattern-bg: 220 8% 96%;
 
     /* Card System */
     --card: 0 0% 100%;
-    --card-foreground: 210 11% 15%;
-    --card-hover: 142 70% 97%;
-    --card-border: 142 30% 90%;
+    --card-foreground: 220 10% 15%;
+    --card-hover: 220 8% 97%;
+    --card-border: 220 10% 90%;
 
-    /* Primary (WhatsApp Green) */
-    --primary: 142 70% 49%;
+    /* Primary (Dark Gray) */
+    --primary: 220 10% 25%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 142 70% 45%;
-    --primary-glow: 142 70% 88%;
+    --primary-hover: 220 10% 20%;
+    --primary-glow: 220 8% 85%;
 
     /* Secondary */
-    --secondary: 210 20% 96%;
-    --secondary-foreground: 210 11% 15%;
-    --secondary-hover: 210 20% 92%;
+    --secondary: 220 10% 96%;
+    --secondary-foreground: 220 10% 15%;
+    --secondary-hover: 220 10% 92%;
 
     /* Muted */
-    --muted: 210 20% 96%;
-    --muted-foreground: 210 11% 46%;
+    --muted: 220 10% 96%;
+    --muted-foreground: 220 10% 46%;
 
     /* Accent */
-    --accent: 142 40% 90%;
-    --accent-foreground: 142 70% 20%;
+    --accent: 220 10% 90%;
+    --accent-foreground: 220 10% 20%;
 
     /* Status Colors */
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --success: 142 70% 49%;
+    --success: 160 60% 45%;
     --warning: 38 92% 50%;
 
     /* UI Elements */
-    --border: 210 20% 88%;
-    --input: 210 20% 92%;
-    --ring: 142 70% 49%;
+    --border: 220 10% 88%;
+    --input: 220 10% 92%;
+    --ring: 220 10% 25%;
     --radius: 0.75rem;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(var(--whatsapp-green)), hsl(var(--whatsapp-dark)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--brand-dark)), hsl(220 10% 18%));
     --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(var(--card-hover)));
-    --gradient-premium: linear-gradient(45deg, hsl(var(--whatsapp-green)), hsl(142 70% 55%));
+    --gradient-premium: linear-gradient(45deg, hsl(var(--brand-dark)), hsl(var(--brand-medium)));
 
     /* Shadows */
-    --shadow-soft: 0 2px 8px -2px hsl(var(--whatsapp-green) / 0.1);
-    --shadow-card: 0 4px 12px -4px hsl(210 11% 15% / 0.08);
-    --shadow-premium: 0 8px 25px -8px hsl(var(--whatsapp-green) / 0.3);
+    --shadow-soft: 0 2px 8px -2px hsl(var(--brand-dark) / 0.1);
+    --shadow-card: 0 4px 12px -4px hsl(220 10% 15% / 0.08);
+    --shadow-premium: 0 8px 25px -8px hsl(var(--brand-dark) / 0.3);
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -132,11 +132,7 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    background-image: url('/src/assets/whatsapp-background.jpg');
-    background-size: 500px 500px;
-    background-repeat: repeat;
-    background-attachment: fixed;
-    background-blend-mode: overlay;
+    background-color: hsl(var(--background));
   }
 }
 
@@ -175,7 +171,7 @@ All colors MUST be HSL.
     animation: pulse 2s infinite;
   }
 
-  /* WhatsApp Button Styles */
+  /* Primary Button Styles */
   .btn-whatsapp {
     background: var(--gradient-hero);
     color: hsl(var(--primary-foreground));

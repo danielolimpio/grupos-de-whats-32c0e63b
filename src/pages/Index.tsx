@@ -62,7 +62,7 @@ const Index = () => {
         name: group.name,
         description: group.description,
         category: group.category,
-        image: group.image_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(group.name)}&background=25d366&color=fff&size=128`,
+        image: group.image_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(group.name)}&background=3d4654&color=fff&size=128`,
         memberCount: 0,
         isPremium: group.is_premium_active || false,
         isNew: new Date(group.created_at).getTime() > Date.now() - 7 * 24 * 60 * 60 * 1000,
@@ -83,9 +83,8 @@ const Index = () => {
     : groups;
   
   const sortedGroups = [...filteredGroups].sort((a, b) => {
-    if (a.isPremium && !b.isPremium) return -1;
-    if (!a.isPremium && b.isPremium) return 1;
-    return 0;
+    // Sort by creation date (newest first)
+    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
   });
   
   // Pagination logic
@@ -113,23 +112,23 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Grupos de WhatsApp Brasil 2025 | +12.500 Grupos Ativos para Entrar</title>
-        <meta name="description" content="Descubra os melhores grupos de WhatsApp do Brasil em 2025. Mais de 12.500 grupos ativos de vendas, divulgação, amizades, estudos e muito mais. Entre grátis agora!" />
-        <meta name="keywords" content="grupos de whatsapp, grupos whatsapp brasil, grupos de amizades, grupos de namoros, grupos de divulgação, grupos de vendas, links grupos whatsapp, grupos whatsapp 2025" />
+        <title>GruposdeWhats Brasil 2026 | Portal de Grupos e Comunidades Online</title>
+        <meta name="description" content="Descubra grupos e comunidades online organizados por categoria. Portal com curadoria humana, dicas de segurança e guias para participar de grupos com responsabilidade." />
+        <meta name="keywords" content="grupos online, comunidades, grupos brasil, links grupos, grupos 2026" />
         <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content="Grupos de WhatsApp Brasil 2025 | +12.500 Grupos Ativos" />
-        <meta property="og:description" content="Descubra os melhores grupos de WhatsApp do Brasil. Entre grátis em milhares de grupos ativos!" />
+        <meta property="og:title" content="GruposdeWhats Brasil 2026 | Portal de Grupos e Comunidades" />
+        <meta property="og:description" content="Descubra grupos e comunidades online organizados por categoria. Portal com curadoria humana e guias de segurança." />
         <meta property="og:url" content="https://gruposdewhats.com.br/" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Grupos de WhatsApp Brasil 2025 | +12.500 Grupos Ativos" />
-        <meta name="twitter:description" content="Descubra os melhores grupos de WhatsApp do Brasil. Entre grátis em milhares de grupos ativos!" />
+        <meta name="twitter:title" content="GruposdeWhats Brasil 2026 | Portal de Grupos e Comunidades" />
+        <meta name="twitter:description" content="Descubra grupos e comunidades online organizados por categoria. Portal com curadoria humana e guias de segurança." />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "CollectionPage",
-            "name": "Grupos de WhatsApp Brasil 2025",
-            "description": "Descubra +12.500 grupos de WhatsApp organizados por categoria. Grupos de amizades, namoros, divulgação, vendas e muito mais.",
+            "name": "GruposdeWhats Brasil 2026",
+            "description": "Portal de informações sobre grupos e comunidades online. Curadoria humana, guias de segurança e dicas para participar de grupos com responsabilidade.",
             "url": "https://gruposdewhats.com.br/",
             "mainEntity": {
               "@type": "ItemList",
@@ -169,11 +168,11 @@ const Index = () => {
             },
             "publisher": {
               "@type": "Organization",
-              "name": "Grupos de WhatsApp Brasil",
+              "name": "GruposdeWhats Brasil",
               "url": "https://gruposdewhats.com.br/",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://gruposdewhats.com.br/logo.png"
+                "url": "https://gruposdewhats.com.br/favicon.png"
               }
             },
             "potentialAction": {

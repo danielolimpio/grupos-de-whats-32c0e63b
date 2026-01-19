@@ -44,7 +44,7 @@ export function CookieBanner() {
                 <Button 
                   size="sm" 
                   onClick={acceptCookies}
-                  className="btn-whatsapp text-xs"
+                  className="bg-[hsl(220_10%_25%)] hover:bg-[hsl(220_10%_20%)] text-white text-xs"
                 >
                   Aceitar
                 </Button>
