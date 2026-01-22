@@ -74,6 +74,7 @@ const Sitemap = () => {
   ];
 
   const blogPosts = [
+    { path: '/blog/como-encontrar-grupos-de-whatsapp-por-interesse-em-2026', name: 'Como Encontrar Grupos de WhatsApp por Interesse em 2026' },
     { path: '/blog/como-criar-grupo-sucesso-2026', name: 'Como Criar um Grupo de Sucesso em 2026' },
     { path: '/blog/regras-essenciais-grupo-organizado', name: 'Regras Essenciais para um Grupo Organizado' },
     { path: '/blog/por-que-grupos-premium-tem-mais-sucesso', name: 'Por Que Grupos Premium Têm Mais Sucesso' },
