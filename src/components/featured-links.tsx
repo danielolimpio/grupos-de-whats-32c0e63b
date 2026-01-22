@@ -15,28 +15,28 @@ export function FeaturedLinks() {
       description: 'Faça novas amizades',
       href: '/categoria/grupos-do-whatsapp-de-amizades',
       icon: Users,
-      color: 'from-green-500 to-green-600'
+      color: 'from-slate-500 to-slate-600'
     },
     {
-      title: 'Grupos de Encontros',
-      description: 'Conheça pessoas novas',
-      href: '/categoria/grupos-do-whatsapp-de-encontros',
+      title: 'Grupos de Estudos',
+      description: 'Aprenda junto com outros',
+      href: '/categoria/grupos-do-whatsapp-de-estudos',
       icon: Heart,
-      color: 'from-pink-500 to-pink-600'
+      color: 'from-slate-600 to-slate-700'
     },
     {
-      title: 'Grupos de Namoros',
-      description: 'Relacionamentos sérios',
-      href: '/categoria/grupos-do-whatsapp-de-namoros',
+      title: 'Grupos de Esportes',
+      description: 'Conecte-se com fãs de esportes',
+      href: '/categoria/grupos-do-whatsapp-de-esportes',
       icon: MessageCircle,
-      color: 'from-red-500 to-red-600'
+      color: 'from-gray-500 to-gray-600'
     },
     {
-      title: 'Grupos de Divulgação',
-      description: 'Promova seu negócio',
-      href: '/categoria/grupos-do-whatsapp-de-divulgacao',
+      title: 'Grupos de Tecnologia',
+      description: 'Inovação e tech',
+      href: '/categoria/grupos-do-whatsapp-de-tecnologia',
       icon: Megaphone,
-      color: 'from-purple-500 to-purple-600'
+      color: 'from-zinc-500 to-zinc-600'
     }
   ];
 

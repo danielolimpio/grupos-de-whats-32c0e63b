@@ -12,6 +12,7 @@ import { Upload, Plus, AlertTriangle } from 'lucide-react';
 import { getAllCategoriesSorted } from '@/data/categories';
 import { WhatsAppGroupImageLoader } from '@/components/WhatsAppGroupImageLoader';
 import { generateSlug } from '@/lib/utils';
+import { containsProhibitedContent, getProhibitedWords } from '@/lib/content-filter';
 
 interface GroupFormProps {
   onSuccess: () => void;
@@ -120,11 +121,24 @@ export default function GroupForm({ onSuccess }: GroupFormProps) {
       return;
     }
 
+    // Client-side check for prohibited content first
+    const fullText = `${name} ${description}`;
+    if (containsProhibitedContent(fullText)) {
+      const foundWords = getProhibitedWords(fullText);
+      toast({
+        title: "Conteúdo não permitido",
+        description: `O grupo contém termos proibidos: ${foundWords.slice(0, 3).join(', ')}. Revise o nome e descrição.`,
+        variant: "destructive"
+      });
+      setLoading(false);
+      return;
+    }
+
     try {
-      // Check for prohibited content
+      // Server-side check for prohibited content (additional safety)
       const { data: hasProhibited, error: checkError } = await supabase
         .rpc('contains_prohibited_content', { 
-          text_content: `${name} ${description}` 
+          text_content: fullText 
         });
 
       if (checkError) throw checkError;
@@ -189,10 +203,13 @@ export default function GroupForm({ onSuccess }: GroupFormProps) {
           <div className="flex items-start gap-3">
             <AlertTriangle className="h-5 w-5 text-yellow-600 mt-0.5" />
             <div className="space-y-2">
-              <h4 className="font-medium text-yellow-800">Regras Importantes</h4>
+              <h4 className="font-medium text-yellow-800">Aviso de Revisão Manual</h4>
+              <p className="text-sm text-yellow-700 mb-2">
+                Todos os grupos são revisados manualmente. Evitamos títulos promocionais, ofertas irreais ou termos sensíveis como 'VIP', 'grátis' ou 'promoção'. Seu grupo será editado ou recusado se necessário.
+              </p>
               <ul className="text-sm text-yellow-700 space-y-1">
                 <li>• <strong>Nome:</strong> Letras, números, espaços e pontuação básica (sem emojis)</li>
-                <li>• <strong>Proibido:</strong> Conteúdo adulto, drogas, armas, golpes ou fraudes</li>
+                <li>• <strong>Proibido:</strong> Conteúdo adulto, drogas, armas, golpes, fraudes ou termos como 'dinheiro fácil', 'clonado', 'cartão', 'empréstimo'</li>
                 <li>• <strong>Moderação:</strong> Todos os grupos passam por análise antes da aprovação</li>
                 <li>• <strong>Qualidade:</strong> Descrições claras e links válidos do WhatsApp</li>
               </ul>

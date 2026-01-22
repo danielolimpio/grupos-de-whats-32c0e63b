@@ -78,8 +78,12 @@ const GroupDetails = () => {
       group_id: group.id,
     });
 
-    // Open WhatsApp link
-    window.open(group.whatsapp_link, "_blank");
+    // Open WhatsApp link with UGC and security attributes
+    const link = document.createElement('a');
+    link.href = group.whatsapp_link;
+    link.target = '_blank';
+    link.rel = 'ugc noopener noreferrer';
+    link.click();
     toast.success("Redirecionando para o grupo...");
   };
 
