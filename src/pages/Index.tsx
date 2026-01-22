@@ -112,23 +112,22 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>GruposdeWhats Brasil 2026 | Portal de Grupos e Comunidades Online</title>
-        <meta name="description" content="Descubra grupos e comunidades online organizados por categoria. Portal com curadoria humana, dicas de segurança e guias para participar de grupos com responsabilidade." />
-        <meta name="keywords" content="grupos online, comunidades, grupos brasil, links grupos, grupos 2026" />
+        <title>Grupos de WhatsApp no Brasil 2026 — Diretório Organizado por Categorias</title>
+        <meta name="description" content="Diretório de grupos públicos de WhatsApp no Brasil, organizados por categorias como amizade, estudos, esportes e tecnologia. Todos os grupos são revisados manualmente para garantir segurança." />
         <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content="GruposdeWhats Brasil 2026 | Portal de Grupos e Comunidades" />
-        <meta property="og:description" content="Descubra grupos e comunidades online organizados por categoria. Portal com curadoria humana e guias de segurança." />
+        <meta property="og:title" content="GruposdeWhats Brasil 2026 | Diretório de Grupos" />
+        <meta property="og:description" content="Diretório de grupos públicos de WhatsApp no Brasil organizados por categorias. Revisão manual para garantir segurança." />
         <meta property="og:url" content="https://gruposdewhats.com.br/" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="GruposdeWhats Brasil 2026 | Portal de Grupos e Comunidades" />
-        <meta name="twitter:description" content="Descubra grupos e comunidades online organizados por categoria. Portal com curadoria humana e guias de segurança." />
+        <meta name="twitter:title" content="GruposdeWhats Brasil 2026 | Diretório de Grupos" />
+        <meta name="twitter:description" content="Diretório de grupos públicos de WhatsApp no Brasil organizados por categorias. Revisão manual para garantir segurança." />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "CollectionPage",
             "name": "GruposdeWhats Brasil 2026",
-            "description": "Portal de informações sobre grupos e comunidades online. Curadoria humana, guias de segurança e dicas para participar de grupos com responsabilidade.",
+            "description": "Diretório de grupos públicos de WhatsApp no Brasil, organizados por categorias. Todos os grupos são revisados manualmente.",
             "url": "https://gruposdewhats.com.br/",
             "mainEntity": {
               "@type": "ItemList",
@@ -143,26 +142,26 @@ const Index = () => {
                 {
                   "@type": "ListItem",
                   "position": 2,
-                  "name": "Grupos de Namoros",
-                  "url": "https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-namoros"
+                  "name": "Grupos de Estudos",
+                  "url": "https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-estudos"
                 },
                 {
                   "@type": "ListItem",
                   "position": 3,
-                  "name": "Grupos de Divulgação",
-                  "url": "https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-divulgacao"
+                  "name": "Grupos de Esportes",
+                  "url": "https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-esportes"
                 },
                 {
                   "@type": "ListItem",
                   "position": 4,
-                  "name": "Grupos de Vendas",
-                  "url": "https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-vendas"
+                  "name": "Grupos de Tecnologia",
+                  "url": "https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-tecnologia"
                 },
                 {
                   "@type": "ListItem",
                   "position": 5,
-                  "name": "Grupos de Encontros",
-                  "url": "https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-encontros"
+                  "name": "Grupos de Namoros",
+                  "url": "https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-namoros"
                 }
               ]
             },
@@ -193,6 +192,13 @@ const Index = () => {
       </div>
       
       <main className="container mx-auto px-4 py-8">
+        {/* Manual Review Notice */}
+        <div className="bg-muted/80 border border-border rounded-lg p-4 mb-6">
+          <p className="text-sm text-muted-foreground text-center">
+            <strong>✓ Revisão Manual:</strong> Todos os grupos são revisados manualmente. Evitamos títulos promocionais, ofertas irreais ou termos sensíveis. Grupos inadequados são editados ou recusados.
+          </p>
+        </div>
+
         <div className="mb-8">
           <StatsBanner />
         </div>
