@@ -3,86 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Clock, User, BookOpen } from "lucide-react";
 import { Link } from "react-router-dom";
-
-const blogPosts = [
-  {
-    id: 9,
-    slug: "como-encontrar-grupos-de-whatsapp-por-interesse-em-2026",
-    title: "Guia Completo: Como Encontrar Grupos de WhatsApp por Interesse em 2026",
-    excerpt: "Saiba onde e como buscar grupos de WhatsApp sobre qualquer tema — desde hobbies até negócios. Dicas exclusivas para encontrar comunidades reais e ativas.",
-    author: "Daniel Olimpio",
-    date: "2026-01-05",
-    readTime: "18 min",
-    category: "Tutorial",
-    image: "/images/como-encontrar-grupos-whatsapp-interesse-2026.jpg",
-  },
-  {
-    id: 1,
-    slug: "como-criar-grupo-sucesso-2026",
-    title: "Como Criar um Grupo de WhatsApp de Sucesso: Guia Completo 2026",
-    excerpt: "Descubra as melhores estratégias atualizadas para 2026 para criar e administrar grupos de WhatsApp que realmente engajam e crescem.",
-    author: "Daniel Olimpio",
-    date: "2025-11-26",
-    readTime: "15 min",
-    category: "Tutorial",
-    image: "/images/blog-grupo-sucesso-2026.jpg",
-  },
-  {
-    id: 2,
-    slug: "regras-essenciais-grupo-organizado",
-    title: "10 Regras Essenciais para Manter seu Grupo Organizado",
-    excerpt: "Mantenha a ordem e o respeito no seu grupo com essas regras fundamentais que todo administrador deveria conhecer.",
-    author: "Daniel Olimpio",
-    date: "2025-11-26",
-    readTime: "8 min",
-    category: "Dicas",
-    image: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=500&h=300&fit=crop",
-  },
-  {
-    id: 3,
-    slug: "por-que-grupos-premium-tem-mais-sucesso",
-    title: "Por Que Grupos Premium Têm Mais Sucesso",
-    excerpt: "Entenda os benefícios de impulsionar seu grupo e como isso pode aumentar significativamente o engajamento e crescimento.",
-    author: "Daniel Olimpio",
-    date: "2025-11-26",
-    readTime: "11 min",
-    category: "Premium",
-    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=500&h=300&fit=crop",
-  },
-  {
-    id: 4,
-    slug: "seguranca-whatsapp-proteja-seu-grupo",
-    title: "Segurança no WhatsApp: Proteja seu Grupo de Spam e Golpes",
-    excerpt: "Aprenda como identificar e prevenir spam, golpes e conteúdo malicioso nos seus grupos de WhatsApp.",
-    author: "Daniel Olimpio",
-    date: "2025-11-26",
-    readTime: "13 min",
-    category: "Segurança",
-    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500&h=300&fit=crop",
-  },
-  {
-    id: 5,
-    slug: "como-aumentar-engajamento-grupo",
-    title: "Como Aumentar o Engajamento no seu Grupo",
-    excerpt: "Estratégias comprovadas para manter seus membros ativos e interessados no conteúdo do seu grupo.",
-    author: "Daniel Olimpio",
-    date: "2025-11-26",
-    readTime: "12 min",
-    category: "Engajamento",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop",
-  },
-  {
-    id: 6,
-    slug: "melhores-horarios-postar-grupos",
-    title: "Melhores Horários para Postar em Grupos de WhatsApp",
-    excerpt: "Descubra os horários com maior engajamento e como adaptar sua estratégia de conteúdo para diferentes tipos de grupos.",
-    author: "Daniel Olimpio",
-    date: "2025-11-26",
-    readTime: "10 min",
-    category: "Estratégia",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=300&fit=crop",
-  }
-];
+import { sortedBlogPosts } from "@/data/blog-posts";
 
 export function BlogPreview() {
   return (
@@ -101,20 +22,33 @@ export function BlogPreview() {
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-        {blogPosts.map((post) => (
+        {sortedBlogPosts.map((post) => (
           <Card key={post.id} className="hover:shadow-lg transition-all duration-300 cursor-pointer group overflow-hidden">
-            <div className="aspect-video overflow-hidden">
-              <img 
-                src={post.image} 
-                alt={post.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-            </div>
+            <Link to={`/blog/${post.slug}`}>
+              <div className="aspect-video overflow-hidden">
+                <img 
+                  src={post.image} 
+                  alt={post.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </Link>
             <CardHeader className="space-y-2 pb-3">
-              <Badge variant="outline" className="w-fit">{post.category}</Badge>
-              <CardTitle className="line-clamp-2 group-hover:text-primary transition-colors text-base">
-                {post.title}
-              </CardTitle>
+              <div className="flex items-center justify-between">
+                <div className="flex gap-1">
+                  {post.categories.slice(0, 2).map((cat) => (
+                    <Badge key={cat} variant="outline" className="text-xs">{cat}</Badge>
+                  ))}
+                </div>
+                <span className="text-xs text-muted-foreground">
+                  {new Date(post.date).toLocaleDateString('pt-BR')}
+                </span>
+              </div>
+              <Link to={`/blog/${post.slug}`}>
+                <CardTitle className="line-clamp-2 group-hover:text-primary transition-colors text-base">
+                  {post.title}
+                </CardTitle>
+              </Link>
               <CardDescription className="line-clamp-2 text-sm">
                 {post.excerpt}
               </CardDescription>

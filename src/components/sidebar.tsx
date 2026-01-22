@@ -43,6 +43,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { getAllCategoriesSorted } from "@/data/categories";
+import { getLatestPosts } from "@/data/blog-posts";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { EzoicAd } from "./ezoic-ad";
@@ -90,6 +91,7 @@ export function Sidebar({ selectedCategory, onCategorySelect }: SidebarProps) {
   const [showAllCategories, setShowAllCategories] = useState(false);
   const allCategories = getAllCategoriesSorted();
   const displayCategories = showAllCategories ? allCategories : allCategories.slice(0, 12);
+  const latestPosts = getLatestPosts(6);
 
   return (
     <aside className="w-full lg:w-80 space-y-6 order-first lg:order-last">
@@ -147,7 +149,7 @@ export function Sidebar({ selectedCategory, onCategorySelect }: SidebarProps) {
       {/* Ezoic - sidebar_middle - sidebar_middle */}
       <EzoicAd placement="sidebar_middle" />
 
-      {/* Blog Preview */}
+      {/* Blog Preview with Thumbnails */}
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center">
@@ -155,25 +157,33 @@ export function Sidebar({ selectedCategory, onCategorySelect }: SidebarProps) {
             Dicas do Blog
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-3">
-          <div className="space-y-2">
-            <h4 className="text-sm font-medium link-underline cursor-pointer">
-              Como criar grupos seguros no WhatsApp
-            </h4>
-            <p className="text-xs text-muted-foreground">
-              Dicas essenciais para manter seu grupo protegido...
-            </p>
-          </div>
-          <div className="space-y-2">
-            <h4 className="text-sm font-medium link-underline cursor-pointer">
-              10 regras para grupos de sucesso
-            </h4>
-            <p className="text-xs text-muted-foreground">
-              Aprenda a moderar e engajar membros...
-            </p>
-          </div>
+        <CardContent className="space-y-4">
+          {latestPosts.map((post) => (
+            <Link 
+              key={post.id} 
+              to={`/blog/${post.slug}`}
+              className="flex gap-3 group hover:bg-muted/50 rounded-lg p-2 -mx-2 transition-colors"
+            >
+              <div className="w-20 h-14 flex-shrink-0 rounded-md overflow-hidden">
+                <img 
+                  src={post.image} 
+                  alt={post.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h4 className="text-sm font-medium line-clamp-2 group-hover:text-primary transition-colors">
+                  {post.title}
+                </h4>
+                <p className="text-xs text-muted-foreground line-clamp-1 mt-1">
+                  {post.excerpt}
+                </p>
+              </div>
+            </Link>
+          ))}
+          
           <Link to="/blog">
-            <Button variant="outline" size="sm" className="w-full">
+            <Button variant="outline" size="sm" className="w-full mt-2">
               Ver Mais Posts
             </Button>
           </Link>
