@@ -20,7 +20,6 @@ import {
   Search, 
   Users, 
   Shield, 
-  Star, 
   MessageCircle,
   Globe,
   Settings
@@ -36,16 +35,16 @@ const FAQ_DATA = [
     icon: Globe,
     questions: [
       {
-        question: "O que é o Grupos de WhatsApp?",
-        answer: "O gruposdewhats.com.br é um portal onde qualquer pessoa pode divulgar grupos de WhatsApp e também entrar em grupos já existentes de diversas categorias como amizade, namoro, vendas, estudos, promoções e muito mais."
-      },
-      {
-        question: "O site é gratuito?",
-        answer: "Sim. Você pode cadastrar grupos de WhatsApp grátis. Além disso, temos a opção VIP, que coloca o grupo em destaque no topo da lista."
+        question: "O que é o GruposdeWhats?",
+        answer: "O gruposdewhats.com.br é um diretório independente onde você pode descobrir grupos públicos de WhatsApp organizados por categorias como amizade, estudos, esportes, tecnologia e muito mais."
       },
       {
         question: "O site é confiável e seguro?",
-        answer: "Sim. Nossa equipe de moderação analisa todos os links antes da publicação, evitando conteúdos maliciosos, ilegais ou ofensivos."
+        answer: "Sim. Nossa equipe de moderação analisa todos os links antes da publicação, evitando conteúdos maliciosos, ilegais ou ofensivos. Todos os grupos passam por revisão manual."
+      },
+      {
+        question: "O site tem algum vínculo com o WhatsApp?",
+        answer: "Não. Somos uma plataforma independente de informações sobre grupos e comunidades online. Não temos nenhuma afiliação com WhatsApp ou Meta."
       }
     ]
   },
@@ -55,49 +54,23 @@ const FAQ_DATA = [
     questions: [
       {
         question: "Como cadastrar meu grupo de WhatsApp no portal?",
-        answer: "Clique em \"Adicionar Grupo\", preencha os dados (nome, descrição, categoria e imagem) e envie. O grupo será analisado antes da publicação."
+        answer: "Crie uma conta, acesse o painel e clique em \"Adicionar Grupo\". Preencha os dados (nome, descrição, categoria e imagem) e envie. O grupo será analisado antes da publicação."
       },
       {
         question: "Quanto tempo demora para aprovar meu grupo?",
-        answer: "O prazo médio é de até 24 horas."
+        answer: "O prazo médio é de até 24 horas úteis."
       },
       {
         question: "Por que meu grupo pode ser reprovado?",
-        answer: "Grupos são reprovados quando contêm: Conteúdos ilegais ou ofensivos; Links falsos ou maliciosos; Violações às regras do WhatsApp; Informações incompletas."
+        answer: "Grupos são reprovados quando contêm: Conteúdos ilegais ou ofensivos; Links falsos ou maliciosos; Violações às regras do WhatsApp; Informações incompletas ou títulos promocionais."
       },
       {
         question: "Como editar informações de um grupo já enviado?",
-        answer: "Acesse \"Meus Grupos\", clique em \"Editar\" e altere as informações necessárias."
+        answer: "Acesse \"Meus Grupos\" no painel, clique em \"Editar\" e altere as informações necessárias."
       },
       {
-        question: "Como remover ou cancelar um grupo que enviei?",
-        answer: "Vá até \"Meus Grupos\" no canto superior direito. Localize o grupo desejado. Clique em \"Editar\". Selecione \"Remover Grupo\"."
-      }
-    ]
-  },
-  {
-    category: "Divulgação e destaque",
-    icon: Star,
-    questions: [
-      {
-        question: "Como faço para destacar meu grupo no portal?",
-        answer: "Você pode impulsionar seu grupo tornando-o VIP, garantindo mais visibilidade."
-      },
-      {
-        question: "O que é um grupo VIP?",
-        answer: "Um grupo VIP recebe: Destaque no topo da lista por 12 horas; Identificação com estrela e borda especial; Mais chances de atrair participantes."
-      },
-      {
-        question: "Quanto custa para impulsionar um grupo?",
-        answer: "O valor é de apenas R$ 9,90 por 12 horas de destaque VIP."
-      },
-      {
-        question: "Quais são as formas de pagamento?",
-        answer: "O pagamento é realizado via PIX, rápido e seguro."
-      },
-      {
-        question: "Como impulsionar meu grupo?",
-        answer: "Cadastre seu grupo e aguarde aprovação. Acesse \"Meus Grupos\". Clique em \"Impulsionar como VIP\". Realize o pagamento via PIX. Seu grupo será exibido automaticamente no topo."
+        question: "Como remover um grupo que enviei?",
+        answer: "Vá até \"Meus Grupos\" no seu painel. Localize o grupo desejado e clique em \"Remover Grupo\"."
       }
     ]
   },
@@ -111,7 +84,11 @@ const FAQ_DATA = [
       },
       {
         question: "Posso enviar qualquer tipo de grupo?",
-        answer: "Não. Apenas grupos que respeitem as regras de convivência e privacidade. Grupos com conteúdos ilegais, adultos ou ofensivos não são permitidos."
+        answer: "Não. Apenas grupos que respeitem as regras de convivência e privacidade. Grupos com conteúdos ilegais, adultos ou ofensivos não são permitidos. Evitamos também títulos com termos promocionais."
+      },
+      {
+        question: "Preciso de conta para ver os grupos?",
+        answer: "Não, você pode navegar e acessar os grupos sem criar conta. A conta é necessária apenas para cadastrar seus próprios grupos."
       }
     ]
   },
@@ -138,12 +115,20 @@ const FAQ_DATA = [
     ]
   },
   {
-    category: "Suporte",
+    category: "Suporte e Segurança",
     icon: Shield,
     questions: [
       {
         question: "Como entrar em contato com o suporte do portal?",
         answer: "Acesse a página de Contato no menu do site ou envie uma mensagem pelo formulário disponível."
+      },
+      {
+        question: "Como denunciar um grupo problemático?",
+        answer: "Use o botão \"Reportar\" na página do grupo ou acesse nossa página de denúncias."
+      },
+      {
+        question: "Meus dados estão seguros?",
+        answer: "Sim, seguimos a LGPD e boas práticas de segurança. Consulte nossa Política de Privacidade para mais detalhes."
       }
     ]
   }
@@ -165,8 +150,8 @@ export default function FAQ() {
   return (
     <>
       <Helmet>
-        <title>FAQ - Perguntas Frequentes | Grupos de WhatsApp</title>
-        <meta name="description" content="Encontre respostas para as perguntas mais frequentes sobre como usar o portal Grupos de WhatsApp, cadastrar grupos, impulsionar e muito mais." />
+        <title>FAQ - Perguntas Frequentes | GruposdeWhats</title>
+        <meta name="description" content="Encontre respostas para as perguntas mais frequentes sobre como usar o portal GruposdeWhats, cadastrar grupos e participar de comunidades." />
         <meta name="keywords" content="FAQ, perguntas frequentes, grupos whatsapp, ajuda, suporte, como usar" />
         <link rel="canonical" href={canonicalUrl} />
       </Helmet>
@@ -185,8 +170,8 @@ export default function FAQ() {
             </div>
             <h1 className="text-3xl font-bold mb-4">FAQ - Perguntas Frequentes</h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Separamos abaixo as dúvidas mais comuns de quem deseja entrar em grupos de WhatsApp, 
-              divulgar seus grupos ou impulsionar links no portal gruposdewhats.com.br
+              Separamos abaixo as dúvidas mais comuns de quem deseja encontrar grupos de WhatsApp 
+              ou cadastrar seus próprios grupos no portal gruposdewhats.com.br
             </p>
           </div>
 

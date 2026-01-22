@@ -15,9 +15,9 @@ export default function GruposPremium() {
   return (
     <>
       <Helmet>
-        <title>Por Que Grupos Premium Têm Mais Sucesso | Grupos de Whats</title>
-        <meta name="description" content="Descubra por que grupos premium crescem mais rápido e têm maior engajamento. Análise completa dos benefícios de impulsionar seu grupo de WhatsApp em 2025." />
-        <meta name="keywords" content="grupos premium whatsapp, impulsionar grupo, destaque grupo whatsapp, crescimento acelerado" />
+        <title>Por Que Grupos em Destaque Têm Mais Sucesso | GruposdeWhats</title>
+        <meta name="description" content="Descubra por que grupos em destaque crescem mais rápido e têm maior engajamento. Análise completa dos benefícios de destacar seu grupo." />
+        <meta name="keywords" content="grupos destaque whatsapp, destacar grupo, crescimento grupo whatsapp" />
         <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
