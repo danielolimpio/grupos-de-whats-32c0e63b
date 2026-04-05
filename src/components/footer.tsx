@@ -1,4 +1,4 @@
-import { Mail, Shield, FileText, Phone, Cookie } from "lucide-react";
+import { Mail, Shield, FileText, Cookie, Home, Info, Cog, BookOpen, ShieldCheck, LifeBuoy, AlertTriangle, HelpCircle, Phone, Map, Eye } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
@@ -24,38 +24,39 @@ export function Footer() {
             <h3 className="font-semibold">Navegação</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/">
-                  <Button variant="link" className="text-white/80 hover:text-white p-0 h-auto">
-                    Início
-                  </Button>
+                <Link to="/" className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
+                  <Home className="h-4 w-4 flex-shrink-0" />
+                  <span>Início</span>
                 </Link>
               </li>
               <li>
-                <Link to="/sobre">
-                  <Button variant="link" className="text-white/80 hover:text-white p-0 h-auto">
-                    Sobre
-                  </Button>
+                <Link to="/sobre" className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
+                  <Info className="h-4 w-4 flex-shrink-0" />
+                  <span>Sobre</span>
                 </Link>
               </li>
               <li>
-                <Link to="/como-funciona">
-                  <Button variant="link" className="text-white/80 hover:text-white p-0 h-auto">
-                    Como funciona
-                  </Button>
+                <Link to="/como-funciona" className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
+                  <Cog className="h-4 w-4 flex-shrink-0" />
+                  <span>Como funciona</span>
                 </Link>
               </li>
               <li>
-                <Link to="/regras-comunidade">
-                  <Button variant="link" className="text-white/80 hover:text-white p-0 h-auto">
-                    Regras da comunidade
-                  </Button>
+                <Link to="/blog" className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
+                  <BookOpen className="h-4 w-4 flex-shrink-0" />
+                  <span>Blog</span>
                 </Link>
               </li>
               <li>
-                <Link to="/dicas-seguranca">
-                  <Button variant="link" className="text-white/80 hover:text-white p-0 h-auto">
-                    Dicas de segurança
-                  </Button>
+                <Link to="/regras-comunidade" className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
+                  <ShieldCheck className="h-4 w-4 flex-shrink-0" />
+                  <span>Regras da comunidade</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/dicas-seguranca" className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
+                  <Shield className="h-4 w-4 flex-shrink-0" />
+                  <span>Dicas de segurança</span>
                 </Link>
               </li>
             </ul>
@@ -70,31 +71,27 @@ export function Footer() {
                 <span className="break-all text-xs sm:text-sm">contato@gruposdewhats.com.br</span>
               </li>
               <li>
-                <Link to="/central-ajuda">
-                  <Button variant="link" className="text-white/80 hover:text-white p-0 h-auto">
-                    Central de ajuda
-                  </Button>
+                <Link to="/central-ajuda" className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
+                  <LifeBuoy className="h-4 w-4 flex-shrink-0" />
+                  <span>Central de ajuda</span>
                 </Link>
               </li>
               <li>
-                <Link to="/reportar-problema">
-                  <Button variant="link" className="text-white/80 hover:text-white p-0 h-auto">
-                    Reportar problema
-                  </Button>
+                <Link to="/reportar-problema" className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
+                  <AlertTriangle className="h-4 w-4 flex-shrink-0" />
+                  <span>Reportar problema</span>
                 </Link>
               </li>
               <li>
-                <Link to="/faq">
-                  <Button variant="link" className="text-white/80 hover:text-white p-0 h-auto">
-                    FAQ
-                  </Button>
+                <Link to="/faq" className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
+                  <HelpCircle className="h-4 w-4 flex-shrink-0" />
+                  <span>FAQ</span>
                 </Link>
               </li>
               <li>
-                <Link to="/contato">
-                  <Button variant="link" className="text-white/80 hover:text-white p-0 h-auto">
-                    Contato
-                  </Button>
+                <Link to="/contato" className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
+                  <Phone className="h-4 w-4 flex-shrink-0" />
+                  <span>Contato</span>
                 </Link>
               </li>
             </ul>
@@ -104,43 +101,34 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="font-semibold">Legal</h3>
             <ul className="space-y-2 text-sm">
-              <li className="flex items-center space-x-2">
-                <Shield className="h-4 w-4" />
-                <Link to="/politica-de-privacidade">
-                  <Button variant="link" className="text-white/80 hover:text-white p-0 h-auto">
-                    Política de Privacidade
-                  </Button>
-                </Link>
-              </li>
-              <li className="flex items-center space-x-2">
-                <FileText className="h-4 w-4" />
-                <Link to="/termos-de-uso">
-                  <Button variant="link" className="text-white/80 hover:text-white p-0 h-auto">
-                    Termos de Uso
-                  </Button>
+              <li>
+                <Link to="/politica-de-privacidade" className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
+                  <Shield className="h-4 w-4 flex-shrink-0" />
+                  <span>Política de Privacidade</span>
                 </Link>
               </li>
               <li>
-                <Link to="/politica-de-cookies">
-                  <Button variant="link" className="text-white/80 hover:text-white p-0 h-auto">
-                    <Cookie className="h-4 w-4 mr-1" />
-                    Política de Cookies
-                  </Button>
+                <Link to="/termos-de-uso" className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
+                  <FileText className="h-4 w-4 flex-shrink-0" />
+                  <span>Termos de Uso</span>
                 </Link>
               </li>
               <li>
-                <Link to="/politica-de-transparencia">
-                  <Button variant="link" className="text-white/80 hover:text-white p-0 h-auto">
-                    <Shield className="h-4 w-4 mr-1" />
-                    Política de Transparência
-                  </Button>
+                <Link to="/politica-de-cookies" className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
+                  <Cookie className="h-4 w-4 flex-shrink-0" />
+                  <span>Política de Cookies</span>
                 </Link>
               </li>
               <li>
-                <Link to="/sitemap">
-                  <Button variant="link" className="text-white/80 hover:text-white p-0 h-auto">
-                    Sitemap
-                  </Button>
+                <Link to="/politica-de-transparencia" className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
+                  <Eye className="h-4 w-4 flex-shrink-0" />
+                  <span>Política de Transparência</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/sitemap" className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
+                  <Map className="h-4 w-4 flex-shrink-0" />
+                  <span>Sitemap</span>
                 </Link>
               </li>
             </ul>
@@ -157,7 +145,7 @@ export function Footer() {
               Este site é um portal independente de informações sobre grupos e comunidades online. Não somos afiliados, autorizados ou endossados por nenhuma plataforma de mensagens. Todas as marcas mencionadas pertencem aos seus respectivos proprietários.
             </p>
             <p className="text-base text-white/60 font-medium">
-              © 2025 GruposdeWhats | Todos os direitos reservados | Desenvolvido por{" "}
+              © 2026 GruposdeWhats | Todos os direitos reservados | Desenvolvido por{" "}
               <a 
                 href="https://danielolimpio.com/" 
                 target="_blank" 
