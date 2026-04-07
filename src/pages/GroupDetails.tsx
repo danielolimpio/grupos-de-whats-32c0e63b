@@ -141,8 +141,8 @@ const GroupDetails = () => {
   return (
     <>
       <Helmet>
-        <title>{group.name} - Grupo de WhatsApp | Grupos de WhatsApp Brasil</title>
-        <meta name="description" content={`Entre no grupo "${group.name}" no WhatsApp. ${pageDescription} Categoria: ${group.category}`} />
+        <title>{`${group.name} - Grupo de WhatsApp 2026 | Entrar Agora`}</title>
+        <meta name="description" content={`✅ Entre no grupo "${group.name}" no WhatsApp agora! ${pageDescription} ▸ Grupo verificado e seguro na categoria ${group.category}.`} />
         <link rel="canonical" href={canonicalUrl} />
         
         {/* Open Graph / Facebook */}
@@ -175,14 +175,16 @@ const GroupDetails = () => {
             "datePublished": group.created_at,
             "author": {
               "@type": "Organization",
-              "name": "Grupos de WhatsApp Brasil"
+              "name": "GruposdeWhats Brasil",
+              "url": "https://gruposdewhats.com.br"
             },
             "publisher": {
               "@type": "Organization",
-              "name": "Grupos de WhatsApp Brasil",
+              "name": "GruposdeWhats Brasil",
+              "url": "https://gruposdewhats.com.br",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://gruposdewhats.com.br/logo.png"
+                "url": "https://gruposdewhats.com.br/favicon.png"
               }
             },
             "mainEntityOfPage": {
@@ -194,6 +196,32 @@ const GroupDetails = () => {
               "interactionType": "https://schema.org/ViewAction",
               "userInteractionCount": group.access_count
             }
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Início",
+                "item": "https://gruposdewhats.com.br"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": group.category,
+                "item": `https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-${group.category.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "-")}`
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": group.name,
+                "item": canonicalUrl
+              }
+            ]
           })}
         </script>
       </Helmet>
