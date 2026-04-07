@@ -58,7 +58,7 @@ export function SEOContent() {
               <Users className="h-6 w-6 text-blue-600" />
             </div>
             <div>
-              <h3 className="font-semibold text-foreground mb-2">Quantas pessoas cabem em um grupo em 2025?</h3>
+              <h3 className="font-semibold text-foreground mb-2">Quantas pessoas cabem em um grupo em 2026?</h3>
               <p className="text-muted-foreground leading-relaxed">
                 O WhatsApp permite até 256 participantes por grupo. Grupos menores (até 50 pessoas) tendem a ser 
                 mais organizados e focados, enquanto grupos maiores oferecem mais diversidade de opiniões, mas 

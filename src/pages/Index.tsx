@@ -112,63 +112,32 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Grupos de WhatsApp no Brasil 2026 — Diretório Organizado por Categorias</title>
-        <meta name="description" content="Diretório de grupos públicos de WhatsApp no Brasil, organizados por categorias como amizade, estudos, esportes e tecnologia. Todos os grupos são revisados manualmente para garantir segurança." />
+        <title>Grupos de WhatsApp 2026 — Encontre e Entre nos Melhores Grupos do Brasil</title>
+        <meta name="description" content="🔥 +12.500 grupos de WhatsApp verificados! Encontre grupos de amizade, namoro, estudos, vendas e mais. Todos revisados manualmente. Entre agora — 100% grátis!" />
         <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content="GruposdeWhats Brasil 2026 | Diretório de Grupos" />
-        <meta property="og:description" content="Diretório de grupos públicos de WhatsApp no Brasil organizados por categorias. Revisão manual para garantir segurança." />
+        <meta name="keywords" content="grupos de whatsapp, grupos whatsapp 2026, link grupo whatsapp, entrar grupo whatsapp, grupos whatsapp brasil, grupos de zap, melhores grupos whatsapp" />
+        <meta property="og:title" content="🔥 +12.500 Grupos de WhatsApp Verificados — Entre Agora!" />
+        <meta property="og:description" content="Diretório #1 de grupos de WhatsApp do Brasil. Grupos de amizade, namoro, estudos, vendas e mais. 100% grátis e verificados!" />
         <meta property="og:url" content="https://gruposdewhats.com.br/" />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://gruposdewhats.com.br/og-image.jpg" />
+        <meta property="og:site_name" content="GruposdeWhats Brasil" />
+        <meta property="og:locale" content="pt_BR" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="GruposdeWhats Brasil 2026 | Diretório de Grupos" />
-        <meta name="twitter:description" content="Diretório de grupos públicos de WhatsApp no Brasil organizados por categorias. Revisão manual para garantir segurança." />
+        <meta name="twitter:title" content="🔥 +12.500 Grupos de WhatsApp Verificados — Entre Agora!" />
+        <meta name="twitter:description" content="Diretório #1 de grupos de WhatsApp do Brasil. Grupos de amizade, namoro, estudos, vendas e mais. 100% grátis e verificados!" />
+        <meta name="twitter:image" content="https://gruposdewhats.com.br/og-image.jpg" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "CollectionPage",
-            "name": "GruposdeWhats Brasil 2026",
-            "description": "Diretório de grupos públicos de WhatsApp no Brasil, organizados por categorias. Todos os grupos são revisados manualmente.",
-            "url": "https://gruposdewhats.com.br/",
-            "mainEntity": {
-              "@type": "ItemList",
-              "numberOfItems": 12500,
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Grupos de Amizades",
-                  "url": "https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-amizades"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Grupos de Estudos",
-                  "url": "https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-estudos"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "Grupos de Esportes",
-                  "url": "https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-esportes"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 4,
-                  "name": "Grupos de Tecnologia",
-                  "url": "https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-tecnologia"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 5,
-                  "name": "Grupos de Namoros",
-                  "url": "https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-namoros"
-                }
-              ]
-            },
+            "@type": "WebSite",
+            "name": "GruposdeWhats Brasil",
+            "url": "https://gruposdewhats.com.br",
+            "description": "Maior diretório de grupos de WhatsApp do Brasil com mais de 12.500 grupos verificados manualmente.",
             "publisher": {
               "@type": "Organization",
               "name": "GruposdeWhats Brasil",
-              "url": "https://gruposdewhats.com.br/",
+              "url": "https://gruposdewhats.com.br",
               "logo": {
                 "@type": "ImageObject",
                 "url": "https://gruposdewhats.com.br/favicon.png"
@@ -179,6 +148,69 @@ const Index = () => {
               "target": "https://gruposdewhats.com.br/?q={search_term_string}",
               "query-input": "required name=search_term_string"
             }
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": "Grupos de WhatsApp 2026",
+            "description": "Diretório de grupos públicos de WhatsApp no Brasil, organizados por categorias. Todos revisados manualmente.",
+            "url": "https://gruposdewhats.com.br/",
+            "mainEntity": {
+              "@type": "ItemList",
+              "numberOfItems": 12500,
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Grupos de Amizades", "url": "https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-amizades" },
+                { "@type": "ListItem", "position": 2, "name": "Grupos de Namoros", "url": "https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-namoros" },
+                { "@type": "ListItem", "position": 3, "name": "Grupos de Estudos", "url": "https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-estudos" },
+                { "@type": "ListItem", "position": 4, "name": "Grupos de Vendas", "url": "https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-vendas" },
+                { "@type": "ListItem", "position": 5, "name": "Grupos de Esportes", "url": "https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-esportes" },
+                { "@type": "ListItem", "position": 6, "name": "Grupos de Tecnologia", "url": "https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-tecnologia" },
+                { "@type": "ListItem", "position": 7, "name": "Grupos de Games", "url": "https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-games" },
+                { "@type": "ListItem", "position": 8, "name": "Grupos de Promoções", "url": "https://gruposdewhats.com.br/categoria/grupos-do-whatsapp-de-promocoes" }
+              ]
+            }
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Como entrar em um grupo de WhatsApp?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Basta escolher o grupo desejado, clicar em 'Entrar no Grupo' e você será redirecionado diretamente para o WhatsApp. Todos os grupos são verificados e seguros."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Os grupos de WhatsApp listados são seguros?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sim! Todos os grupos passam por revisão manual antes de serem publicados. Removemos grupos com conteúdo impróprio, spam ou atividades suspeitas em até 24 horas."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Posso cadastrar meu grupo de WhatsApp gratuitamente?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sim! O cadastro é 100% gratuito. Basta clicar em 'Anunciar Grupo', preencher as informações e aguardar a aprovação da nossa equipe de moderação."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Quantos grupos de WhatsApp estão disponíveis?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Temos mais de 12.500 grupos ativos e verificados, organizados em 27 categorias diferentes como amizade, namoro, estudos, vendas, esportes, tecnologia e mais."
+                }
+              }
+            ]
           })}
         </script>
       </Helmet>
