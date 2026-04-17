@@ -1,5 +1,5 @@
 import React from "react";
-import { Users, Heart, ExternalLink, Star } from "lucide-react";
+import { Users, Heart, ExternalLink, Star, Eye } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
