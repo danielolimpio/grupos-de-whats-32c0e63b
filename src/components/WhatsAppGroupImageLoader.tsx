@@ -49,9 +49,12 @@ export function WhatsAppGroupImageLoader({
 
         if (downloadError) {
           console.error('Error downloading image:', downloadError);
-          // Fallback to original URL
-          setLoadedImageUrl(fetchData.imageUrl);
-          onImageLoad(fetchData.imageUrl);
+          // NÃO usar URL temporária do WhatsApp (expira em horas).
+          // Usar placeholder permanente em vez disso.
+          const placeholderImage = `https://ui-avatars.com/api/?name=${encodeURIComponent('Grupo WhatsApp')}&size=200&background=25d366&color=ffffff&format=png`;
+          setLoadedImageUrl(placeholderImage);
+          onImageLoad(placeholderImage);
+          setError('Não foi possível salvar a imagem permanentemente. Tente novamente ou faça upload manual.');
         } else if (downloadData?.success && downloadData?.imageUrl) {
           // Use the uploaded image URL
           setLoadedImageUrl(downloadData.imageUrl);
