@@ -400,6 +400,7 @@ export default function Dashboard() {
                         description={group.description || ""}
                         category={group.category}
                         image={group.image_url || ""}
+                        accessCount={group.access_count}
                         isPremium={group.is_premium_active}
                         slug={group.id}
                         isFavorited={isFavorited(group.id)}

@@ -1,5 +1,5 @@
 import React from "react";
-import { Users, Heart, ExternalLink, Star } from "lucide-react";
+import { Users, Heart, ExternalLink, Star, Eye } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
@@ -14,6 +14,7 @@ interface GroupCardProps {
   category: string;
   image: string;
   memberCount?: number;
+  accessCount?: number;
   isPremium?: boolean;
   isNew?: boolean;
   className?: string;
@@ -29,6 +30,7 @@ export function GroupCard({
   category,
   image,
   memberCount,
+  accessCount,
   isPremium = false,
   isNew = false,
   className,
@@ -128,16 +130,23 @@ export function GroupCard({
               {category}
             </Badge>
             
-            {memberCount && (
+            {memberCount ? (
               <div className="flex items-center justify-center text-xs text-muted-foreground">
                 <Users className="h-3 w-3 mr-1" />
                 {memberCount.toLocaleString('pt-BR')} membros
               </div>
-            )}
+            ) : null}
           </div>
 
           {/* Actions */}
           <div className="w-full space-y-2">
+            {typeof accessCount === 'number' && (
+              <div className="flex items-center justify-center text-xs text-muted-foreground gap-1">
+                <Eye className="h-3 w-3" />
+                <span className="font-medium">{accessCount.toLocaleString('pt-BR')}</span>
+                <span>acessos</span>
+              </div>
+            )}
             <Button 
               size="sm" 
               className="w-full btn-whatsapp text-xs"

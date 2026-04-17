@@ -32,6 +32,7 @@ export function GroupGrid({ groups, title, showMore = false, isFavorited, onTogg
             category={group.category}
             image={group.image}
             memberCount={group.memberCount}
+            accessCount={group.accessCount}
             isPremium={group.isPremium}
             isNew={group.isNew}
             slug={group.id}

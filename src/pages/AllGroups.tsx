@@ -76,6 +76,7 @@ export default function AllGroups() {
                     category={group.category}
                     image={group.image}
                     memberCount={group.memberCount}
+                    accessCount={group.accessCount}
                     isPremium={group.isPremium}
                     isNew={group.isNew}
                   />
