@@ -14,6 +14,7 @@ interface GroupCardProps {
   category: string;
   image: string;
   memberCount?: number;
+  accessCount?: number;
   isPremium?: boolean;
   isNew?: boolean;
   className?: string;
@@ -29,6 +30,7 @@ export function GroupCard({
   category,
   image,
   memberCount,
+  accessCount,
   isPremium = false,
   isNew = false,
   className,
