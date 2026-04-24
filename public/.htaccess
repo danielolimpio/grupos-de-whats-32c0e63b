@@ -62,7 +62,17 @@
   Header set Referrer-Policy "strict-origin-when-cross-origin"
   
   # Permissions Policy
-  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=()"
+  
+  # HSTS — força HTTPS por 1 ano (reduz alertas de "site não seguro")
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  
+  # Content-Security-Policy — sinaliza para antivírus que o site controla suas fontes
+  Header set Content-Security-Policy "default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://*.supabase.co https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://*.supabase.co https://www.google-analytics.com https://*.googletagmanager.com wss://*.supabase.co; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"
+  
+  # Cross-Origin policies
+  Header set Cross-Origin-Opener-Policy "same-origin-allow-popups"
+  Header set Cross-Origin-Resource-Policy "same-site"
   
   # Cache control para HTML - sempre revalidar
   <FilesMatch "\.(html|htm)$">
