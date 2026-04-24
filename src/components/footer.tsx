@@ -5,7 +5,7 @@ import logo from "@/assets/logo.png";
 
 export function Footer() {
   return (
-    <footer className="bg-[hsl(220_10%_20%)] text-white">
+    <footer className="bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
@@ -14,7 +14,7 @@ export function Footer() {
               <img src={logo} alt="GruposdeWhats" className="h-8 w-8 rounded-lg" />
               <span className="text-lg font-bold">GruposdeWhats</span>
             </Link>
-            <p className="text-white/80 text-sm">
+            <p className="text-primary-foreground/80 text-sm">
               Portal de informações e conteúdo sobre grupos e comunidades online. Dicas, guias e boas práticas para participar de grupos com segurança e eficiência.
             </p>
           </div>
@@ -68,7 +68,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               <li className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 flex-shrink-0" />
-                <span className="break-all text-xs sm:text-sm">contato@gruposdewhats.com.br</span>
+                  <span className="break-all text-xs sm:text-sm">contato@gruposdewhats.com.br</span>
               </li>
               <li>
                 <Link to="/central-ajuda" className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
@@ -136,21 +136,21 @@ export function Footer() {
         </div>
 
         {/* Disclaimer */}
-        <div className="border-t border-white/20 mt-8 pt-8">
+          <div className="border-t border-primary-foreground/20 mt-8 pt-8">
           <div className="text-center space-y-2">
-            <p className="text-sm text-white/70 font-semibold mb-1">
+            <p className="text-sm text-primary-foreground/70 font-semibold mb-1">
               Isenção de Responsabilidade sobre Marcas
             </p>
-            <p className="text-sm text-white/60">
-              Este site é um portal independente de informações sobre grupos e comunidades online. Não somos afiliados, autorizados ou endossados por nenhuma plataforma de mensagens. Todas as marcas mencionadas pertencem aos seus respectivos proprietários.
+            <p className="text-sm text-primary-foreground/60">
+              Este site é um diretório editorial independente. Não representa plataformas oficiais, não solicita credenciais, não intermedeia pagamentos e não oferece suporte em nome de terceiros. Todas as marcas citadas pertencem aos seus respectivos proprietários.
             </p>
-            <p className="text-base text-white/60 font-medium">
+            <p className="text-base text-primary-foreground/60 font-medium">
               © 2026 GruposdeWhats | Todos os direitos reservados | Desenvolvido por{" "}
               <a 
                 href="https://danielolimpio.com/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-white hover:text-white/80 transition-colors"
+                className="text-primary-foreground hover:text-primary-foreground/80 transition-colors"
               >
                 DanielOlimpio
               </a>
