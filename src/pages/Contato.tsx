@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { MapPin, Building2, FileText, Phone } from "lucide-react";
+import { Mail, FileText, Phone } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
 import { useCanonical } from "@/hooks/useCanonical";
 
@@ -12,15 +12,15 @@ const Contato = () => {
     <>
       <Helmet>
         <title>Contato - Grupos de WhatsApp Brasil</title>
-        <meta name="description" content="Entre em contato com Grupos de WhatsApp Brasil. Endereço, CNPJ e localização no mapa." />
+        <meta name="description" content="Entre em contato com a equipe do GruposdeWhats para suporte editorial, correções, denúncias e dúvidas sobre o diretório." />
         <link rel="canonical" href={canonicalUrl} />
         <meta property="og:title" content="Contato - Grupos de WhatsApp Brasil" />
-        <meta property="og:description" content="Entre em contato com Grupos de WhatsApp Brasil. Endereço, CNPJ e localização no mapa." />
+        <meta property="og:description" content="Canal oficial de contato para suporte editorial, denúncias e dúvidas sobre o GruposdeWhats." />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="Contato - Grupos de WhatsApp Brasil" />
-        <meta name="twitter:description" content="Entre em contato com Grupos de WhatsApp Brasil. Endereço, CNPJ e localização no mapa." />
+        <meta name="twitter:description" content="Canal oficial de contato para suporte editorial, denúncias e dúvidas sobre o GruposdeWhats." />
       </Helmet>
       
       <div className="min-h-screen bg-background flex flex-col">
@@ -33,13 +33,13 @@ const Contato = () => {
             <div className="space-y-6">
               <div className="bg-card p-6 rounded-lg border">
                 <div className="flex items-start gap-4">
-                  <MapPin className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
+                  <Mail className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
                   <div>
-                    <h2 className="text-xl font-semibold mb-2 text-foreground">Endereço</h2>
+                    <h2 className="text-xl font-semibold mb-2 text-foreground">Canal de suporte</h2>
                     <p className="text-muted-foreground leading-relaxed">
-                      Av. Júlia Freire, 1200<br />
-                      Expedicionários, João Pessoa - PB<br />
-                      CEP: 58041-000
+                      contato@gruposdewhats.com.br<br />
+                      Atendimento para denúncias, correções cadastrais<br />
+                      e solicitações editoriais.
                     </p>
                   </div>
                 </div>
@@ -49,8 +49,8 @@ const Contato = () => {
                 <div className="flex items-start gap-4">
                   <Building2 className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
                   <div>
-                    <h2 className="text-xl font-semibold mb-2 text-foreground">CNPJ</h2>
-                    <p className="text-muted-foreground">60.139.021/0001-14</p>
+                    <h2 className="text-xl font-semibold mb-2 text-foreground">Transparência</h2>
+                    <p className="text-muted-foreground">Operação editorial independente com revisão manual de conteúdo e resposta a incidentes.</p>
                   </div>
                 </div>
               </div>
@@ -61,8 +61,8 @@ const Contato = () => {
                   <div>
                     <h2 className="text-xl font-semibold mb-2 text-foreground">Informações</h2>
                     <p className="text-muted-foreground leading-relaxed">
-                      Plataforma de divulgação de grupos do WhatsApp no Brasil.
-                      Conectamos pessoas aos melhores grupos por categoria.
+                      Não pedimos senha, código de verificação, pagamento ou instalação de aplicativos.
+                      Toda solicitação legítima da equipe acontece apenas pelos canais publicados neste site.
                     </p>
                   </div>
                 </div>
@@ -71,20 +71,13 @@ const Contato = () => {
 
             <div className="bg-card p-6 rounded-lg border">
               <h2 className="text-xl font-semibold mb-4 flex items-center gap-2 text-foreground">
-                <MapPin className="w-6 h-6 text-primary" />
-                Localização
+                <Phone className="w-6 h-6 text-primary" />
+                Resposta a incidentes
               </h2>
-              <div className="aspect-video rounded-lg overflow-hidden">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.5746883486595!2d-34.8633!3d-7.1394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ace839019aa381%3A0x8b0d1f1b1e4c5f1a!2sAv.%20J%C3%BAlia%20Freire%2C%201200%20-%20Expedicion%C3%A1rios%2C%20Jo%C3%A3o%20Pessoa%20-%20PB%2C%2058041-000!5e0!3m2!1spt-BR!2sbr!4v1234567890!5m2!1spt-BR!2sbr"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Localização Grupos Whatsapp Brasil"
-                />
+              <div className="rounded-lg border bg-muted/40 p-5 space-y-3 text-sm text-muted-foreground">
+                <p>Use esta página para relatar links quebrados, grupos enganosos, tentativas de fraude, impersonação de marca ou qualquer conteúdo suspeito.</p>
+                <p>Pedidos com indícios de phishing ou abuso recebem prioridade de análise e remoção.</p>
+                <p>Para casos urgentes, utilize também a página <a href="/reportar-problema" className="text-primary hover:underline">Reportar problema</a>.</p>
               </div>
             </div>
           </div>
