@@ -43,18 +43,8 @@ interface EzoicAdProps {
 
 export function EzoicAd({ placement, className = '' }: EzoicAdProps) {
   const id = placementIds[placement];
-  const placementName = placement.replace(/_/g, ' ');
-  
-  return (
-    <>
-      {/* Ezoic - {placementName} - {placementName} */}
-      <div 
-        id={`ezoic-pub-ad-placeholder-${id}`}
-        className={className}
-      />
-      {/* End Ezoic - {placementName} - {placementName} */}
-    </>
-  );
+
+  return <div id={`ezoic-pub-ad-slot-${id}`} className={className} data-ad-slot={placement} aria-hidden="true" />;
 }
 
 // Sidebar-specific component with all sidebar placements
