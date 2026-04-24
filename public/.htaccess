@@ -13,6 +13,15 @@
   RewriteRule ^ads\.txt$ - [L]
   RewriteRule ^robots\.txt$ - [L]
   RewriteRule ^sitemap\.xml$ - [L]
+
+  # Forçar HTTPS (http -> https)
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+  # Forçar non-www (www.gruposdewhats.com.br -> gruposdewhats.com.br)
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
   
   # Redirecionamento 301 para URLs antigas específicas
   RewriteRule ^category/sem-categoria/?$ / [R=301,L]
