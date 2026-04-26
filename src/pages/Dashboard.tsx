@@ -341,19 +341,7 @@ export default function Dashboard() {
                             </span>
                           </div>
                         </div>
-                        {group.status === 'approved' && !group.is_premium_active && (
-                          <Button
-                            size="sm"
-                            className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-semibold"
-                            onClick={() => {
-                              sessionStorage.setItem('checkout-group-id', group.id);
-                              navigate('/checkout');
-                            }}
-                          >
-                            <Star className="h-4 w-4 mr-2" />
-                            Anunciar
-                          </Button>
-                        )}
+                        {/* Plataforma 100% gratuita — sem opção de anúncio pago. */}
                       </div>
                     ))}
                   </div>
