@@ -348,7 +348,7 @@ const GroupDetails = () => {
                   </p>
                   <p className="flex items-start gap-2">
                     <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                    <span><strong>Siga as políticas oficiais:</strong> Todos os grupos devem estar em conformidade com os Termos de Serviço do WhatsApp e as Políticas do Programa Google AdSense.</span>
+                    <span><strong>Siga as políticas oficiais:</strong> Todos os grupos devem estar em conformidade com os Termos de Serviço do WhatsApp e com a legislação brasileira aplicável.</span>
                   </p>
                   <p className="flex items-start gap-2">
                     <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
