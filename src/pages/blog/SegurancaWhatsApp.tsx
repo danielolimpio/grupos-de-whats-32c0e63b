@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { AuthorInfo } from "@/components/blog/AuthorInfo";
 import { AuthorBio } from "@/components/blog/AuthorBio";
-import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
 import { useCanonical } from "@/hooks/useCanonical";
 
 export default function SegurancaWhatsApp() {
@@ -23,9 +22,6 @@ export default function SegurancaWhatsApp() {
 
       <div className="min-h-screen bg-background">
         <Header />
-        
-        <EzoicAd placement="top_of_page" className="container mx-auto px-4" />
-        <EzoicFloatingAds />
         
         <article className="container mx-auto px-4 py-8 max-w-4xl">
           <Link to="/blog">
@@ -54,14 +50,10 @@ export default function SegurancaWhatsApp() {
             />
           </header>
 
-          <EzoicAd placement="under_page_title" className="my-6" />
-
           <div className="prose prose-lg max-w-none">
             <p className="text-xl text-muted-foreground mb-8">
               Em 2025, grupos de WhatsApp enfrentam ameaças de segurança cada vez mais sofisticadas. Spam, golpes, phishing e conteúdo malicioso podem destruir a confiança e reputação do seu grupo em questão de horas. Este guia completo vai equipá-lo com todas as ferramentas e conhecimentos necessários para manter seu grupo seguro e protegido.
             </p>
-
-            <EzoicAd placement="under_first_paragraph" className="my-6" />
 
             <h2 className="text-3xl font-bold mt-12 mb-6">Por Que a Segurança é Crítica?</h2>
             <p>
@@ -77,8 +69,6 @@ export default function SegurancaWhatsApp() {
             <p>
               Em 2025, com golpes cada vez mais sofisticados usando IA e deepfakes, a vigilância constante não é opcional - é essencial.
             </p>
-
-            <EzoicAd placement="under_second_paragraph" className="my-6" />
 
             <h2 className="text-3xl font-bold mt-12 mb-6">Principais Ameaças em Grupos de WhatsApp</h2>
 
@@ -114,8 +104,6 @@ export default function SegurancaWhatsApp() {
               <li><strong>Vaquinhas falsas:</strong> Pedidos de ajuda para causas inexistentes</li>
               <li><strong>Golpes de emprego:</strong> Vagas que exigem pagamento antecipado</li>
             </ul>
-
-            <EzoicAd placement="mid_content" className="my-6" />
 
             <h3 className="text-2xl font-bold mt-8 mb-4">3. Phishing e Roubo de Dados</h3>
             <p>
@@ -158,8 +146,6 @@ export default function SegurancaWhatsApp() {
               <li>Perfis falsos extremamente realistas</li>
             </ul>
 
-            <EzoicAd placement="long_content" className="my-6" />
-
             <h2 className="text-3xl font-bold mt-12 mb-6">Configurações de Segurança Essenciais</h2>
 
             <h3 className="text-2xl font-bold mt-8 mb-4">1. Configurações do Grupo</h3>
@@ -192,8 +178,6 @@ export default function SegurancaWhatsApp() {
               <li>Adicione um e-mail de recuperação</li>
               <li>Nunca compartilhe seu PIN com ninguém</li>
             </ul>
-
-            <EzoicAd placement="longer_content" className="my-6" />
 
             <h2 className="text-3xl font-bold mt-12 mb-6">Estratégias de Moderação para Segurança</h2>
 
@@ -242,8 +226,6 @@ export default function SegurancaWhatsApp() {
               <li>Analise padrões (horários, tipos de ataque) para antecipar</li>
             </ul>
 
-            <EzoicAd placement="longest_content" className="my-6" />
-
             <h2 className="text-3xl font-bold mt-12 mb-6">Como Identificar Golpes Sofisticados</h2>
 
             <h3 className="text-2xl font-bold mt-8 mb-4">Red Flags Universais</h3>
@@ -279,8 +261,6 @@ export default function SegurancaWhatsApp() {
               <li><strong>Documentação:</strong> Screenshot e salve evidências</li>
               <li><strong>Revisão:</strong> Analise como o atacante entrou e ajuste proteções</li>
             </ol>
-
-            <EzoicAd placement="incontent_5" className="my-6" />
 
             <h3 className="text-2xl font-bold mt-8 mb-4">Se Sua Conta for Comprometida:</h3>
             <ol className="list-decimal pl-6 space-y-2">
@@ -370,8 +350,6 @@ export default function SegurancaWhatsApp() {
           </div>
 
           <AuthorBio />
-
-          <EzoicAd placement="bottom_of_page" className="my-6" />
 
           <div className="mt-12 pt-8 border-t">
             <div className="flex items-center justify-between">

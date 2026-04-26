@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { AuthorInfo } from "@/components/blog/AuthorInfo";
 import { AuthorBio } from "@/components/blog/AuthorBio";
-import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
 import { useCanonical } from "@/hooks/useCanonical";
 
 export default function GruposPremium() {
@@ -23,9 +22,6 @@ export default function GruposPremium() {
 
       <div className="min-h-screen bg-background">
         <Header />
-        
-        <EzoicAd placement="top_of_page" className="container mx-auto px-4" />
-        <EzoicFloatingAds />
         
         <article className="container mx-auto px-4 py-8 max-w-4xl">
           <Link to="/blog">
@@ -54,14 +50,10 @@ export default function GruposPremium() {
             />
           </header>
 
-          <EzoicAd placement="under_page_title" className="my-6" />
-
           <div className="prose prose-lg max-w-none">
             <p className="text-xl text-muted-foreground mb-8">
               Em um cenário onde milhões de grupos competem por atenção no WhatsApp, os grupos premium se destacam consistentemente com crescimento acelerado, maior engajamento e comunidades mais ativas. Mas o que exatamente torna um grupo premium tão mais efetivo? Neste artigo, vamos explorar os dados concretos e estratégias por trás do sucesso premium.
             </p>
-
-            <EzoicAd placement="under_first_paragraph" className="my-6" />
 
             <h2 className="text-3xl font-bold mt-12 mb-6">O Que é um Grupo Premium?</h2>
             <p>
@@ -74,8 +66,6 @@ export default function GruposPremium() {
               <li><strong>Alcance ampliado:</strong> São promovidos em múltiplas categorias e seções</li>
               <li><strong>Métricas aprimoradas:</strong> Acesso a estatísticas detalhadas de desempenho</li>
             </ul>
-
-            <EzoicAd placement="under_second_paragraph" className="my-6" />
 
             <h2 className="text-3xl font-bold mt-12 mb-6">Dados Reais: O Impacto do Premium</h2>
             <p>
@@ -102,8 +92,6 @@ export default function GruposPremium() {
               <li><strong>Grupos Regulares:</strong> Taxa de saída de 38% após 90 dias</li>
               <li><strong>Resultado:</strong> Retenção 3,2x melhor em grupos premium</li>
             </ul>
-
-            <EzoicAd placement="mid_content" className="my-6" />
 
             <h2 className="text-3xl font-bold mt-12 mb-6">Por Que Grupos Premium Crescem Mais Rápido?</h2>
 
@@ -143,8 +131,6 @@ export default function GruposPremium() {
               <li>Comunidades premium naturalmente estabelecem padrões mais altos</li>
             </ul>
 
-            <EzoicAd placement="long_content" className="my-6" />
-
             <h3 className="text-2xl font-bold mt-8 mb-4">4. Vantagem Competitiva Inicial</h3>
             <p>
               O boost inicial de membros cria momentum que grupos regulares raramente conseguem alcançar. Com mais membros desde o início:
@@ -181,8 +167,6 @@ export default function GruposPremium() {
               <li>Ambiente acolhedor mas profissional</li>
               <li>Equilíbrio entre liberdade e organização</li>
             </ul>
-
-            <EzoicAd placement="longer_content" className="my-6" />
 
             <h3 className="text-2xl font-bold mt-8 mb-4">3. Conteúdo de Alta Qualidade</h3>
             <p>
@@ -227,8 +211,6 @@ export default function GruposPremium() {
               <li><strong>ROI:</strong> Base maior para eventual monetização via cursos, consultorias, etc.</li>
             </ul>
 
-            <EzoicAd placement="longest_content" className="my-6" />
-
             <h3 className="text-2xl font-bold mt-8 mb-4">Para Grupos de Networking</h3>
             <ul className="list-disc pl-6 space-y-2">
               <li><strong>Custo médio:</strong> R$ 80-200/mês</li>
@@ -268,8 +250,6 @@ export default function GruposPremium() {
               <li>Inclua prova social (número de membros, testemunhos)</li>
               <li>Seja claro sobre expectativas e regras</li>
             </ul>
-
-            <EzoicAd placement="incontent_5" className="my-6" />
 
             <h3 className="text-2xl font-bold mt-8 mb-4">2. Prepare-se para o Influxo</h3>
             <ul className="list-disc pl-6 space-y-2">
@@ -357,8 +337,6 @@ export default function GruposPremium() {
           </div>
 
           <AuthorBio />
-
-          <EzoicAd placement="bottom_of_page" className="my-6" />
 
           <div className="mt-12 pt-8 border-t">
             <div className="flex items-center justify-between">

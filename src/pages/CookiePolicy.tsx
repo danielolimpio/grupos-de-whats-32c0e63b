@@ -68,20 +68,7 @@ export default function CookiePolicy() {
       badgeVariant: "secondary" as const,
       description: "Coletam dados agregados sobre o uso do site para entender comportamentos, medir desempenho e personalizar conteúdo.",
       examples: [
-        { name: "s7", purpose: "Coletar dados sobre uso do site e comportamento do usuário", provider: "gruposdewhats.com.br, .ezoic.net, .ingage.tech", service: "Adobe Analytics", expiration: "30 minutos a 2h09" },
-        { name: "ezintegração", provider: "g.ezoic.net", type: "Rastreador de pixels", expiration: "Sessão" }
-      ]
-    },
-    {
-      icon: Target,
-      title: "Cookies de Publicidade",
-      badge: "Configurável",
-      badgeVariant: "secondary" as const,
-      description: "Usados para exibir anúncios relevantes, evitar repetição excessiva e habilitar leilões em tempo real entre anunciantes.",
-      examples: [
-        { name: "3π, id5", purpose: "Definir ID único para segmentação publicitária", provider: ".id5-sync.com", expiration: "2 meses e 29 dias" },
-        { name: "__uis", purpose: "Exibir anúncios após lances bem-sucedidos", provider: ".go.sonobi.com", expiration: "11 meses e 30 dias" },
-        { name: "ri-*", purpose: "Monitorar atribuição de tráfego e campanhas", provider: "gruposdewhats.com.br", service: "Rivo" }
+        { name: "_ga", purpose: "Identificar visitantes únicos para análise de tráfego", provider: "gruposdewhats.com.br", service: "Google Analytics", expiration: "2 anos" }
       ]
     },
     {
@@ -331,12 +318,6 @@ export default function CookiePolicy() {
                                 <div>
                                   <span className="text-muted-foreground">Serviço:</span>
                                   <span className="font-medium ml-1">{ex.service}</span>
-                                </div>
-                              )}
-                              {ex.type && (
-                                <div>
-                                  <span className="text-muted-foreground">Tipo:</span>
-                                  <span className="font-medium ml-1">{ex.type}</span>
                                 </div>
                               )}
                               {ex.expiration && (
@@ -610,7 +591,7 @@ export default function CookiePolicy() {
               {[
                 "LGPD (Lei nº 13.709/2018)",
                 "Marco Civil da Internet (Lei nº 12.965/2014)",
-                "Políticas do Google AdSense e de redes publicitárias",
+                "Diretrizes do Google para experiência do usuário",
                 "Boas práticas de transparência com o usuário"
               ].map((item, index) => (
                 <div key={index} className="flex items-center gap-2 text-sm">

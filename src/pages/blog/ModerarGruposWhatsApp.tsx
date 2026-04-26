@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { AuthorInfo } from "@/components/blog/AuthorInfo";
 import { AuthorBio } from "@/components/blog/AuthorBio";
-import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
 import { useCanonical } from "@/hooks/useCanonical";
 
 export default function ModerarGruposWhatsApp() {
@@ -25,9 +24,7 @@ export default function ModerarGruposWhatsApp() {
       <div className="min-h-screen bg-background">
         <Header />
         
-        {/* Ezoic - top_of_page */}
         <div className="container mx-auto px-4 pt-4 max-w-4xl">
-          <EzoicAd placement="top_of_page" />
         </div>
         
         <article className="container mx-auto px-4 py-8 max-w-4xl">
@@ -56,8 +53,6 @@ export default function ModerarGruposWhatsApp() {
               className="w-full h-[400px] object-cover rounded-lg mt-6"
             />
             
-            {/* Ezoic - under_page_title */}
-            <EzoicAd placement="under_page_title" className="my-4" />
           </header>
 
           <div className="prose prose-lg max-w-none">
@@ -74,9 +69,6 @@ export default function ModerarGruposWhatsApp() {
             <p className="text-lg text-foreground mb-8 leading-relaxed">
               Se você é administrador de um grupo — seja ele com 10 ou 1.000 membros —, este artigo foi feito para você. Vamos explorar desde a criação das regras até técnicas avançadas de engajamento, passando pelas ferramentas nativas do aplicativo, estratégias para resolver conflitos e até como identificar sinais de que é hora de arquivar o grupo. Tudo com base em experiências reais, dados confiáveis e, acima de tudo, bom senso.
             </p>
-
-            {/* Ezoic - under_first_paragraph */}
-            <EzoicAd placement="under_first_paragraph" className="my-6" />
 
             {/* Seção 1 */}
             <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
@@ -106,9 +98,6 @@ export default function ModerarGruposWhatsApp() {
                 </div>
               </CardContent>
             </Card>
-
-            {/* Ezoic - under_second_paragraph */}
-            <EzoicAd placement="under_second_paragraph" className="my-6" />
 
             {/* Seção 2 */}
             <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
@@ -215,9 +204,6 @@ export default function ModerarGruposWhatsApp() {
               </CardContent>
             </Card>
 
-            {/* Ezoic - mid_content */}
-            <EzoicAd placement="mid_content" className="my-6" />
-
             {/* Seção 3 */}
             <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
               Ferramentas de Controle Oficiais do WhatsApp: Saiba Usá-las com Inteligência
@@ -300,9 +286,6 @@ export default function ModerarGruposWhatsApp() {
                 </div>
               </CardContent>
             </Card>
-
-            {/* Ezoic - long_content */}
-            <EzoicAd placement="long_content" className="my-6" />
 
             {/* Seção 4 */}
             <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
@@ -402,9 +385,6 @@ export default function ModerarGruposWhatsApp() {
             <p className="text-lg text-foreground mb-8 leading-relaxed font-semibold">
               Lembre-se: o objetivo não é vencer uma discussão, mas preservar a comunidade.
             </p>
-
-            {/* Ezoic - longer_content */}
-            <EzoicAd placement="longer_content" className="my-6" />
 
             {/* Seção 5 */}
             <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
@@ -534,9 +514,6 @@ export default function ModerarGruposWhatsApp() {
               </CardContent>
             </Card>
 
-            {/* Ezoic - longest_content */}
-            <EzoicAd placement="longest_content" className="my-6" />
-
             {/* Checklist */}
             <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
               Checklist Rápida: 10 Ações para Administradores Conscientes
@@ -628,9 +605,6 @@ export default function ModerarGruposWhatsApp() {
               </CardContent>
             </Card>
 
-            {/* Ezoic - incontent_5 */}
-            <EzoicAd placement="incontent_5" className="my-6" />
-
             {/* Conclusão */}
             <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
               Conclusão: Moderar é Cuidar — e Cuidar Transforma
@@ -719,9 +693,6 @@ export default function ModerarGruposWhatsApp() {
 
           </div>
           
-          {/* Ezoic - bottom_of_page */}
-          <EzoicAd placement="bottom_of_page" className="my-8" />
-
           <AuthorBio />
 
           <div className="mt-12 pt-8 border-t">
@@ -738,9 +709,6 @@ export default function ModerarGruposWhatsApp() {
             </div>
           </div>
         </article>
-
-        {/* Ezoic Floating Ads */}
-        <EzoicFloatingAds />
 
         <Footer />
       </div>

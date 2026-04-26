@@ -5,7 +5,6 @@ import { HelpCircle, MessageCircle, Mail, Phone, Search, BookOpen } from 'lucide
 import { Link } from 'react-router-dom';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
-import { EzoicAd, EzoicFloatingAds } from '@/components/ezoic-ad';
 import { useUpdateCanonical } from '@/hooks/useCanonical';
 
 export default function CentralAjuda() {
@@ -104,9 +103,6 @@ export default function CentralAjuda() {
     <div className="min-h-screen bg-gradient-to-br from-background via-background/50 to-primary/5">
       <Header />
       
-      <EzoicAd placement="top_of_page" className="container mx-auto px-4" />
-      <EzoicFloatingAds />
-      
       <div className="container mx-auto px-4 py-12">
         {/* Hero Section */}
         <div className="text-center mb-16">
@@ -117,8 +113,6 @@ export default function CentralAjuda() {
             Encontre respostas para suas dúvidas ou entre em contato com nosso suporte especializado
           </p>
         </div>
-
-        <EzoicAd placement="under_page_title" className="mb-8" />
 
         {/* Quick Help Categories */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
@@ -163,8 +157,6 @@ export default function CentralAjuda() {
             </Accordion>
           </CardContent>
         </Card>
-
-        <EzoicAd placement="mid_content" className="mb-16" />
 
         {/* Support Channels */}
         <div className="mb-16">
@@ -236,7 +228,6 @@ export default function CentralAjuda() {
           </CardContent>
         </Card>
 
-        <EzoicAd placement="bottom_of_page" className="mt-8" />
       </div>
       <Footer />
     </div>

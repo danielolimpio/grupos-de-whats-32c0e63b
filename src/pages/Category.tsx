@@ -4,7 +4,6 @@ import { Sidebar } from "@/components/sidebar";
 import { Footer } from "@/components/footer";
 import { GroupGrid } from "@/components/group-grid";
 import { StatsBanner } from "@/components/stats-banner";
-import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { getCategoryBySlug } from "@/data/categories";
@@ -137,9 +136,7 @@ const Category = () => {
       <div className="min-h-screen bg-background">
         <Header />
         
-        {/* Ezoic - top_of_page - top_of_page */}
         <div className="container mx-auto px-4 pt-4">
-          <EzoicAd placement="top_of_page" />
         </div>
         
         <main className="container mx-auto px-4 py-8">
@@ -161,9 +158,6 @@ const Category = () => {
                 <p className="text-lg text-muted-foreground">{category.description}</p>
               </div>
               
-              {/* Ezoic - under_page_title - under_page_title */}
-              <EzoicAd placement="under_page_title" className="my-4" />
-
               {groups.length > 0 ? (
                 <GroupGrid 
                   groups={groups}
@@ -178,8 +172,6 @@ const Category = () => {
                 </div>
               )}
               
-              {/* Ezoic - bottom_of_page - bottom_of_page */}
-              <EzoicAd placement="bottom_of_page" className="mt-8" />
             </div>
 
             <div className="hidden lg:block">
@@ -190,9 +182,6 @@ const Category = () => {
             </div>
           </div>
         </main>
-
-        {/* Ezoic Floating Ads */}
-        <EzoicFloatingAds />
 
         <Footer />
       </div>

@@ -3,7 +3,6 @@ import { Badge } from '@/components/ui/badge';
 import { Search, Users, Shield, MessageSquare, CheckCircle, UserPlus } from 'lucide-react';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
-import { EzoicAd, EzoicFloatingAds } from '@/components/ezoic-ad';
 import { useUpdateCanonical } from '@/hooks/useCanonical';
 
 export default function ComoFunciona() {
@@ -54,9 +53,6 @@ export default function ComoFunciona() {
     <div className="min-h-screen bg-gradient-to-br from-background via-background/50 to-primary/5">
       <Header />
       
-      <EzoicAd placement="top_of_page" className="container mx-auto px-4" />
-      <EzoicFloatingAds />
-      
       <div className="container mx-auto px-4 py-12">
         {/* Hero Section */}
         <div className="text-center mb-16">
@@ -67,8 +63,6 @@ export default function ComoFunciona() {
             Descubra como nossa plataforma conecta pessoas através de grupos de WhatsApp organizados e seguros
           </p>
         </div>
-
-        <EzoicAd placement="under_page_title" className="mb-8" />
 
         {/* Steps */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
@@ -93,8 +87,6 @@ export default function ComoFunciona() {
             </Card>
           ))}
         </div>
-
-        <EzoicAd placement="mid_content" className="mb-16" />
 
         {/* Benefits Section */}
         <Card className="mb-16 bg-gradient-to-r from-primary/5 to-primary/10 border-primary/20">
@@ -152,7 +144,6 @@ export default function ComoFunciona() {
           </CardContent>
         </Card>
 
-        <EzoicAd placement="bottom_of_page" className="mt-8" />
       </div>
       <Footer />
     </div>

@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
 import { Sidebar } from "@/components/sidebar";
-import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
 import { useCanonical } from "@/hooks/useCanonical";
 import { sortedBlogPosts, getFeaturedPosts } from "@/data/blog-posts";
 
@@ -43,9 +42,7 @@ export default function Blog() {
     <div className="min-h-screen bg-background">
       <Header />
       
-      {/* Ezoic - top_of_page - top_of_page */}
       <div className="container mx-auto px-4 pt-4">
-        <EzoicAd placement="top_of_page" />
       </div>
       
       <main className="container mx-auto px-4 py-8">
@@ -62,8 +59,6 @@ export default function Blog() {
             Dicas, tutoriais e estratégias para criar, gerenciar e fazer crescer seus grupos de WhatsApp
           </p>
           
-          {/* Ezoic - under_page_title - under_page_title */}
-          <EzoicAd placement="under_page_title" className="my-4" />
         </section>
 
         {/* Search and Filter */}
@@ -216,12 +211,7 @@ export default function Blog() {
           </Card>
         </section>
         
-        {/* Ezoic - bottom_of_page - bottom_of_page */}
-        <EzoicAd placement="bottom_of_page" className="mt-8" />
       </main>
-
-      {/* Ezoic Floating Ads */}
-      <EzoicFloatingAds />
 
       <Footer />
     </div>
