@@ -24,7 +24,6 @@ export default function CriarGruposSemExporNumero() {
       <div className="min-h-screen bg-background">
         <Header />
         
-        {/* Ezoic - top_of_page - top_of_page */}
         <div className="container mx-auto px-4 pt-4 max-w-4xl">
         </div>
         
@@ -54,7 +53,6 @@ export default function CriarGruposSemExporNumero() {
               className="w-full h-[400px] object-cover rounded-lg mt-6"
             />
             
-            {/* Ezoic - under_page_title - under_page_title */}
           </header>
 
           <div className="prose prose-lg max-w-none">
@@ -62,7 +60,6 @@ export default function CriarGruposSemExporNumero() {
               Você já pensou em criar um grupo de WhatsApp para seu negócio, estudos, comunidade ou evento — mas desistiu ao perceber que, para isso, teria que expor seu número de celular a dezenas, centenas ou até milhares de desconhecidos? Não está sozinho. Milhões de brasileiros enfrentam esse dilema diariamente.
             </p>
             
-            {/* Ezoic - under_first_paragraph - under_first_paragraph */}
             <p className="text-lg text-muted-foreground mb-8">
               Afinal, num mundo onde spam telefônico, golpes e vazamento de dados são realidades cada vez mais comuns, quem quer deixar seu contato pessoal à disposição de qualquer um?
             </p>
@@ -759,10 +756,8 @@ export default function CriarGruposSemExporNumero() {
             </Button>
           </div>
           
-          {/* Ezoic - bottom_of_page - bottom_of_page */}
         </article>
 
-        {/* Ezoic Floating Ads */}
         <Footer />
       </div>
     </>

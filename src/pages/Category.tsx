@@ -136,7 +136,6 @@ const Category = () => {
       <div className="min-h-screen bg-background">
         <Header />
         
-        {/* Ezoic - top_of_page - top_of_page */}
         <div className="container mx-auto px-4 pt-4">
         </div>
         
@@ -159,7 +158,6 @@ const Category = () => {
                 <p className="text-lg text-muted-foreground">{category.description}</p>
               </div>
               
-              {/* Ezoic - under_page_title - under_page_title */}
               {groups.length > 0 ? (
                 <GroupGrid 
                   groups={groups}
@@ -174,7 +172,6 @@ const Category = () => {
                 </div>
               )}
               
-              {/* Ezoic - bottom_of_page - bottom_of_page */}
             </div>
 
             <div className="hidden lg:block">
@@ -186,7 +183,6 @@ const Category = () => {
           </div>
         </main>
 
-        {/* Ezoic Floating Ads */}
         <Footer />
       </div>
     </>

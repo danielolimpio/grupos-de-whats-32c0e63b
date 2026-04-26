@@ -217,7 +217,6 @@ const Index = () => {
       <div className="min-h-screen bg-background">
       <Header />
       
-      {/* Ezoic - top_of_page - top_of_page */}
       <div className="container mx-auto px-4 pt-4">
       </div>
       
@@ -235,7 +234,6 @@ const Index = () => {
 
         <FeaturedLinks />
         
-        {/* Ezoic - under_page_title - under_page_title */}
         <div className="flex-col lg:flex-row gap-8 flex">
           <div className="block lg:hidden">
             <Sidebar 
@@ -324,10 +322,8 @@ const Index = () => {
           </div>
         </div>
         
-        {/* Ezoic - bottom_of_page - bottom_of_page */}
       </main>
 
-      {/* Ezoic Floating Ads */}
       <Footer />
     </div>
     </>

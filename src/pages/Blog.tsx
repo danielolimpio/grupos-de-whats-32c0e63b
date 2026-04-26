@@ -42,7 +42,6 @@ export default function Blog() {
     <div className="min-h-screen bg-background">
       <Header />
       
-      {/* Ezoic - top_of_page - top_of_page */}
       <div className="container mx-auto px-4 pt-4">
       </div>
       
@@ -60,7 +59,6 @@ export default function Blog() {
             Dicas, tutoriais e estratégias para criar, gerenciar e fazer crescer seus grupos de WhatsApp
           </p>
           
-          {/* Ezoic - under_page_title - under_page_title */}
         </section>
 
         {/* Search and Filter */}
@@ -213,10 +211,8 @@ export default function Blog() {
           </Card>
         </section>
         
-        {/* Ezoic - bottom_of_page - bottom_of_page */}
       </main>
 
-      {/* Ezoic Floating Ads */}
       <Footer />
     </div>
   </>;

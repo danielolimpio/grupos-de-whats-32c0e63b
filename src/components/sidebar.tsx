@@ -93,7 +93,6 @@ export function Sidebar({ selectedCategory, onCategorySelect }: SidebarProps) {
 
   return (
     <aside className="w-full lg:w-80 space-y-6 order-first lg:order-last">
-      {/* Ezoic - sidebar - sidebar */}
       {/* Categories */}
       <Card>
         <CardHeader>
@@ -142,7 +141,6 @@ export function Sidebar({ selectedCategory, onCategorySelect }: SidebarProps) {
         </CardContent>
       </Card>
 
-      {/* Ezoic - sidebar_middle - sidebar_middle */}
       {/* Blog Preview with Thumbnails */}
       <Card>
         <CardHeader>
@@ -184,7 +182,6 @@ export function Sidebar({ selectedCategory, onCategorySelect }: SidebarProps) {
         </CardContent>
       </Card>
 
-      {/* Ezoic - sidebar_bottom - sidebar_bottom */}
     </aside>
   );
 }

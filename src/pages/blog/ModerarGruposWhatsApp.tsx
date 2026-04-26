@@ -24,7 +24,6 @@ export default function ModerarGruposWhatsApp() {
       <div className="min-h-screen bg-background">
         <Header />
         
-        {/* Ezoic - top_of_page */}
         <div className="container mx-auto px-4 pt-4 max-w-4xl">
         </div>
         
@@ -54,7 +53,6 @@ export default function ModerarGruposWhatsApp() {
               className="w-full h-[400px] object-cover rounded-lg mt-6"
             />
             
-            {/* Ezoic - under_page_title */}
           </header>
 
           <div className="prose prose-lg max-w-none">
@@ -72,7 +70,6 @@ export default function ModerarGruposWhatsApp() {
               Se você é administrador de um grupo — seja ele com 10 ou 1.000 membros —, este artigo foi feito para você. Vamos explorar desde a criação das regras até técnicas avançadas de engajamento, passando pelas ferramentas nativas do aplicativo, estratégias para resolver conflitos e até como identificar sinais de que é hora de arquivar o grupo. Tudo com base em experiências reais, dados confiáveis e, acima de tudo, bom senso.
             </p>
 
-            {/* Ezoic - under_first_paragraph */}
             {/* Seção 1 */}
             <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
               Por Que a Moderação de Grupos de WhatsApp é Essencial?
@@ -102,7 +99,6 @@ export default function ModerarGruposWhatsApp() {
               </CardContent>
             </Card>
 
-            {/* Ezoic - under_second_paragraph */}
             {/* Seção 2 */}
             <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
               Como Criar Regras Claras e Eficazes (Sem Parecer Autoritário)
@@ -208,7 +204,6 @@ export default function ModerarGruposWhatsApp() {
               </CardContent>
             </Card>
 
-            {/* Ezoic - mid_content */}
             {/* Seção 3 */}
             <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
               Ferramentas de Controle Oficiais do WhatsApp: Saiba Usá-las com Inteligência
@@ -292,7 +287,6 @@ export default function ModerarGruposWhatsApp() {
               </CardContent>
             </Card>
 
-            {/* Ezoic - long_content */}
             {/* Seção 4 */}
             <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
               Como Lidar com Conflitos sem Perder a Autoridade (Nem os Amigos)
@@ -392,7 +386,6 @@ export default function ModerarGruposWhatsApp() {
               Lembre-se: o objetivo não é vencer uma discussão, mas preservar a comunidade.
             </p>
 
-            {/* Ezoic - longer_content */}
             {/* Seção 5 */}
             <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
               Técnicas de Engajamento para Manter o Grupo Ativo (Sem Virar Spam)
@@ -521,7 +514,6 @@ export default function ModerarGruposWhatsApp() {
               </CardContent>
             </Card>
 
-            {/* Ezoic - longest_content */}
             {/* Checklist */}
             <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
               Checklist Rápida: 10 Ações para Administradores Conscientes
@@ -613,7 +605,6 @@ export default function ModerarGruposWhatsApp() {
               </CardContent>
             </Card>
 
-            {/* Ezoic - incontent_5 */}
             {/* Conclusão */}
             <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
               Conclusão: Moderar é Cuidar — e Cuidar Transforma
@@ -702,7 +693,6 @@ export default function ModerarGruposWhatsApp() {
 
           </div>
           
-          {/* Ezoic - bottom_of_page */}
           <AuthorBio />
 
           <div className="mt-12 pt-8 border-t">
@@ -720,7 +710,6 @@ export default function ModerarGruposWhatsApp() {
           </div>
         </article>
 
-        {/* Ezoic Floating Ads */}
         <Footer />
       </div>
     </>
