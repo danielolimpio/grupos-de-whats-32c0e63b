@@ -19,7 +19,6 @@ import {
   MessageCircle
 } from "lucide-react";
 import { toast } from "sonner";
-import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
 import { useCanonical } from "@/hooks/useCanonical";
 
 interface Group {
@@ -229,9 +228,6 @@ const GroupDetails = () => {
       <div className="min-h-screen bg-background">
         <Header />
         
-        <EzoicAd placement="top_of_page" className="container mx-auto px-4" />
-        <EzoicFloatingAds />
-        
         <main className="container mx-auto px-4 py-8 max-w-4xl">
           <Card className="mb-8">
             <CardHeader>
@@ -274,8 +270,6 @@ const GroupDetails = () => {
             </CardHeader>
             
             <CardContent>
-              <EzoicAd placement="under_page_title" className="mb-6" />
-
               {/* Social Share Buttons */}
               <div className="mb-6 pb-6 border-b">
                 <p className="text-sm font-medium mb-3 flex items-center gap-2">
@@ -366,8 +360,6 @@ const GroupDetails = () => {
                 </p>
               </div>
 
-              <EzoicAd placement="mid_content" className="mb-6" />
-
               {/* Agreement Checkbox */}
               <div className="mb-6 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
                 <label className="flex items-start gap-3 cursor-pointer">
@@ -411,7 +403,6 @@ const GroupDetails = () => {
             </CardContent>
           </Card>
 
-          <EzoicAd placement="bottom_of_page" className="my-6" />
         </main>
 
         <Footer />

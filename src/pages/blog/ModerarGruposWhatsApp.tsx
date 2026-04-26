@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { AuthorInfo } from "@/components/blog/AuthorInfo";
 import { AuthorBio } from "@/components/blog/AuthorBio";
-import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
 import { useCanonical } from "@/hooks/useCanonical";
 
 export default function ModerarGruposWhatsApp() {
@@ -27,7 +26,6 @@ export default function ModerarGruposWhatsApp() {
         
         {/* Ezoic - top_of_page */}
         <div className="container mx-auto px-4 pt-4 max-w-4xl">
-          <EzoicAd placement="top_of_page" />
         </div>
         
         <article className="container mx-auto px-4 py-8 max-w-4xl">
@@ -57,7 +55,6 @@ export default function ModerarGruposWhatsApp() {
             />
             
             {/* Ezoic - under_page_title */}
-            <EzoicAd placement="under_page_title" className="my-4" />
           </header>
 
           <div className="prose prose-lg max-w-none">
@@ -76,8 +73,6 @@ export default function ModerarGruposWhatsApp() {
             </p>
 
             {/* Ezoic - under_first_paragraph */}
-            <EzoicAd placement="under_first_paragraph" className="my-6" />
-
             {/* Seção 1 */}
             <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
               Por Que a Moderação de Grupos de WhatsApp é Essencial?
@@ -108,8 +103,6 @@ export default function ModerarGruposWhatsApp() {
             </Card>
 
             {/* Ezoic - under_second_paragraph */}
-            <EzoicAd placement="under_second_paragraph" className="my-6" />
-
             {/* Seção 2 */}
             <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
               Como Criar Regras Claras e Eficazes (Sem Parecer Autoritário)
@@ -216,8 +209,6 @@ export default function ModerarGruposWhatsApp() {
             </Card>
 
             {/* Ezoic - mid_content */}
-            <EzoicAd placement="mid_content" className="my-6" />
-
             {/* Seção 3 */}
             <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
               Ferramentas de Controle Oficiais do WhatsApp: Saiba Usá-las com Inteligência
@@ -302,8 +293,6 @@ export default function ModerarGruposWhatsApp() {
             </Card>
 
             {/* Ezoic - long_content */}
-            <EzoicAd placement="long_content" className="my-6" />
-
             {/* Seção 4 */}
             <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
               Como Lidar com Conflitos sem Perder a Autoridade (Nem os Amigos)
@@ -404,8 +393,6 @@ export default function ModerarGruposWhatsApp() {
             </p>
 
             {/* Ezoic - longer_content */}
-            <EzoicAd placement="longer_content" className="my-6" />
-
             {/* Seção 5 */}
             <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
               Técnicas de Engajamento para Manter o Grupo Ativo (Sem Virar Spam)
@@ -535,8 +522,6 @@ export default function ModerarGruposWhatsApp() {
             </Card>
 
             {/* Ezoic - longest_content */}
-            <EzoicAd placement="longest_content" className="my-6" />
-
             {/* Checklist */}
             <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
               Checklist Rápida: 10 Ações para Administradores Conscientes
@@ -629,8 +614,6 @@ export default function ModerarGruposWhatsApp() {
             </Card>
 
             {/* Ezoic - incontent_5 */}
-            <EzoicAd placement="incontent_5" className="my-6" />
-
             {/* Conclusão */}
             <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground">
               Conclusão: Moderar é Cuidar — e Cuidar Transforma
@@ -720,8 +703,6 @@ export default function ModerarGruposWhatsApp() {
           </div>
           
           {/* Ezoic - bottom_of_page */}
-          <EzoicAd placement="bottom_of_page" className="my-8" />
-
           <AuthorBio />
 
           <div className="mt-12 pt-8 border-t">
@@ -740,8 +721,6 @@ export default function ModerarGruposWhatsApp() {
         </article>
 
         {/* Ezoic Floating Ads */}
-        <EzoicFloatingAds />
-
         <Footer />
       </div>
     </>

@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { AuthorInfo } from "@/components/blog/AuthorInfo";
 import { AuthorBio } from "@/components/blog/AuthorBio";
-import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
 import { useCanonical } from "@/hooks/useCanonical";
 
 export default function GrupoSucesso2025() {
@@ -26,7 +25,6 @@ export default function GrupoSucesso2025() {
         
         {/* Ezoic - top_of_page - top_of_page */}
         <div className="container mx-auto px-4 pt-4 max-w-4xl">
-          <EzoicAd placement="top_of_page" />
         </div>
         
         <article className="container mx-auto px-4 py-8 max-w-4xl">
@@ -56,7 +54,6 @@ export default function GrupoSucesso2025() {
             />
             
             {/* Ezoic - under_page_title - under_page_title */}
-            <EzoicAd placement="under_page_title" className="my-4" />
           </header>
 
           <div className="prose prose-lg max-w-none">
@@ -65,8 +62,6 @@ export default function GrupoSucesso2025() {
             </p>
             
             {/* Ezoic - under_first_paragraph - under_first_paragraph */}
-            <EzoicAd placement="under_first_paragraph" className="my-4" />
-
             <h2 className="text-3xl font-bold mt-12 mb-6">Fase 1: Planejamento Estratégico (Antes de Criar)</h2>
 
             <h3 className="text-2xl font-bold mt-8 mb-4">1. Defina o Propósito Claro</h3>
@@ -130,8 +125,6 @@ export default function GrupoSucesso2025() {
             </ol>
             
             {/* Ezoic - under_second_paragraph - under_second_paragraph */}
-            <EzoicAd placement="under_second_paragraph" className="my-4" />
-
             <h3 className="text-2xl font-bold mt-8 mb-4">3. Prepare Conteúdo Inicial</h3>
             <p>ANTES de adicionar membros, prepare:</p>
             <ul className="list-disc pl-6 space-y-2">
@@ -178,8 +171,6 @@ export default function GrupoSucesso2025() {
             <h2 className="text-3xl font-bold mt-12 mb-6">Fase 4: Engajamento e Retenção</h2>
             
             {/* Ezoic - mid_content - mid_content */}
-            <EzoicAd placement="mid_content" className="my-4" />
-
             <h3 className="text-2xl font-bold mt-8 mb-4">1. Crie Rotinas e Tradições</h3>
             <p>Rituais criam antecipação e hábito:</p>
             <ul className="list-disc pl-6 space-y-2">
@@ -210,8 +201,6 @@ export default function GrupoSucesso2025() {
             <h2 className="text-3xl font-bold mt-12 mb-6">Fase 5: Escala e Sustentabilidade</h2>
             
             {/* Ezoic - long_content - long_content */}
-            <EzoicAd placement="long_content" className="my-4" />
-
             <h3 className="text-2xl font-bold mt-8 mb-4">1. Estruture para Crescimento</h3>
             <p>Com 100+ membros:</p>
             <ul className="list-disc pl-6 space-y-2">
@@ -260,8 +249,6 @@ export default function GrupoSucesso2025() {
           </div>
           
           {/* Ezoic - bottom_of_page - bottom_of_page */}
-          <EzoicAd placement="bottom_of_page" className="my-8" />
-
           <AuthorBio />
 
           <div className="mt-12 pt-8 border-t">
@@ -280,8 +267,6 @@ export default function GrupoSucesso2025() {
         </article>
 
         {/* Ezoic Floating Ads */}
-        <EzoicFloatingAds />
-
         <Footer />
       </div>
     </>

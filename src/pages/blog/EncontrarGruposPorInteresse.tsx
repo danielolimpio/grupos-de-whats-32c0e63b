@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { AuthorInfo } from "@/components/blog/AuthorInfo";
 import { AuthorBio } from "@/components/blog/AuthorBio";
-import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
 import { useCanonical } from "@/hooks/useCanonical";
 
 export default function EncontrarGruposPorInteresse() {
@@ -25,7 +24,6 @@ export default function EncontrarGruposPorInteresse() {
         <Header />
         
         <div className="container mx-auto px-4 pt-4 max-w-4xl">
-          <EzoicAd placement="top_of_page" />
         </div>
         
         <article className="container mx-auto px-4 py-8 max-w-4xl">
@@ -54,7 +52,6 @@ export default function EncontrarGruposPorInteresse() {
               className="w-full h-[400px] object-cover rounded-lg mb-6 mt-6"
             />
             
-            <EzoicAd placement="under_page_title" className="my-4" />
           </header>
 
           <div className="prose prose-lg max-w-none">
@@ -62,8 +59,6 @@ export default function EncontrarGruposPorInteresse() {
               Em 2026, mais do que nunca, a internet é uma colmeia fervilhante de vozes, ideias e comunidades. E quando falamos em conexões rápidas e eficientes, o WhatsApp continua reinando absoluto. Mas com milhões de grupos espalhados pelo mundo, como encontrar aquele que realmente combina com você? Este guia definitivo vai te mostrar exatamente como localizar comunidades ativas e relevantes para qualquer interesse.
             </p>
             
-            <EzoicAd placement="under_first_paragraph" className="my-4" />
-
             <h2 className="text-3xl font-bold mt-12 mb-6">Por Que Buscar Grupos de WhatsApp em 2026?</h2>
             
             <p>Com a evolução das redes sociais, os grupos de WhatsApp se tornaram um dos principais meios de comunicação para comunidades de nicho. Diferente das redes sociais tradicionais, os grupos oferecem:</p>
@@ -97,8 +92,6 @@ export default function EncontrarGruposPorInteresse() {
               <li><strong>Telegram:</strong> Canais que listam grupos de WhatsApp por categoria</li>
             </ul>
             
-            <EzoicAd placement="under_second_paragraph" className="my-4" />
-
             <h3 className="text-2xl font-bold mt-8 mb-4">3. Indicações Pessoais</h3>
             <p>O boca a boca continua sendo uma das formas mais confiáveis:</p>
             <ul className="list-disc pl-6 space-y-2">
@@ -116,8 +109,6 @@ export default function EncontrarGruposPorInteresse() {
             </ul>
 
             <h2 className="text-3xl font-bold mt-12 mb-6">Categorias Populares de Grupos em 2026</h2>
-            
-            <EzoicAd placement="mid_content" className="my-4" />
             
             <p>As categorias mais buscadas atualmente incluem:</p>
             
@@ -168,8 +159,6 @@ export default function EncontrarGruposPorInteresse() {
               <li>❌ Spam constante e ausência de moderação</li>
             </ul>
             
-            <EzoicAd placement="long_content" className="my-4" />
-
             <h2 className="text-3xl font-bold mt-12 mb-6">Como Aproveitar ao Máximo os Grupos</h2>
 
             <h3 className="text-2xl font-bold mt-8 mb-4">Seja um Membro Ativo e Valioso</h3>
@@ -218,8 +207,6 @@ export default function EncontrarGruposPorInteresse() {
             </div>
           </div>
           
-          <EzoicAd placement="bottom_of_page" className="my-8" />
-
           <AuthorBio />
 
           <div className="mt-12 pt-8 border-t">
@@ -236,8 +223,6 @@ export default function EncontrarGruposPorInteresse() {
             </div>
           </div>
         </article>
-
-        <EzoicFloatingAds />
 
         <Footer />
       </div>

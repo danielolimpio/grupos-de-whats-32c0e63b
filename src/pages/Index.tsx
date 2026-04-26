@@ -6,7 +6,6 @@ import { Footer } from "@/components/footer";
 import { FeaturedLinks } from "@/components/featured-links";
 import { SEOContent } from "@/components/seo-content";
 import { BlogPreview } from "@/components/blog-preview";
-import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Helmet } from "react-helmet-async";
@@ -220,7 +219,6 @@ const Index = () => {
       
       {/* Ezoic - top_of_page - top_of_page */}
       <div className="container mx-auto px-4 pt-4">
-        <EzoicAd placement="top_of_page" />
       </div>
       
       <main className="container mx-auto px-4 py-8">
@@ -238,8 +236,6 @@ const Index = () => {
         <FeaturedLinks />
         
         {/* Ezoic - under_page_title - under_page_title */}
-        <EzoicAd placement="under_page_title" className="my-4" />
-
         <div className="flex-col lg:flex-row gap-8 flex">
           <div className="block lg:hidden">
             <Sidebar 
@@ -329,12 +325,9 @@ const Index = () => {
         </div>
         
         {/* Ezoic - bottom_of_page - bottom_of_page */}
-        <EzoicAd placement="bottom_of_page" className="mt-8" />
       </main>
 
       {/* Ezoic Floating Ads */}
-      <EzoicFloatingAds />
-
       <Footer />
     </div>
     </>

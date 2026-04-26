@@ -46,8 +46,6 @@ import { getAllCategoriesSorted } from "@/data/categories";
 import { getLatestPosts } from "@/data/blog-posts";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { EzoicAd } from "./ezoic-ad";
-
 // Icon mapping for categories
 const getIconForCategory = (categoryId: string) => {
   const iconMap: Record<string, any> = {
@@ -96,8 +94,6 @@ export function Sidebar({ selectedCategory, onCategorySelect }: SidebarProps) {
   return (
     <aside className="w-full lg:w-80 space-y-6 order-first lg:order-last">
       {/* Ezoic - sidebar - sidebar */}
-      <EzoicAd placement="sidebar" />
-      
       {/* Categories */}
       <Card>
         <CardHeader>
@@ -147,8 +143,6 @@ export function Sidebar({ selectedCategory, onCategorySelect }: SidebarProps) {
       </Card>
 
       {/* Ezoic - sidebar_middle - sidebar_middle */}
-      <EzoicAd placement="sidebar_middle" />
-
       {/* Blog Preview with Thumbnails */}
       <Card>
         <CardHeader>
@@ -191,7 +185,6 @@ export function Sidebar({ selectedCategory, onCategorySelect }: SidebarProps) {
       </Card>
 
       {/* Ezoic - sidebar_bottom - sidebar_bottom */}
-      <EzoicAd placement="sidebar_bottom" />
     </aside>
   );
 }

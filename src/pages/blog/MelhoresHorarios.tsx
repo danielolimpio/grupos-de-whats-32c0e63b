@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { AuthorInfo } from "@/components/blog/AuthorInfo";
 import { AuthorBio } from "@/components/blog/AuthorBio";
-import { EzoicAd, EzoicFloatingAds } from "@/components/ezoic-ad";
 import { useCanonical } from "@/hooks/useCanonical";
 
 export default function MelhoresHorarios() {
@@ -23,9 +22,6 @@ export default function MelhoresHorarios() {
 
       <div className="min-h-screen bg-background">
         <Header />
-        
-        <EzoicAd placement="top_of_page" className="container mx-auto px-4" />
-        <EzoicFloatingAds />
         
         <article className="container mx-auto px-4 py-8 max-w-4xl">
           <Link to="/blog">
@@ -54,14 +50,10 @@ export default function MelhoresHorarios() {
             />
           </header>
 
-          <EzoicAd placement="under_page_title" className="my-6" />
-
           <div className="prose prose-lg max-w-none">
             <p className="text-xl text-muted-foreground mb-8">
               O timing é tudo quando se trata de engajamento em grupos de WhatsApp. Postar no horário certo pode significar a diferença entre uma mensagem que gera dezenas de interações e uma que passa completamente despercebida. Neste guia definitivo de 2025, você vai descobrir exatamente quando postar para maximizar o alcance e o engajamento do seu conteúdo.
             </p>
-
-            <EzoicAd placement="under_first_paragraph" className="my-6" />
 
             <h2 className="text-3xl font-bold mt-12 mb-6">Por Que o Horário de Postagem é Importante?</h2>
             <p>
@@ -70,8 +62,6 @@ export default function MelhoresHorarios() {
             <p>
               Além disso, o WhatsApp é uma plataforma de comunicação imediata. As pessoas esperam interações em tempo real, e mensagens postadas no horário certo têm muito mais chances de gerar discussões ativas e engajamento instantâneo.
             </p>
-
-            <EzoicAd placement="under_second_paragraph" className="my-6" />
 
             <h2 className="text-3xl font-bold mt-12 mb-6">Horários Gerais de Pico no WhatsApp</h2>
             <p>
@@ -101,8 +91,6 @@ export default function MelhoresHorarios() {
             <p>
               <strong>Dica:</strong> Evite sextas após 17:00 e fins de semana, quando o foco está em lazer, não em trabalho.
             </p>
-
-            <EzoicAd placement="mid_content" className="my-6" />
 
             <h3 className="text-2xl font-bold mt-8 mb-4">2. Grupos de Vendas e Ofertas</h3>
             <p>
@@ -143,8 +131,6 @@ export default function MelhoresHorarios() {
               <strong>Dica:</strong> Para grupos de futebol, poste antes e durante os jogos importantes. Para séries, poste logo após novos episódios serem lançados.
             </p>
 
-            <EzoicAd placement="long_content" className="my-6" />
-
             <h3 className="text-2xl font-bold mt-8 mb-4">5. Grupos de Mães e Família</h3>
             <p>
               Para grupos focados em maternidade, família e filhos:
@@ -180,8 +166,6 @@ export default function MelhoresHorarios() {
               <li><strong>Domingo:</strong> Melhor para reflexões, planejamento e conteúdo inspiracional</li>
               <li><strong>Segunda:</strong> Evite manhã (pessoas sobrecarregadas), prefira noite</li>
             </ul>
-
-            <EzoicAd placement="longer_content" className="my-6" />
 
             <h2 className="text-3xl font-bold mt-12 mb-6">Como Descobrir o Melhor Horário para SEU Grupo</h2>
             <p>
@@ -243,8 +227,6 @@ export default function MelhoresHorarios() {
               <li>Feriados: ajuste para rotinas alteradas</li>
             </ul>
 
-            <EzoicAd placement="longest_content" className="my-6" />
-
             <h3 className="text-2xl font-bold mt-8 mb-4">4. Evite Sobrecarga</h3>
             <p>
               Mesmo no horário perfeito, não exagere na frequência. Diretrizes gerais:
@@ -271,8 +253,6 @@ export default function MelhoresHorarios() {
               <li><strong>Não adaptar a feriados:</strong> Rotinas mudam completamente em feriados</li>
               <li><strong>Copiar horários de outras plataformas:</strong> WhatsApp tem dinâmica única</li>
             </ul>
-
-            <EzoicAd placement="incontent_5" className="my-6" />
 
             <h2 className="text-3xl font-bold mt-12 mb-6">Casos de Sucesso: Exemplos Reais</h2>
             
@@ -304,8 +284,6 @@ export default function MelhoresHorarios() {
           </div>
 
           <AuthorBio />
-
-          <EzoicAd placement="bottom_of_page" className="my-6" />
 
           <div className="mt-12 pt-8 border-t">
             <div className="flex items-center justify-between">
