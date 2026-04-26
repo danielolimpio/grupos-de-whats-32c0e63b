@@ -591,7 +591,7 @@ export default function CookiePolicy() {
               {[
                 "LGPD (Lei nº 13.709/2018)",
                 "Marco Civil da Internet (Lei nº 12.965/2014)",
-                "Políticas do Google AdSense e de redes publicitárias",
+                "Diretrizes do Google para experiência do usuário",
                 "Boas práticas de transparência com o usuário"
               ].map((item, index) => (
                 <div key={index} className="flex items-center gap-2 text-sm">
