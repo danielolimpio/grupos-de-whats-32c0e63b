@@ -53,12 +53,7 @@ export default function GroupsList({ groups, onRefresh, getStatusBadge }: Groups
   const { toast } = useToast();
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
-  const handleNavigateToCheckout = (groupId: string) => {
-    // Store the group ID in sessionStorage to use in checkout
-    sessionStorage.setItem('checkout-group-id', groupId);
-    // Navigate to checkout page
-    window.location.href = '/checkout';
-  };
+  // Plataforma 100% gratuita — sem checkout/pagamento.
 
   const handleDeleteGroup = async (groupId: string) => {
     setDeletingId(groupId);
@@ -151,16 +146,7 @@ export default function GroupsList({ groups, onRefresh, getStatusBadge }: Groups
                 )}
               </div>
               <div className="flex items-center gap-2">
-                {group.status === 'approved' && !group.is_premium_active && (
-                  <Button
-                    size="sm"
-                    className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-semibold"
-                    onClick={() => handleNavigateToCheckout(group.id)}
-                  >
-                    <Star className="h-4 w-4 mr-2" />
-                    Anunciar
-                  </Button>
-                )}
+                {/* Plataforma 100% gratuita — sem opção de anúncio pago. */}
                 {group.status === 'approved' && (
                   <Button
                     variant="outline"

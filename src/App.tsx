@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { AuthProvider } from "@/hooks/useAuth";
 import Index from "./pages/Index";
@@ -37,7 +37,6 @@ import Category from "./pages/Category";
 import Sitemap from "./pages/Sitemap";
 import Contato from "./pages/Contato";
 import PoliticaTransparencia from "./pages/PoliticaTransparencia";
-import Checkout from "./pages/Checkout";
 import MigrateImages from "./pages/MigrateImages";
 import Sobre from "./pages/Sobre";
 
@@ -55,7 +54,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/checkout" element={<Navigate to="/" replace />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/admin-setup" element={<AdminSetup />} />
               <Route path="/admin/users" element={<AdminUsers />} />
