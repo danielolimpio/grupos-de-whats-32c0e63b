@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { Mail, FileText, Phone } from "lucide-react";
+import { Mail, FileText, Phone, Building2 } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
 import { useCanonical } from "@/hooks/useCanonical";
 
