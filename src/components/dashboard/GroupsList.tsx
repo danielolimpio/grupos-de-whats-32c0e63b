@@ -53,12 +53,7 @@ export default function GroupsList({ groups, onRefresh, getStatusBadge }: Groups
   const { toast } = useToast();
   const [deletingId, setDeletingId] = useState<string | null>(null);
 
-  const handleNavigateToCheckout = (groupId: string) => {
-    // Store the group ID in sessionStorage to use in checkout
-    sessionStorage.setItem('checkout-group-id', groupId);
-    // Navigate to checkout page
-    window.location.href = '/checkout';
-  };
+  // Plataforma 100% gratuita — sem checkout/pagamento.
 
   const handleDeleteGroup = async (groupId: string) => {
     setDeletingId(groupId);

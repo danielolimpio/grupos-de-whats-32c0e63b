@@ -299,12 +299,9 @@ export default function PrivacyPolicy() {
 
             <div>
               <h4 className="font-semibold text-foreground mb-2">Dados de pagamento</h4>
-              <p className="text-muted-foreground text-sm mb-2">
-                Podemos coletar os dados necessários para processar seu pagamento caso você opte por fazer compras, como o número do seu instrumento de pagamento e o código de segurança associado a ele. Todos os dados de pagamento são gerenciados e armazenados por Stripe.
+              <p className="text-muted-foreground text-sm">
+                Não coletamos, processamos ou armazenamos dados de pagamento. O GruposdeWhats é um diretório informativo 100% gratuito. Não vendemos produtos, não oferecemos assinaturas e não solicitamos números de cartão de crédito, dados bancários ou códigos de segurança em nenhuma página do site.
               </p>
-              <a href="https://stripe.com/br/privacy" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-primary hover:underline text-sm">
-                Ver política de privacidade do Stripe <ExternalLink className="h-3 w-3" />
-              </a>
             </div>
 
             <div>
