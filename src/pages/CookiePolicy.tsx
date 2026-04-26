@@ -320,12 +320,6 @@ export default function CookiePolicy() {
                                   <span className="font-medium ml-1">{ex.service}</span>
                                 </div>
                               )}
-                              {ex.type && (
-                                <div>
-                                  <span className="text-muted-foreground">Tipo:</span>
-                                  <span className="font-medium ml-1">{ex.type}</span>
-                                </div>
-                              )}
                               {ex.expiration && (
                                 <div>
                                   <span className="text-muted-foreground">Expiração:</span>
