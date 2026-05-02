@@ -1,13 +1,10 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
-import { Loader2 } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -17,63 +14,26 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
+const WHATSAPP_NUMBER = "5512982519116";
+
 const contactSchema = z.object({
-  name: z.string().min(3, "Nome deve ter pelo menos 3 caracteres").max(100, "Nome deve ter no máximo 100 caracteres"),
-  email: z.string().email("Email inválido").max(255, "Email deve ter no máximo 255 caracteres"),
-  whatsapp: z.string().min(10, "WhatsApp deve ter pelo menos 10 dígitos").max(20, "WhatsApp deve ter no máximo 20 dígitos"),
-  subject: z.string().min(3, "Assunto deve ter pelo menos 3 caracteres").max(200, "Assunto deve ter no máximo 200 caracteres"),
-  message: z.string().min(10, "Mensagem deve ter pelo menos 10 caracteres").max(1000, "Mensagem deve ter no máximo 1000 caracteres"),
+  name: z.string().trim().min(3, "Nome deve ter pelo menos 3 caracteres").max(100, "Nome deve ter no máximo 100 caracteres"),
+  subject: z.string().trim().min(3, "Assunto deve ter pelo menos 3 caracteres").max(200, "Assunto deve ter no máximo 200 caracteres"),
+  message: z.string().trim().min(10, "Mensagem deve ter pelo menos 10 caracteres").max(1000, "Mensagem deve ter no máximo 1000 caracteres"),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
 export function ContactForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
-
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      whatsapp: "",
-      subject: "",
-      message: "",
-    },
+    defaultValues: { name: "", subject: "", message: "" },
   });
 
-  const onSubmit = async (data: ContactFormData) => {
-    setIsSubmitting(true);
-    
-    try {
-      const { error } = await supabase
-        .from("contacts")
-        .insert({
-          name: data.name.trim(),
-          email: data.email.trim(),
-          whatsapp: data.whatsapp.trim(),
-          subject: data.subject.trim(),
-          message: data.message.trim(),
-        });
-
-      if (error) throw error;
-
-      toast({
-        title: "Mensagem enviada!",
-        description: "Recebemos sua mensagem e entraremos em contato em breve.",
-      });
-
-      form.reset();
-    } catch (error: any) {
-      console.error("Error submitting contact form:", error);
-      toast({
-        title: "Erro ao enviar mensagem",
-        description: "Por favor, tente novamente mais tarde.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+  const onSubmit = (data: ContactFormData) => {
+    const text = `Olá! Meu nome é ${data.name}.\n\nAssunto: ${data.subject}\n\nMensagem: ${data.message}`;
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -87,34 +47,6 @@ export function ContactForm() {
               <FormLabel>Nome Completo</FormLabel>
               <FormControl>
                 <Input placeholder="Seu nome completo" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>E-mail</FormLabel>
-              <FormControl>
-                <Input type="email" placeholder="seu@email.com" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="whatsapp"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>WhatsApp</FormLabel>
-              <FormControl>
-                <Input placeholder="(00) 00000-0000" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -142,7 +74,7 @@ export function ContactForm() {
             <FormItem>
               <FormLabel>Mensagem</FormLabel>
               <FormControl>
-                <Textarea 
+                <Textarea
                   placeholder="Escreva sua mensagem aqui..."
                   className="min-h-[120px]"
                   {...field}
@@ -153,20 +85,14 @@ export function ContactForm() {
           )}
         />
 
-        <Button 
-          type="submit" 
-          className="w-full"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? (
-            <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Enviando...
-            </>
-          ) : (
-            "Enviar Mensagem"
-          )}
+        <Button type="submit" className="w-full">
+          <MessageCircle className="mr-2 h-4 w-4" />
+          Enviar via WhatsApp
         </Button>
+
+        <p className="text-xs text-muted-foreground text-center">
+          Ao enviar, você será redirecionado para o WhatsApp com sua mensagem pronta para envio.
+        </p>
       </form>
     </Form>
   );
