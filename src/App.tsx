@@ -39,6 +39,7 @@ import Contato from "./pages/Contato";
 import PoliticaTransparencia from "./pages/PoliticaTransparencia";
 import MigrateImages from "./pages/MigrateImages";
 import Sobre from "./pages/Sobre";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <ScrollToTop />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/auth" element={<Auth />} />
