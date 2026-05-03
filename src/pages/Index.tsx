@@ -5,6 +5,7 @@ import { StatsBanner } from "@/components/stats-banner";
 import { Footer } from "@/components/footer";
 import { FeaturedLinks } from "@/components/featured-links";
 import { SEOContent } from "@/components/seo-content";
+import { HomeFAQ, homeFaqItems } from "@/components/home-faq";
 import { BlogPreview } from "@/components/blog-preview";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
@@ -176,40 +177,11 @@ const Index = () => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "Como entrar em um grupo de WhatsApp?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Basta escolher o grupo desejado, clicar em 'Entrar no Grupo' e você será redirecionado diretamente para o WhatsApp. Todos os grupos são verificados e seguros."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Os grupos de WhatsApp listados são seguros?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Sim! Todos os grupos passam por revisão manual antes de serem publicados. Removemos grupos com conteúdo impróprio, spam ou atividades suspeitas em até 24 horas."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Posso cadastrar meu grupo de WhatsApp gratuitamente?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Sim! O cadastro é 100% gratuito. Basta clicar em 'Anunciar Grupo', preencher as informações e aguardar a aprovação da nossa equipe de moderação."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Quantos grupos de WhatsApp estão disponíveis?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Temos mais de 12.500 grupos ativos e verificados, organizados em 27 categorias diferentes como amizade, namoro, estudos, vendas, esportes, tecnologia e mais."
-                }
-              }
-            ]
+            "mainEntity": homeFaqItems.map(item => ({
+              "@type": "Question",
+              "name": item.q,
+              "acceptedAnswer": { "@type": "Answer", "text": item.a }
+            }))
           })}
         </script>
       </Helmet>
@@ -310,6 +282,8 @@ const Index = () => {
             )}
 
             {!selectedCategory && <BlogPreview />}
+
+            {!selectedCategory && <HomeFAQ />}
 
             {!selectedCategory && <SEOContent />}
           </div>
