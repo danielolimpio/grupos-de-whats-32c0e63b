@@ -178,7 +178,25 @@ const Category = () => {
                   </p>
                 </div>
               )}
-              
+
+              {/* Internal linking: related categories for SEO */}
+              <section className="mt-12 pt-8 border-t border-border">
+                <h2 className="text-xl font-semibold mb-4">Categorias relacionadas</h2>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  {WHATSAPP_CATEGORIES
+                    .filter(c => c.slug !== category.slug)
+                    .slice(0, 9)
+                    .map(c => (
+                      <Link
+                        key={c.slug}
+                        to={`/categoria/${c.slug}`}
+                        className="px-4 py-3 rounded-lg border border-border bg-card hover:bg-accent hover:text-accent-foreground transition text-sm font-medium text-center"
+                      >
+                        {c.displayName || c.name}
+                      </Link>
+                    ))}
+                </div>
+              </section>
             </div>
 
             <div className="hidden lg:block">
