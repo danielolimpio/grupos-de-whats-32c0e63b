@@ -171,6 +171,21 @@ function buildSitemap(groups) {
     "humor","investimentos","cidades","concursos","frases","imobiliaria","profissoes",
     "eventos","carros","compra-e-venda","religiao","fas","memes",
   ];
+  // Categorias de cauda longa (estilo gruposwhats.app) — alta intenção de busca
+  const longtailSlugs = [
+    "grupos-whatsapp-flamengo","grupos-whatsapp-corinthians","grupos-whatsapp-palmeiras",
+    "grupos-whatsapp-sao-paulo-fc","grupos-whatsapp-santos","grupos-whatsapp-vasco",
+    "grupos-whatsapp-bbb-25","grupos-whatsapp-bbb-26","grupos-whatsapp-a-fazenda",
+    "grupos-whatsapp-free-fire","grupos-whatsapp-roblox","grupos-whatsapp-blox-fruits",
+    "grupos-whatsapp-brawl-stars","grupos-whatsapp-minecraft",
+    "grupos-whatsapp-kpop","grupos-whatsapp-bts","grupos-whatsapp-anime",
+    "grupos-whatsapp-evangelicos","grupos-whatsapp-catolicos",
+    "grupos-whatsapp-amizade","grupos-whatsapp-namoro",
+    "grupos-whatsapp-tiktok","grupos-whatsapp-kwai","grupos-whatsapp-instagram",
+    "grupos-whatsapp-receitas","grupos-whatsapp-emagrecimento",
+    "grupos-whatsapp-vagas-emprego","grupos-whatsapp-concursos",
+    "grupos-whatsapp-caminhoneiros","grupos-whatsapp-figurinhas",
+  ];
 
   const urls = [];
   for (const p of staticPages) {
@@ -178,6 +193,10 @@ function buildSitemap(groups) {
   }
   for (const c of categorySlugs) {
     urls.push({ loc: `${SITE}/categoria/grupos-do-whatsapp-de-${c}`, lastmod: today, priority: "0.8", changefreq: "daily" });
+  }
+  for (const c of longtailSlugs) {
+    urls.push({ loc: `${SITE}/categoria/${c}`, lastmod: today, priority: "0.9", changefreq: "weekly" });
+  }
   }
   for (const g of groups) {
     const slug = g.slug || slugify(g.name);
