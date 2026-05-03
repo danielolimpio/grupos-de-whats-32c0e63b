@@ -20,6 +20,12 @@ jobs:
       - name: Instalar dependências
         run: npm install
 
+      - name: Pré-renderizar grupos (SSG dinâmico do Supabase)
+        run: npm run prerender
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
+
       - name: Build do projeto
         run: npm run build
 
