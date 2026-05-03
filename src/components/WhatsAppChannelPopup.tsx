@@ -3,7 +3,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Sparkles, X } from "lucide-react";
 import logo from "@/assets/whatsapp-channel-logo.png";
 
-const CHANNEL_URL = "https://whatsapp.com/channel/0029Vb6q9Z02ZjDQz1234567"; // placeholder
+const CHANNEL_URL = "https://whatsapp.com/channel/0029VbCqSb6Bqbr0ieXhl713";
 const STORAGE_KEY = "wa_channel_popup_shown";
 const EXIT_KEY = "wa_channel_popup_exit_shown";
 
