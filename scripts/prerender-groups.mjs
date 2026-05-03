@@ -197,7 +197,6 @@ function buildSitemap(groups) {
   for (const c of longtailSlugs) {
     urls.push({ loc: `${SITE}/categoria/${c}`, lastmod: today, priority: "0.9", changefreq: "weekly" });
   }
-  }
   for (const g of groups) {
     const slug = g.slug || slugify(g.name);
     if (!slug) continue;
