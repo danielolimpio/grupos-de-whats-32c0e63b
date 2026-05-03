@@ -111,24 +111,30 @@ const Category = () => {
             "name": category.name,
             "description": category.description,
             "url": canonicalUrl,
+            "inLanguage": "pt-BR",
+            "isPartOf": {
+              "@type": "WebSite",
+              "name": "GruposdeWhats",
+              "url": "https://gruposdewhats.com.br/"
+            },
             "breadcrumb": {
               "@type": "BreadcrumbList",
               "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": "https://gruposdewhats.com.br/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": category.name,
-                  "item": canonicalUrl
-                }
+                { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://gruposdewhats.com.br/" },
+                { "@type": "ListItem", "position": 2, "name": "Categorias", "item": "https://gruposdewhats.com.br/todos-grupos" },
+                { "@type": "ListItem", "position": 3, "name": category.name, "item": canonicalUrl }
               ]
             },
-            "numberOfItems": groups.length
+            "mainEntity": {
+              "@type": "ItemList",
+              "numberOfItems": groups.length,
+              "itemListElement": groups.slice(0, 30).map((g, i) => ({
+                "@type": "ListItem",
+                "position": i + 1,
+                "url": `https://gruposdewhats.com.br/grupo/${g.id}`,
+                "name": g.name
+              }))
+            }
           })}
         </script>
       </Helmet>
