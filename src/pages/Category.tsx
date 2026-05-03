@@ -6,8 +6,9 @@ import { GroupGrid } from "@/components/group-grid";
 import { StatsBanner } from "@/components/stats-banner";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { getCategoryBySlug } from "@/data/categories";
+import { getCategoryBySlug, WHATSAPP_CATEGORIES } from "@/data/categories";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 import { useCanonical } from "@/hooks/useCanonical";
 
 interface GroupData {
