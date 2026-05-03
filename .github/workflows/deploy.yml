@@ -24,6 +24,9 @@ jobs:
       - name: Instalar dependências
         run: npm install
 
+      - name: Gerar páginas de categorias de cauda longa (SEO)
+        run: node scripts/generate-longtail-categories.mjs
+
       - name: Pré-renderizar grupos (SSG dinâmico do Supabase)
         run: npm run prerender
         env:
