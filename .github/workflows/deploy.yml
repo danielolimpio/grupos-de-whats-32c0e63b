@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+  schedule:
+    # Roda diariamente às 06:00 UTC (03:00 BRT) — regenera HTMLs e sitemap a partir do Supabase
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Permite acionar manualmente pela aba Actions do GitHub
 
 jobs:
   build-and-deploy:
