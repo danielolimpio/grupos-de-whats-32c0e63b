@@ -5,6 +5,7 @@ import { StatsBanner } from "@/components/stats-banner";
 import { Footer } from "@/components/footer";
 import { FeaturedLinks } from "@/components/featured-links";
 import { SEOContent } from "@/components/seo-content";
+import { HomeFAQ, homeFaqItems } from "@/components/home-faq";
 import { BlogPreview } from "@/components/blog-preview";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
