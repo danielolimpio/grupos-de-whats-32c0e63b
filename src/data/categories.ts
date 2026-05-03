@@ -279,6 +279,116 @@ export const WHATSAPP_CATEGORIES: Category[] = [
     seoTitle: 'Grupos de Whatsapp de União - Comunidade e Conexão 2026',
     metaDescription: 'Grupos de WhatsApp de união. Fortaleça laços, participe de comunidades e promova a união entre pessoas.',
     priority: 8
+  },
+  {
+    id: 'cidades',
+    name: 'Grupos do Whatsapp de Cidades',
+    displayName: 'Grupos Whatsapp Cidades',
+    slug: 'grupos-do-whatsapp-de-cidades',
+    description: 'Grupos por cidade e região do Brasil',
+    seoTitle: 'Grupos do Whatsapp de Cidades - Sua Região 2026',
+    metaDescription: 'Encontre grupos do WhatsApp da sua cidade. Conecte-se com pessoas da sua região e fique por dentro do que acontece.',
+    priority: 9
+  },
+  {
+    id: 'concursos',
+    name: 'Grupos do Whatsapp de Concursos',
+    displayName: 'Grupos Whatsapp Concursos',
+    slug: 'grupos-do-whatsapp-de-concursos',
+    description: 'Concursos públicos, editais e preparação',
+    seoTitle: 'Grupos do Whatsapp de Concursos Públicos - Editais 2026',
+    metaDescription: 'Grupos do WhatsApp de concursos públicos. Editais, dicas de estudo e materiais para passar no seu concurso.',
+    priority: 9
+  },
+  {
+    id: 'frases',
+    name: 'Grupos do Whatsapp de Frases',
+    displayName: 'Grupos Whatsapp Frases',
+    slug: 'grupos-do-whatsapp-de-frases',
+    description: 'Frases para status, mensagens e indiretas',
+    seoTitle: 'Grupos do Whatsapp de Frases e Mensagens - Status 2026',
+    metaDescription: 'Grupos do WhatsApp de frases e mensagens. Frases para status, bom dia, motivação, amor e indiretas.',
+    priority: 8
+  },
+  {
+    id: 'imobiliaria',
+    name: 'Grupos do Whatsapp de Imobiliária',
+    displayName: 'Grupos Whatsapp Imobiliária',
+    slug: 'grupos-do-whatsapp-de-imobiliaria',
+    description: 'Imóveis para alugar, vender e comprar',
+    seoTitle: 'Grupos do Whatsapp de Imobiliária - Imóveis 2026',
+    metaDescription: 'Grupos do WhatsApp de imobiliária. Aluguel, venda e compra de imóveis, casas e apartamentos.',
+    priority: 7
+  },
+  {
+    id: 'profissoes',
+    name: 'Grupos do Whatsapp de Profissões',
+    displayName: 'Grupos Whatsapp Profissões',
+    slug: 'grupos-do-whatsapp-de-profissoes',
+    description: 'Grupos profissionais por área de atuação',
+    seoTitle: 'Grupos do Whatsapp de Profissões - Networking 2026',
+    metaDescription: 'Grupos do WhatsApp por profissão. Conecte-se com colegas da sua área e amplie seu networking profissional.',
+    priority: 8
+  },
+  {
+    id: 'eventos',
+    name: 'Grupos do Whatsapp de Eventos',
+    displayName: 'Grupos Whatsapp Eventos',
+    slug: 'grupos-do-whatsapp-de-eventos',
+    description: 'Eventos, festas e encontros',
+    seoTitle: 'Grupos do Whatsapp de Eventos e Festas 2026',
+    metaDescription: 'Grupos do WhatsApp de eventos e festas. Fique por dentro dos eventos da sua cidade e do Brasil.',
+    priority: 7
+  },
+  {
+    id: 'carros',
+    name: 'Grupos do Whatsapp de Carros e Motos',
+    displayName: 'Grupos Whatsapp Carros',
+    slug: 'grupos-do-whatsapp-de-carros',
+    description: 'Carros, motos e tudo sobre veículos',
+    seoTitle: 'Grupos do Whatsapp de Carros e Motos - Veículos 2026',
+    metaDescription: 'Grupos do WhatsApp de carros e motos. Compra, venda, manutenção e novidades do mundo automotivo.',
+    priority: 8
+  },
+  {
+    id: 'compra-venda',
+    name: 'Grupos do Whatsapp de Compra e Venda',
+    displayName: 'Grupos Whatsapp Compra e Venda',
+    slug: 'grupos-do-whatsapp-de-compra-e-venda',
+    description: 'Compra, venda e troca de produtos',
+    seoTitle: 'Grupos do Whatsapp de Compra e Venda - Anuncie 2026',
+    metaDescription: 'Grupos do WhatsApp de compra e venda. Compre, venda e troque produtos com segurança em sua região.',
+    priority: 9
+  },
+  {
+    id: 'religiao',
+    name: 'Grupos do Whatsapp de Religião',
+    displayName: 'Grupos Whatsapp Religião',
+    slug: 'grupos-do-whatsapp-de-religiao',
+    description: 'Grupos de fé, oração e espiritualidade',
+    seoTitle: 'Grupos do Whatsapp de Religião e Oração 2026',
+    metaDescription: 'Grupos do WhatsApp de religião. Oração, fé, evangelização e comunidades espirituais para fortalecer sua jornada.',
+    priority: 8
+  },
+  {
+    id: 'fas',
+    name: 'Grupos do Whatsapp de Fãs',
+    displayName: 'Grupos Whatsapp Fãs',
+    slug: 'grupos-do-whatsapp-de-fas',
+    description: 'Fã-clubes de artistas, bandas e celebridades',
+    seoTitle: 'Grupos do Whatsapp de Fãs - Fã-clubes 2026',
+    metaDescription: 'Grupos do WhatsApp de fãs. Fã-clubes de artistas, bandas, K-pop, novelas e celebridades favoritas.',
+    priority: 7
+  },
+  {
+    id: 'memes',
+    name: 'Grupos do Whatsapp de Memes',
+    displayName: 'Grupos Whatsapp Memes',
+    slug: 'grupos-do-whatsapp-de-memes',
+    description: 'Memes engraçados, virais e zoeira',
+    seoTitle: 'Grupos do Whatsapp de Memes - Engraçados 2026',
+    metaDescription: 'Grupos do WhatsApp de memes engraçados. Os melhores memes virais, piadas e conteúdo de zoeira do dia.',
+    priority: 8
   }
 ];
 
