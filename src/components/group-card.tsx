@@ -80,7 +80,10 @@ export function GroupCard({
               )}
               <img 
                 src={displayImage} 
-                alt={name}
+                alt={`Imagem do grupo de WhatsApp ${name}${category ? ` – ${category}` : ''}`}
+                title={`Grupo de WhatsApp: ${name}`}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
                 onLoad={() => setImageLoading(false)}
                 onError={() => {
