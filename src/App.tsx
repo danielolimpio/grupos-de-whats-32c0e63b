@@ -40,6 +40,7 @@ import PoliticaTransparencia from "./pages/PoliticaTransparencia";
 import MigrateImages from "./pages/MigrateImages";
 import Sobre from "./pages/Sobre";
 import ScrollToTop from "./components/ScrollToTop";
+import WhatsAppChannelPopup from "./components/WhatsAppChannelPopup";
 
 const queryClient = new QueryClient();
 
@@ -52,6 +53,7 @@ const App = () => (
           <Sonner />
           <BrowserRouter>
             <ScrollToTop />
+            <WhatsAppChannelPopup />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/auth" element={<Auth />} />
