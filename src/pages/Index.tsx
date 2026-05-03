@@ -283,6 +283,8 @@ const Index = () => {
 
             {!selectedCategory && <BlogPreview />}
 
+            {!selectedCategory && <HomeFAQ />}
+
             {!selectedCategory && <SEOContent />}
           </div>
 
