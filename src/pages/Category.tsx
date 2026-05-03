@@ -6,8 +6,9 @@ import { GroupGrid } from "@/components/group-grid";
 import { StatsBanner } from "@/components/stats-banner";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { getCategoryBySlug } from "@/data/categories";
+import { getCategoryBySlug, WHATSAPP_CATEGORIES } from "@/data/categories";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 import { useCanonical } from "@/hooks/useCanonical";
 
 interface GroupData {
@@ -111,24 +112,30 @@ const Category = () => {
             "name": category.name,
             "description": category.description,
             "url": canonicalUrl,
+            "inLanguage": "pt-BR",
+            "isPartOf": {
+              "@type": "WebSite",
+              "name": "GruposdeWhats",
+              "url": "https://gruposdewhats.com.br/"
+            },
             "breadcrumb": {
               "@type": "BreadcrumbList",
               "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Home",
-                  "item": "https://gruposdewhats.com.br/"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": category.name,
-                  "item": canonicalUrl
-                }
+                { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://gruposdewhats.com.br/" },
+                { "@type": "ListItem", "position": 2, "name": "Categorias", "item": "https://gruposdewhats.com.br/todos-grupos" },
+                { "@type": "ListItem", "position": 3, "name": category.name, "item": canonicalUrl }
               ]
             },
-            "numberOfItems": groups.length
+            "mainEntity": {
+              "@type": "ItemList",
+              "numberOfItems": groups.length,
+              "itemListElement": groups.slice(0, 30).map((g, i) => ({
+                "@type": "ListItem",
+                "position": i + 1,
+                "url": `https://gruposdewhats.com.br/grupo/${g.id}`,
+                "name": g.name
+              }))
+            }
           })}
         </script>
       </Helmet>
@@ -171,7 +178,25 @@ const Category = () => {
                   </p>
                 </div>
               )}
-              
+
+              {/* Internal linking: related categories for SEO */}
+              <section className="mt-12 pt-8 border-t border-border">
+                <h2 className="text-xl font-semibold mb-4">Categorias relacionadas</h2>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  {WHATSAPP_CATEGORIES
+                    .filter(c => c.slug !== category.slug)
+                    .slice(0, 9)
+                    .map(c => (
+                      <Link
+                        key={c.slug}
+                        to={`/categoria/${c.slug}`}
+                        className="px-4 py-3 rounded-lg border border-border bg-card hover:bg-accent hover:text-accent-foreground transition text-sm font-medium text-center"
+                      >
+                        {c.displayName || c.name}
+                      </Link>
+                    ))}
+                </div>
+              </section>
             </div>
 
             <div className="hidden lg:block">
