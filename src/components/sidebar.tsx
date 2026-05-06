@@ -46,6 +46,7 @@ import { getAllCategoriesSorted } from "@/data/categories";
 import { getLatestPosts } from "@/data/blog-posts";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { TelegramButton } from "./telegram-button";
 // Icon mapping for categories
 const getIconForCategory = (categoryId: string) => {
   const iconMap: Record<string, any> = {
@@ -93,6 +94,9 @@ export function Sidebar({ selectedCategory, onCategorySelect }: SidebarProps) {
 
   return (
     <aside className="w-full lg:w-80 space-y-6 order-first lg:order-last">
+      {/* Telegram Premium Button */}
+      <TelegramButton />
+
       {/* Categories */}
       <Card>
         <CardHeader>
