@@ -1,9 +1,8 @@
 import { Header } from "@/components/header";
+import { TopBar } from "@/components/top-bar";
 import { Sidebar } from "@/components/sidebar";
 import { GroupGrid } from "@/components/group-grid";
-import { StatsBanner } from "@/components/stats-banner";
 import { Footer } from "@/components/footer";
-import { FeaturedLinks } from "@/components/featured-links";
 import { SEOContent } from "@/components/seo-content";
 import { HomeFAQ, homeFaqItems } from "@/components/home-faq";
 import { BlogPreview } from "@/components/blog-preview";
