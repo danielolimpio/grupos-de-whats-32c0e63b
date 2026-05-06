@@ -36,6 +36,7 @@ const Index = () => {
   const [groups, setGroups] = useState<GroupData[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+  const [mobileLoadedCount, setMobileLoadedCount] = useState(12);
   const groupsPerPage = 12;
 
   useEffect(() => {
