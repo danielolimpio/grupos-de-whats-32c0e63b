@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer";
 import { SEOContent } from "@/components/seo-content";
 import { HomeFAQ, homeFaqItems } from "@/components/home-faq";
 import { BlogPreview } from "@/components/blog-preview";
+import { SEOBanner } from "@/components/seo-banner";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Helmet } from "react-helmet-async";
@@ -190,6 +191,7 @@ const Index = () => {
       <Header />
       
       <main className="container mx-auto px-4 py-8">
+        <SEOBanner />
         <div className="flex-col lg:flex-row gap-8 flex">
           <div className="block lg:hidden">
             <Sidebar 
