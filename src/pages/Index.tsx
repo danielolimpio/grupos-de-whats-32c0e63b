@@ -8,6 +8,7 @@ import { HomeFAQ, homeFaqItems } from "@/components/home-faq";
 import { BlogPreview } from "@/components/blog-preview";
 import { SEOBanner } from "@/components/seo-banner";
 import { useState, useEffect } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { supabase } from "@/integrations/supabase/client";
 import { Helmet } from "react-helmet-async";
 import { useAuth } from "@/hooks/useAuth";
@@ -36,6 +37,7 @@ const Index = () => {
   const [groups, setGroups] = useState<GroupData[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+  const [mobileLoadedCount, setMobileLoadedCount] = useState(12);
   const groupsPerPage = 12;
 
   useEffect(() => {
@@ -87,11 +89,15 @@ const Index = () => {
     return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
   });
   
-  // Pagination logic
+  const isMobile = useIsMobile();
+  // Pagination logic (desktop)
   const totalPages = Math.ceil(sortedGroups.length / groupsPerPage);
   const startIndex = (currentPage - 1) * groupsPerPage;
   const endIndex = startIndex + groupsPerPage;
-  const displayGroups = sortedGroups.slice(startIndex, endIndex);
+  const desktopGroups = sortedGroups.slice(startIndex, endIndex);
+  const mobileGroups = sortedGroups.slice(0, mobileLoadedCount);
+  const displayGroups = isMobile ? mobileGroups : desktopGroups;
+  const hasMoreMobile = mobileLoadedCount < sortedGroups.length;
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -202,6 +208,18 @@ const Index = () => {
                 isFavorited={isFavorited}
                 onToggleFavorite={toggleFavorite}
               />
+
+              {/* Mobile "Ver Mais Grupos" - infinite-style load more */}
+              {hasMoreMobile && (
+                <div className="block lg:hidden mt-6">
+                  <button
+                    onClick={() => setMobileLoadedCount((c) => c + 12)}
+                    className="w-full px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold shadow-md hover:bg-primary/90 transition-colors"
+                  >
+                    Ver Mais Grupos
+                  </button>
+                </div>
+              )}
 
               {/* Manual Review Notice - below cards */}
               <div className="bg-muted/60 border border-border rounded-lg p-4 mt-6">

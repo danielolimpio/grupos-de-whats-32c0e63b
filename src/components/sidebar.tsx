@@ -47,6 +47,7 @@ import { getLatestPosts } from "@/data/blog-posts";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { TelegramButton } from "./telegram-button";
+import { BatepapoButton } from "./batepapo-button";
 // Icon mapping for categories
 const getIconForCategory = (categoryId: string) => {
   const iconMap: Record<string, any> = {
@@ -185,6 +186,9 @@ export function Sidebar({ selectedCategory, onCategorySelect }: SidebarProps) {
           </Link>
         </CardContent>
       </Card>
+
+      {/* Bate-Papo Grátis Promo */}
+      <BatepapoButton />
 
     </aside>
   );
