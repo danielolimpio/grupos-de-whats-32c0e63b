@@ -3,11 +3,12 @@ export function SEOBanner() {
     <div
       className="rounded-xl px-6 py-4 text-center mb-6 border"
       style={{
-        background: "linear-gradient(135deg, hsl(142 70% 96%) 0%, hsl(142 60% 92%) 50%, hsl(142 70% 96%) 100%)",
-        borderColor: "hsl(142 50% 75%)",
+        background:
+          "linear-gradient(135deg, #ffffff 0%, hsl(142 60% 95%) 50%, #ffffff 100%)",
+        borderColor: "hsl(142 45% 78%)",
       }}
     >
-      <h2 className="text-base md:text-lg font-semibold tracking-tight" style={{ color: "hsl(142 40% 20%)" }}>
+      <h2 className="text-base md:text-lg font-semibold tracking-tight text-black">
         O Maior Diretório de Grupos do WhatsApp do Brasil em 2026
       </h2>
     </div>
