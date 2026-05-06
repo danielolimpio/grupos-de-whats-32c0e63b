@@ -1,9 +1,8 @@
 import { Header } from "@/components/header";
+import { TopBar } from "@/components/top-bar";
 import { Sidebar } from "@/components/sidebar";
 import { GroupGrid } from "@/components/group-grid";
-import { StatsBanner } from "@/components/stats-banner";
 import { Footer } from "@/components/footer";
-import { FeaturedLinks } from "@/components/featured-links";
 import { SEOContent } from "@/components/seo-content";
 import { HomeFAQ, homeFaqItems } from "@/components/home-faq";
 import { BlogPreview } from "@/components/blog-preview";
@@ -187,25 +186,10 @@ const Index = () => {
       </Helmet>
       
       <div className="min-h-screen bg-background">
+      <TopBar />
       <Header />
       
-      <div className="container mx-auto px-4 pt-4">
-      </div>
-      
       <main className="container mx-auto px-4 py-8">
-        {/* Manual Review Notice */}
-        <div className="bg-muted/80 border border-border rounded-lg p-4 mb-6">
-          <p className="text-sm text-muted-foreground text-center">
-            <strong>✓ Revisão Manual:</strong> Todos os grupos são revisados manualmente. Evitamos títulos promocionais, ofertas irreais ou termos sensíveis. Grupos inadequados são editados ou recusados.
-          </p>
-        </div>
-
-        <div className="mb-8">
-          <StatsBanner />
-        </div>
-
-        <FeaturedLinks />
-        
         <div className="flex-col lg:flex-row gap-8 flex">
           <div className="block lg:hidden">
             <Sidebar 
@@ -223,9 +207,13 @@ const Index = () => {
                 isFavorited={isFavorited}
                 onToggleFavorite={toggleFavorite}
               />
-              <p className="text-xs text-muted-foreground mt-4 px-1">
-                Todos os grupos listados são revisados por nossa equipe com base em critérios de segurança, relevância e moderação ativa. Não aceitamos sugestões com conteúdo comercial direto, links suspeitos ou grupos sem regras claras.
-              </p>
+
+              {/* Manual Review Notice - below cards */}
+              <div className="bg-muted/60 border border-border rounded-lg p-4 mt-6">
+                <p className="text-sm text-muted-foreground text-center">
+                  <strong className="text-foreground">✓ Revisão Manual:</strong> Todos os grupos são revisados manualmente. Evitamos títulos promocionais, ofertas irreais ou termos sensíveis. Grupos inadequados são editados ou recusados.
+                </p>
+              </div>
             </div>
 
             {/* Pagination */}
