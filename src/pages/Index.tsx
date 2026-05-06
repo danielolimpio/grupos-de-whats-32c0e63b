@@ -193,13 +193,6 @@ const Index = () => {
       <main className="container mx-auto px-4 py-8">
         <SEOBanner />
         <div className="flex-col lg:flex-row gap-8 flex">
-          <div className="block lg:hidden">
-            <Sidebar 
-              selectedCategory={selectedCategory}
-              onCategorySelect={setSelectedCategory}
-            />
-          </div>
-
           <div className="flex-1 space-y-12">
             <div>
               <GroupGrid 
@@ -216,6 +209,14 @@ const Index = () => {
                   <strong className="text-foreground">✓ Revisão Manual:</strong> Todos os grupos são revisados manualmente. Evitamos títulos promocionais, ofertas irreais ou termos sensíveis. Grupos inadequados são editados ou recusados.
                 </p>
               </div>
+            </div>
+
+            {/* Mobile Sidebar - shown after groups on mobile */}
+            <div className="block lg:hidden">
+              <Sidebar 
+                selectedCategory={selectedCategory}
+                onCategorySelect={setSelectedCategory}
+              />
             </div>
 
             {/* Pagination */}
