@@ -209,6 +209,18 @@ const Index = () => {
                 onToggleFavorite={toggleFavorite}
               />
 
+              {/* Mobile "Ver Mais Grupos" - infinite-style load more */}
+              {hasMoreMobile && (
+                <div className="block lg:hidden mt-6">
+                  <button
+                    onClick={() => setMobileLoadedCount((c) => c + 12)}
+                    className="w-full px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold shadow-md hover:bg-primary/90 transition-colors"
+                  >
+                    Ver Mais Grupos
+                  </button>
+                </div>
+              )}
+
               {/* Manual Review Notice - below cards */}
               <div className="bg-muted/60 border border-border rounded-lg p-4 mt-6">
                 <p className="text-sm text-muted-foreground text-center">
