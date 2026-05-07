@@ -2,27 +2,22 @@ import batepapoImg from "@/assets/batepapo-gratis.jpeg";
 
 export function BatepapoButton() {
   return (
-    <div className="rounded-xl overflow-hidden bg-card border border-border shadow-md">
-      <a
-        href="https://batepapogratis.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block"
-        aria-label="Bate-Papo Grátis - Entrar"
-      >
-        <img
-          src={batepapoImg}
-          alt="Bate-Papo Grátis"
-          className="w-full h-auto block"
-          loading="lazy"
-        />
-      </a>
-      <div className="p-3 bg-card">
-        <a
-          href="https://batepapogratis.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group relative block w-full overflow-hidden rounded-lg px-5 py-3 text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl"
+    <a
+      href="https://batepapogratis.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Bate-Papo Grátis - Entrar"
+      className="group relative block overflow-hidden rounded-xl border border-border bg-card shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl"
+    >
+      <img
+        src={batepapoImg}
+        alt="Bate-Papo Grátis"
+        className="block h-auto w-full"
+        loading="lazy"
+      />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 p-3">
+        <div
+          className="relative w-full overflow-hidden rounded-lg px-5 py-3 text-white shadow-lg transition-all duration-300 group-hover:shadow-2xl"
           style={{
             background:
               "linear-gradient(135deg, #2AABEE 0%, #229ED9 50%, #1E8BC3 100%)",
@@ -40,8 +35,8 @@ export function BatepapoButton() {
           <span className="relative flex items-center justify-center text-base font-bold tracking-[0.25em]">
             ENTRAR
           </span>
-        </a>
+        </div>
       </div>
-    </div>
+    </a>
   );
 }
