@@ -26,6 +26,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { useCanonical } from "@/hooks/useCanonical";
+import bannerDev from "@/assets/banner-dev.jpg";
 
 const Sobre = () => {
   const canonicalUrl = useCanonical();
@@ -245,7 +246,15 @@ const Sobre = () => {
             </div>
 
             <Card className="border-primary/10 shadow-xl overflow-hidden">
-              <div className="bg-gradient-to-r from-primary via-primary/80 to-primary h-32 md:h-40" />
+              <div className="relative w-full h-40 md:h-56 overflow-hidden">
+                <img
+                  src={bannerDev}
+                  alt="Banner desenvolvimento web"
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
+              </div>
               <CardContent className="p-8 md:p-10 -mt-16 md:-mt-20">
                 <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-10">
                   {/* Profile Image */}
@@ -263,7 +272,7 @@ const Sobre = () => {
                   </div>
 
                   {/* Profile Info */}
-                  <div className="flex-1 text-center md:text-left mt-4 md:mt-8">
+                  <div className="flex-1 text-center md:text-left mt-8 md:mt-14">
                     <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-1">Daniel Olimpio</h3>
                     <p className="text-primary font-medium text-lg mb-4">Desenvolvedor Web</p>
                     
