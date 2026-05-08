@@ -126,6 +126,12 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link to="/seguranca-transparencia" className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
+                  <ShieldCheck className="h-4 w-4 flex-shrink-0" />
+                  <span>Transparência de Segurança</span>
+                </Link>
+              </li>
+              <li>
                 <Link to="/sitemap" className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
                   <Map className="h-4 w-4 flex-shrink-0" />
                   <span>Sitemap</span>

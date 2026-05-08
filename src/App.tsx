@@ -39,6 +39,7 @@ import Contato from "./pages/Contato";
 import PoliticaTransparencia from "./pages/PoliticaTransparencia";
 import MigrateImages from "./pages/MigrateImages";
 import Sobre from "./pages/Sobre";
+import SegurancaTransparencia from "./pages/SegurancaTransparencia";
 import ScrollToTop from "./components/ScrollToTop";
 import WhatsAppChannelPopup from "./components/WhatsAppChannelPopup";
 
@@ -89,6 +90,7 @@ const App = () => (
               <Route path="/politica-de-transparencia" element={<PoliticaTransparencia />} />
               <Route path="/sitemap" element={<Sitemap />} />
               <Route path="/sobre" element={<Sobre />} />
+              <Route path="/seguranca-transparencia" element={<SegurancaTransparencia />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
