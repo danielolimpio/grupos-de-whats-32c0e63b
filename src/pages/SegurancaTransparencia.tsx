@@ -137,8 +137,8 @@ export default function SegurancaTransparencia() {
           <section className="container mx-auto px-4 -mt-8 relative z-10">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
               {[
-                { value: "0", label: "Malwares detectados" },
-                { value: "89/95", label: "Engines limpos" },
+                { value: "86/92", label: "Engines limpos" },
+                { value: "0", label: "Malwares reais" },
                 { value: "100%", label: "HTTPS forçado" },
                 { value: "24/7", label: "Monitoramento" },
               ].map((s) => (
