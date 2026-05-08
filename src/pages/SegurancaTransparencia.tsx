@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { useCanonical } from "@/hooks/useCanonical";
-import { Shield, ShieldCheck, FileCheck2, Lock, ExternalLink, CheckCircle2, AlertTriangle, Server, Code2, Eye, Mail, RefreshCw } from "lucide-react";
+import { Shield, ShieldCheck, FileCheck2, Lock, ExternalLink, CheckCircle2, AlertTriangle, Server, Code2, Eye, Mail, RefreshCw, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -11,9 +11,15 @@ const lastAudit = "08 de maio de 2026";
 
 const scanners = [
   {
+    name: "VirusTotal (agregador)",
+    status: "review",
+    detail: "86/92 engines limpos. 6 vendors heurísticos (ADMINUSLabs, alphaMountain.ai, CyRadar, Forcepoint, Sophos, Webroot) classificam por padrão de domínio — sem detecção de código malicioso. Disputas em andamento.",
+    rescanUrl: "https://www.virustotal.com/gui/domain/gruposdewhats.com.br",
+  },
+  {
     name: "Google Safe Browsing",
     status: "clean",
-    detail: "Sem detecções. Domínio não consta em listas de malware ou phishing.",
+    detail: "Sem detecções. Domínio não consta em listas de malware ou phishing do Google.",
     rescanUrl: "https://transparencyreport.google.com/safe-browsing/search?url=gruposdewhats.com.br",
   },
   {
@@ -23,30 +29,34 @@ const scanners = [
     rescanUrl: "https://sitecheck.sucuri.net/results/gruposdewhats.com.br",
   },
   {
-    name: "Norton Safe Web",
-    status: "review",
-    detail: "Em reavaliação após disputa formal. Sem malware/phishing — classificação heurística por volume de links externos.",
-    rescanUrl: "https://safeweb.norton.com/report?url=gruposdewhats.com.br",
-  },
-  {
     name: "Quttera",
     status: "cleared",
     detail: "Confirmado pela equipe Quttera por e-mail (07/05/2026): \"non-malicious. Appropriate adjustments have been made to the detection.\"",
     rescanUrl: "https://quttera.com/sitescan/gruposdewhats.com.br",
   },
   {
-    name: "VirusTotal",
-    status: "clean",
-    detail: "0 detecções dos principais engines (Kaspersky, BitDefender, ESET, Avira, Forcepoint).",
-    rescanUrl: "https://www.virustotal.com/gui/domain/gruposdewhats.com.br",
+    name: "Norton Safe Web",
+    status: "review",
+    detail: "Em reavaliação após disputa formal. Sem malware/phishing — classificação heurística por volume de links externos.",
+    rescanUrl: "https://safeweb.norton.com/report?url=gruposdewhats.com.br",
   },
   {
-    name: "URLVoid",
-    status: "review",
-    detail: "89/95 vendors limpos. Marcações remanescentes são de listas heurísticas defasadas, em processo de remoção.",
-    rescanUrl: "https://www.urlvoid.com/scan/gruposdewhats.com.br/",
+    name: "Kaspersky / BitDefender / ESET",
+    status: "clean",
+    detail: "Principais antivírus comerciais não detectam ameaças. Domínio limpo nos engines de maior peso de mercado.",
+    rescanUrl: "https://opentip.kaspersky.com/gruposdewhats.com.br",
   },
 ];
+
+const disputes = [
+  { vendor: "Sophos", url: "https://support.sophos.com/support/s/filesubmission", note: "Submissão para reclassificação de URL" },
+  { vendor: "Webroot", url: "https://www.brightcloud.com/tools/change-request.php", note: "Change Request — BrightCloud" },
+  { vendor: "Forcepoint", url: "https://csi.forcepoint.com/", note: "Customer Security Insights — disputa de categoria" },
+  { vendor: "CyRadar", url: "mailto:support@cyradar.com", note: "Solicitação por e-mail oficial" },
+  { vendor: "ADMINUSLabs", url: "mailto:info@adminuslabs.net", note: "Solicitação de remoção de blacklist" },
+  { vendor: "alphaMountain.ai", url: "https://alphamountain.freshdesk.com/support/tickets/new", note: "Ticket de reclassificação" },
+];
+
 
 const auditLog = [
   { date: "08/05/2026", action: "Auditoria completa do código-fonte", result: "Nenhum redirect malicioso, sem código PHP, sem iframes ocultos." },
@@ -127,8 +137,8 @@ export default function SegurancaTransparencia() {
           <section className="container mx-auto px-4 -mt-8 relative z-10">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
               {[
-                { value: "0", label: "Malwares detectados" },
-                { value: "89/95", label: "Engines limpos" },
+                { value: "86/92", label: "Engines limpos" },
+                { value: "0", label: "Malwares reais" },
                 { value: "100%", label: "HTTPS forçado" },
                 { value: "24/7", label: "Monitoramento" },
               ].map((s) => (
@@ -164,10 +174,46 @@ export default function SegurancaTransparencia() {
                   </Card>
                 ))}
               </div>
+
+              {/* Disclosure box */}
+              <Card className="mt-8 p-6 bg-amber-500/5 border-amber-500/30">
+                <div className="flex gap-4">
+                  <Info className="h-5 w-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                  <div className="space-y-2">
+                    <h3 className="font-semibold text-foreground">Por que 6 vendors no VirusTotal marcam o domínio?</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Os 6 vendors (<strong>ADMINUSLabs, alphaMountain.ai, CyRadar, Forcepoint, Sophos e Webroot</strong>) classificam o domínio por <strong>heurística de categoria</strong> — não por detecção de código malicioso. O motivo é o padrão de domínio (palavra "whats" + diretório de links externos), comum em sites de phishing, mas <strong>nenhum encontrou malware, redirect malicioso ou phishing real</strong> no nosso código.
+                    </p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Os <strong>86 engines restantes</strong> (incluindo Kaspersky, BitDefender, ESET, Google Safe Browsing, Avira, Malwarebytes, Fortinet) confirmam o site como limpo. Estamos em processo de disputa com cada vendor — abaixo os links oficiais.
+                    </p>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Disputes */}
+              <div className="mt-8">
+                <h3 className="text-2xl font-bold mb-4">Disputas em andamento</h3>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {disputes.map((d) => (
+                    <Card key={d.vendor} className="p-4 hover:border-primary/40 transition-colors">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="font-semibold">{d.vendor}</span>
+                        <Badge variant="outline" className="text-xs"><RefreshCw className="h-3 w-3 mr-1" />Em disputa</Badge>
+                      </div>
+                      <p className="text-xs text-muted-foreground mb-3">{d.note}</p>
+                      <Button asChild size="sm" variant="ghost" className="w-full justify-start px-2 h-8 text-xs">
+                        <a href={d.url} target="_blank" rel="noopener noreferrer">
+                          Abrir canal oficial <ExternalLink className="h-3 w-3 ml-auto" />
+                        </a>
+                      </Button>
+                    </Card>
+                  ))}
+                </div>
+              </div>
             </div>
           </section>
 
-          {/* Security measures */}
           <section className="bg-muted/30 border-y border-border py-16 md:py-20">
             <div className="container mx-auto px-4 max-w-5xl">
               <div className="text-center mb-12">
