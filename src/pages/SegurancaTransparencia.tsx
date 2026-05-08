@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { useCanonical } from "@/hooks/useCanonical";
-import { Shield, ShieldCheck, FileCheck2, Lock, ExternalLink, CheckCircle2, AlertTriangle, Server, Code2, Eye, Mail, RefreshCw } from "lucide-react";
+import { Shield, ShieldCheck, FileCheck2, Lock, ExternalLink, CheckCircle2, AlertTriangle, Server, Code2, Eye, Mail, RefreshCw, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -11,9 +11,15 @@ const lastAudit = "08 de maio de 2026";
 
 const scanners = [
   {
+    name: "VirusTotal (agregador)",
+    status: "review",
+    detail: "86/92 engines limpos. 6 vendors heurísticos (ADMINUSLabs, alphaMountain.ai, CyRadar, Forcepoint, Sophos, Webroot) classificam por padrão de domínio — sem detecção de código malicioso. Disputas em andamento.",
+    rescanUrl: "https://www.virustotal.com/gui/domain/gruposdewhats.com.br",
+  },
+  {
     name: "Google Safe Browsing",
     status: "clean",
-    detail: "Sem detecções. Domínio não consta em listas de malware ou phishing.",
+    detail: "Sem detecções. Domínio não consta em listas de malware ou phishing do Google.",
     rescanUrl: "https://transparencyreport.google.com/safe-browsing/search?url=gruposdewhats.com.br",
   },
   {
@@ -23,30 +29,34 @@ const scanners = [
     rescanUrl: "https://sitecheck.sucuri.net/results/gruposdewhats.com.br",
   },
   {
-    name: "Norton Safe Web",
-    status: "review",
-    detail: "Em reavaliação após disputa formal. Sem malware/phishing — classificação heurística por volume de links externos.",
-    rescanUrl: "https://safeweb.norton.com/report?url=gruposdewhats.com.br",
-  },
-  {
     name: "Quttera",
     status: "cleared",
     detail: "Confirmado pela equipe Quttera por e-mail (07/05/2026): \"non-malicious. Appropriate adjustments have been made to the detection.\"",
     rescanUrl: "https://quttera.com/sitescan/gruposdewhats.com.br",
   },
   {
-    name: "VirusTotal",
-    status: "clean",
-    detail: "0 detecções dos principais engines (Kaspersky, BitDefender, ESET, Avira, Forcepoint).",
-    rescanUrl: "https://www.virustotal.com/gui/domain/gruposdewhats.com.br",
+    name: "Norton Safe Web",
+    status: "review",
+    detail: "Em reavaliação após disputa formal. Sem malware/phishing — classificação heurística por volume de links externos.",
+    rescanUrl: "https://safeweb.norton.com/report?url=gruposdewhats.com.br",
   },
   {
-    name: "URLVoid",
-    status: "review",
-    detail: "89/95 vendors limpos. Marcações remanescentes são de listas heurísticas defasadas, em processo de remoção.",
-    rescanUrl: "https://www.urlvoid.com/scan/gruposdewhats.com.br/",
+    name: "Kaspersky / BitDefender / ESET",
+    status: "clean",
+    detail: "Principais antivírus comerciais não detectam ameaças. Domínio limpo nos engines de maior peso de mercado.",
+    rescanUrl: "https://opentip.kaspersky.com/gruposdewhats.com.br",
   },
 ];
+
+const disputes = [
+  { vendor: "Sophos", url: "https://support.sophos.com/support/s/filesubmission", note: "Submissão para reclassificação de URL" },
+  { vendor: "Webroot", url: "https://www.brightcloud.com/tools/change-request.php", note: "Change Request — BrightCloud" },
+  { vendor: "Forcepoint", url: "https://csi.forcepoint.com/", note: "Customer Security Insights — disputa de categoria" },
+  { vendor: "CyRadar", url: "mailto:support@cyradar.com", note: "Solicitação por e-mail oficial" },
+  { vendor: "ADMINUSLabs", url: "mailto:info@adminuslabs.net", note: "Solicitação de remoção de blacklist" },
+  { vendor: "alphaMountain.ai", url: "https://alphamountain.freshdesk.com/support/tickets/new", note: "Ticket de reclassificação" },
+];
+
 
 const auditLog = [
   { date: "08/05/2026", action: "Auditoria completa do código-fonte", result: "Nenhum redirect malicioso, sem código PHP, sem iframes ocultos." },
