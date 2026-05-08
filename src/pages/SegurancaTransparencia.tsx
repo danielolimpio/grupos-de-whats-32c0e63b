@@ -174,10 +174,46 @@ export default function SegurancaTransparencia() {
                   </Card>
                 ))}
               </div>
+
+              {/* Disclosure box */}
+              <Card className="mt-8 p-6 bg-amber-500/5 border-amber-500/30">
+                <div className="flex gap-4">
+                  <Info className="h-5 w-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                  <div className="space-y-2">
+                    <h3 className="font-semibold text-foreground">Por que 6 vendors no VirusTotal marcam o domínio?</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Os 6 vendors (<strong>ADMINUSLabs, alphaMountain.ai, CyRadar, Forcepoint, Sophos e Webroot</strong>) classificam o domínio por <strong>heurística de categoria</strong> — não por detecção de código malicioso. O motivo é o padrão de domínio (palavra "whats" + diretório de links externos), comum em sites de phishing, mas <strong>nenhum encontrou malware, redirect malicioso ou phishing real</strong> no nosso código.
+                    </p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Os <strong>86 engines restantes</strong> (incluindo Kaspersky, BitDefender, ESET, Google Safe Browsing, Avira, Malwarebytes, Fortinet) confirmam o site como limpo. Estamos em processo de disputa com cada vendor — abaixo os links oficiais.
+                    </p>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Disputes */}
+              <div className="mt-8">
+                <h3 className="text-2xl font-bold mb-4">Disputas em andamento</h3>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {disputes.map((d) => (
+                    <Card key={d.vendor} className="p-4 hover:border-primary/40 transition-colors">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="font-semibold">{d.vendor}</span>
+                        <Badge variant="outline" className="text-xs"><RefreshCw className="h-3 w-3 mr-1" />Em disputa</Badge>
+                      </div>
+                      <p className="text-xs text-muted-foreground mb-3">{d.note}</p>
+                      <Button asChild size="sm" variant="ghost" className="w-full justify-start px-2 h-8 text-xs">
+                        <a href={d.url} target="_blank" rel="noopener noreferrer">
+                          Abrir canal oficial <ExternalLink className="h-3 w-3 ml-auto" />
+                        </a>
+                      </Button>
+                    </Card>
+                  ))}
+                </div>
+              </div>
             </div>
           </section>
 
-          {/* Security measures */}
           <section className="bg-muted/30 border-y border-border py-16 md:py-20">
             <div className="container mx-auto px-4 max-w-5xl">
               <div className="text-center mb-12">
