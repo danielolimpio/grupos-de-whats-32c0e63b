@@ -415,6 +415,83 @@ export default function GrupoWhatsAppViral() {
             </div>
           </div>
 
+          {/* Artigos Relacionados */}
+          <section className="mt-12 pt-8 border-t" aria-labelledby="artigos-relacionados">
+            <h2 id="artigos-relacionados" className="text-3xl font-bold mb-6 text-foreground">
+              Artigos relacionados que vão complementar sua leitura
+            </h2>
+            <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+              Para aprofundar o que vimos aqui, separei seis materiais que conversam diretamente com as estratégias de crescimento abordadas neste guia:
+            </p>
+            <div className="grid md:grid-cols-2 gap-4">
+              <Card className="hover:shadow-md transition-shadow">
+                <CardContent className="pt-6">
+                  <Link to="/blog/como-criar-grupo-sucesso-2026" className="text-primary hover:underline font-semibold text-lg">
+                    Estruturando um grupo de WhatsApp de sucesso em 2026
+                  </Link>
+                  <p className="text-muted-foreground mt-2 text-sm">
+                    A base estrutural por trás de toda comunidade que cresce de forma sustentável.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-md transition-shadow">
+                <CardContent className="pt-6">
+                  <Link to="/blog/melhores-praticas-moderar-grupos-whatsapp" className="text-primary hover:underline font-semibold text-lg">
+                    Moderação saudável: o que separa um grupo ativo de um grupo abandonado
+                  </Link>
+                  <p className="text-muted-foreground mt-2 text-sm">
+                    Práticas, ferramentas e roteiros para administrar sem desgaste.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-md transition-shadow">
+                <CardContent className="pt-6">
+                  <Link to="/blog/melhores-horarios-postar-grupos" className="text-primary hover:underline font-semibold text-lg">
+                    Janelas de horário com maior engajamento no mensageiro
+                  </Link>
+                  <p className="text-muted-foreground mt-2 text-sm">
+                    Quando publicar para multiplicar visualizações e respostas.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-md transition-shadow">
+                <CardContent className="pt-6">
+                  <Link to="/blog/como-aumentar-engajamento-grupo" className="text-primary hover:underline font-semibold text-lg">
+                    Técnicas para reativar membros silenciosos
+                  </Link>
+                  <p className="text-muted-foreground mt-2 text-sm">
+                    Como gerar conversa real sem cair no apelo das correntes.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-md transition-shadow">
+                <CardContent className="pt-6">
+                  <Link to="/blog/seguranca-whatsapp-proteja-seu-grupo" className="text-primary hover:underline font-semibold text-lg">
+                    Defesa contra spam, golpes e links suspeitos
+                  </Link>
+                  <p className="text-muted-foreground mt-2 text-sm">
+                    Protocolos práticos para proteger a reputação da comunidade.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-md transition-shadow">
+                <CardContent className="pt-6">
+                  <Link to="/blog/regras-essenciais-grupo-organizado" className="text-primary hover:underline font-semibold text-lg">
+                    Dez combinações que mantêm qualquer grupo organizado
+                  </Link>
+                  <p className="text-muted-foreground mt-2 text-sm">
+                    Diretrizes que funcionam sem soar como manual corporativo.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </section>
+
           <AuthorBio />
 
           <div className="mt-12 pt-8 border-t">
