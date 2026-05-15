@@ -1,35 +1,22 @@
-# robots.txt para Grupos de WhatsApp
+# robots.txt — GruposdeWhats
+# Sitemap declarado no topo para descoberta rápida pelos crawlers
+Sitemap: https://gruposdewhats.com.br/sitemap.xml
+
 User-agent: *
 Allow: /
-Allow: /categoria/
-Allow: /grupo/
-Allow: /todos-grupos
-Allow: /blog
-Allow: /como-funciona
-Allow: /faq
-Allow: /regras-comunidade
-Allow: /dicas-seguranca
-Allow: /central-ajuda
 
 # Bloquear páginas administrativas e de autenticação
 Disallow: /admin
 Disallow: /admin-setup
 Disallow: /dashboard
 Disallow: /auth
-Disallow: /reportar-problema
 Disallow: /migrate-images
 
-# Bloquear arquivos e pastas desnecessários
-Disallow: /api/
-Disallow: /*.json$
-Disallow: /*?*utm_source=
-Disallow: /*?*ref=
-
-# Sitemap
-Sitemap: https://gruposdewhats.com.br/sitemap.xml
-
-# Configurações de crawl
-Crawl-delay: 1
+# Bloquear parâmetros de tracking que geram URLs duplicadas
+Disallow: /*?utm_*
+Disallow: /*?ref=
+Disallow: /*?fbclid=
+Disallow: /*?gclid=
 
 # Permitir todos os recursos importantes
 User-agent: Googlebot
