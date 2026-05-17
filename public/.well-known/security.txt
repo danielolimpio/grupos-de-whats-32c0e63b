@@ -1,0 +1,13 @@
+Contact: mailto:contato@gruposdewhats.com.br
+Contact: https://gruposdewhats.com.br/contato/
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: pt-BR, en
+Canonical: https://gruposdewhats.com.br/.well-known/security.txt
+Policy: https://gruposdewhats.com.br/seguranca-transparencia
+Acknowledgments: https://gruposdewhats.com.br/seguranca-transparencia
+
+# GruposdeWhats Brasil — Security Disclosure Policy
+# This site is an independent directory of public WhatsApp group invite links.
+# We do NOT collect payment data, do NOT host malware, and do NOT serve unsolicited redirects.
+# All user-submitted content is manually reviewed before publication.
+# Report any false-positive listing or security concern via the contacts above.

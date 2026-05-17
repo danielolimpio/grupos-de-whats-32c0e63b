@@ -13,6 +13,9 @@
   RewriteRule ^ads\.txt$ - [L]
   RewriteRule ^robots\.txt$ - [L]
   RewriteRule ^sitemap\.xml$ - [L]
+  RewriteRule ^humans\.txt$ - [L]
+  RewriteRule ^security\.txt$ - [L]
+  RewriteRule ^\.well-known/.*$ - [L]
 
   # Forçar HTTPS (http -> https)
   RewriteCond %{HTTPS} off

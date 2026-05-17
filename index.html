@@ -16,6 +16,36 @@
     <meta name="payment-policy" content="Este site é 100% gratuito. Não coleta, processa ou armazena dados de pagamento, cartões de crédito, dados bancários ou códigos de segurança. Não vende produtos nem oferece assinaturas." />
     <meta name="price" content="free" />
     <meta name="pricing" content="free" />
+
+    <!-- Trust & safety signals (lidas por scanners de reputação) -->
+    <meta name="copyright" content="© 2026 GruposdeWhats Brasil" />
+    <meta name="owner" content="GruposdeWhats Brasil" />
+    <meta name="reply-to" content="contato@gruposdewhats.com.br" />
+    <meta name="contact" content="contato@gruposdewhats.com.br" />
+    <meta name="classification" content="Diretório informativo / Internet / Comunidades" />
+    <meta name="category" content="Internet :: Diretório de Comunidades" />
+    <meta name="distribution" content="global" />
+    <meta name="coverage" content="Worldwide" />
+    <meta name="target" content="all" />
+    <meta name="audience" content="general, all" />
+    <meta name="safe-for-kids" content="false" />
+    <meta name="content-language" content="pt-BR" />
+    <meta name="ICBM" content="-15.7942, -47.8822" />
+    <meta name="geo.region" content="BR" />
+    <meta name="geo.placename" content="Brasil" />
+    <meta name="security-policy" content="https://gruposdewhats.com.br/.well-known/security.txt" />
+    <meta name="security-contact" content="contato@gruposdewhats.com.br" />
+    <meta name="abuse-report" content="https://gruposdewhats.com.br/reportar-problema/" />
+    <meta name="trust-policy" content="https://gruposdewhats.com.br/seguranca-transparencia" />
+    <meta name="malware-policy" content="Site não hospeda binários, ativadores, cracks, redirecionamentos automáticos nem scripts ofuscados. Todo conteúdo é revisado manualmente." />
+    <meta name="phishing-policy" content="Site não coleta credenciais, senhas, dados bancários, OTP ou códigos de verificação. Não solicita login para acessar conteúdo público." />
+    <meta name="data-collection" content="minimal" />
+    <meta name="advertising" content="none" />
+    <meta name="affiliate-links" content="none" />
+    <meta name="cryptomining" content="none" />
+    <meta name="popups" content="none" />
+    <link rel="security" href="/.well-known/security.txt" />
+    <link rel="author" href="/humans.txt" type="text/plain" />
     <link rel="canonical" href="https://gruposdewhats.com.br/" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
@@ -81,6 +111,7 @@
           "@type": "Organization",
           "@id": "https://gruposdewhats.com.br/#organization",
           "name": "GruposdeWhats",
+          "alternateName": "GruposdeWhats Brasil",
           "url": "https://gruposdewhats.com.br/",
           "logo": {
             "@type": "ImageObject",
@@ -88,7 +119,33 @@
             "width": 512,
             "height": 512
           },
-          "sameAs": []
+          "foundingDate": "2024-01-01",
+          "areaServed": { "@type": "Country", "name": "Brasil" },
+          "knowsLanguage": ["pt-BR"],
+          "contactPoint": [{
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "email": "contato@gruposdewhats.com.br",
+            "availableLanguage": ["Portuguese"],
+            "url": "https://gruposdewhats.com.br/contato/"
+          },{
+            "@type": "ContactPoint",
+            "contactType": "security",
+            "email": "contato@gruposdewhats.com.br",
+            "url": "https://gruposdewhats.com.br/seguranca-transparencia"
+          }],
+          "sameAs": [
+            "https://gruposdewhats.com.br/sobre/",
+            "https://gruposdewhats.com.br/seguranca-transparencia"
+          ]
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://gruposdewhats.com.br/#trust",
+          "url": "https://gruposdewhats.com.br/seguranca-transparencia",
+          "name": "Política de Segurança e Transparência",
+          "isPartOf": { "@id": "https://gruposdewhats.com.br/#website" },
+          "about": "Declaração pública de que o site não hospeda malware, phishing, redirecionamentos automáticos ou coleta de pagamento."
         }
       ]
     }

@@ -1,0 +1,18 @@
+/* TEAM */
+Site: GruposdeWhats Brasil
+Contact: contato [at] gruposdewhats.com.br
+Location: Brasil
+
+/* SITE */
+Last update: 2026/05
+Language: Portuguese (pt-BR)
+Standards: HTML5, CSS3, ES2022, HTTPS, HSTS, CSP
+Components: React, Vite, TailwindCSS
+Software: Supabase (backend)
+
+/* TRUST */
+Type: Independent informational directory of public WhatsApp groups
+Payment processing: None — site is 100% free
+Malware: None — no executable downloads, no auto-redirects, no obfuscated scripts
+Moderation: 100% manual human review before publication
+Affiliation: No affiliation, partnership, or endorsement from Meta Platforms or WhatsApp LLC
