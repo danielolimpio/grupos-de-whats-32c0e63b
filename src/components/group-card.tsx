@@ -82,6 +82,8 @@ export function GroupCard({
                 src={displayImage} 
                 alt={`Imagem do grupo de WhatsApp ${name}${category ? ` – ${category}` : ''}`}
                 title={`Grupo de WhatsApp: ${name}`}
+                width={64}
+                height={64}
                 loading="lazy"
                 decoding="async"
                 className="w-full h-full object-cover"
