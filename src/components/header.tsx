@@ -22,6 +22,10 @@ export function Header() {
               <img 
                 src={logo} 
                 alt="GruposdeWhats"
+                width={40}
+                height={40}
+                fetchPriority="high"
+                decoding="async"
                 className="h-10 w-10 rounded-lg cursor-pointer"
               />
             </Link>
