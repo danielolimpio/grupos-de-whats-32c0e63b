@@ -153,6 +153,17 @@ export default function FAQ() {
         <meta name="description" content="Encontre respostas para as perguntas mais frequentes sobre como usar o portal GruposdeWhats, cadastrar grupos e participar de comunidades." />
         <meta name="keywords" content="FAQ, perguntas frequentes, grupos whatsapp, ajuda, suporte, como usar" />
         <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="FAQ — Perguntas Frequentes sobre Grupos de WhatsApp" />
+        <meta property="og:description" content="Tire suas dúvidas sobre como usar o GruposdeWhats, cadastrar e participar de grupos com segurança." />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content="GruposdeWhats" />
+        <meta property="og:locale" content="pt_BR" />
+        <meta property="og:image" content="https://gruposdewhats.com.br/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="FAQ — Perguntas Frequentes sobre Grupos de WhatsApp" />
+        <meta name="twitter:description" content="Tire suas dúvidas sobre como usar o GruposdeWhats, cadastrar e participar de grupos com segurança." />
+        <meta name="twitter:image" content="https://gruposdewhats.com.br/og-image.jpg" />
       </Helmet>
       
       <div className="min-h-screen bg-background">

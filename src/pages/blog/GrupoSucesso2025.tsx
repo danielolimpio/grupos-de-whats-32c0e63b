@@ -18,6 +18,17 @@ export default function GrupoSucesso2025() {
         <meta name="description" content="Guia definitivo 2026 para criar e administrar grupos de WhatsApp que realmente crescem e engajam. Estratégias práticas testadas por milhares de administradores." />
         <meta name="keywords" content="criar grupo whatsapp, grupo sucesso whatsapp, administrar grupo, guia whatsapp 2026" />
         <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Como Criar um Grupo de WhatsApp de Sucesso: Guia Completo 2026" />
+        <meta property="og:description" content="Guia definitivo 2026 para criar e administrar grupos de WhatsApp que realmente crescem e engajam. Estratégias práticas testadas por milhares de administradores." />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content="GruposdeWhats" />
+        <meta property="og:locale" content="pt_BR" />
+        <meta property="og:image" content="https://gruposdewhats.com.br/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Como Criar um Grupo de WhatsApp de Sucesso: Guia Completo 2026" />
+        <meta name="twitter:description" content="Guia definitivo 2026 para criar e administrar grupos de WhatsApp que realmente crescem e engajam. Estratégias práticas testadas por milhares de administradores." />
+        <meta name="twitter:image" content="https://gruposdewhats.com.br/og-image.jpg" />
       </Helmet>
 
       <div className="min-h-screen bg-background">

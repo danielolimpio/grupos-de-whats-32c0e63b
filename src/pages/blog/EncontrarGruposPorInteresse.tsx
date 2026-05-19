@@ -18,6 +18,17 @@ export default function EncontrarGruposPorInteresse() {
         <meta name="description" content="Saiba onde e como buscar grupos de WhatsApp sobre qualquer tema — desde hobbies até negócios. Dicas exclusivas para encontrar comunidades reais e ativas." />
         <meta name="keywords" content="encontrar grupos whatsapp, buscar grupos whatsapp, grupos por interesse, comunidades whatsapp 2026" />
         <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Guia Completo: Como Encontrar Grupos de WhatsApp por Interesse em 2026" />
+        <meta property="og:description" content="Saiba onde e como buscar grupos de WhatsApp sobre qualquer tema — desde hobbies até negócios. Dicas exclusivas para encontrar comunidades reais e ativas." />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content="GruposdeWhats" />
+        <meta property="og:locale" content="pt_BR" />
+        <meta property="og:image" content="https://gruposdewhats.com.br/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Guia Completo: Como Encontrar Grupos de WhatsApp por Interesse em 2026" />
+        <meta name="twitter:description" content="Saiba onde e como buscar grupos de WhatsApp sobre qualquer tema — desde hobbies até negócios. Dicas exclusivas para encontrar comunidades reais e ativas." />
+        <meta name="twitter:image" content="https://gruposdewhats.com.br/og-image.jpg" />
       </Helmet>
 
       <div className="min-h-screen bg-background">

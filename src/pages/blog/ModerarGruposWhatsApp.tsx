@@ -19,6 +19,17 @@ export default function ModerarGruposWhatsApp() {
         <meta name="description" content="Domine a moderação de grupos com regras claras, ferramentas de controle e técnicas de engajamento. Evite conflitos e mantenha sua comunidade saudável e ativa." />
         <meta name="keywords" content="moderar grupo whatsapp, moderação whatsapp, administrar grupo, regras grupo whatsapp, conflitos grupo whatsapp" />
         <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Melhores Práticas para Moderar Grupos de WhatsApp: Guia Definitivo" />
+        <meta property="og:description" content="Domine a moderação de grupos com regras claras, ferramentas de controle e técnicas de engajamento. Evite conflitos e mantenha sua comunidade saudável e ativa." />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content="GruposdeWhats" />
+        <meta property="og:locale" content="pt_BR" />
+        <meta property="og:image" content="https://gruposdewhats.com.br/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Melhores Práticas para Moderar Grupos de WhatsApp: Guia Definitivo" />
+        <meta name="twitter:description" content="Domine a moderação de grupos com regras claras, ferramentas de controle e técnicas de engajamento. Evite conflitos e mantenha sua comunidade saudável e ativa." />
+        <meta name="twitter:image" content="https://gruposdewhats.com.br/og-image.jpg" />
       </Helmet>
 
       <div className="min-h-screen bg-background">

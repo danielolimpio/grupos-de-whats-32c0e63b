@@ -18,6 +18,17 @@ export default function MelhoresHorarios() {
         <meta name="description" content="Descubra os horários ideais para postar em grupos de WhatsApp e maximize o engajamento. Análise completa por tipo de grupo e público em 2025." />
         <meta name="keywords" content="horários whatsapp, melhor hora postar grupo, timing whatsapp, engajamento horário" />
         <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Melhores Horários para Postar em Grupos de WhatsApp" />
+        <meta property="og:description" content="Descubra os horários ideais para postar em grupos de WhatsApp e maximize o engajamento. Análise completa por tipo de grupo e público em 2025." />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content="GruposdeWhats" />
+        <meta property="og:locale" content="pt_BR" />
+        <meta property="og:image" content="https://gruposdewhats.com.br/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Melhores Horários para Postar em Grupos de WhatsApp" />
+        <meta name="twitter:description" content="Descubra os horários ideais para postar em grupos de WhatsApp e maximize o engajamento. Análise completa por tipo de grupo e público em 2025." />
+        <meta name="twitter:image" content="https://gruposdewhats.com.br/og-image.jpg" />
       </Helmet>
 
       <div className="min-h-screen bg-background">

@@ -18,6 +18,17 @@ export default function SegurancaWhatsApp() {
         <meta name="description" content="Guia completo de segurança para grupos de WhatsApp. Aprenda a identificar e prevenir spam, golpes, scams e conteúdo malicioso em 2025." />
         <meta name="keywords" content="segurança whatsapp, proteger grupo whatsapp, spam whatsapp, golpes whatsapp, segurança digital" />
         <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Segurança no WhatsApp: Proteja seu Grupo de Spam e Golpes" />
+        <meta property="og:description" content="Guia completo de segurança para grupos de WhatsApp. Aprenda a identificar e prevenir spam, golpes, scams e conteúdo malicioso em 2025." />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content="GruposdeWhats" />
+        <meta property="og:locale" content="pt_BR" />
+        <meta property="og:image" content="https://gruposdewhats.com.br/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Segurança no WhatsApp: Proteja seu Grupo de Spam e Golpes" />
+        <meta name="twitter:description" content="Guia completo de segurança para grupos de WhatsApp. Aprenda a identificar e prevenir spam, golpes, scams e conteúdo malicioso em 2025." />
+        <meta name="twitter:image" content="https://gruposdewhats.com.br/og-image.jpg" />
       </Helmet>
 
       <div className="min-h-screen bg-background">

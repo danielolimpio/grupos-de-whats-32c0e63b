@@ -18,6 +18,17 @@ export default function GruposPremium() {
         <meta name="description" content="Descubra por que grupos em destaque crescem mais rápido e têm maior engajamento. Análise completa dos benefícios de destacar seu grupo." />
         <meta name="keywords" content="grupos destaque whatsapp, destacar grupo, crescimento grupo whatsapp" />
         <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Por Que Grupos em Destaque Têm Mais Sucesso" />
+        <meta property="og:description" content="Descubra por que grupos em destaque crescem mais rápido e têm maior engajamento. Análise completa dos benefícios de destacar seu grupo." />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content="GruposdeWhats" />
+        <meta property="og:locale" content="pt_BR" />
+        <meta property="og:image" content="https://gruposdewhats.com.br/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Por Que Grupos em Destaque Têm Mais Sucesso" />
+        <meta name="twitter:description" content="Descubra por que grupos em destaque crescem mais rápido e têm maior engajamento. Análise completa dos benefícios de destacar seu grupo." />
+        <meta name="twitter:image" content="https://gruposdewhats.com.br/og-image.jpg" />
       </Helmet>
 
       <div className="min-h-screen bg-background">
