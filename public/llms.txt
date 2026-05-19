@@ -1,0 +1,57 @@
+# GruposdeWhats
+
+> Diretório brasileiro independente de grupos de WhatsApp públicos, com curadoria manual, categorização e foco em segurança e transparência.
+
+GruposdeWhats é um diretório informacional gratuito que organiza links públicos de grupos de WhatsApp por categoria e tema. Todo conteúdo passa por revisão humana antes da publicação. O site não tem afiliação com a Meta Platforms ou WhatsApp LLC.
+
+## Páginas principais
+
+- [Início](/): Diretório com mais de 12.500 grupos de WhatsApp ativos, organizados por categoria.
+- [Todos os grupos](/todos-grupos): Lista completa de grupos publicados no diretório.
+- [Blog](/blog): Artigos sobre como criar, moderar e crescer grupos de WhatsApp.
+- [Sobre](/sobre): Quem somos, missão e equipe por trás do projeto.
+- [Como funciona](/como-funciona): Explicação do processo de curadoria e publicação.
+- [Central de Ajuda](/central-ajuda): Perguntas frequentes e suporte ao usuário.
+- [FAQ](/faq): Perguntas frequentes sobre grupos de WhatsApp.
+- [Contato](/contato): Canal direto para dúvidas e parcerias.
+
+## Categorias em destaque
+
+- [Amizade](/categoria/grupos-do-whatsapp-de-amizades): Grupos para fazer amizades e conversar.
+- [Namoro](/categoria/grupos-whatsapp-namoro): Grupos focados em relacionamentos e encontros.
+- [Vagas de emprego](/categoria/grupos-whatsapp-vagas-emprego): Oportunidades de trabalho compartilhadas em grupos.
+- [Estudos](/categoria/grupos-do-whatsapp-de-estudos): Grupos de estudo, vestibular e concursos.
+- [Games](/categoria/grupos-do-whatsapp-de-games): Comunidades de jogadores (Free Fire, Roblox, Minecraft).
+- [Receitas](/categoria/grupos-do-whatsapp-de-receitas): Grupos para trocar receitas e dicas de culinária.
+- [Notícias](/categoria/grupos-do-whatsapp-de-noticias): Grupos de notícias e atualidades.
+- [Promoções](/categoria/grupos-do-whatsapp-de-promocoes): Ofertas, cupons e descontos.
+- [Religião](/categoria/grupos-do-whatsapp-de-religiao): Grupos católicos, evangélicos e de outras religiões.
+- [Esportes](/categoria/grupos-do-whatsapp-de-esportes): Times, torcidas e modalidades esportivas.
+
+## Artigos do blog
+
+- [Como criar um grupo de WhatsApp de sucesso em 2026](/blog/como-criar-grupo-sucesso-2026): Guia completo para estruturar um grupo do zero.
+- [Como fazer seu grupo de WhatsApp viral](/blog/como-fazer-grupo-whatsapp-viral): Estratégias de crescimento rápido e marketing viral.
+- [Como aumentar o engajamento no seu grupo](/blog/como-aumentar-engajamento-grupo): Técnicas para manter membros ativos.
+- [Melhores práticas para moderar grupos](/blog/melhores-praticas-moderar-grupos-whatsapp): Moderação eficiente e regras claras.
+- [Segurança no WhatsApp: proteja seu grupo](/blog/seguranca-whatsapp-proteja-seu-grupo): Boas práticas de segurança e privacidade.
+- [Como criar grupos sem expor seu número](/blog/como-criar-grupos-whatsapp-sem-expor-numero): Privacidade ao administrar grupos.
+- [Melhores horários para postar em grupos](/blog/melhores-horarios-postar-grupos): Otimize alcance e engajamento.
+- [Regras essenciais para um grupo organizado](/blog/regras-essenciais-grupo-organizado): Estrutura de regras para evitar bagunça.
+- [Como encontrar grupos por interesse em 2026](/blog/como-encontrar-grupos-de-whatsapp-por-interesse-em-2026): Métodos para descobrir grupos relevantes.
+- [Por que grupos premium têm mais sucesso](/blog/por-que-grupos-premium-tem-mais-sucesso): Diferenciais dos grupos de alto desempenho.
+
+## Transparência e políticas
+
+- [Segurança e Transparência](/seguranca-transparencia): Práticas de segurança, moderação e proteção do usuário.
+- [Política de Transparência](/politica-de-transparencia): Como o conteúdo é avaliado e publicado.
+- [Regras da Comunidade](/regras-comunidade): Diretrizes para grupos listados.
+- [Dicas de Segurança](/dicas-seguranca): Recomendações para usuários de grupos.
+- [Reportar Problema](/reportar-problema): Canal para denúncias de conteúdo.
+
+## Optional
+
+- [Política de Privacidade](/politica-de-privacidade): Tratamento de dados e LGPD.
+- [Política de Cookies](/politica-de-cookies): Uso de cookies no site.
+- [Termos de Uso](/termos-de-uso): Termos e condições de utilização.
+- [Sitemap HTML](/sitemap): Mapa do site para navegação.
