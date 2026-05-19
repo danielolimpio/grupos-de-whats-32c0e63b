@@ -19,6 +19,17 @@ export default function GrupoWhatsAppViral() {
         <meta name="description" content="Aumente exponencialmente seus membros com técnicas de marketing viral para grupos de WhatsApp. Aprenda a criar conteúdo compartilhável e atrair milhares de usuários." />
         <meta name="keywords" content="grupo whatsapp viral, crescimento grupo whatsapp, marketing viral, conteúdo compartilhável, divulgação grupo whatsapp" />
         <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Como Fazer Seu Grupo de WhatsApp Viral: Estratégias de Crescimento Rápido" />
+        <meta property="og:description" content="Aumente exponencialmente seus membros com técnicas de marketing viral para grupos de WhatsApp. Aprenda a criar conteúdo compartilhável e atrair milhares de usuários." />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content="GruposdeWhats" />
+        <meta property="og:locale" content="pt_BR" />
+        <meta property="og:image" content="https://gruposdewhats.com.br/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Como Fazer Seu Grupo de WhatsApp Viral: Estratégias de Crescimento Rápido" />
+        <meta name="twitter:description" content="Aumente exponencialmente seus membros com técnicas de marketing viral para grupos de WhatsApp. Aprenda a criar conteúdo compartilhável e atrair milhares de usuários." />
+        <meta name="twitter:image" content="https://gruposdewhats.com.br/og-image.jpg" />
       </Helmet>
 
       <div className="min-h-screen bg-background">

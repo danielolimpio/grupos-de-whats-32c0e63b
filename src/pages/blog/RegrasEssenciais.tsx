@@ -18,6 +18,17 @@ export default function RegrasEssenciais() {
         <meta name="description" content="Descubra as 10 regras fundamentais para manter ordem, respeito e engajamento no seu grupo de WhatsApp. Guia prático 2025 para administradores." />
         <meta name="keywords" content="regras grupo whatsapp, organizar grupo, moderação whatsapp, regras comunidade" />
         <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="10 Regras Essenciais para Manter seu Grupo de WhatsApp Organizado" />
+        <meta property="og:description" content="Descubra as 10 regras fundamentais para manter ordem, respeito e engajamento no seu grupo de WhatsApp. Guia prático 2025 para administradores." />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content="GruposdeWhats" />
+        <meta property="og:locale" content="pt_BR" />
+        <meta property="og:image" content="https://gruposdewhats.com.br/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="10 Regras Essenciais para Manter seu Grupo de WhatsApp Organizado" />
+        <meta name="twitter:description" content="Descubra as 10 regras fundamentais para manter ordem, respeito e engajamento no seu grupo de WhatsApp. Guia prático 2025 para administradores." />
+        <meta name="twitter:image" content="https://gruposdewhats.com.br/og-image.jpg" />
       </Helmet>
 
       <div className="min-h-screen bg-background">
