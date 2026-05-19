@@ -101,6 +101,13 @@ const Category = () => {
         <meta property="og:description" content={category.metaDescription} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content="GruposdeWhats" />
+        <meta property="og:locale" content="pt_BR" />
+        <meta property="og:image" content="https://gruposdewhats.com.br/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={category.seoTitle} />
+        <meta name="twitter:description" content={category.metaDescription} />
+        <meta name="twitter:image" content="https://gruposdewhats.com.br/og-image.jpg" />
         <link rel="canonical" href={canonicalUrl} />
         <meta name="keywords" content={`${category.name.toLowerCase()}, grupos whatsapp ${category.id}, whatsapp ${category.id}, grupos de whatsapp`} />
         

@@ -35,8 +35,17 @@ export default function Blog() {
       <meta name="description" content="Aprenda como criar, gerenciar e fazer crescer seus grupos de WhatsApp com nossos guias especializados e dicas exclusivas." />
       <meta name="keywords" content="blog whatsapp, tutoriais grupos, dicas whatsapp, como criar grupo, administrar grupo whatsapp" />
       <link rel="canonical" href={canonicalUrl} />
-      <meta property="og:title" content="Blog - Dicas e Tutoriais sobre Grupos de WhatsApp" />
-      <meta property="og:description" content="Aprenda como criar, gerenciar e fazer crescer seus grupos de WhatsApp com nossos guias especializados." />
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content="Blog GruposdeWhats — Dicas e Tutoriais para Grupos de WhatsApp" />
+      <meta property="og:description" content="Guias práticos para criar, moderar e fazer crescer seu grupo de WhatsApp com segurança e engajamento." />
+      <meta property="og:url" content={canonicalUrl} />
+      <meta property="og:site_name" content="GruposdeWhats" />
+      <meta property="og:locale" content="pt_BR" />
+      <meta property="og:image" content="https://gruposdewhats.com.br/og-image.jpg" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Blog GruposdeWhats — Dicas e Tutoriais para Grupos de WhatsApp" />
+      <meta name="twitter:description" content="Guias práticos para criar, moderar e fazer crescer seu grupo de WhatsApp com segurança e engajamento." />
+      <meta name="twitter:image" content="https://gruposdewhats.com.br/og-image.jpg" />
     </Helmet>
 
     <div className="min-h-screen bg-background">
