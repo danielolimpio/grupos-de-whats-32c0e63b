@@ -15,6 +15,7 @@
   RewriteRule ^sitemap\.xml$ - [L]
   RewriteRule ^humans\.txt$ - [L]
   RewriteRule ^security\.txt$ - [L]
+  RewriteRule ^llms\.txt$ - [L]
   RewriteRule ^\.well-known/.*$ - [L]
 
   # Forçar HTTPS (http -> https)
