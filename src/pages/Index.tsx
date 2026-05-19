@@ -118,8 +118,8 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Grupos de WhatsApp 2026 — Encontre e Entre nos Melhores Grupos do Brasil</title>
-        <meta name="description" content="🔥 +12.500 grupos de WhatsApp verificados! Encontre grupos de amizade, namoro, estudos, vendas e mais. Todos revisados manualmente. Entre agora — 100% grátis!" />
+        <title>Grupos de WhatsApp 2026 — Diretório Brasileiro</title>
+        <meta name="description" content="🔥 +12.500 grupos de WhatsApp verificados por categoria: amizade, namoro, estudos, vendas e mais. Revisão manual. Entre em 1 clique." />
         <link rel="canonical" href={canonicalUrl} />
         <meta name="keywords" content="grupos de whatsapp, grupos whatsapp 2026, link grupo whatsapp, entrar grupo whatsapp, grupos whatsapp brasil, grupos de zap, melhores grupos whatsapp" />
         <meta property="og:title" content="🔥 +12.500 Grupos de WhatsApp Verificados — Entre Agora!" />
