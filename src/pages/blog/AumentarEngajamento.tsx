@@ -29,6 +29,7 @@ export default function AumentarEngajamento() {
         <meta name="twitter:title" content="Como Aumentar o Engajamento no seu Grupo de WhatsApp" />
         <meta name="twitter:description" content="Estratégias comprovadas para aumentar o engajamento e manter seus membros ativos no grupo de WhatsApp. Guia completo 2025 com técnicas práticas e testadas." />
         <meta name="twitter:image" content="https://gruposdewhats.com.br/og-image.jpg" />
+        <script type="application/ld+json">{"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"Como Aumentar o Engajamento no seu Grupo de WhatsApp\",\"description\":\"Estratégias comprovadas para aumentar o engajamento e manter seus membros ativos no grupo de WhatsApp. Guia completo 2025 com técnicas práticas e testadas.\",\"image\":\"https://gruposdewhats.com.br/og-image.jpg\",\"datePublished\":\"2025-12-02\",\"dateModified\":\"2025-12-02\",\"author\":{\"@type\":\"Person\",\"name\":\"Daniel Olimpio\",\"url\":\"https://gruposdewhats.com.br/sobre\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"GruposdeWhats\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://gruposdewhats.com.br/favicon.png\"}},\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://gruposdewhats.com.br\"}}"}</script>
       </Helmet>
 
       <div className="min-h-screen bg-background">

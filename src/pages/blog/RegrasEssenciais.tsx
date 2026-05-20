@@ -29,6 +29,7 @@ export default function RegrasEssenciais() {
         <meta name="twitter:title" content="10 Regras Essenciais para Manter seu Grupo de WhatsApp Organizado" />
         <meta name="twitter:description" content="Descubra as 10 regras fundamentais para manter ordem, respeito e engajamento no seu grupo de WhatsApp. Guia prático 2025 para administradores." />
         <meta name="twitter:image" content="https://gruposdewhats.com.br/og-image.jpg" />
+        <script type="application/ld+json">{"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"10 Regras Essenciais para Manter seu Grupo de WhatsApp Organizado\",\"description\":\"Descubra as 10 regras fundamentais para manter ordem, respeito e engajamento no seu grupo de WhatsApp. Guia prático 2025 para administradores.\",\"image\":\"https://gruposdewhats.com.br/og-image.jpg\",\"datePublished\":\"2025-12-08\",\"dateModified\":\"2025-12-08\",\"author\":{\"@type\":\"Person\",\"name\":\"Daniel Olimpio\",\"url\":\"https://gruposdewhats.com.br/sobre\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"GruposdeWhats\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://gruposdewhats.com.br/favicon.png\"}},\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://gruposdewhats.com.br\"}}"}</script>
       </Helmet>
 
       <div className="min-h-screen bg-background">

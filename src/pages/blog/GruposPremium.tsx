@@ -29,6 +29,7 @@ export default function GruposPremium() {
         <meta name="twitter:title" content="Por Que Grupos em Destaque Têm Mais Sucesso" />
         <meta name="twitter:description" content="Descubra por que grupos em destaque crescem mais rápido e têm maior engajamento. Análise completa dos benefícios de destacar seu grupo." />
         <meta name="twitter:image" content="https://gruposdewhats.com.br/og-image.jpg" />
+        <script type="application/ld+json">{"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"Por Que Grupos Premium Têm Mais Sucesso\",\"description\":\"Descubra por que grupos em destaque crescem mais rápido e têm maior engajamento. Análise completa dos benefícios de destacar seu grupo.\",\"image\":\"https://gruposdewhats.com.br/og-image.jpg\",\"datePublished\":\"2025-12-06\",\"dateModified\":\"2025-12-06\",\"author\":{\"@type\":\"Person\",\"name\":\"Daniel Olimpio\",\"url\":\"https://gruposdewhats.com.br/sobre\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"GruposdeWhats\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://gruposdewhats.com.br/favicon.png\"}},\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://gruposdewhats.com.br\"}}"}</script>
       </Helmet>
 
       <div className="min-h-screen bg-background">

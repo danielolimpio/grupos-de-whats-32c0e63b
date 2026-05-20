@@ -29,6 +29,7 @@ export default function GrupoSucesso2025() {
         <meta name="twitter:title" content="Como Criar um Grupo de WhatsApp de Sucesso: Guia Completo 2026" />
         <meta name="twitter:description" content="Guia definitivo 2026 para criar e administrar grupos de WhatsApp que realmente crescem e engajam. Estratégias práticas testadas por milhares de administradores." />
         <meta name="twitter:image" content="https://gruposdewhats.com.br/og-image.jpg" />
+        <script type="application/ld+json">{"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"Como Criar um Grupo de WhatsApp de Sucesso: Guia Completo 2026\",\"description\":\"Guia definitivo 2026 para criar e administrar grupos de WhatsApp que realmente crescem e engajam. Estratégias práticas testadas por milhares de administradores.\",\"image\":\"https://gruposdewhats.com.br/og-image.jpg\",\"datePublished\":\"2025-12-10\",\"dateModified\":\"2025-12-10\",\"author\":{\"@type\":\"Person\",\"name\":\"Daniel Olimpio\",\"url\":\"https://gruposdewhats.com.br/sobre\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"GruposdeWhats\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://gruposdewhats.com.br/favicon.png\"}},\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://gruposdewhats.com.br\"}}"}</script>
       </Helmet>
 
       <div className="min-h-screen bg-background">

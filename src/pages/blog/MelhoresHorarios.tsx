@@ -29,6 +29,7 @@ export default function MelhoresHorarios() {
         <meta name="twitter:title" content="Melhores Horários para Postar em Grupos de WhatsApp" />
         <meta name="twitter:description" content="Descubra os horários ideais para postar em grupos de WhatsApp e maximize o engajamento. Análise completa por tipo de grupo e público em 2025." />
         <meta name="twitter:image" content="https://gruposdewhats.com.br/og-image.jpg" />
+        <script type="application/ld+json">{"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"Melhores Horários para Postar em Grupos de WhatsApp\",\"description\":\"Descubra os horários ideais para postar em grupos de WhatsApp e maximize o engajamento. Análise completa por tipo de grupo e público em 2025.\",\"image\":\"https://gruposdewhats.com.br/og-image.jpg\",\"datePublished\":\"2025-11-28\",\"dateModified\":\"2025-11-28\",\"author\":{\"@type\":\"Person\",\"name\":\"Daniel Olimpio\",\"url\":\"https://gruposdewhats.com.br/sobre\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"GruposdeWhats\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://gruposdewhats.com.br/favicon.png\"}},\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://gruposdewhats.com.br\"}}"}</script>
       </Helmet>
 
       <div className="min-h-screen bg-background">

@@ -146,6 +146,21 @@ export default function FAQ() {
     )
   })).filter(category => category.questions.length > 0);
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": FAQ_DATA.flatMap(cat =>
+      cat.questions.map(q => ({
+        "@type": "Question",
+        "name": q.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": q.answer,
+        },
+      }))
+    ),
+  };
+
   return (
     <>
       <Helmet>
@@ -164,6 +179,7 @@ export default function FAQ() {
         <meta name="twitter:title" content="FAQ — Perguntas Frequentes sobre Grupos de WhatsApp" />
         <meta name="twitter:description" content="Tire suas dúvidas sobre como usar o GruposdeWhats, cadastrar e participar de grupos com segurança." />
         <meta name="twitter:image" content="https://gruposdewhats.com.br/og-image.jpg" />
+        <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
       </Helmet>
       
       <div className="min-h-screen bg-background">

@@ -29,6 +29,7 @@ export default function SegurancaWhatsApp() {
         <meta name="twitter:title" content="Segurança no WhatsApp: Proteja seu Grupo de Spam e Golpes" />
         <meta name="twitter:description" content="Guia completo de segurança para grupos de WhatsApp. Aprenda a identificar e prevenir spam, golpes, scams e conteúdo malicioso em 2025." />
         <meta name="twitter:image" content="https://gruposdewhats.com.br/og-image.jpg" />
+        <script type="application/ld+json">{"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"Segurança no WhatsApp: Proteja seu Grupo de Spam e Golpes\",\"description\":\"Guia completo de segurança para grupos de WhatsApp. Aprenda a identificar e prevenir spam, golpes, scams e conteúdo malicioso em 2025.\",\"image\":\"https://gruposdewhats.com.br/og-image.jpg\",\"datePublished\":\"2025-12-04\",\"dateModified\":\"2025-12-04\",\"author\":{\"@type\":\"Person\",\"name\":\"Daniel Olimpio\",\"url\":\"https://gruposdewhats.com.br/sobre\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"GruposdeWhats\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://gruposdewhats.com.br/favicon.png\"}},\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://gruposdewhats.com.br\"}}"}</script>
       </Helmet>
 
       <div className="min-h-screen bg-background">
