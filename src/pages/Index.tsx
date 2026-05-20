@@ -124,7 +124,7 @@ const Index = () => {
         <meta name="keywords" content="grupos de whatsapp, grupos whatsapp 2026, link grupo whatsapp, entrar grupo whatsapp, grupos whatsapp brasil, grupos de zap, melhores grupos whatsapp" />
         <meta property="og:title" content="🔥 +12.500 Grupos de WhatsApp Verificados — Entre Agora!" />
         <meta property="og:description" content="Diretório #1 de grupos de WhatsApp do Brasil. Grupos de amizade, namoro, estudos, vendas e mais. 100% grátis e verificados!" />
-        <meta property="og:url" content="https://gruposdewhats.com.br/" />
+        <meta property="og:url" content="https://gruposdewhats.com.br" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://gruposdewhats.com.br/og-image.jpg" />
         <meta property="og:site_name" content="GruposdeWhats Brasil" />
@@ -162,7 +162,7 @@ const Index = () => {
             "@type": "CollectionPage",
             "name": "Grupos de WhatsApp 2026",
             "description": "Diretório de grupos públicos de WhatsApp no Brasil, organizados por categorias. Todos revisados manualmente.",
-            "url": "https://gruposdewhats.com.br/",
+            "url": "https://gruposdewhats.com.br",
             "mainEntity": {
               "@type": "ItemList",
               "numberOfItems": 12500,
