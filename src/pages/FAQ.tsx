@@ -146,6 +146,21 @@ export default function FAQ() {
     )
   })).filter(category => category.questions.length > 0);
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": FAQ_DATA.flatMap(cat =>
+      cat.questions.map(q => ({
+        "@type": "Question",
+        "name": q.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": q.answer,
+        },
+      }))
+    ),
+  };
+
   return (
     <>
       <Helmet>
