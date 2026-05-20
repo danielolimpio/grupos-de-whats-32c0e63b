@@ -30,6 +30,7 @@ export default function GrupoWhatsAppViral() {
         <meta name="twitter:title" content="Como Fazer Seu Grupo de WhatsApp Viral: Estratégias de Crescimento Rápido" />
         <meta name="twitter:description" content="Aumente exponencialmente seus membros com técnicas de marketing viral para grupos de WhatsApp. Aprenda a criar conteúdo compartilhável e atrair milhares de usuários." />
         <meta name="twitter:image" content="https://gruposdewhats.com.br/og-image.jpg" />
+        <script type="application/ld+json">{"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"Como Fazer Seu Grupo de WhatsApp Viral: Estratégias de Crescimento Rápido\",\"description\":\"Aumente exponencialmente seus membros com técnicas de marketing viral para grupos de WhatsApp. Aprenda a criar conteúdo compartilhável e atrair milhares de usuários.\",\"image\":\"https://gruposdewhats.com.br/og-image.jpg\",\"datePublished\":\"2026-01-12\",\"dateModified\":\"2026-01-12\",\"author\":{\"@type\":\"Person\",\"name\":\"Daniel Olimpio\",\"url\":\"https://gruposdewhats.com.br/sobre\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"GruposdeWhats\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://gruposdewhats.com.br/favicon.png\"}},\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://gruposdewhats.com.br\"}}"}</script>
       </Helmet>
 
       <div className="min-h-screen bg-background">

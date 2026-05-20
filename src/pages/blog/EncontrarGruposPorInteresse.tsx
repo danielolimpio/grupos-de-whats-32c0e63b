@@ -29,6 +29,7 @@ export default function EncontrarGruposPorInteresse() {
         <meta name="twitter:title" content="Guia Completo: Como Encontrar Grupos de WhatsApp por Interesse em 2026" />
         <meta name="twitter:description" content="Saiba onde e como buscar grupos de WhatsApp sobre qualquer tema — desde hobbies até negócios. Dicas exclusivas para encontrar comunidades reais e ativas." />
         <meta name="twitter:image" content="https://gruposdewhats.com.br/og-image.jpg" />
+        <script type="application/ld+json">{"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"Guia Completo: Como Encontrar Grupos de WhatsApp por Interesse em 2026\",\"description\":\"Saiba onde e como buscar grupos de WhatsApp sobre qualquer tema — desde hobbies até negócios. Dicas exclusivas para encontrar comunidades reais e ativas.\",\"image\":\"https://gruposdewhats.com.br/og-image.jpg\",\"datePublished\":\"2026-01-05\",\"dateModified\":\"2026-01-05\",\"author\":{\"@type\":\"Person\",\"name\":\"Daniel Olimpio\",\"url\":\"https://gruposdewhats.com.br/sobre\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"GruposdeWhats\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://gruposdewhats.com.br/favicon.png\"}},\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://gruposdewhats.com.br\"}}"}</script>
       </Helmet>
 
       <div className="min-h-screen bg-background">

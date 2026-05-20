@@ -30,6 +30,7 @@ export default function ModerarGruposWhatsApp() {
         <meta name="twitter:title" content="Melhores Práticas para Moderar Grupos de WhatsApp: Guia Definitivo" />
         <meta name="twitter:description" content="Domine a moderação de grupos com regras claras, ferramentas de controle e técnicas de engajamento. Evite conflitos e mantenha sua comunidade saudável e ativa." />
         <meta name="twitter:image" content="https://gruposdewhats.com.br/og-image.jpg" />
+        <script type="application/ld+json">{"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"Melhores Práticas para Moderar Grupos de WhatsApp: Guia Definitivo\",\"description\":\"Domine a moderação de grupos com regras claras, ferramentas de controle e técnicas de engajamento. Evite conflitos e mantenha sua comunidade saudável e ativa.\",\"image\":\"https://gruposdewhats.com.br/og-image.jpg\",\"datePublished\":\"2025-12-13\",\"dateModified\":\"2025-12-13\",\"author\":{\"@type\":\"Person\",\"name\":\"Daniel Olimpio\",\"url\":\"https://gruposdewhats.com.br/sobre\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"GruposdeWhats\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://gruposdewhats.com.br/favicon.png\"}},\"mainEntityOfPage\":{\"@type\":\"WebPage\",\"@id\":\"https://gruposdewhats.com.br\"}}"}</script>
       </Helmet>
 
       <div className="min-h-screen bg-background">
