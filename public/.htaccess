@@ -27,20 +27,71 @@
   RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
   RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
   
-  # Redirecionamento 301 para URLs antigas específicas
+  # ============================================================
+  # 301 — Limpa querystrings de tracking/compartilhamento antigos
+  # ============================================================
+  RewriteCond %{QUERY_STRING} (^|&)(share|nb|enviar|grupo|fbclid|gclid|utm_[a-z]+)= [NC]
+  RewriteRule ^(.*)$ /$1? [R=301,L]
+
+  # ============================================================
+  # 301 — URLs administrativas/legadas do WordPress
+  # ============================================================
+  RewriteRule ^wp-login\.php /auth [R=301,L]
+  RewriteRule ^wp-admin(/.*)?$ /auth [R=301,L]
+  RewriteRule ^author/.*$ / [R=301,L]
+  RewriteRule ^page/[0-9]+/?$ / [R=301,L]
+  RewriteRule ^blog/page/[0-9]+/?$ /blog [R=301,L]
+  RewriteRule ^.+/feed/?$ / [R=301,L]
   RewriteRule ^category/sem-categoria/?$ / [R=301,L]
-  RewriteRule ^quem-somos/?$ / [R=301,L]
-  RewriteRule ^categorias/?$ / [R=301,L]
-  RewriteRule ^cadastro/?$ / [R=301,L]
-  RewriteRule ^minha-conta/?$ /auth [R=301,L]
-  RewriteRule ^minha-conta/entrar/?$ /auth [R=301,L]
-  
-  # Redirecionamento 301 genérico para outras URLs antigas conhecidas
   RewriteRule ^category/(.*)$ / [R=301,L]
   RewriteRule ^produto/(.*)$ / [R=301,L]
   RewriteRule ^servico/(.*)$ / [R=301,L]
-  
-  # Se não for arquivo nem diretório, redireciona para index.html (SPA routing)
+
+  # ============================================================
+  # 301 — Páginas institucionais antigas → novas rotas
+  # ============================================================
+  RewriteRule ^quem-somos/?$ /sobre [R=301,L]
+  RewriteRule ^categorias/?$ /todos-grupos [R=301,L]
+  RewriteRule ^cadastro/?$ /auth [R=301,L]
+  RewriteRule ^entrar/?$ /auth [R=301,L]
+  RewriteRule ^minha-conta(/.*)?$ /auth [R=301,L]
+  RewriteRule ^privacy-policy/?$ /politica-de-privacidade [R=301,L]
+  RewriteRule ^cookie-policy/?$ /politica-de-cookies [R=301,L]
+  RewriteRule ^terms-of-service/?$ /termos-de-uso [R=301,L]
+  RewriteRule ^all-groups/?$ /todos-grupos [R=301,L]
+  RewriteRule ^politica-de-dmca/?$ /termos-de-uso [R=301,L]
+
+  # ============================================================
+  # 301 — Slugs antigos de posts do blog → novos slugs
+  # ============================================================
+  RewriteRule ^blog/regras-essenciais/?$ /blog/regras-essenciais-grupo-organizado [R=301,L]
+  RewriteRule ^blog/grupos-premium/?$ /blog/por-que-grupos-premium-tem-mais-sucesso [R=301,L]
+  RewriteRule ^blog/aumentar-engajamento/?$ /blog/como-aumentar-engajamento-grupo [R=301,L]
+  RewriteRule ^blog/melhores-horarios/?$ /blog/melhores-horarios-postar-grupos [R=301,L]
+  RewriteRule ^blog/seguranca-whatsapp/?$ /blog/seguranca-whatsapp-proteja-seu-grupo [R=301,L]
+  RewriteRule ^blog/grupo-sucesso-2025/?$ /blog/como-criar-grupo-sucesso-2026 [R=301,L]
+  RewriteRule ^blog/como-criar-grupo-sucesso-2025/?$ /blog/como-criar-grupo-sucesso-2026 [R=301,L]
+
+  # ============================================================
+  # 301 — Remove trailing slash de URLs (exceto raiz e diretórios reais)
+  # Evita conteúdo duplicado entre /faq e /faq/
+  # ============================================================
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} ^(.+)/$
+  RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+  # ============================================================
+  # 301 — Slugs órfãos no root (URLs antigas do WordPress que não existem mais)
+  # Qualquer caminho de um único segmento que NÃO corresponda a rotas conhecidas → home
+  # ============================================================
+  RewriteCond %{REQUEST_URI} !^/(auth|admin|admin-setup|admin-users|dashboard|blog|faq|contato|sobre|quem-somos|como-funciona|central-ajuda|dicas-seguranca|seguranca-transparencia|regras-comunidade|reportar-problema|termos-de-uso|politica-de-privacidade|politica-de-cookies|politica-transparencia|todos-grupos|all-groups|categoria|category|grupo|artigo|sitemap|migrate-images|assets|images|api|favicon|index\.html|placeholder|robots\.txt|sitemap\.xml|ads\.txt|humans\.txt|llms\.txt|security\.txt|\.well-known)(/|$)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^[^/]+$ / [R=301,L]
+
+  # ============================================================
+  # SPA fallback — se não for arquivo nem diretório, serve index.html
+  # ============================================================
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule . /index.html [L]
