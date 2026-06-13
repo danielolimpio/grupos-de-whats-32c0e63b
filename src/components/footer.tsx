@@ -11,7 +11,7 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-              <img src={logo} alt="GruposdeWhats" className="h-8 w-8 rounded-lg" />
+              <img src={logo} alt="GruposdeWhats" width={32} height={32} decoding="async" className="h-8 w-8 rounded-lg" />
               <span className="text-lg font-bold">GruposdeWhats</span>
             </Link>
             <p className="text-primary-foreground/80 text-sm">
