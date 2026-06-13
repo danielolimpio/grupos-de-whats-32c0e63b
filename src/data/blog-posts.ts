@@ -14,6 +14,19 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: 11,
+    slug: "como-evitar-golpes-grupos-whatsapp-sinais-alerta",
+    title: "Como Evitar Golpes em Grupos de WhatsApp: Sinais de Alerta e Soluções",
+    excerpt: "Identifique fraudes, golpes financeiros e links maliciosos em grupos de WhatsApp. Proteja-se e seus contatos com um guia prático e atualizado de segurança digital.",
+    author: "Daniel Olimpio",
+    date: "2026-01-18",
+    readTime: "14 min",
+    categories: ["Privacidade", "Ferramentas", "Comunidade"],
+    image: "/images/blog-evitar-golpes-whatsapp-cover.jpg",
+    tags: ["Segurança", "Golpes", "Fraude", "Phishing", "WhatsApp"],
+    featured: true
+  },
+  {
     id: 10,
     slug: "como-fazer-grupo-whatsapp-viral-crescimento-rapido",
     title: "Como Fazer Seu Grupo de WhatsApp Viral: Estratégias de Crescimento Rápido",
