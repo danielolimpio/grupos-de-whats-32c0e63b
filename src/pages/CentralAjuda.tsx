@@ -175,7 +175,7 @@ export default function CentralAjuda() {
                     <channel.icon className="h-8 w-8 text-primary" />
                   </div>
                   <CardTitle className="text-xl">{channel.title}</CardTitle>
-                  <CardDescription className="text-lg font-medium">{channel.description}</CardDescription>
+                  <CardDescription className="text-base sm:text-lg font-medium break-words">{channel.description}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="text-sm text-muted-foreground">{channel.available}</div>
