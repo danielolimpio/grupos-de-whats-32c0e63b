@@ -14,6 +14,19 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: 12,
+    slug: "como-transformar-grupo-whatsapp-comunidade-lucrativa",
+    title: "Como Transformar um Grupo de WhatsApp em uma Comunidade Lucrativa",
+    excerpt: "Descubra como monetizar seu grupo de WhatsApp com afiliados, produtos digitais e serviços. Passo a passo para criar valor e gerar renda com sua audiência.",
+    author: "Daniel Olimpio",
+    date: "2026-01-25",
+    readTime: "16 min",
+    categories: ["Negócios", "Comunidade", "Grupos"],
+    image: "/images/blog-comunidade-lucrativa-cover.jpg",
+    tags: ["Monetização", "Afiliados", "Produtos Digitais", "Renda", "Comunidade"],
+    featured: true
+  },
+  {
     id: 11,
     slug: "como-evitar-golpes-grupos-whatsapp-sinais-alerta",
     title: "Como Evitar Golpes em Grupos de WhatsApp: Sinais de Alerta e Soluções",
