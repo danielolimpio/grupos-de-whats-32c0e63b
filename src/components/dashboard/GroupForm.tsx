@@ -21,12 +21,15 @@ interface GroupFormProps {
 
 export default function GroupForm({ onSuccess }: GroupFormProps) {
   const { user } = useAuth();
+  const { isAdmin } = useAdminAuth();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [imageUrl, setImageUrl] = useState<string>('');
   const [whatsappLink, setWhatsappLink] = useState('');
   const [description, setDescription] = useState('');
+  const [fakeAccessCount, setFakeAccessCount] = useState<string>('');
+  const [memberCount, setMemberCount] = useState<string>('');
   const fileInputRef = useRef<HTMLInputElement>(null);
   const categories = getAllCategoriesSorted();
 
