@@ -14,6 +14,19 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: 13,
+    slug: "como-criar-grupos-whatsapp-estudos-cursos-online-2026",
+    title: "Como Criar Grupos de WhatsApp para Estudos e Cursos Online em 2026",
+    excerpt: "Estruture grupos de estudo eficientes no WhatsApp para cursos, vestibulares ou idiomas. Dicas de organização, cronograma e engajamento para professores e alunos.",
+    author: "Daniel Olimpio",
+    date: "2026-02-02",
+    readTime: "17 min",
+    categories: ["Grupos", "Comunidade", "Tutorial"],
+    image: "/images/blog-grupos-estudos-cursos-cover.jpg",
+    tags: ["Estudos", "Cursos Online", "Vestibular", "ENEM", "Educação"],
+    featured: true
+  },
+  {
     id: 12,
     slug: "como-transformar-grupo-whatsapp-comunidade-lucrativa",
     title: "Como Transformar um Grupo de WhatsApp em uma Comunidade Lucrativa",
