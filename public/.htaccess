@@ -88,12 +88,11 @@ Options -MultiViews
   RewriteRule ^blog/como-criar-grupo-sucesso-2025/?$ /blog/como-criar-grupo-sucesso-2026 [R=301,L]
 
   # ============================================================
-  # 301 — Remove trailing slash de TODAS as URLs (exceto raiz)
-  # Evita conteúdo duplicado entre /faq e /faq/ e impede que o
-  # snapshot SSG dentro de pastas seja servido por engano.
+  # Barras finais: não redirecionar no servidor.
+  # Alguns navegadores podem manter em cache o 301 antigo /blog -> /blog/;
+  # se também fizermos /blog/ -> /blog no servidor, isso cria loop local
+  # ERR_TOO_MANY_REDIRECTS. A SPA normaliza a URL no navegador sem request.
   # ============================================================
-  RewriteCond %{REQUEST_URI} !^/(assets|images|\.well-known)/
-  RewriteRule ^(.+)/$ /$1 [R=301,L]
 
   # ============================================================
   # 301 — Slugs órfãos no root (URLs antigas do WordPress que não existem mais)
