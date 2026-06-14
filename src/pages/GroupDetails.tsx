@@ -29,6 +29,7 @@ interface Group {
   image_url: string;
   whatsapp_link: string;
   access_count: number;
+  member_count: number;
   is_premium_active: boolean;
   slug: string;
   created_at: string;
