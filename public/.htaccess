@@ -4,10 +4,25 @@
   AddType application/xml .xml
 </IfModule>
 
+# ============================================================
+# Evita que o Apache adicione barra final automaticamente em
+# diretórios (ex.: /blog -> /blog/) e que sirva o index.html
+# pré-renderizado SSG dentro dessas pastas como página padrão.
+# Sem isso, ao dar F5 em /blog o navegador era redirecionado
+# para /blog/ e recebia o snapshot estático (visual quebrado).
+# ============================================================
+<IfModule mod_dir.c>
+  DirectorySlash Off
+  DirectoryIndex disabled
+</IfModule>
+Options -MultiViews
+
 # Roteamento para aplicação React SPA
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+  
+
   
   # Arquivos especiais - servir diretamente sem redirect
   RewriteRule ^ads\.txt$ - [L]
@@ -73,11 +88,11 @@
   RewriteRule ^blog/como-criar-grupo-sucesso-2025/?$ /blog/como-criar-grupo-sucesso-2026 [R=301,L]
 
   # ============================================================
-  # 301 — Remove trailing slash de URLs (exceto raiz e diretórios reais)
-  # Evita conteúdo duplicado entre /faq e /faq/
+  # 301 — Remove trailing slash de TODAS as URLs (exceto raiz)
+  # Evita conteúdo duplicado entre /faq e /faq/ e impede que o
+  # snapshot SSG dentro de pastas seja servido por engano.
   # ============================================================
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_URI} ^(.+)/$
+  RewriteCond %{REQUEST_URI} !^/(assets|images|\.well-known)/
   RewriteRule ^(.+)/$ /$1 [R=301,L]
 
   # ============================================================
@@ -86,16 +101,22 @@
   # ============================================================
   RewriteCond %{REQUEST_URI} !^/(auth|admin|admin-setup|admin-users|dashboard|blog|faq|contato|sobre|quem-somos|como-funciona|central-ajuda|dicas-seguranca|seguranca-transparencia|regras-comunidade|reportar-problema|termos-de-uso|politica-de-privacidade|politica-de-cookies|politica-transparencia|todos-grupos|all-groups|categoria|category|grupo|artigo|sitemap|migrate-images|assets|images|api|favicon|index\.html|placeholder|robots\.txt|sitemap\.xml|ads\.txt|humans\.txt|llms\.txt|security\.txt|\.well-known)(/|$)
   RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^[^/]+$ / [R=301,L]
 
   # ============================================================
-  # SPA fallback — se não for arquivo nem diretório, serve index.html
+  # Raiz — serve a SPA explicitamente (DirectoryIndex foi desativado)
+  # ============================================================
+  RewriteRule ^$ /index.html [L]
+
+  # ============================================================
+  # SPA fallback — se não for arquivo, serve o index.html da SPA
+  # (Não usamos !-d para que rotas como /blog sirvam a SPA, e
+  # não o snapshot SSG dentro da pasta /blog/.)
   # ============================================================
   RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule . /index.html [L]
 </IfModule>
+
 
 # Compressão Gzip
 <IfModule mod_deflate.c>
