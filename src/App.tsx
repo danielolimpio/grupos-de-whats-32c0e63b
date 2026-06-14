@@ -23,6 +23,7 @@ import ModerarGruposWhatsApp from "./pages/blog/ModerarGruposWhatsApp";
 import EncontrarGruposPorInteresse from "./pages/blog/EncontrarGruposPorInteresse";
 import GrupoWhatsAppViral from "./pages/blog/GrupoWhatsAppViral";
 import EvitarGolpesGruposWhatsApp from "./pages/blog/EvitarGolpesGruposWhatsApp";
+import ComunidadeLucrativa from "./pages/blog/ComunidadeLucrativa";
 import ComoFunciona from "./pages/ComoFunciona";
 import RegrasComunidade from "./pages/RegrasComunidade";
 import DicasSeguranca from "./pages/DicasSeguranca";
@@ -78,6 +79,7 @@ const App = () => (
               <Route path="/blog/como-encontrar-grupos-de-whatsapp-por-interesse-em-2026" element={<EncontrarGruposPorInteresse />} />
               <Route path="/blog/como-fazer-grupo-whatsapp-viral-crescimento-rapido" element={<GrupoWhatsAppViral />} />
               <Route path="/blog/como-evitar-golpes-grupos-whatsapp-sinais-alerta" element={<EvitarGolpesGruposWhatsApp />} />
+              <Route path="/blog/como-transformar-grupo-whatsapp-comunidade-lucrativa" element={<ComunidadeLucrativa />} />
               <Route path="/como-funciona" element={<ComoFunciona />} />
               <Route path="/regras-comunidade" element={<RegrasComunidade />} />
               <Route path="/dicas-seguranca" element={<DicasSeguranca />} />
