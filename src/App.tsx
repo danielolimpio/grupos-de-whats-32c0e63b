@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -48,6 +49,26 @@ import WhatsAppChannelPopup from "./components/WhatsAppChannelPopup";
 
 const queryClient = new QueryClient();
 
+const TrailingSlashNormalizer = () => {
+  useEffect(() => {
+    const normalizeUrl = () => {
+      const { pathname, search, hash } = window.location;
+
+      if (pathname.length > 1 && pathname.endsWith("/")) {
+        const normalizedPath = pathname.replace(/\/+$/, "");
+        window.history.replaceState(null, "", `${normalizedPath}${search}${hash}`);
+      }
+    };
+
+    normalizeUrl();
+    window.addEventListener("popstate", normalizeUrl);
+
+    return () => window.removeEventListener("popstate", normalizeUrl);
+  }, []);
+
+  return null;
+};
+
 const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
@@ -56,6 +77,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <TrailingSlashNormalizer />
             <ScrollToTop />
             <WhatsAppChannelPopup />
             <Routes>
