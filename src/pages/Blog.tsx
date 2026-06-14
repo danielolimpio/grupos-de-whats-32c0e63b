@@ -152,7 +152,7 @@ export default function Blog() {
                       </span>
                     </div>
                     <Link to={`/blog/${post.slug}`}>
-                      <CardTitle className="line-clamp-2 group-hover:text-primary transition-colors cursor-pointer">
+                      <CardTitle className="line-clamp-2 leading-snug pb-1 group-hover:text-primary transition-colors cursor-pointer">
                         {post.title}
                       </CardTitle>
                     </Link>
