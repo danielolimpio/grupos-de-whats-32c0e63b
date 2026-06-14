@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
+import { useAdminAuth } from '@/hooks/useAdminAuth';
 import { Upload, Plus, AlertTriangle } from 'lucide-react';
 import { getAllCategoriesSorted } from '@/data/categories';
 import { WhatsAppGroupImageLoader } from '@/components/WhatsAppGroupImageLoader';
@@ -20,12 +21,15 @@ interface GroupFormProps {
 
 export default function GroupForm({ onSuccess }: GroupFormProps) {
   const { user } = useAuth();
+  const { isAdmin } = useAdminAuth();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [imageUrl, setImageUrl] = useState<string>('');
   const [whatsappLink, setWhatsappLink] = useState('');
   const [description, setDescription] = useState('');
+  const [fakeAccessCount, setFakeAccessCount] = useState<string>('');
+  const [memberCount, setMemberCount] = useState<string>('');
   const fileInputRef = useRef<HTMLInputElement>(null);
   const categories = getAllCategoriesSorted();
 
@@ -154,18 +158,32 @@ export default function GroupForm({ onSuccess }: GroupFormProps) {
       }
 
       // Create group with normalized slug
+      const insertPayload: any = {
+        user_id: user.id,
+        name: name.trim(),
+        slug: generateSlug(name.trim()),
+        description: description.trim(),
+        category,
+        image_url: imageUrl,
+        whatsapp_link: whatsappLink.trim(),
+        status: 'pending'
+      };
+
+      // Admins can set initial fictitious access count and member count
+      if (isAdmin) {
+        const parsedAccess = parseInt(fakeAccessCount, 10);
+        const parsedMembers = parseInt(memberCount, 10);
+        if (!isNaN(parsedAccess) && parsedAccess >= 0) {
+          insertPayload.access_count = parsedAccess;
+        }
+        if (!isNaN(parsedMembers) && parsedMembers >= 0) {
+          insertPayload.member_count = parsedMembers;
+        }
+      }
+
       const { error } = await supabase
         .from('groups')
-        .insert({
-          user_id: user.id,
-          name: name.trim(),
-          slug: generateSlug(name.trim()),
-          description: description.trim(),
-          category,
-          image_url: imageUrl,
-          whatsapp_link: whatsappLink.trim(),
-          status: 'pending'
-        });
+        .insert(insertPayload);
 
       if (error) throw error;
 
@@ -325,6 +343,45 @@ export default function GroupForm({ onSuccess }: GroupFormProps) {
               </div>
             </div>
           </div>
+
+          {isAdmin && (
+            <div className="border border-dashed border-primary/40 rounded-lg p-4 bg-primary/5 space-y-4">
+              <div>
+                <h4 className="font-medium text-sm">Opções de Administrador</h4>
+                <p className="text-xs text-muted-foreground">
+                  Defina valores iniciais exibidos publicamente nos cards e na página do grupo.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="fakeAccessCount">Acessos iniciais (fictícios)</Label>
+                  <Input
+                    id="fakeAccessCount"
+                    name="fakeAccessCount"
+                    type="number"
+                    min="0"
+                    placeholder="Ex: 1500"
+                    value={fakeAccessCount}
+                    onChange={(e) => setFakeAccessCount(e.target.value)}
+                    disabled={loading}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="memberCount">Quantidade de membros</Label>
+                  <Input
+                    id="memberCount"
+                    name="memberCount"
+                    type="number"
+                    min="0"
+                    placeholder="Ex: 250"
+                    value={memberCount}
+                    onChange={(e) => setMemberCount(e.target.value)}
+                    disabled={loading}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
 
           <div className="flex justify-end">
             <Button type="submit" disabled={loading || uploading}>

@@ -29,6 +29,7 @@ interface Group {
   image_url: string;
   whatsapp_link: string;
   access_count: number;
+  member_count: number;
   is_premium_active: boolean;
   slug: string;
   created_at: string;
@@ -266,6 +267,12 @@ const GroupDetails = () => {
                       <Users className="w-4 h-4" />
                       {group.access_count} acessos
                     </span>
+                    {group.member_count > 0 && (
+                      <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm bg-muted">
+                        <Users className="w-4 h-4" />
+                        {group.member_count.toLocaleString('pt-BR')} membros
+                      </span>
+                    )}
                     {group.is_premium_active && (
                       <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-yellow-500/10 text-yellow-600 dark:text-yellow-400">
                         ⭐ Premium

@@ -156,6 +156,7 @@ export type Database = {
           image_url: string | null
           is_premium: boolean | null
           is_premium_active: boolean | null
+          member_count: number
           name: string
           premium_activated_at: string | null
           premium_activated_by: string | null
@@ -180,6 +181,7 @@ export type Database = {
           image_url?: string | null
           is_premium?: boolean | null
           is_premium_active?: boolean | null
+          member_count?: number
           name: string
           premium_activated_at?: string | null
           premium_activated_by?: string | null
@@ -204,6 +206,7 @@ export type Database = {
           image_url?: string | null
           is_premium?: boolean | null
           is_premium_active?: boolean | null
+          member_count?: number
           name?: string
           premium_activated_at?: string | null
           premium_activated_by?: string | null
