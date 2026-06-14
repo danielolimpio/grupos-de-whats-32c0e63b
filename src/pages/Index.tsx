@@ -65,7 +65,7 @@ const Index = () => {
         description: group.description,
         category: group.category,
         image: group.image_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(group.name)}&background=3d4654&color=fff&size=128`,
-        memberCount: 0,
+        memberCount: group.member_count || 0,
         isPremium: group.is_premium_active || false,
         isNew: new Date(group.created_at).getTime() > Date.now() - 7 * 24 * 60 * 60 * 1000,
         createdAt: group.created_at,
