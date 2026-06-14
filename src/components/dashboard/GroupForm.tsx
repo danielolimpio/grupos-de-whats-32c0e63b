@@ -158,18 +158,32 @@ export default function GroupForm({ onSuccess }: GroupFormProps) {
       }
 
       // Create group with normalized slug
+      const insertPayload: any = {
+        user_id: user.id,
+        name: name.trim(),
+        slug: generateSlug(name.trim()),
+        description: description.trim(),
+        category,
+        image_url: imageUrl,
+        whatsapp_link: whatsappLink.trim(),
+        status: 'pending'
+      };
+
+      // Admins can set initial fictitious access count and member count
+      if (isAdmin) {
+        const parsedAccess = parseInt(fakeAccessCount, 10);
+        const parsedMembers = parseInt(memberCount, 10);
+        if (!isNaN(parsedAccess) && parsedAccess >= 0) {
+          insertPayload.access_count = parsedAccess;
+        }
+        if (!isNaN(parsedMembers) && parsedMembers >= 0) {
+          insertPayload.member_count = parsedMembers;
+        }
+      }
+
       const { error } = await supabase
         .from('groups')
-        .insert({
-          user_id: user.id,
-          name: name.trim(),
-          slug: generateSlug(name.trim()),
-          description: description.trim(),
-          category,
-          image_url: imageUrl,
-          whatsapp_link: whatsappLink.trim(),
-          status: 'pending'
-        });
+        .insert(insertPayload);
 
       if (error) throw error;
 
