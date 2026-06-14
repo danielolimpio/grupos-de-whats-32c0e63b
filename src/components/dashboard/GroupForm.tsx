@@ -344,6 +344,45 @@ export default function GroupForm({ onSuccess }: GroupFormProps) {
             </div>
           </div>
 
+          {isAdmin && (
+            <div className="border border-dashed border-primary/40 rounded-lg p-4 bg-primary/5 space-y-4">
+              <div>
+                <h4 className="font-medium text-sm">Opções de Administrador</h4>
+                <p className="text-xs text-muted-foreground">
+                  Defina valores iniciais exibidos publicamente nos cards e na página do grupo.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="fakeAccessCount">Acessos iniciais (fictícios)</Label>
+                  <Input
+                    id="fakeAccessCount"
+                    name="fakeAccessCount"
+                    type="number"
+                    min="0"
+                    placeholder="Ex: 1500"
+                    value={fakeAccessCount}
+                    onChange={(e) => setFakeAccessCount(e.target.value)}
+                    disabled={loading}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="memberCount">Quantidade de membros</Label>
+                  <Input
+                    id="memberCount"
+                    name="memberCount"
+                    type="number"
+                    min="0"
+                    placeholder="Ex: 250"
+                    value={memberCount}
+                    onChange={(e) => setMemberCount(e.target.value)}
+                    disabled={loading}
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+
           <div className="flex justify-end">
             <Button type="submit" disabled={loading || uploading}>
               {loading ? "Enviando..." : "Enviar Grupo"}
