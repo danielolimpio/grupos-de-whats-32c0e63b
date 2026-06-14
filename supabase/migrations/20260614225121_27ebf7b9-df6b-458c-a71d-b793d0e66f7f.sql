@@ -1,0 +1,1 @@
+ALTER TABLE public.groups ADD COLUMN IF NOT EXISTS member_count integer NOT NULL DEFAULT 0;
