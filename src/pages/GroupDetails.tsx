@@ -233,9 +233,16 @@ const GroupDetails = () => {
             <CardHeader>
               <div className="flex flex-col md:flex-row gap-6 items-start">
                 <img 
-                  src={group.image_url} 
+                  src={group.image_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(group.name)}&background=3d4654&color=fff&size=256`} 
                   alt={group.name}
-                  className="w-32 h-32 rounded-lg object-cover border-2 border-primary/20"
+                  loading="lazy"
+                  decoding="async"
+                  onError={(e) => {
+                    const img = e.currentTarget;
+                    const fallback = `https://ui-avatars.com/api/?name=${encodeURIComponent(group.name)}&background=3d4654&color=fff&size=256`;
+                    if (img.src !== fallback) img.src = fallback;
+                  }}
+                  className="w-32 h-32 rounded-lg object-cover border-2 border-primary/20 bg-muted"
                 />
                 <div className="flex-1">
                   <CardTitle className="text-3xl mb-2">{group.name}</CardTitle>
