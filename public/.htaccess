@@ -4,10 +4,25 @@
   AddType application/xml .xml
 </IfModule>
 
+# ============================================================
+# Evita que o Apache adicione barra final automaticamente em
+# diretórios (ex.: /blog -> /blog/) e que sirva o index.html
+# pré-renderizado SSG dentro dessas pastas como página padrão.
+# Sem isso, ao dar F5 em /blog o navegador era redirecionado
+# para /blog/ e recebia o snapshot estático (visual quebrado).
+# ============================================================
+<IfModule mod_dir.c>
+  DirectorySlash Off
+  DirectoryIndex disabled
+</IfModule>
+Options -MultiViews
+
 # Roteamento para aplicação React SPA
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+  
+
   
   # Arquivos especiais - servir diretamente sem redirect
   RewriteRule ^ads\.txt$ - [L]
