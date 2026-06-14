@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
+import { useAdminAuth } from '@/hooks/useAdminAuth';
 import { Upload, Plus, AlertTriangle } from 'lucide-react';
 import { getAllCategoriesSorted } from '@/data/categories';
 import { WhatsAppGroupImageLoader } from '@/components/WhatsAppGroupImageLoader';
