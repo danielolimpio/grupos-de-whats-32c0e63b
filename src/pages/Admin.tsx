@@ -407,6 +407,9 @@ export default function Admin() {
     if (!editingGroup) return;
 
     try {
+      const parsedAccess = parseInt(editFormData.access_count, 10);
+      const parsedMembers = parseInt(editFormData.member_count, 10);
+
       const { error } = await supabaseAdmin
         .from('groups')
         .update({
@@ -415,6 +418,8 @@ export default function Admin() {
           category: editFormData.category,
           whatsapp_link: editFormData.whatsapp_link,
           image_url: editFormData.image_url || null,
+          access_count: !isNaN(parsedAccess) && parsedAccess >= 0 ? parsedAccess : 0,
+          member_count: !isNaN(parsedMembers) && parsedMembers >= 0 ? parsedMembers : 0,
           updated_at: new Date().toISOString()
         })
         .eq('id', editingGroup.id);
