@@ -299,7 +299,9 @@ export default function Admin() {
       description: group.description || '',
       category: group.category,
       whatsapp_link: group.whatsapp_link,
-      image_url: group.image_url || ''
+      image_url: group.image_url || '',
+      access_count: String(group.access_count ?? 0),
+      member_count: String(group.member_count ?? 0)
     });
     setEditDialogOpen(true);
   };
