@@ -61,6 +61,7 @@ interface Group {
   whatsapp_link: string;
   status: string;
   access_count: number;
+  member_count?: number;
   is_premium: boolean;
   rejection_reason?: string;
   created_at: string;
@@ -87,7 +88,9 @@ export default function Admin() {
     description: '',
     category: '',
     whatsapp_link: '',
-    image_url: ''
+    image_url: '',
+    access_count: '',
+    member_count: ''
   });
   const [uploadingImage, setUploadingImage] = useState(false);
   const [refreshingImage, setRefreshingImage] = useState(false);
@@ -296,7 +299,9 @@ export default function Admin() {
       description: group.description || '',
       category: group.category,
       whatsapp_link: group.whatsapp_link,
-      image_url: group.image_url || ''
+      image_url: group.image_url || '',
+      access_count: String(group.access_count ?? 0),
+      member_count: String(group.member_count ?? 0)
     });
     setEditDialogOpen(true);
   };
@@ -402,6 +407,9 @@ export default function Admin() {
     if (!editingGroup) return;
 
     try {
+      const parsedAccess = parseInt(editFormData.access_count, 10);
+      const parsedMembers = parseInt(editFormData.member_count, 10);
+
       const { error } = await supabaseAdmin
         .from('groups')
         .update({
@@ -410,6 +418,8 @@ export default function Admin() {
           category: editFormData.category,
           whatsapp_link: editFormData.whatsapp_link,
           image_url: editFormData.image_url || null,
+          access_count: !isNaN(parsedAccess) && parsedAccess >= 0 ? parsedAccess : 0,
+          member_count: !isNaN(parsedMembers) && parsedMembers >= 0 ? parsedMembers : 0,
           updated_at: new Date().toISOString()
         })
         .eq('id', editingGroup.id);
@@ -779,6 +789,30 @@ export default function Admin() {
                 onChange={(e) => setEditFormData({ ...editFormData, whatsapp_link: e.target.value })}
                 placeholder="https://chat.whatsapp.com/..."
               />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <Label htmlFor="edit-access-count">Quantidade de acessos</Label>
+                <Input
+                  id="edit-access-count"
+                  type="number"
+                  min="0"
+                  value={editFormData.access_count}
+                  onChange={(e) => setEditFormData({ ...editFormData, access_count: e.target.value })}
+                  placeholder="Ex: 1500"
+                />
+              </div>
+              <div>
+                <Label htmlFor="edit-member-count">Quantidade de membros</Label>
+                <Input
+                  id="edit-member-count"
+                  type="number"
+                  min="0"
+                  value={editFormData.member_count}
+                  onChange={(e) => setEditFormData({ ...editFormData, member_count: e.target.value })}
+                  placeholder="Ex: 250"
+                />
+              </div>
             </div>
             <div className="space-y-3">
               <Label>Imagem do Grupo</Label>
