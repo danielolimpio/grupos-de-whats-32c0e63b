@@ -44,9 +44,48 @@ Options -MultiViews
   
   # ============================================================
   # 301 — Limpa querystrings de tracking/compartilhamento antigos
+  # (inclui erro_grupo que estava gerando "cópia sem canônica" no GSC)
   # ============================================================
-  RewriteCond %{QUERY_STRING} (^|&)(share|nb|enviar|grupo|fbclid|gclid|utm_[a-z]+)= [NC]
+  RewriteCond %{QUERY_STRING} (^|&)(share|nb|enviar|grupo|erro_grupo|fbclid|gclid|utm_[a-z]+)(=|&|$) [NC]
   RewriteRule ^(.*)$ /$1? [R=301,L]
+
+  # /auth?enviar e /auth?grupo (sem "=") — strip total
+  RewriteCond %{QUERY_STRING} ^(enviar|grupo)$ [NC]
+  RewriteRule ^auth/?$ /auth? [R=301,L]
+
+  # ============================================================
+  # 301 — Slugs de categoria antigos/variantes → categoria atual equivalente
+  # (resolve as 136 URLs "Detectada mas não indexada" do GSC)
+  # ============================================================
+  RewriteRule ^categoria/grupos-do-whatsapp-de-amizade/?$ /categoria/grupos-do-whatsapp-de-amizades [R=301,L]
+  RewriteRule ^categoria/grupos-do-whatsapp-de-culinaria/?$ /categoria/grupos-do-whatsapp-de-receitas [R=301,L]
+  RewriteRule ^categoria/grupos-do-whatsapp-de-educacao/?$ /categoria/grupos-do-whatsapp-de-estudos [R=301,L]
+  RewriteRule ^categoria/grupos-do-whatsapp-de-entretenimento/?$ /categoria/grupos-do-whatsapp-de-cinema [R=301,L]
+  RewriteRule ^categoria/grupos-do-whatsapp-de-jogos/?$ /categoria/grupos-do-whatsapp-de-games [R=301,L]
+  RewriteRule ^categoria/grupos-do-whatsapp-de-musica/?$ /categoria/grupos-do-whatsapp-de-musicas [R=301,L]
+  RewriteRule ^categoria/grupos-do-whatsapp-de-arte/?$ /categoria/grupos-do-whatsapp-de-livros [R=301,L]
+  RewriteRule ^categoria/grupos-do-whatsapp-de-saude/?$ /todos-grupos [R=301,L]
+  RewriteRule ^categoria/grupos-do-whatsapp-de-amizade-e-encontros/?$ /categoria/grupos-do-whatsapp-de-amizades [R=301,L]
+  RewriteRule ^categoria/grupos-de-whatsapp-de-amizade-e-encontros/?$ /categoria/grupos-do-whatsapp-de-amizades [R=301,L]
+  RewriteRule ^categoria/amizade-e-encontros/?$ /categoria/grupos-do-whatsapp-de-amizades [R=301,L]
+  RewriteRule ^categoria/grupos-de-whatsapp-de-amizades-quentes/?$ /categoria/grupos-do-whatsapp-de-amizades [R=301,L]
+  RewriteRule ^categoria/games-e-jogos/?$ /categoria/grupos-do-whatsapp-de-games [R=301,L]
+  RewriteRule ^categoria/academia-e-treino/?$ /categoria/grupos-do-whatsapp-de-esportes [R=301,L]
+  RewriteRule ^categoria/amor-e-romance/?$ /categoria/grupos-do-whatsapp-de-namoros [R=301,L]
+  RewriteRule ^categoria/caminhoneiros/?$ /categoria/grupos-whatsapp-caminhoneiros [R=301,L]
+
+  # Variantes com prefixo "grupos-whatsapp-" antigo do WordPress
+  RewriteRule ^category/grupos-de-whatsapp-de-academia-e-treino/?$ /categoria/grupos-do-whatsapp-de-esportes [R=301,L]
+  RewriteRule ^category/grupos-whatsapp-anime/?$ /categoria/grupos-whatsapp-anime [R=301,L]
+
+  # Rotas /grupos-whatsapp-* sem prefixo "categoria/" (legado WP no root)
+  RewriteRule ^grupos-de-whatsapp-de-vendas-e-trocas/?$ /categoria/grupos-do-whatsapp-de-compra-e-venda [R=301,L]
+
+  # /minha-conta com qualquer subpath → /auth
+  RewriteRule ^minha-conta/?$ /auth [R=301,L]
+
+  # /cadastro/qualquer-coisa → /auth (já existe regra geral; reforço para subpaths suspeitos)
+  RewriteRule ^cadastro/.*$ /auth [R=301,L]
 
   # ============================================================
   # 301 — URLs administrativas/legadas do WordPress
