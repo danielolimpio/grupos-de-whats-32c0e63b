@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Sparkles, X } from "lucide-react";
 import logo from "@/assets/whatsapp-channel-logo.png";
@@ -7,10 +8,20 @@ const CHANNEL_URL = "https://whatsapp.com/channel/0029VbCqSb6Bqbr0ieXhl713";
 const STORAGE_KEY = "wa_channel_popup_shown";
 const EXIT_KEY = "wa_channel_popup_exit_shown";
 
+const BLOCKED_PATHS = ["/auth", "/admin", "/admin-setup"];
+
 export function WhatsAppChannelPopup() {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
+  const isBlocked = BLOCKED_PATHS.some(
+    (p) => location.pathname === p || location.pathname.startsWith(`${p}/`)
+  );
 
   useEffect(() => {
+    if (isBlocked) {
+      setOpen(false);
+      return;
+    }
     // First visit: show after small delay
     if (!sessionStorage.getItem(STORAGE_KEY)) {
       const t = setTimeout(() => {
@@ -19,7 +30,7 @@ export function WhatsAppChannelPopup() {
       }, 1500);
       return () => clearTimeout(t);
     }
-  }, []);
+  }, [isBlocked]);
 
   useEffect(() => {
     // Exit-intent: when mouse leaves through the top
