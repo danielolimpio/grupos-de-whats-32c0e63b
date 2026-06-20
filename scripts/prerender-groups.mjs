@@ -138,16 +138,16 @@ function groupHtml({ name, slug, category, description, image_url }) {
         <h2>Sobre este grupo de WhatsApp</h2>
         <p>O grupo <strong>${safeName}</strong> faz parte do diretório GruposdeWhats e foi revisado manualmente. Use as regras da comunidade para evitar spam e garantir uma experiência segura para todos os membros.</p>
         <h2>Mais grupos parecidos</h2>
-        <p>Veja outros <a href="/categoria/${catSlug}">grupos de WhatsApp de ${safeCategory}</a> ou explore o <a href="/todos-grupos/">diretório completo</a>.</p>
+        <p>Veja outros <a href="/categoria/${catSlug}">grupos de WhatsApp de ${safeCategory}</a> ou explore o <a href="/todos-grupos">diretório completo</a>.</p>
       </article>
     </main>
     <footer>
       <p>&copy; 2026 GruposdeWhats. Diretório independente — sem afiliação com Meta/WhatsApp.</p>
       <p>
         <a href="/">Início</a> ·
-        <a href="/blog/">Blog</a> ·
-        <a href="/regras-comunidade/">Regras</a> ·
-        <a href="/dicas-seguranca/">Segurança</a>
+        <a href="/blog">Blog</a> ·
+        <a href="/regras-comunidade">Regras</a> ·
+        <a href="/dicas-seguranca">Segurança</a>
       </p>
     </footer>
   </div>
