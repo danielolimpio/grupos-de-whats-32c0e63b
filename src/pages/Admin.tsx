@@ -813,6 +813,7 @@ export default function Admin() {
                   placeholder="Ex: 250"
                 />
               </div>
+            </div>
             <div className="space-y-3">
               <Label>Imagem do Grupo</Label>
               
