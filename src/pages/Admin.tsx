@@ -87,7 +87,9 @@ export default function Admin() {
     description: '',
     category: '',
     whatsapp_link: '',
-    image_url: ''
+    image_url: '',
+    access_count: '',
+    member_count: ''
   });
   const [uploadingImage, setUploadingImage] = useState(false);
   const [refreshingImage, setRefreshingImage] = useState(false);
