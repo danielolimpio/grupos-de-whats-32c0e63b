@@ -135,13 +135,8 @@ export function GroupCard({
               {category}
             </Badge>
             
-            {memberCount ? (
-              <div className="flex items-center justify-center text-xs text-muted-foreground">
-                <Users className="h-3 w-3 mr-1" />
-                {memberCount.toLocaleString('pt-BR')} membros
-              </div>
-            ) : null}
           </div>
+
 
           {/* Actions */}
           <div className="w-full space-y-2">
