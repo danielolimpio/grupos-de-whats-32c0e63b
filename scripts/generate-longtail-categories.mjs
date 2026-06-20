@@ -109,9 +109,9 @@ function pageHtml({ slug, title, keyword, desc }) {
   </style>
 </head>
 <body>
-  <header><div class="container"><nav><a href="/">GruposdeWhats</a><a href="/todos-grupos/">Todos os Grupos</a><a href="/blog/">Blog</a></nav></div></header>
+  <header><div class="container"><nav><a href="/">GruposdeWhats</a><a href="/todos-grupos">Todos os Grupos</a><a href="/blog">Blog</a></nav></div></header>
   <main class="container">
-    <p class="breadcrumb"><a href="/">Início</a> &raquo; <a href="/todos-grupos/">Categorias</a> &raquo; ${title}</p>
+    <p class="breadcrumb"><a href="/">Início</a> &raquo; <a href="/todos-grupos">Categorias</a> &raquo; ${title}</p>
     <article>
       <h1>${title} 2026</h1>
       <p>Bem-vindo à página de <strong>${keyword}</strong> mais atualizada de 2026. Aqui você encontra os melhores links de grupos de WhatsApp para ${desc}. Todos os grupos passam por <strong>revisão manual</strong> antes de serem publicados, garantindo segurança e qualidade.</p>
@@ -121,7 +121,7 @@ function pageHtml({ slug, title, keyword, desc }) {
       </div>
 
       <a href="/" class="btn">Acessar Grupos</a>
-      <a href="/todos-grupos/" class="btn">Ver Todas as Categorias</a>
+      <a href="/todos-grupos" class="btn">Ver Todas as Categorias</a>
 
       <h2>Sobre os ${title}</h2>
       <p>Os ${keyword} reúnem pessoas com interesses em comum para conversar, trocar informações e formar comunidades ativas. Em 2026, esse tipo de grupo cresceu muito no Brasil, e o GruposdeWhats organiza essa lista de forma segura e gratuita.</p>
@@ -139,11 +139,11 @@ function pageHtml({ slug, title, keyword, desc }) {
 
       <h2>Categorias relacionadas</h2>
       <p>
-        <a href="/categoria/grupos-do-whatsapp-de-amizades/">Amizade</a> ·
-        <a href="/categoria/grupos-do-whatsapp-de-namoros/">Namoro</a> ·
-        <a href="/categoria/grupos-do-whatsapp-de-games/">Games</a> ·
-        <a href="/categoria/grupos-do-whatsapp-de-esportes/">Esportes</a> ·
-        <a href="/categoria/grupos-do-whatsapp-de-noticias/">Notícias</a>
+        <a href="/categoria/grupos-do-whatsapp-de-amizades">Amizade</a> ·
+        <a href="/categoria/grupos-do-whatsapp-de-namoros">Namoro</a> ·
+        <a href="/categoria/grupos-do-whatsapp-de-games">Games</a> ·
+        <a href="/categoria/grupos-do-whatsapp-de-esportes">Esportes</a> ·
+        <a href="/categoria/grupos-do-whatsapp-de-noticias">Notícias</a>
       </p>
 
       <a href="/" class="btn">Ver Lista Completa de Grupos</a>
