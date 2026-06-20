@@ -33,6 +33,7 @@ export function WhatsAppChannelPopup() {
   }, [isBlocked]);
 
   useEffect(() => {
+    if (isBlocked) return;
     // Exit-intent: when mouse leaves through the top
     const onMouseOut = (e: MouseEvent) => {
       if (e.clientY > 0 || e.relatedTarget) return;
@@ -42,7 +43,9 @@ export function WhatsAppChannelPopup() {
     };
     document.addEventListener("mouseout", onMouseOut);
     return () => document.removeEventListener("mouseout", onMouseOut);
-  }, []);
+  }, [isBlocked]);
+
+  if (isBlocked) return null;
 
   const handleFollow = () => {
     window.open(CHANNEL_URL, "_blank", "noopener,noreferrer");
