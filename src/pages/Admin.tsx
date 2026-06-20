@@ -61,6 +61,7 @@ interface Group {
   whatsapp_link: string;
   status: string;
   access_count: number;
+  member_count?: number;
   is_premium: boolean;
   rejection_reason?: string;
   created_at: string;
