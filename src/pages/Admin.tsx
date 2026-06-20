@@ -790,6 +790,29 @@ export default function Admin() {
                 placeholder="https://chat.whatsapp.com/..."
               />
             </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <Label htmlFor="edit-access-count">Quantidade de acessos</Label>
+                <Input
+                  id="edit-access-count"
+                  type="number"
+                  min="0"
+                  value={editFormData.access_count}
+                  onChange={(e) => setEditFormData({ ...editFormData, access_count: e.target.value })}
+                  placeholder="Ex: 1500"
+                />
+              </div>
+              <div>
+                <Label htmlFor="edit-member-count">Quantidade de membros</Label>
+                <Input
+                  id="edit-member-count"
+                  type="number"
+                  min="0"
+                  value={editFormData.member_count}
+                  onChange={(e) => setEditFormData({ ...editFormData, member_count: e.target.value })}
+                  placeholder="Ex: 250"
+                />
+              </div>
             <div className="space-y-3">
               <Label>Imagem do Grupo</Label>
               
