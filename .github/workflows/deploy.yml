@@ -14,12 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clonar o repositório
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Configurar Node.js 18
-        uses: actions/setup-node@v3
+      - name: Configurar Node.js 20
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Instalar dependências
         run: npm install
@@ -39,61 +39,54 @@ jobs:
       - name: Mostrar arquivos gerados
         run: ls -la dist/
 
-      - name: Deploy FTP para Hostinger (tentativa 1)
-        id: deploy1
-        continue-on-error: true
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          port: 21
-          protocol: ftp
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASS }}
-          local-dir: ./dist/
-          server-dir: /
-          dangerous-clean-slate: false
-          dry-run: false
-          timeout: 300000
-          log-level: standard
+      - name: Instalar cliente FTP resiliente
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lftp
 
-      - name: Aguardar antes de retentar
-        if: steps.deploy1.outcome == 'failure'
-        run: sleep 30
+      - name: Validar pacote antes do deploy
+        run: |
+          test -f dist/index.html
+          test -d dist/assets
+          test -f dist/.htaccess
+          test -f dist/robots.txt
+          test -f dist/sitemap.xml
+          test -d dist/images
+          grep -R "G-E57Y5PX83Q" dist/index.html dist/grupo dist/categoria >/dev/null
 
-      - name: Deploy FTP para Hostinger (tentativa 2)
-        id: deploy2
-        if: steps.deploy1.outcome == 'failure'
-        continue-on-error: true
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          port: 21
-          protocol: ftp
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASS }}
-          local-dir: ./dist/
-          server-dir: /
-          dangerous-clean-slate: false
-          dry-run: false
-          timeout: 300000
-          log-level: standard
+      - name: Deploy FTP resiliente para Hostinger
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASS: ${{ secrets.FTP_PASS }}
+        run: |
+          for attempt in 1 2 3; do
+            echo "Iniciando deploy FTP com lftp (tentativa ${attempt}/3)..."
+            if lftp -u "$FTP_USER","$FTP_PASS" "$FTP_HOST" <<'LFTP_CMDS'
+          set cmd:fail-exit yes
+          set ftp:ssl-allow no
+          set ftp:passive-mode yes
+          set net:timeout 90
+          set net:max-retries 4
+          set net:reconnect-interval-base 15
+          set net:reconnect-interval-multiplier 1
+          set xfer:clobber on
+          mkdir -p assets
+          mkdir -p images
+          mirror --reverse --verbose --parallel=1 --no-perms --transfer-all ./dist/ /
+          bye
+          LFTP_CMDS
+            then
+              echo "Deploy concluído com sucesso."
+              exit 0
+            fi
 
-      - name: Aguardar antes da última tentativa
-        if: steps.deploy1.outcome == 'failure' && steps.deploy2.outcome == 'failure'
-        run: sleep 60
+            if [ "$attempt" -lt 3 ]; then
+              wait_seconds=$((attempt * 45))
+              echo "Deploy falhou; aguardando ${wait_seconds}s antes de tentar novamente..."
+              sleep "$wait_seconds"
+            fi
+          done
 
-      - name: Deploy FTP para Hostinger (tentativa 3 - final)
-        if: steps.deploy1.outcome == 'failure' && steps.deploy2.outcome == 'failure'
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          port: 21
-          protocol: ftp
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASS }}
-          local-dir: ./dist/
-          server-dir: /
-          dangerous-clean-slate: false
-          dry-run: false
-          timeout: 300000
-          log-level: verbose
+          echo "Deploy falhou após 3 tentativas."
+          exit 1
