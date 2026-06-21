@@ -39,7 +39,9 @@ jobs:
       - name: Mostrar arquivos gerados
         run: ls -la dist/
 
-      - name: Deploy FTP para Hostinger
+      - name: Deploy FTP para Hostinger (tentativa 1)
+        id: deploy1
+        continue-on-error: true
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_HOST }}
@@ -51,5 +53,47 @@ jobs:
           server-dir: /
           dangerous-clean-slate: false
           dry-run: false
-          timeout: 120000
+          timeout: 300000
+          log-level: standard
+
+      - name: Aguardar antes de retentar
+        if: steps.deploy1.outcome == 'failure'
+        run: sleep 30
+
+      - name: Deploy FTP para Hostinger (tentativa 2)
+        id: deploy2
+        if: steps.deploy1.outcome == 'failure'
+        continue-on-error: true
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          port: 21
+          protocol: ftp
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          local-dir: ./dist/
+          server-dir: /
+          dangerous-clean-slate: false
+          dry-run: false
+          timeout: 300000
+          log-level: standard
+
+      - name: Aguardar antes da última tentativa
+        if: steps.deploy1.outcome == 'failure' && steps.deploy2.outcome == 'failure'
+        run: sleep 60
+
+      - name: Deploy FTP para Hostinger (tentativa 3 - final)
+        if: steps.deploy1.outcome == 'failure' && steps.deploy2.outcome == 'failure'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          port: 21
+          protocol: ftp
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          local-dir: ./dist/
+          server-dir: /
+          dangerous-clean-slate: false
+          dry-run: false
+          timeout: 300000
           log-level: verbose
