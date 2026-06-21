@@ -1,4 +1,4 @@
-import batepapoImg from "@/assets/batepapo-gratis.jpeg";
+const batepapoImg = "/images/batepapo-gratis.jpeg";
 
 export function BatepapoButton() {
   return (
