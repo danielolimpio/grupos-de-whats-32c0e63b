@@ -4,7 +4,7 @@ import { SearchInput } from "./ui/search-input";
 import { Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import { MobileMenu } from "./mobile-menu";
-import logo from "@/assets/logo.png";
+const logo = "/images/logo.png";
 
 export function Header() {
   const { user, signOut } = useAuth();

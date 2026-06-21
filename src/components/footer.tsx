@@ -1,7 +1,7 @@
 import { Mail, Shield, FileText, Cookie, Home, Info, Cog, BookOpen, ShieldCheck, LifeBuoy, AlertTriangle, HelpCircle, Phone, Map, Eye } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
-import logo from "@/assets/logo.png";
+const logo = "/images/logo.png";
 
 export function Footer() {
   return (

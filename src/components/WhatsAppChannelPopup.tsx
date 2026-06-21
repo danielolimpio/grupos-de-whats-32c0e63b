@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Sparkles, X } from "lucide-react";
-import logo from "@/assets/whatsapp-channel-logo.png";
+const logo = "/images/whatsapp-channel-logo.png";
 
 const CHANNEL_URL = "https://whatsapp.com/channel/0029VbCqSb6Bqbr0ieXhl713";
 const STORAGE_KEY = "wa_channel_popup_shown";
