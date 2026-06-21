@@ -40,14 +40,16 @@ jobs:
         run: ls -la dist/
 
       - name: Deploy FTP para Hostinger
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_HOST }}
           port: 21
+          protocol: ftp
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
           local-dir: ./dist/
           server-dir: /
-          dangerous-clean-slate: true
+          dangerous-clean-slate: false
           dry-run: false
+          timeout: 120000
           log-level: verbose
