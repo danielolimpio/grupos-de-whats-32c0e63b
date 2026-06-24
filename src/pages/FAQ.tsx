@@ -27,111 +27,31 @@ import {
 import { Button } from '@/components/ui/button';
 import { Helmet } from 'react-helmet-async';
 import { useCanonical } from '@/hooks/useCanonical';
+import {
+  LONG_TAIL_KEYWORD_CLUSTERS,
+  LONG_TAIL_TERM_COUNT,
+  REPRESENTATIVE_META_KEYWORDS,
+  SEO_FAQ_CATEGORIES,
+} from '@/data/seo-faq';
 
-const FAQ_DATA = [
-  {
-    category: "Sobre o portal",
-    icon: Globe,
-    questions: [
-      {
-        question: "O que é o GruposdeWhats?",
-        answer: "O gruposdewhats.com.br é um diretório independente onde você pode descobrir grupos públicos de WhatsApp organizados por categorias como amizade, estudos, esportes, tecnologia e muito mais."
-      },
-      {
-        question: "O site é confiável e seguro?",
-        answer: "Sim. Nossa equipe de moderação analisa todos os links antes da publicação, evitando conteúdos maliciosos, ilegais ou ofensivos. Todos os grupos passam por revisão manual."
-      },
-      {
-        question: "O site tem algum vínculo com o WhatsApp?",
-        answer: "Não. Somos uma plataforma independente de informações sobre grupos e comunidades online. Não temos nenhuma afiliação com WhatsApp ou Meta."
-      }
-    ]
-  },
-  {
-    category: "Cadastro e gerenciamento",
-    icon: Settings,
-    questions: [
-      {
-        question: "Como cadastrar meu grupo de WhatsApp no portal?",
-        answer: "Crie uma conta, acesse o painel e clique em \"Adicionar Grupo\". Preencha os dados (nome, descrição, categoria e imagem) e envie. O grupo será analisado antes da publicação."
-      },
-      {
-        question: "Quanto tempo demora para aprovar meu grupo?",
-        answer: "O prazo médio é de até 24 horas úteis."
-      },
-      {
-        question: "Por que meu grupo pode ser reprovado?",
-        answer: "Grupos são reprovados quando contêm: Conteúdos ilegais ou ofensivos; Links falsos ou maliciosos; Violações às regras do WhatsApp; Informações incompletas ou títulos promocionais."
-      },
-      {
-        question: "Como editar informações de um grupo já enviado?",
-        answer: "Acesse \"Meus Grupos\" no painel, clique em \"Editar\" e altere as informações necessárias."
-      },
-      {
-        question: "Como remover um grupo que enviei?",
-        answer: "Vá até \"Meus Grupos\" no seu painel. Localize o grupo desejado e clique em \"Remover Grupo\"."
-      }
-    ]
-  },
-  {
-    category: "Participação em grupos",
-    icon: Users,
-    questions: [
-      {
-        question: "Como entrar em um grupo listado no portal?",
-        answer: "Acesse a página inicial do gruposdewhats.com.br; Escolha o grupo desejado; Clique em \"Entrar\" para ver descrição e regras; Clique novamente em \"Entrar no grupo\" e seu WhatsApp será aberto automaticamente."
-      },
-      {
-        question: "Posso enviar qualquer tipo de grupo?",
-        answer: "Não. Apenas grupos que respeitem as regras de convivência e privacidade. Grupos com conteúdos ilegais, adultos ou ofensivos não são permitidos. Evitamos também títulos com termos promocionais."
-      },
-      {
-        question: "Preciso de conta para ver os grupos?",
-        answer: "Não, você pode navegar e acessar os grupos sem criar conta. A conta é necessária apenas para cadastrar seus próprios grupos."
-      }
-    ]
-  },
-  {
-    category: "Dúvidas sobre o WhatsApp",
-    icon: MessageCircle,
-    questions: [
-      {
-        question: "Como criar um grupo no WhatsApp?",
-        answer: "Abra o aplicativo → toque em \"Novo Grupo\" → selecione contatos → defina nome/foto → clique em \"Criar\"."
-      },
-      {
-        question: "Como convidar pessoas para o meu grupo?",
-        answer: "Você pode enviar um link de convite ou adicionar os contatos diretamente."
-      },
-      {
-        question: "Como sair de um grupo no WhatsApp?",
-        answer: "Abra o grupo → toque no nome → selecione \"Sair do grupo\"."
-      },
-      {
-        question: "Como denunciar um grupo no WhatsApp?",
-        answer: "Abra o grupo → toque no nome → selecione \"Denunciar grupo\" e siga as instruções."
-      }
-    ]
-  },
-  {
-    category: "Suporte e Segurança",
-    icon: Shield,
-    questions: [
-      {
-        question: "Como entrar em contato com o suporte do portal?",
-        answer: "Acesse a página de Contato no menu do site ou envie uma mensagem pelo formulário disponível."
-      },
-      {
-        question: "Como denunciar um grupo problemático?",
-        answer: "Use o botão \"Reportar\" na página do grupo ou acesse nossa página de denúncias."
-      },
-      {
-        question: "Meus dados estão seguros?",
-        answer: "Sim, seguimos a LGPD e boas práticas de segurança. Consulte nossa Política de Privacidade para mais detalhes."
-      }
-    ]
-  }
-];
+const iconMap = {
+  search: Search,
+  globe: Globe,
+  settings: Settings,
+  users: Users,
+  shield: Shield,
+  message: MessageCircle,
+};
+
+const FAQ_DATA = SEO_FAQ_CATEGORIES.map((category) => ({
+  ...category,
+  icon: iconMap[category.iconKey],
+}));
+
+const faqQuestionCount = SEO_FAQ_CATEGORIES.reduce(
+  (total, category) => total + category.questions.length,
+  0
+);
 
 export default function FAQ() {
   const canonicalUrl = useCanonical();
@@ -164,20 +84,20 @@ export default function FAQ() {
   return (
     <>
       <Helmet>
-        <title>FAQ - Perguntas Frequentes | GruposdeWhats</title>
-        <meta name="description" content="Encontre respostas para as perguntas mais frequentes sobre como usar o portal GruposdeWhats, cadastrar grupos e participar de comunidades." />
-        <meta name="keywords" content="FAQ, perguntas frequentes, grupos whatsapp, ajuda, suporte, como usar" />
+        <title>FAQ Grupos de WhatsApp 2026 | Dúvidas e Links</title>
+        <meta name="description" content="FAQ completa sobre grupos de WhatsApp: links, categorias, segurança, divulgação e centenas de buscas relacionadas para encontrar comunidades em 2026." />
+        <meta name="keywords" content={REPRESENTATIVE_META_KEYWORDS.join(', ')} />
         <link rel="canonical" href={canonicalUrl} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="FAQ — Perguntas Frequentes sobre Grupos de WhatsApp" />
-        <meta property="og:description" content="Tire suas dúvidas sobre como usar o GruposdeWhats, cadastrar e participar de grupos com segurança." />
+        <meta property="og:title" content="FAQ Grupos de WhatsApp 2026 — Dúvidas, Links e Categorias" />
+        <meta property="og:description" content="Perguntas frequentes otimizadas sobre grupos de WhatsApp, links de convite, segurança, categorias e comunidades por interesse." />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:site_name" content="GruposdeWhats" />
         <meta property="og:locale" content="pt_BR" />
         <meta property="og:image" content="https://gruposdewhats.com.br/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="FAQ — Perguntas Frequentes sobre Grupos de WhatsApp" />
-        <meta name="twitter:description" content="Tire suas dúvidas sobre como usar o GruposdeWhats, cadastrar e participar de grupos com segurança." />
+        <meta name="twitter:title" content="FAQ Grupos de WhatsApp 2026 — Dúvidas, Links e Categorias" />
+        <meta name="twitter:description" content="Perguntas frequentes otimizadas sobre grupos de WhatsApp, links de convite, segurança, categorias e comunidades por interesse." />
         <meta name="twitter:image" content="https://gruposdewhats.com.br/og-image.jpg" />
         <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
       </Helmet>
@@ -191,12 +111,33 @@ export default function FAQ() {
             <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
               <HelpCircle className="h-8 w-8 text-primary" />
             </div>
-            <h1 className="text-3xl font-bold mb-4">FAQ - Perguntas Frequentes</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-4">FAQ sobre Grupos de WhatsApp</h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Separamos abaixo as dúvidas mais comuns de quem deseja encontrar grupos de WhatsApp 
-              ou cadastrar seus próprios grupos no portal gruposdewhats.com.br
+              Perguntas frequentes para quem pesquisa grupos de WhatsApp, links de convite,
+              categorias, comunidades seguras, divulgação e formas de participar em 2026.
             </p>
           </div>
+
+          <section aria-label="Resumo da FAQ SEO" className="grid gap-4 md:grid-cols-3 mb-8">
+            <Card>
+              <CardHeader className="pb-2">
+                <CardDescription>Perguntas respondidas</CardDescription>
+                <CardTitle className="text-3xl">{faqQuestionCount}</CardTitle>
+              </CardHeader>
+            </Card>
+            <Card>
+              <CardHeader className="pb-2">
+                <CardDescription>Termos long-tail mapeados</CardDescription>
+                <CardTitle className="text-3xl">{LONG_TAIL_TERM_COUNT}+</CardTitle>
+              </CardHeader>
+            </Card>
+            <Card>
+              <CardHeader className="pb-2">
+                <CardDescription>Clusters por intenção</CardDescription>
+                <CardTitle className="text-3xl">{LONG_TAIL_KEYWORD_CLUSTERS.length}</CardTitle>
+              </CardHeader>
+            </Card>
+          </section>
 
           {/* Search Bar */}
           <div className="max-w-md mx-auto mb-8">
@@ -242,6 +183,41 @@ export default function FAQ() {
               </Card>
             ))}
           </div>
+
+          <section className="mt-12" aria-labelledby="termos-cauda-longa">
+            <div className="text-center mb-8">
+              <h2 id="termos-cauda-longa" className="text-2xl md:text-3xl font-bold mb-3">
+                Termos relacionados e pesquisas de cauda longa
+              </h2>
+              <p className="text-muted-foreground max-w-3xl mx-auto">
+                Estes clusters conectam dúvidas reais, categorias e formas variadas de pesquisar
+                grupos de WhatsApp, ajudando usuários a encontrar comunidades por intenção específica.
+              </p>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {LONG_TAIL_KEYWORD_CLUSTERS.map((cluster) => (
+                <Card key={cluster.title}>
+                  <CardHeader>
+                    <CardTitle className="text-lg">{cluster.title}</CardTitle>
+                    <CardDescription>{cluster.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-wrap gap-2">
+                      {cluster.terms.map((term) => (
+                        <span
+                          key={term}
+                          className="rounded-full border border-border bg-muted px-2 py-1 text-xs text-muted-foreground"
+                        >
+                          {term}
+                        </span>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </section>
 
           {/* Contact CTA */}
           <Card className="mt-12">

@@ -24,6 +24,9 @@ jobs:
       - name: Instalar dependências
         run: npm install
 
+      - name: Gerar FAQ SEO ampliada
+        run: npm run seo:faq
+
       - name: Gerar páginas de categorias de cauda longa (SEO)
         run: node scripts/generate-longtail-categories.mjs
 
@@ -60,6 +63,10 @@ jobs:
           FTP_USER: ${{ secrets.FTP_USER }}
           FTP_PASS: ${{ secrets.FTP_PASS }}
         run: |
+          test -n "$FTP_HOST"
+          test -n "$FTP_USER"
+          test -n "$FTP_PASS"
+
           for attempt in 1 2 3; do
             echo "Iniciando deploy FTP com lftp (tentativa ${attempt}/3)..."
             if lftp -u "$FTP_USER","$FTP_PASS" "$FTP_HOST" <<'LFTP_CMDS'
@@ -71,9 +78,11 @@ jobs:
           set net:reconnect-interval-base 15
           set net:reconnect-interval-multiplier 1
           set xfer:clobber on
-          mkdir -p assets
-          mkdir -p images
-          mirror --reverse --verbose --parallel=1 --no-perms --transfer-all ./dist/ /
+          set cmd:fail-exit no
+          mkdir assets
+          mkdir images
+          set cmd:fail-exit yes
+          mirror --reverse --verbose --parallel=1 --no-perms --only-newer --continue ./dist/ /
           bye
           LFTP_CMDS
             then
