@@ -9,6 +9,7 @@
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
+    "seo:faq": "node scripts/generate-seo-faq.mjs",
     "prerender": "node scripts/prerender-groups.mjs"
   },
   "dependencies": {
