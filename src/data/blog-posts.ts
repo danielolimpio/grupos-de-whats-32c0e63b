@@ -14,6 +14,19 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: 14,
+    slug: "meta-ai-whatsapp-como-usar-em-grupos-2026",
+    title: "Meta AI no WhatsApp em 2026: Como Usar a IA em Grupos, Conversas e Status",
+    excerpt: "Guia completo para usar a Meta AI no WhatsApp em 2026: como ativar, comandos práticos em grupos, criação de imagens, resumos automáticos e o que evitar para não ser banido.",
+    author: "Daniel Olimpio",
+    date: "2026-06-27",
+    readTime: "16 min",
+    categories: ["Ferramentas", "Grupos", "Tutorial"],
+    image: "/images/blog-meta-ai-whatsapp-cover.jpg",
+    tags: ["Meta AI", "Inteligência Artificial", "WhatsApp 2026", "Grupos", "Tutorial"],
+    featured: true
+  },
+  {
     id: 13,
     slug: "como-criar-grupos-whatsapp-estudos-cursos-online-2026",
     title: "Como Criar Grupos de WhatsApp para Estudos e Cursos Online em 2026",
