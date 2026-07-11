@@ -94,6 +94,24 @@ jobs:
           LFTP_CMDS
           }
 
+          verify_published_assets() {
+            echo ">>> Validando assets publicados antes de liberar index.html..."
+            grep -oE '(/assets/[^"'"'<> ]+\.(js|css))' dist/index.html | sort -u > /tmp/deploy-assets.txt
+
+            if [ ! -s /tmp/deploy-assets.txt ]; then
+              echo "!!! Nenhum asset JS/CSS encontrado em dist/index.html."
+              return 1
+            fi
+
+            while IFS= read -r asset_path; do
+              asset_url="https://gruposdewhats.com.br${asset_path}?deploy=${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+              echo ">>> Conferindo ${asset_url}"
+              curl --fail --silent --show-error --location --head \
+                --retry 8 --retry-delay 10 --retry-all-errors \
+                "$asset_url" >/dev/null
+            done < /tmp/deploy-assets.txt
+          }
+
           FASE1='mirror --reverse --verbose --parallel=2 --no-perms --ignore-time --size-only --continue --delete ./dist/assets/ /assets/'
           FASE2='mirror --reverse --verbose --parallel=1 --no-perms --ignore-time --size-only --continue --exclude-glob index.html --exclude-glob assets/ ./dist/ /'
           FASE3='put -O / ./dist/index.html'
@@ -104,7 +122,7 @@ jobs:
             ok=0
             for attempt in 1 2 3; do
               echo ">>> $label — tentativa ${attempt}/3"
-              if run_lftp "$cmd"; then
+              if run_lftp "$cmd" && { [ "$label" != "Fase 1 (assets)" ] || verify_published_assets; }; then
                 echo ">>> $label concluída."
                 ok=1
                 break
