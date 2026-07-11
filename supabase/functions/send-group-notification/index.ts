@@ -30,15 +30,46 @@ serve(async (req) => {
   }
 
   try {
-    const { groupId, status, rejectionReason }: NotificationRequest = await req.json()
+    // --- Authorization: only admin/moderator can trigger notification emails ---
+    const authHeader = req.headers.get('Authorization')
+    if (!authHeader?.startsWith('Bearer ')) {
+      return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+        status: 401,
+        headers: { 'Content-Type': 'application/json', ...corsHeaders },
+      })
+    }
 
-    console.log('Processing notification for group:', groupId, 'status:', status)
-
-    // Create Supabase client
     const supabase = createClient(
       Deno.env.get('SUPABASE_URL') ?? '',
       Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
     )
+
+    const token = authHeader.replace('Bearer ', '')
+    const { data: userData, error: authErr } = await supabase.auth.getUser(token)
+    if (authErr || !userData?.user) {
+      return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+        status: 401,
+        headers: { 'Content-Type': 'application/json', ...corsHeaders },
+      })
+    }
+
+    const { data: roleRows, error: roleErr } = await supabase
+      .from('user_roles')
+      .select('role')
+      .eq('user_id', userData.user.id)
+      .in('role', ['admin', 'moderator'])
+
+    if (roleErr || !roleRows || roleRows.length === 0) {
+      return new Response(JSON.stringify({ error: 'Forbidden' }), {
+        status: 403,
+        headers: { 'Content-Type': 'application/json', ...corsHeaders },
+      })
+    }
+
+    const { groupId, status, rejectionReason }: NotificationRequest = await req.json()
+
+    console.log('Processing notification for group:', groupId, 'status:', status)
+
 
     // Fetch group and user details
     const { data: group, error: groupError } = await supabase

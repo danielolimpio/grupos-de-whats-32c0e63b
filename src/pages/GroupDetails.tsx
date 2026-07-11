@@ -73,9 +73,10 @@ const GroupDetails = () => {
       return;
     }
 
-    // Increment access count
-    await supabase.rpc("increment_group_access", {
+    // Log access (RLS restricts inserts to approved groups, no PII)
+    await supabase.from("group_accesses").insert({
       group_id: group.id,
+      user_agent: navigator.userAgent.slice(0, 500),
     });
 
     // Open WhatsApp link with UGC and security attributes

@@ -343,25 +343,12 @@ export type Database = {
       }
       delete_old_contacts: { Args: never; Returns: undefined }
       generate_slug: { Args: { name: string }; Returns: string }
-      get_public_profile: {
-        Args: { profile_user_id: string }
-        Returns: {
-          avatar_url: string
-          display_name: string
-          id: string
-          user_id: string
-        }[]
-      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
           _user_id: string
         }
         Returns: boolean
-      }
-      increment_group_access: {
-        Args: { group_id: string; user_agent?: string; user_ip?: string }
-        Returns: undefined
       }
       update_expired_premium_groups: { Args: never; Returns: undefined }
     }
