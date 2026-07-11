@@ -123,8 +123,3 @@ jobs:
 
           echo "Deploy concluído com sucesso."
           exit 0
-          # (loop antigo removido)
-          for attempt in ; do :; done
-
-          echo "Deploy falhou após 3 tentativas."
-          exit 1
