@@ -96,7 +96,7 @@ jobs:
 
           verify_published_assets() {
             echo ">>> Validando assets publicados antes de liberar index.html..."
-            grep -oE '(/assets/[^"'"'<> ]+\.(js|css))' dist/index.html | sort -u > /tmp/deploy-assets.txt
+            grep -oE '/assets/[^ ]+\.(js|css)' dist/index.html | sort -u > /tmp/deploy-assets.txt
 
             if [ ! -s /tmp/deploy-assets.txt ]; then
               echo "!!! Nenhum asset JS/CSS encontrado em dist/index.html."
