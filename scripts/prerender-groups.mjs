@@ -11,6 +11,7 @@
  * queremos atualizar o sitemap em CI/local sem refazer todos os HTMLs.
  */
 import { createClient } from "@supabase/supabase-js";
+import WebSocket from "ws";
 import { writeFileSync, mkdirSync, readdirSync, statSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -158,7 +159,11 @@ function groupHtml({ name, slug, category, description, image_url }) {
 }
 
 async function fetchAllGroups() {
-  const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+  const supabase = createClient(SUPABASE_URL, SUPABASE_KEY, {
+    realtime: {
+      transport: WebSocket,
+    },
+  });
   const all = [];
   const pageSize = 1000;
   let from = 0;

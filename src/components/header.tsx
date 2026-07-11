@@ -24,7 +24,7 @@ export function Header() {
                 alt="GruposdeWhats"
                 width={40}
                 height={40}
-                fetchPriority="high"
+                {...({ fetchpriority: "high" } as Record<string, string>)}
                 decoding="async"
                 className="h-10 w-10 rounded-lg cursor-pointer"
               />

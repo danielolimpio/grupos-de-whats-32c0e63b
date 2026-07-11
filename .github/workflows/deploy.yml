@@ -16,10 +16,10 @@ jobs:
       - name: Clonar o repositório
         uses: actions/checkout@v4
 
-      - name: Configurar Node.js 20
+      - name: Configurar Node.js 22
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Instalar dependências
         run: npm install
@@ -69,7 +69,9 @@ jobs:
 
           # Estratégia em 3 fases para NUNCA deixar index.html apontando
           # para bundles /assets/*.js que ainda não subiram (causa da tela branca):
-          #   Fase 1: subir /assets completo (bundles JS/CSS novos com hash).
+          #   Fase 1: subir /assets completo (bundles JS/CSS novos com hash),
+          #           preservando assets antigos para não quebrar o index.html atual
+          #           caso a execução falhe antes da Fase 3.
           #   Fase 2: subir o restante do site EXCETO index.html.
           #   Fase 3: subir o index.html por último.
           # Removido --only-newer: comparar por tamanho evita pular arquivos
@@ -94,7 +96,25 @@ jobs:
           LFTP_CMDS
           }
 
-          FASE1='mirror --reverse --verbose --parallel=2 --no-perms --ignore-time --size-only --continue --delete ./dist/assets/ /assets/'
+          verify_published_assets() {
+            echo ">>> Validando assets publicados antes de liberar index.html..."
+            grep -oE '/assets/[^ ]+\.(js|css)' dist/index.html | sort -u > /tmp/deploy-assets.txt
+
+            if [ ! -s /tmp/deploy-assets.txt ]; then
+              echo "!!! Nenhum asset JS/CSS encontrado em dist/index.html."
+              return 1
+            fi
+
+            while IFS= read -r asset_path; do
+              asset_url="https://gruposdewhats.com.br${asset_path}?deploy=${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+              echo ">>> Conferindo ${asset_url}"
+              curl --fail --silent --show-error --location --head \
+                --retry 8 --retry-delay 10 --retry-all-errors \
+                "$asset_url" >/dev/null
+            done < /tmp/deploy-assets.txt
+          }
+
+          FASE1='mirror --reverse --verbose --parallel=2 --no-perms --ignore-time --size-only --continue ./dist/assets/ /assets/'
           FASE2='mirror --reverse --verbose --parallel=1 --no-perms --ignore-time --size-only --continue --exclude-glob index.html --exclude-glob assets/ ./dist/ /'
           FASE3='put -O / ./dist/index.html'
 
@@ -104,7 +124,7 @@ jobs:
             ok=0
             for attempt in 1 2 3; do
               echo ">>> $label — tentativa ${attempt}/3"
-              if run_lftp "$cmd"; then
+              if run_lftp "$cmd" && { [ "$label" != "Fase 1 (assets)" ] || verify_published_assets; }; then
                 echo ">>> $label concluída."
                 ok=1
                 break

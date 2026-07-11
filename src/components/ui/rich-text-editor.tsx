@@ -54,6 +54,15 @@ export function RichTextEditor({
     return null;
   }
 
+  const runToolbarCommand = (command: string, attrs?: unknown) => {
+    const focusedChain = editor.chain().focus() as unknown as Record<
+      string,
+      (attrs?: unknown) => { run: () => boolean }
+    >;
+
+    focusedChain[command]?.(attrs).run();
+  };
+
   return (
     <div className="border border-input rounded-md overflow-hidden bg-background">
       {/* Toolbar */}
@@ -63,7 +72,7 @@ export function RichTextEditor({
           type="button"
           variant={editor.isActive('heading', { level: 1 }) ? 'default' : 'ghost'}
           size="sm"
-          onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
+          onClick={() => runToolbarCommand('toggleHeading', { level: 1 })}
           disabled={disabled}
           className="h-8 w-8 p-0"
           title="Título 1"
@@ -74,7 +83,7 @@ export function RichTextEditor({
           type="button"
           variant={editor.isActive('heading', { level: 2 }) ? 'default' : 'ghost'}
           size="sm"
-          onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+          onClick={() => runToolbarCommand('toggleHeading', { level: 2 })}
           disabled={disabled}
           className="h-8 w-8 p-0"
           title="Título 2"
@@ -85,7 +94,7 @@ export function RichTextEditor({
           type="button"
           variant={editor.isActive('heading', { level: 3 }) ? 'default' : 'ghost'}
           size="sm"
-          onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
+          onClick={() => runToolbarCommand('toggleHeading', { level: 3 })}
           disabled={disabled}
           className="h-8 w-8 p-0"
           title="Título 3"
@@ -100,7 +109,7 @@ export function RichTextEditor({
           type="button"
           variant={editor.isActive('bold') ? 'default' : 'ghost'}
           size="sm"
-          onClick={() => editor.chain().focus().toggleBold().run()}
+          onClick={() => runToolbarCommand('toggleBold')}
           disabled={disabled}
           className="h-8 w-8 p-0"
           title="Negrito"
@@ -111,7 +120,7 @@ export function RichTextEditor({
           type="button"
           variant={editor.isActive('italic') ? 'default' : 'ghost'}
           size="sm"
-          onClick={() => editor.chain().focus().toggleItalic().run()}
+          onClick={() => runToolbarCommand('toggleItalic')}
           disabled={disabled}
           className="h-8 w-8 p-0"
           title="Itálico"
@@ -137,7 +146,7 @@ export function RichTextEditor({
           type="button"
           variant={editor.isActive('bulletList') ? 'default' : 'ghost'}
           size="sm"
-          onClick={() => editor.chain().focus().toggleBulletList().run()}
+          onClick={() => runToolbarCommand('toggleBulletList')}
           disabled={disabled}
           className="h-8 w-8 p-0"
           title="Lista com marcadores"
@@ -148,7 +157,7 @@ export function RichTextEditor({
           type="button"
           variant={editor.isActive('orderedList') ? 'default' : 'ghost'}
           size="sm"
-          onClick={() => editor.chain().focus().toggleOrderedList().run()}
+          onClick={() => runToolbarCommand('toggleOrderedList')}
           disabled={disabled}
           className="h-8 w-8 p-0"
           title="Lista numerada"
