@@ -67,35 +67,59 @@ jobs:
           test -n "$FTP_USER"
           test -n "$FTP_PASS"
 
-          for attempt in 1 2 3; do
-            echo "Iniciando deploy FTP com lftp (tentativa ${attempt}/3)..."
-            if lftp -u "$FTP_USER","$FTP_PASS" "$FTP_HOST" <<'LFTP_CMDS'
+          # Estratégia em 3 fases para NUNCA deixar index.html apontando
+          # para bundles /assets/*.js que ainda não subiram (causa da tela branca):
+          #   Fase 1: subir /assets completo (bundles JS/CSS novos com hash).
+          #   Fase 2: subir o restante do site EXCETO index.html.
+          #   Fase 3: subir o index.html por último.
+          # Removido --only-newer: comparar por tamanho evita pular arquivos
+          # que ficaram truncados por timeout em execuções anteriores.
+          run_lftp() {
+            lftp -u "$FTP_USER","$FTP_PASS" "$FTP_HOST" <<LFTP_CMDS
           set cmd:fail-exit yes
           set ftp:ssl-allow no
           set ftp:passive-mode yes
-          set net:timeout 90
-          set net:max-retries 4
+          set net:timeout 120
+          set net:max-retries 5
           set net:reconnect-interval-base 15
           set net:reconnect-interval-multiplier 1
           set xfer:clobber on
+          set mirror:use-pget-n 3
           set cmd:fail-exit no
           mkdir assets
           mkdir images
           set cmd:fail-exit yes
-          mirror --reverse --verbose --parallel=1 --no-perms --only-newer --continue ./dist/ /
+          $1
           bye
           LFTP_CMDS
-            then
-              echo "Deploy concluído com sucesso."
-              exit 0
-            fi
+          }
 
-            if [ "$attempt" -lt 3 ]; then
-              wait_seconds=$((attempt * 45))
-              echo "Deploy falhou; aguardando ${wait_seconds}s antes de tentar novamente..."
-              sleep "$wait_seconds"
+          FASE1='mirror --reverse --verbose --parallel=2 --no-perms --ignore-time --size-only --continue --delete ./dist/assets/ /assets/'
+          FASE2='mirror --reverse --verbose --parallel=1 --no-perms --ignore-time --size-only --continue --exclude-glob index.html --exclude-glob assets/ ./dist/ /'
+          FASE3='put -O / ./dist/index.html'
+
+          for phase_name in "Fase 1 (assets)|$FASE1" "Fase 2 (páginas)|$FASE2" "Fase 3 (index.html)|$FASE3"; do
+            label="${phase_name%%|*}"
+            cmd="${phase_name#*|}"
+            ok=0
+            for attempt in 1 2 3; do
+              echo ">>> $label — tentativa ${attempt}/3"
+              if run_lftp "$cmd"; then
+                echo ">>> $label concluída."
+                ok=1
+                break
+              fi
+              if [ "$attempt" -lt 3 ]; then
+                wait_seconds=$((attempt * 45))
+                echo ">>> $label falhou; aguardando ${wait_seconds}s..."
+                sleep "$wait_seconds"
+              fi
+            done
+            if [ "$ok" -ne 1 ]; then
+              echo "!!! $label falhou após 3 tentativas."
+              exit 1
             fi
           done
 
-          echo "Deploy falhou após 3 tentativas."
-          exit 1
+          echo "Deploy concluído com sucesso."
+          exit 0
