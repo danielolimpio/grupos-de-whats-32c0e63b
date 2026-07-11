@@ -69,7 +69,9 @@ jobs:
 
           # Estratégia em 3 fases para NUNCA deixar index.html apontando
           # para bundles /assets/*.js que ainda não subiram (causa da tela branca):
-          #   Fase 1: subir /assets completo (bundles JS/CSS novos com hash).
+          #   Fase 1: subir /assets completo (bundles JS/CSS novos com hash),
+          #           preservando assets antigos para não quebrar o index.html atual
+          #           caso a execução falhe antes da Fase 3.
           #   Fase 2: subir o restante do site EXCETO index.html.
           #   Fase 3: subir o index.html por último.
           # Removido --only-newer: comparar por tamanho evita pular arquivos
@@ -112,7 +114,7 @@ jobs:
             done < /tmp/deploy-assets.txt
           }
 
-          FASE1='mirror --reverse --verbose --parallel=2 --no-perms --ignore-time --size-only --continue --delete ./dist/assets/ /assets/'
+          FASE1='mirror --reverse --verbose --parallel=2 --no-perms --ignore-time --size-only --continue ./dist/assets/ /assets/'
           FASE2='mirror --reverse --verbose --parallel=1 --no-perms --ignore-time --size-only --continue --exclude-glob index.html --exclude-glob assets/ ./dist/ /'
           FASE3='put -O / ./dist/index.html'
 
