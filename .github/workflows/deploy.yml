@@ -142,7 +142,7 @@ jobs:
           }
 
           FASE1='mirror --reverse --verbose --parallel=2 --no-perms --ignore-time --size-only --continue ./dist/assets/ /assets/'
-          FASE2='mirror --reverse --verbose --parallel=1 --no-perms --ignore-time --size-only --continue --exclude-glob index.html --exclude-glob assets/ ./dist/ /'
+          FASE2='mirror --reverse --verbose --parallel=1 --no-perms --ignore-time --size-only --continue --exclude ^index\.html$ --exclude ^assets/ ./dist/ /'
           FASE3='put -O / ./dist/index.html'
 
           for phase_name in "Fase 1 (assets)|$FASE1" "Fase 2 (páginas)|$FASE2" "Fase 3 (index.html)|$FASE3"; do
