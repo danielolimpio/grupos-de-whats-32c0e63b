@@ -153,57 +153,122 @@
 
   <body>
     <style>
-      /* Prevent Flash of Unstyled Content (FOUC) */
       body {
         margin: 0;
         padding: 0;
+        background: #0a0a0a;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
       }
-      
-      #root:empty {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+
+      #static-fallback {
         min-height: 100vh;
-        background: #f8f9fa;
+        background: #0a0a0a;
+        color: #fafafa;
+        padding: 32px 16px;
       }
-      
-      #root:empty::after {
-        content: '';
-        width: 48px;
-        height: 48px;
-        border: 3px solid #e5e7eb;
-        border-top-color: #3d4654;
-        border-radius: 50%;
-        animation: spin 0.8s linear infinite;
+
+      #static-fallback a {
+        color: inherit;
       }
-      
-      @keyframes spin {
-        to { transform: rotate(360deg); }
+
+      .fallback-container {
+        max-width: 960px;
+        margin: 0 auto;
+        text-align: center;
       }
-      
-      /* Hide content until styles are loaded */
-      #root:not(:empty) {
-        opacity: 0;
-        animation: fadeIn 0.3s ease-in forwards;
+
+      .fallback-brand {
+        margin: 0 0 16px;
+        color: #22c55e;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
       }
-      
-      @keyframes fadeIn {
-        to { opacity: 1; }
+
+      .fallback-title {
+        margin: 0 0 18px;
+        font-size: clamp(32px, 5vw, 56px);
+        line-height: 1.05;
       }
-      
-      @media (prefers-color-scheme: dark) {
-        #root:empty {
-          background: #0f172a;
-        }
-        #root:empty::after {
-          border-color: #334155;
-          border-top-color: #3d4654;
-        }
+
+      .fallback-copy {
+        max-width: 720px;
+        margin: 0 auto 28px;
+        color: #d4d4d8;
+        font-size: 18px;
+        line-height: 1.6;
+      }
+
+      .fallback-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 36px;
+      }
+
+      .fallback-primary,
+      .fallback-secondary,
+      .fallback-card {
+        border-radius: 8px;
+        text-decoration: none;
+      }
+
+      .fallback-primary {
+        background: #22c55e;
+        color: #052e16;
+        padding: 12px 18px;
+        font-weight: 800;
+      }
+
+      .fallback-secondary {
+        border: 1px solid #3f3f46;
+        color: #fafafa;
+        padding: 12px 18px;
+        font-weight: 700;
+      }
+
+      .fallback-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 12px;
+        text-align: left;
+      }
+
+      .fallback-card {
+        background: #18181b;
+        border: 1px solid #27272a;
+        padding: 16px;
+        font-weight: 700;
+      }
+
+      .fallback-note {
+        margin-top: 36px;
+        color: #a1a1aa;
+        font-size: 14px;
       }
     </style>
     
-    <div id="root"></div>
+    <div id="root">
+      <main id="static-fallback">
+        <section class="fallback-container" aria-labelledby="fallback-title">
+          <p class="fallback-brand">GruposdeWhats</p>
+          <h1 id="fallback-title" class="fallback-title">Grupos de WhatsApp 2026</h1>
+          <p class="fallback-copy">Diretório informativo de grupos públicos de WhatsApp no Brasil, organizados por categorias e revisados manualmente.</p>
+          <div class="fallback-actions">
+            <a class="fallback-primary" href="/todos-grupos">Ver todos os grupos</a>
+            <a class="fallback-secondary" href="/blog">Ler o blog</a>
+          </div>
+          <nav class="fallback-grid" aria-label="Categorias principais">
+            <a class="fallback-card" href="/categoria/grupos-do-whatsapp-de-amizades">Amizades</a>
+            <a class="fallback-card" href="/categoria/grupos-do-whatsapp-de-estudos">Estudos</a>
+            <a class="fallback-card" href="/categoria/grupos-do-whatsapp-de-esportes">Esportes</a>
+            <a class="fallback-card" href="/categoria/grupos-do-whatsapp-de-tecnologia">Tecnologia</a>
+          </nav>
+          <p class="fallback-note">Diretório independente — sem afiliação com Meta/WhatsApp.</p>
+        </section>
+      </main>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

@@ -22,7 +22,7 @@ jobs:
           node-version: '22'
 
       - name: Instalar dependências
-        run: npm install
+        run: npm ci --no-audit --no-fund
 
       - name: Gerar FAQ SEO ampliada
         run: npm run seo:faq
@@ -56,6 +56,9 @@ jobs:
           test -f dist/sitemap.xml
           test -d dist/images
           grep -R "G-E57Y5PX83Q" dist/index.html dist/grupo dist/categoria >/dev/null
+          grep -qE '/assets/.+\.js' dist/index.html
+          grep -qE '/assets/.+\.css' dist/index.html
+          ! grep -q '/src/main.tsx' dist/index.html
 
       - name: Deploy FTP resiliente para Hostinger
         env:
@@ -114,6 +117,29 @@ jobs:
             done < /tmp/deploy-assets.txt
           }
 
+          verify_published_home() {
+            echo ">>> Validando home publicada após troca do index.html..."
+            home_file="/tmp/published-home.html"
+            curl --fail --silent --show-error --location \
+              --retry 8 --retry-delay 10 --retry-all-errors \
+              -H 'Cache-Control: no-cache' -H 'Pragma: no-cache' \
+              "https://gruposdewhats.com.br/?deploy=${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" \
+              -o "$home_file"
+
+            grep -qE '/assets/.+\.js' "$home_file"
+            grep -qE '/assets/.+\.css' "$home_file"
+            ! grep -q '/src/main.tsx' "$home_file"
+
+            grep -oE '/assets/[^ ]+\.(js|css)' "$home_file" | sort -u > /tmp/published-assets.txt
+            while IFS= read -r asset_path; do
+              asset_url="https://gruposdewhats.com.br${asset_path}?deploy=${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+              echo ">>> Conferindo asset da home ${asset_url}"
+              curl --fail --silent --show-error --location --head \
+                --retry 8 --retry-delay 10 --retry-all-errors \
+                "$asset_url" >/dev/null
+            done < /tmp/published-assets.txt
+          }
+
           FASE1='mirror --reverse --verbose --parallel=2 --no-perms --ignore-time --size-only --continue ./dist/assets/ /assets/'
           FASE2='mirror --reverse --verbose --parallel=1 --no-perms --ignore-time --size-only --continue --exclude-glob index.html --exclude-glob assets/ ./dist/ /'
           FASE3='put -O / ./dist/index.html'
@@ -140,6 +166,8 @@ jobs:
               exit 1
             fi
           done
+
+          verify_published_home
 
           echo "Deploy concluído com sucesso."
           exit 0
