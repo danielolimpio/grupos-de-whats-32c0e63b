@@ -14,6 +14,32 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: 16,
+    slug: "whatsapp-business-api-automacao-atendimento-ia-2026",
+    title: "WhatsApp Business API em 2026: Guia Definitivo de Automação e Atendimento com IA",
+    excerpt: "Como usar a WhatsApp Business API em 2026 para automatizar atendimento com IA, aumentar vendas e escalar suporte com chatbots, sem cair em banimento nem gastar demais.",
+    author: "Daniel Olimpio",
+    date: "2026-07-14",
+    readTime: "19 min",
+    categories: ["Ferramentas", "Negócios", "Tutorial"],
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1280&h=720&fit=crop&q=80",
+    tags: ["WhatsApp Business API", "Chatbot", "IA", "Automação", "Atendimento"],
+    featured: true
+  },
+  {
+    id: 15,
+    slug: "canais-do-whatsapp-como-criar-crescer-monetizar-2026",
+    title: "Canais do WhatsApp em 2026: Guia Completo Para Criar, Crescer e Ganhar Dinheiro",
+    excerpt: "Como criar um Canal do WhatsApp em 2026, ganhar seguidores reais, evitar erros comuns e monetizar de verdade. Guia técnico atualizado com dados oficiais da Meta.",
+    author: "Daniel Olimpio",
+    date: "2026-07-13",
+    readTime: "18 min",
+    categories: ["Grupos", "Negócios", "Tutorial"],
+    image: "https://images.unsplash.com/photo-1611605698335-8b1569810432?w=1280&h=720&fit=crop&q=80",
+    tags: ["Canais WhatsApp", "Monetização", "Crescimento", "WhatsApp 2026", "Criadores"],
+    featured: true
+  },
+  {
     id: 14,
     slug: "meta-ai-whatsapp-como-usar-em-grupos-2026",
     title: "Meta AI no WhatsApp em 2026: Como Usar a IA em Grupos, Conversas e Status",
