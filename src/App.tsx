@@ -27,6 +27,8 @@ import EvitarGolpesGruposWhatsApp from "./pages/blog/EvitarGolpesGruposWhatsApp"
 import ComunidadeLucrativa from "./pages/blog/ComunidadeLucrativa";
 import GruposEstudosCursos from "./pages/blog/GruposEstudosCursos";
 import MetaAiWhatsApp from "./pages/blog/MetaAiWhatsApp";
+import CanaisDoWhatsApp2026 from "./pages/blog/CanaisDoWhatsApp2026";
+import WhatsAppBusinessApiIA2026 from "./pages/blog/WhatsAppBusinessApiIA2026";
 import ComoFunciona from "./pages/ComoFunciona";
 import RegrasComunidade from "./pages/RegrasComunidade";
 import DicasSeguranca from "./pages/DicasSeguranca";
@@ -106,6 +108,8 @@ const App = () => (
               <Route path="/blog/como-transformar-grupo-whatsapp-comunidade-lucrativa" element={<ComunidadeLucrativa />} />
               <Route path="/blog/como-criar-grupos-whatsapp-estudos-cursos-online-2026" element={<GruposEstudosCursos />} />
               <Route path="/blog/meta-ai-whatsapp-como-usar-em-grupos-2026" element={<MetaAiWhatsApp />} />
+              <Route path="/blog/canais-do-whatsapp-como-criar-crescer-monetizar-2026" element={<CanaisDoWhatsApp2026 />} />
+              <Route path="/blog/whatsapp-business-api-automacao-atendimento-ia-2026" element={<WhatsAppBusinessApiIA2026 />} />
               <Route path="/como-funciona" element={<ComoFunciona />} />
               <Route path="/regras-comunidade" element={<RegrasComunidade />} />
               <Route path="/dicas-seguranca" element={<DicasSeguranca />} />
