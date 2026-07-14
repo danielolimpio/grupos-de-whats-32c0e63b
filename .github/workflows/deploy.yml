@@ -141,8 +141,11 @@ jobs:
             done < /tmp/published-assets.txt
           }
 
-          FASE1='mirror --reverse --verbose --parallel=2 --no-perms --ignore-time --size-only --continue ./dist/assets/ /assets/'
-          FASE2='mirror --reverse --verbose --parallel=1 --no-perms --ignore-time --size-only --continue --exclude ^index\.html$ --exclude ^assets/ ./dist/ /'
+          # Observação: lftp NÃO tem a flag --size-only (isso é do rsync).
+          # Em lftp, --ignore-time já faz a comparação apenas por tamanho,
+          # ignorando o mtime do servidor (que a Hostinger costuma reportar errado).
+          FASE1='mirror --reverse --verbose --parallel=2 --no-perms --ignore-time --continue ./dist/assets/ /assets/'
+          FASE2='mirror --reverse --verbose --parallel=1 --no-perms --ignore-time --continue --exclude ^index\.html$ --exclude ^assets/ ./dist/ /'
           FASE3='put -O / ./dist/index.html'
 
           for phase_name in "Fase 1 (assets)|$FASE1" "Fase 2 (páginas)|$FASE2" "Fase 3 (index.html)|$FASE3"; do
