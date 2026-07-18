@@ -48,6 +48,12 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link to="/glossario" className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
+                  <Library className="h-4 w-4 flex-shrink-0" />
+                  <span>Glossário WhatsApp</span>
+                </Link>
+              </li>
+              <li>
                 <Link to="/regras-comunidade" className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
                   <ShieldCheck className="h-4 w-4 flex-shrink-0" />
                   <span>Regras da comunidade</span>
