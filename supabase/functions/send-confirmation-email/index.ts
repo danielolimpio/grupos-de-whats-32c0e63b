@@ -24,6 +24,9 @@ const replyTo = 'contato@gruposdewhats.com.br'
 
 const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 
+const isAlreadyRegisteredError = (message: string) =>
+  /already|registered|exists|already been registered|already registered/i.test(message)
+
 const sendConfirmation = async ({
   email,
   confirmationUrl,
@@ -103,35 +106,63 @@ serve(async (req) => {
         { auth: { autoRefreshToken: false, persistSession: false } }
       )
 
-      const { data: linkData, error: linkError } = await supabase.auth.admin.generateLink({
+      const normalizedEmail = email.trim().toLowerCase()
+      const normalizedDisplayName = displayName.trim()
+
+      let linkData = null
+      let linkError = null
+
+      const signupLink = await supabase.auth.admin.generateLink({
         type: 'signup',
-        email: email.trim().toLowerCase(),
+        email: normalizedEmail,
         password,
         options: {
-          data: { display_name: displayName.trim() },
+          data: { display_name: normalizedDisplayName },
           redirectTo: redirectTo || 'https://gruposdewhats.com.br/auth?confirmed=true',
         },
       })
+
+      linkData = signupLink.data
+      linkError = signupLink.error
 
       if (linkError) {
         const message = linkError.message || ''
         console.error('Supabase generateLink error:', message)
 
-        if (/already|registered|exists/i.test(message)) {
-          return new Response(
-            JSON.stringify({ success: true, alreadyRegistered: true }),
-            { status: 200, headers: jsonHeaders }
-          )
+        if (isAlreadyRegisteredError(message)) {
+          const magicLink = await supabase.auth.admin.generateLink({
+            type: 'magiclink',
+            email: normalizedEmail,
+            options: {
+              redirectTo: redirectTo || 'https://gruposdewhats.com.br/auth?confirmed=true',
+            },
+          })
+
+          if (magicLink.error) {
+            console.error('Supabase magicLink fallback error:', magicLink.error.message)
+            return new Response(
+              JSON.stringify({
+                error: 'Este email já tem cadastro. Se você não recebeu o link, tente entrar ou recuperar a senha.',
+                alreadyRegistered: true,
+              }),
+              { status: 409, headers: jsonHeaders }
+            )
+          }
+
+          linkData = magicLink.data
+          linkError = null
         }
 
-        return new Response(
-          JSON.stringify({ error: 'Não foi possível gerar o link de confirmação agora.' }),
-          { status: 500, headers: jsonHeaders }
-        )
+        if (linkError) {
+          return new Response(
+            JSON.stringify({ error: 'Não foi possível gerar o link de confirmação agora.' }),
+            { status: 500, headers: jsonHeaders }
+          )
+        }
       }
 
       await sendConfirmation({
-        email: email.trim().toLowerCase(),
+        email: normalizedEmail,
         confirmationUrl: linkData.properties?.action_link,
         token: linkData.properties?.email_otp || '',
         tokenHash: linkData.properties?.hashed_token || '',
