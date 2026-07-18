@@ -22,92 +22,48 @@ export default function AdminSetup() {
   const handleCreateAdmin = async () => {
     setLoading(true);
     try {
-      // First try to sign in (assuming user already exists)
       const { data: signInData, error: signInError } = await supabaseAdmin.auth.signInWithPassword({
         email,
         password
       });
 
       if (signInError) {
-        // If sign in fails, try to create new user
-        const { data: authData, error: signUpError } = await supabaseAdmin.auth.signUp({
-          email,
-          password,
-          options: {
-            emailRedirectTo: `${window.location.origin}/admin`
-          }
-        });
-
-        if (signUpError) {
-          throw signUpError;
-        }
-
-        toast({
-          title: "Admin criado!",
-          description: "Conta de administrador criada com sucesso!"
-        });
-      } else {
-        // After successful login, verify this user should be an admin
-        const { data: { user: loggedUser } } = await supabaseAdmin.auth.getUser();
-        
-        if (loggedUser) {
-          try {
-            const { data } = await supabaseAdmin
-              .from('user_roles')
-              .select('role')
-              .eq('user_id', loggedUser.id)
-              .single();
-
-            // If user doesn't have admin role, reject login
-            if (!data || (data.role !== 'admin' && data.role !== 'moderator')) {
-              await supabaseAdmin.auth.signOut();
-              toast({
-                title: "Acesso negado",
-                description: "Esta conta não tem permissões administrativas. Use /auth para acessar a área de usuários.",
-                variant: "destructive"
-              });
-              setLoading(false);
-              return;
-            }
-          } catch (error) {
-            // No role found, reject access
-            await supabaseAdmin.auth.signOut();
-            toast({
-              title: "Acesso negado",
-              description: "Esta conta não tem permissões administrativas.",
-              variant: "destructive"
-            });
-            setLoading(false);
-            return;
-          }
-        }
-
-        toast({
-          title: "Login realizado",
-          description: "Admin logado com sucesso!"
-        });
+        throw signInError;
       }
 
-
-      // Get current user and assign admin role
-      const { data: { user }, error: userError } = await supabaseAdmin.auth.getUser();
-      if (user && !userError) {
-        // Create or update admin role
-        const { error: roleError } = await supabaseAdmin
-          .from('user_roles')
-          .upsert({ 
-            user_id: user.id, 
-            role: 'admin' 
-          });
-
-        if (roleError) {
-          console.error('Error assigning admin role:', roleError);
-        }
-
-        // Wait a bit for role to be assigned, then redirect to admin page
-        setTimeout(() => navigate('/admin'), 2000);
+      const userId = signInData.user?.id;
+      if (!userId) {
+        throw new Error('Falha ao obter usuário após login.');
       }
 
+      // Verify admin/moderator role
+      const { data: roleData, error: roleError } = await supabaseAdmin
+        .from('user_roles')
+        .select('role')
+        .eq('user_id', userId)
+        .in('role', ['admin', 'moderator'])
+        .maybeSingle();
+
+      if (roleError) {
+        console.error('Error checking role:', roleError);
+      }
+
+      if (!roleData) {
+        await supabaseAdmin.auth.signOut();
+        toast({
+          title: 'Acesso negado',
+          description: 'Esta conta não tem permissões administrativas.',
+          variant: 'destructive',
+        });
+        setLoading(false);
+        return;
+      }
+
+      toast({
+        title: 'Login realizado',
+        description: 'Redirecionando para o painel...',
+      });
+      navigate('/admin');
     } catch (error: any) {
       toast({
         title: "Erro",
