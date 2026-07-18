@@ -145,13 +145,13 @@ export default function Auth() {
     if (error) {
       toast({
         title: "Erro no cadastro",
-        description: error.message,
+        description: error.message || "Não foi possível enviar o email de confirmação agora.",
         variant: "destructive"
       });
     } else if (data?.alreadyRegistered) {
       toast({
-        title: "Email já cadastrado",
-        description: "Este email já tem conta no site. Faça login ou use outro email para criar um novo cadastro.",
+        title: "Novo link enviado",
+        description: "Este email já tinha cadastro. Enviamos um novo link de acesso/confirmação para ele.",
       });
     } else {
       toast({

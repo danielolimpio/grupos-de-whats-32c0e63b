@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { User, Session } from '@supabase/supabase-js';
+import { FunctionsHttpError, User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
 
 interface AuthContextType {
@@ -49,6 +49,19 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         redirectTo: redirectUrl,
       }
     });
+
+    if (error instanceof FunctionsHttpError) {
+      try {
+        const details = await error.context.json();
+        const message = typeof details?.error === 'string'
+          ? details.error
+          : details?.error?.message || error.message;
+        return { data, error: { ...error, message } };
+      } catch {
+        const details = await error.context.text();
+        return { data, error: { ...error, message: details || error.message } };
+      }
+    }
 
     return { error, data };
   };
