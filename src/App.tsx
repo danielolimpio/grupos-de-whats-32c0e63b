@@ -129,6 +129,8 @@ const App = () => (
               <Route path="/sitemap" element={<Sitemap />} />
               <Route path="/sobre" element={<Sobre />} />
               <Route path="/seguranca-transparencia" element={<SegurancaTransparencia />} />
+              <Route path="/glossario" element={<Glossario />} />
+              <Route path="/glossario/o-que-e-:slug" element={<GlossarioTermo />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
