@@ -53,10 +53,11 @@ serve(async (req) => {
 
     // Send email via Resend
     const { data, error } = await resend.emails.send({
-      from: 'Grupos de Whats <onboarding@resend.dev>',
+      from: 'Grupos de WhatsApp <noreply@gruposdewhats.com.br>',
       to: [user.email],
       subject: 'Confirme seu cadastro - Grupos de WhatsApp',
       html,
+      reply_to: 'contato@gruposdewhats.com.br',
     })
 
     if (error) {
