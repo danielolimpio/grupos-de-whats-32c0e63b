@@ -273,6 +273,14 @@
         </section>
       </main>
     </div>
+    <script>
+      // Só mostra o fallback estático se o React demorar a montar,
+      // evitando um "flash" de layout quebrado no carregamento inicial.
+      window.__fallbackTimer = window.setTimeout(function () {
+        var el = document.getElementById('static-fallback');
+        if (el) el.classList.add('is-visible');
+      }, 2500);
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
