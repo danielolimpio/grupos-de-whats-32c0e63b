@@ -23,7 +23,7 @@ export default function AdminSetup() {
     setLoading(true);
     try {
       const { data: signInData, error: signInError } = await supabaseAdmin.auth.signInWithPassword({
-        email,
+        email: email.trim().toLowerCase(),
         password
       });
 
@@ -46,6 +46,7 @@ export default function AdminSetup() {
 
       if (roleError) {
         console.error('Error checking role:', roleError);
+        throw new Error('Não foi possível validar a permissão administrativa. Tente novamente em instantes.');
       }
 
       if (!roleData) {

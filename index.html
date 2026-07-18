@@ -165,10 +165,10 @@
         background: #0a0a0a;
         color: #fafafa;
         padding: 32px 16px;
-        visibility: hidden;
+        display: none;
       }
       #static-fallback.is-visible {
-        visibility: visible;
+        display: block;
       }
 
       #static-fallback a {
@@ -274,12 +274,13 @@
       </main>
     </div>
     <script>
-      // Só mostra o fallback estático se o React demorar a montar,
-      // evitando um "flash" de layout quebrado no carregamento inicial.
+      // Só mostra o fallback estático se o React realmente falhar/demorar muito,
+      // evitando o flash visual nas atualizações e nunca exibindo na área admin/login.
       window.__fallbackTimer = window.setTimeout(function () {
+        if (/^\/(admin|admin-setup|auth)(\/|$)/.test(window.location.pathname)) return;
         var el = document.getElementById('static-fallback');
         if (el) el.classList.add('is-visible');
-      }, 2500);
+      }, 12000);
     </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
