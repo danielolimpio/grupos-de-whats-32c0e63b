@@ -178,14 +178,25 @@ export default function GroupForm({ onSuccess }: GroupFormProps) {
 
       onSuccess();
     } catch (error: any) {
-      toast({
-        title: "Erro ao enviar grupo",
-        description: error.message,
-        variant: "destructive"
-      });
-    } finally {
-      setLoading(false);
-    }
+      const msg = String(error?.message || '');
+      const isProhibited = /prohibited|proibid/i.test(msg);
+      if (isProhibited) {
+        const foundWords = getProhibitedWords(fullText);
+        toast({
+          title: "Conteúdo não permitido",
+          description: foundWords.length
+            ? `Remova os termos proibidos: ${foundWords.join(', ')}.`
+            : "O nome ou descrição contém termos proibidos pelas nossas regras. Revise e tente novamente.",
+          variant: "destructive"
+        });
+      } else {
+        toast({
+          title: "Erro ao enviar grupo",
+          description: msg,
+          variant: "destructive"
+        });
+      }
+
   };
 
   return (
