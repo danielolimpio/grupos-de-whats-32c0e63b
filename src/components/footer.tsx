@@ -1,4 +1,4 @@
-import { Mail, Shield, FileText, Cookie, Home, Info, Cog, BookOpen, ShieldCheck, LifeBuoy, AlertTriangle, HelpCircle, Phone, Map, Eye } from "lucide-react";
+import { Mail, Shield, FileText, Cookie, Home, Info, Cog, BookOpen, ShieldCheck, LifeBuoy, AlertTriangle, HelpCircle, Phone, Map, Eye, Library } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 const logo = "/images/logo.png";
