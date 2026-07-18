@@ -19,6 +19,7 @@ interface ConfirmEmailProps {
   token_hash: string
   token: string
   user_email: string
+  confirmation_url?: string
 }
 
 export const ConfirmEmail = ({
@@ -28,6 +29,7 @@ export const ConfirmEmail = ({
   redirect_to,
   token,
   user_email,
+  confirmation_url,
 }: ConfirmEmailProps) => (
   <Html>
     <Head />
@@ -43,16 +45,20 @@ export const ConfirmEmail = ({
         <Section style={buttonContainer}>
           <Button
             style={button}
-            href={`${supabase_url}/auth/v1/verify?token=${token_hash}&type=${email_action_type}&redirect_to=${redirect_to}`}
+            href={confirmation_url || `${supabase_url}/auth/v1/verify?token=${token_hash}&type=${email_action_type}&redirect_to=${redirect_to}`}
           >
             Confirmar meu cadastro
           </Button>
         </Section>
 
-        <Text style={text}>
-          Ou copie e cole este código de confirmação no site:
-        </Text>
-        <code style={code}>{token}</code>
+        {token ? (
+          <>
+            <Text style={text}>
+              Ou copie e cole este código de confirmação no site:
+            </Text>
+            <code style={code}>{token}</code>
+          </>
+        ) : null}
 
         <Text style={textSecondary}>
           Este link é válido por 24 horas e só pode ser usado uma vez.
