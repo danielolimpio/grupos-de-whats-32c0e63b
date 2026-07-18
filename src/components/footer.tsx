@@ -1,4 +1,4 @@
-import { Mail, Shield, FileText, Cookie, Home, Info, Cog, BookOpen, ShieldCheck, LifeBuoy, AlertTriangle, HelpCircle, Phone, Map, Eye } from "lucide-react";
+import { Mail, Shield, FileText, Cookie, Home, Info, Cog, BookOpen, ShieldCheck, LifeBuoy, AlertTriangle, HelpCircle, Phone, Map, Eye, Library } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 const logo = "/images/logo.png";
@@ -45,6 +45,12 @@ export function Footer() {
                 <Link to="/blog" className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
                   <BookOpen className="h-4 w-4 flex-shrink-0" />
                   <span>Blog</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/glossario" className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
+                  <Library className="h-4 w-4 flex-shrink-0" />
+                  <span>Glossário WhatsApp</span>
                 </Link>
               </li>
               <li>
