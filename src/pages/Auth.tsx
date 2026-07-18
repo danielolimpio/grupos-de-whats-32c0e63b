@@ -140,7 +140,7 @@ export default function Auth() {
       return;
     }
 
-    const { error } = await signUp(email, password, displayName);
+    const { error, data } = await signUp(email, password, displayName);
     
     if (error) {
       toast({
@@ -148,10 +148,15 @@ export default function Auth() {
         description: error.message,
         variant: "destructive"
       });
+    } else if (data?.alreadyRegistered) {
+      toast({
+        title: "Email já cadastrado",
+        description: "Este email já tem conta no site. Faça login ou use outro email para criar um novo cadastro.",
+      });
     } else {
       toast({
         title: "Cadastro realizado!",
-        description: "Verifique seu email para confirmar a conta.",
+        description: "Enviamos o link de confirmação para seu email.",
       });
     }
     
