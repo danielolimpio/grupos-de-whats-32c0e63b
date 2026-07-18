@@ -139,23 +139,7 @@ export default function GroupForm({ onSuccess }: GroupFormProps) {
     }
 
     try {
-      // Server-side check for prohibited content (additional safety)
-      const { data: hasProhibited, error: checkError } = await supabase
-        .rpc('contains_prohibited_content', { 
-          text_content: fullText 
-        });
 
-      if (checkError) throw checkError;
-
-      if (hasProhibited) {
-        toast({
-          title: "Conteúdo não permitido",
-          description: "O grupo contém palavras proibidas. Revise o nome e descrição.",
-          variant: "destructive"
-        });
-        setLoading(false);
-        return;
-      }
 
       // Create group with normalized slug
       const insertPayload: any = {
