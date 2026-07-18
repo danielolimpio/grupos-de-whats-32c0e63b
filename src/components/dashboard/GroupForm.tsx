@@ -196,8 +196,11 @@ export default function GroupForm({ onSuccess }: GroupFormProps) {
           variant: "destructive"
         });
       }
-
+    } finally {
+      setLoading(false);
+    }
   };
+
 
   return (
     <Card>
