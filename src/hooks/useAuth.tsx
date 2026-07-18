@@ -53,7 +53,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     if (error instanceof FunctionsHttpError) {
       try {
         const details = await error.context.json();
-        return { data, error: { ...error, message: details?.error || details?.error?.message || error.message } };
+        const message = typeof details?.error === 'string'
+          ? details.error
+          : details?.error?.message || error.message;
+        return { data, error: { ...error, message } };
       } catch {
         const details = await error.context.text();
         return { data, error: { ...error, message: details || error.message } };
