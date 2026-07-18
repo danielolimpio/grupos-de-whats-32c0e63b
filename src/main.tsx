@@ -35,6 +35,9 @@ if (!rootElement) {
 
 import("./App.tsx")
   .then(({ default: App }) => {
+    if ((window as any).__fallbackTimer) {
+      clearTimeout((window as any).__fallbackTimer);
+    }
     rootElement.replaceChildren();
     createRoot(rootElement).render(
       <React.StrictMode>
