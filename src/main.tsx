@@ -7,6 +7,10 @@ const rootElement = document.getElementById("root");
 const renderFallback = () => {
   if (!rootElement) return;
 
+  if ((window as any).__fallbackTimer) {
+    clearTimeout((window as any).__fallbackTimer);
+  }
+
   rootElement.innerHTML = `
     <main style="min-height:100vh;background:#0a0a0a;color:#fafafa;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:32px 16px;">
       <section style="max-width:960px;margin:0 auto;text-align:center;">
