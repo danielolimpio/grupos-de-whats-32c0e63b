@@ -139,23 +139,7 @@ export default function GroupForm({ onSuccess }: GroupFormProps) {
     }
 
     try {
-      // Server-side check for prohibited content (additional safety)
-      const { data: hasProhibited, error: checkError } = await supabase
-        .rpc('contains_prohibited_content', { 
-          text_content: fullText 
-        });
 
-      if (checkError) throw checkError;
-
-      if (hasProhibited) {
-        toast({
-          title: "Conteúdo não permitido",
-          description: "O grupo contém palavras proibidas. Revise o nome e descrição.",
-          variant: "destructive"
-        });
-        setLoading(false);
-        return;
-      }
 
       // Create group with normalized slug
       const insertPayload: any = {
@@ -194,15 +178,29 @@ export default function GroupForm({ onSuccess }: GroupFormProps) {
 
       onSuccess();
     } catch (error: any) {
-      toast({
-        title: "Erro ao enviar grupo",
-        description: error.message,
-        variant: "destructive"
-      });
+      const msg = String(error?.message || '');
+      const isProhibited = /prohibited|proibid/i.test(msg);
+      if (isProhibited) {
+        const foundWords = getProhibitedWords(fullText);
+        toast({
+          title: "Conteúdo não permitido",
+          description: foundWords.length
+            ? `Remova os termos proibidos: ${foundWords.join(', ')}.`
+            : "O nome ou descrição contém termos proibidos pelas nossas regras. Revise e tente novamente.",
+          variant: "destructive"
+        });
+      } else {
+        toast({
+          title: "Erro ao enviar grupo",
+          description: msg,
+          variant: "destructive"
+        });
+      }
     } finally {
       setLoading(false);
     }
   };
+
 
   return (
     <Card>
